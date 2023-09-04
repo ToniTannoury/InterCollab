@@ -1,0 +1,35 @@
+{
+  "name": "intercollab",
+  "version": "1.0.0",
+  "description": "A app for intercative collaborations",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\" "
+  },
+  "author": "Toni Tannoury",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "canvas": "^2.11.2",
+    "colors": "^1.4.0",
+    "concurrently": "^8.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.1.3",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.2.2",
+    "querystring": "^0.2.1",
+    "randomcolor": "^0.6.2",
+    "randomstring": "^1.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
+
