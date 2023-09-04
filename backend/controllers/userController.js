@@ -40,10 +40,13 @@ const registerUser = asyncHandler(async (req, res)=>{
 
   if(user){
     res.status(201).json({
-      _id: user._id,
-      name : user.name,
-      email: user.email ,
-      token: generateToken(user._id)
+      message:"User Signed Up Successfully",
+      data:{
+        _id: user._id,
+        name : user.name,
+        email: user.email ,
+        token: generateToken(user._id)
+      }
     })
   }else{
     res.status(400)
@@ -58,20 +61,25 @@ const loginUser =asyncHandler (async (req, res)=>{
   const {email , password } = req.body
 
   const user = await User.findOne({email})
-  
+  if(user === null){
+    res.status(401)
+    throw new Error("Invalid Credentials")
+  }
   const errors = validationResult(req)
   if(!errors.isEmpty()){
     res.status(422)
     throw new Error(errors.array()[0].msg)
   }
 
-  // Check user and passwords match
+  const token = generateToken(user._id)
+  console.log(token)
   if(user && (await bcrypt.compare(password , user.password))){
+   
     res.status(200).json({
       _id: user._id,
       name : user.name,
       email: user.email ,
-      token: generateToken(user._id)
+      token: token
     })
   }else{
     res.status(401)
@@ -83,12 +91,7 @@ const loginUser =asyncHandler (async (req, res)=>{
 // @access Private
 
 const getMe = asyncHandler(async (req, res)=>{
-  const user = {
-    id: req.user._id,
-    email: req.user.email,
-    name: req.user.name,
-  }
-  res.status(200).json(user)
+  res.status(200).json(req.user)
 })
 
 

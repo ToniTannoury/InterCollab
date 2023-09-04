@@ -1,10 +1,30 @@
 'use client'
 import React from 'react'
-import {Button , Form} from 'antd'
+import {Button , Form , message} from 'antd'
 import Link from 'next/link'
+import { error } from 'console'
 function Register() {
-  const onFinish = (values:any)=>{
-    console.log(values)
+  const onFinish =async (values:{name:string , email:string , password:string , confirmPassword:string})=>{
+    try {
+      const response = await fetch('http://localhost:5000/api/users',{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify(values)
+    })
+    const data = await response.json()  
+    if(response.status !== 201){
+      message.error(data.message)
+    }else{
+      console.log(data)
+      message.success(data.message)
+    }
+    } catch (error) {
+      
+    }
+    
+    
   }
   return (
     <div className='flex justify-center h-screen items-center bg-ICblue'>
@@ -21,7 +41,7 @@ function Register() {
           <Form.Item label='Password' name='password'>
             <input name='password' type="password" className='input'/>
           </Form.Item>
-          <Form.Item label='Verify Password' name='verifyPassword'>
+          <Form.Item label='Verify Password' name='confirmPassword'>
             <input name='verifyPassword' type="password" className='input'/>
           </Form.Item>
           <Button className='bg-ICblue mt-1' type='primary' htmlType='submit'>

@@ -1,11 +1,32 @@
 'use client'
-import React from 'react'
-import {Button , Form} from 'antd'
+import React, { useEffect } from 'react'
+import {Button , Form , message} from 'antd'
 import Link from 'next/link'
+import Cookie from 'js-cookie'
+import { useRouter } from 'next/navigation'
+
 function Login() {
-  const onFinish = (values:any)=>{
-    console.log(values)
+  const router = useRouter()
+  const onFinish =async (values:{email:string , password:string})=>{
+    const response = await fetch('http://localhost:5000/api/users/login',{
+      credentials: 'same-origin',
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify(values),
+    })
+    const data = await response.json()
+    console.log(response)
+    if(response.status!==200){
+      message.error(data.message)
+    }else{
+      message.success("Login Successfull")
+      router.push("/")
+      Cookie.set('token' , data.token)
+    }
   }
+
   return (
     <div className='flex justify-center h-screen items-center bg-ICblue'>
       <div className='card p-5 bg-white w-1/4'>
