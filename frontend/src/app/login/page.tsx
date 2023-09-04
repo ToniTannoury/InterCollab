@@ -4,11 +4,16 @@ import {Button , Form , message} from 'antd'
 import Link from 'next/link'
 import Cookie from 'js-cookie'
 import { useRouter } from 'next/navigation'
-
+import { useDispatch , useSelector } from 'react-redux'
+import { setLoading } from '@/redux/loadersSlice'
+import { setCurrentUser } from '@/redux/usersSlice'
 function Login() {
+  const dispatch = useDispatch()
   const router = useRouter()
   const onFinish =async (values:{email:string , password:string})=>{
-    const response = await fetch('http://localhost:5000/api/users/login',{
+    try {
+      dispatch(setLoading(true))
+      const response = await fetch('http://localhost:5000/api/users/login',{
       credentials: 'same-origin',
       method:"POST",
       headers:{
@@ -25,6 +30,12 @@ function Login() {
       router.push("/")
       Cookie.set('token' , data.token)
     }
+    } catch (error:any) {
+      message.error(error.message)
+    }finally{
+      dispatch(setLoading(false))
+    }
+    
   }
 
   return (

@@ -44,3 +44,19 @@ padding: 0px !important;
 margin: 0;
 color:#213555 ;
 }
+
+.ri-close-line::before{
+  width: 100px;
+  height: 200px;
+}
+.image{
+  width: 30px !important;
+  margin-top: 1px;
+}
+.img{
+  
+  width: 40px !important;
+  height:40px !important;
+  max-width: 500px;
+  border-radius: 999999px;
+}
