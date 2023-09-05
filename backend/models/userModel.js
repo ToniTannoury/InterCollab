@@ -33,6 +33,11 @@ const userSchema = mongoose.Schema({
     type: String,
     required:false
   },
+  rating:{
+    type: Number,
+    required:false,
+    default:5
+  },
   profile_picture:{
     type:String,
     required:false,

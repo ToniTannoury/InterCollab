@@ -2,26 +2,33 @@
 import { Button, Form , Col ,Row ,   message } from 'antd'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import axios from 'axios'
 import { setLoading } from '@/redux/loadersSlice'
-import { setCurrentUser } from '@/redux/usersSlice'
+import Cookies from 'js-cookie'
+import { useRouter } from 'next/navigation'
 function CreateRoom() {
   const {currentUser} = useSelector((state:any)=>state.users) 
   const dispatch = useDispatch()
-
+  const router = useRouter()
   const onFinish = async (values:any)=>{
-    // try {
-    //   values._id = currentUser._id
-    //   values.userType = currentUser.userType
-    //   dispatch(setLoading(true))
-    //   const response = await axios.put("api/users" , values) 
-    //   message.success("Profile updated successfully")
-    //   dispatch(setCurrentUser(response.data.data))
-    // } catch (error:any) {
-    //   message.error(error.message.data.message || "Something went wrong")
-    // }finally{
-    //   dispatch(setLoading(false))
-    // }
+    try {
+      dispatch(setLoading(true))
+      console.log(values)
+      const response = await fetch("http://localhost:5000/api/rooms" , {
+        method:"POST",
+        headers:{
+          "Authorization":`Bearer ${Cookies.get('token')}`,
+          'Content-Type':"application/json"
+        },
+        body:JSON.stringify(values)
+      }) 
+      const data= await response.json()
+      console.log(data)
+      message.success("Room Created")
+    } catch (error:any) {
+      message.error(error.message.data.message || "Something went wrong")
+    }finally{
+      dispatch(setLoading(false))
+    }
     console.log(values)
   }
   return (
@@ -32,7 +39,7 @@ function CreateRoom() {
       <Row gutter={[16,16]}>
         
         <Col span={24}>
-          <Form.Item label='Title' name="name" >
+          <Form.Item label='Title' name="title" >
             <input className='input' type="text" required/>
           </Form.Item>
         </Col>
@@ -52,11 +59,11 @@ function CreateRoom() {
           </Form.Item>
         </Col>
         <Col span={8}>
-        <Form.Item label="Type" name={"jobType"}>
+        <Form.Item label="Type" name={"type"}>
           <select className='input ' name="" id="">
-            <option value="full-time">Public</option>
-            <option value="part-time">Private</option>
-            <option value="contract">Paid</option>
+            <option value="public">Public</option>
+            <option value="private">Private</option>
+            <option value="paid">Paid</option>
           </select>
         </Form.Item>
       </Col>
@@ -65,8 +72,11 @@ function CreateRoom() {
       
     </>
         <div className='flex justify-end my-3'>
+          <Button onClick={()=>router.push('/')} className='mr-3' type="default" >
+            Cancel
+          </Button>
           <Button className='bg-ICblue' type="primary" htmlType='submit'>
-            Save
+          Create Room
           </Button>
         </div>
       </Form>

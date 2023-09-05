@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv').config();
 const userRoutes = require('./routes/userRoutes'); 
+const roomRoutes = require('./routes/roomRoutes'); 
 const PORT = process.env.PORT || 8000;
 const { errorHandler } = require('./middleware/errorMiddleware');
 const connectDB = require("./config/db");
@@ -47,7 +48,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/users', upload.any(),userRoutes);
-
+app.use('/api/rooms', roomRoutes);
 app.use(errorHandler);
 
 const server = app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
