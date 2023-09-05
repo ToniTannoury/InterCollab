@@ -9,29 +9,62 @@ import image7 from '../../public/7.jpg'
 import "../stylesheets/carousel.css"
 import {motion} from 'framer-motion'
 import { useRef , useEffect , useState} from 'react'
+import { useDispatch , useSelector } from 'react-redux'
+import { setSearching } from '@/redux/searchingSlice'
 
 function Carousel() {
-  const [width  , setWidth] = useState<number>(0)
-  const carousel:any = useRef()
-  const images = [image1 , image2 , image3 , image4 , image5 , image6]
-  console.log(images)
-  useEffect(()=>{
-    console.log(carousel)
-    setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth)
-  },[])
+  const dispatch = useDispatch();
+  const [width, setWidth] = useState<number>(0);
+  const { searching } = useSelector((state: any) => state.searching);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const carousel: any = useRef();
+  const images = [image1, image2, image3, image4, image5, image6];
+
+  useEffect(() => {
+    setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
+  }, []);
+
+  const handleMouseEnter = (index: number) => {
+    setHoveredIndex(index);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredIndex(null);
+  };
+
   return (
-    <motion.div ref={carousel} className='carousel'>
-      <motion.div drag="x" dragConstraints={{right:0 , left:-width}} whileTap={{cursor:'grabbing'}}className='inner-carousel'>
-        {images.map((image , index)=>{
-          return(
-            <motion.div className='item' key={index}>
-              <img src={image.src} alt="img" />
-            </motion.div>
-          )
-        })}
+    <>
+      <motion.div ref={carousel} className={`carousel relative -z-3 ${searching && 'app'}`}>
+        <motion.div drag={searching ? "undefined" : 'x'} dragConstraints={{ right: 0, left: -width }} whileTap={{ cursor: 'grabbing' }} className='inner-carousel'>
+          {images.map((image, index) => {
+            return (
+              <motion.div
+                className='item'
+                key={index}
+                onMouseEnter={() => handleMouseEnter(index)} // Add mouse enter event handler
+              >
+                <img src={image.src} alt="img" />
+                {/* Render a blue circle when hovered */}
+                {hoveredIndex === index && (
+                  <div className='circle bg-ICblue'></div>
+                )}
+              </motion.div>
+            );
+          })}
+        </motion.div>
       </motion.div>
-    </motion.div>
-  )
+      <div className='flex gap-4 justify-center items-center mt-3'>
+        {images.map((_, index) => (
+          <div
+            key={index}
+            className={`h-4 w-4 border-ICblue border-2 rounded-3xl ${hoveredIndex === index ? 'bg-ICblue' : ''}`}
+          ></div>
+        ))}
+      </div>
+    </>
+  );
 }
 
-export default Carousel
+export default Carousel;
+

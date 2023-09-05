@@ -108,7 +108,66 @@ const searchUsers = asyncHandler(async (req, res) => {
 const getMe = asyncHandler(async (req, res)=>{
   res.status(200).json(req.user)
 })
+const followUser = asyncHandler(async (req, res) => {
+  const userId = req.params.id;
+  const currentUser = req.user;
 
+  if (currentUser._id.toString() === userId) {
+    res.status(400).json({ message: "You can't follow yourself." });
+    return;
+  }
+
+  const userToFollow = await User.findById(userId);
+
+  if (!userToFollow) {
+    res.status(404).json({ message: 'User not found' });
+    return;
+  }
+
+  if (currentUser.followings.includes(userId)) {
+    res.status(400).json({ message: 'You are already following this user.' });
+    return;
+  }
+
+  currentUser.followings.push(userId);
+  userToFollow.followers.push(currentUser._id);
+
+  await currentUser.save();
+  await userToFollow.save();
+
+  res.status(200).json({ message: 'You are now following this user.' });
+});
+
+// Unfollow a user
+const unfollowUser = asyncHandler(async (req, res) => {
+  const userId = req.params.id; // ID of the user to unfollow
+  const currentUser = req.user; // The user who wants to unfollow
+
+  if (currentUser._id.toString() === userId) {
+    res.status(400).json({ message: "You can't unfollow yourself." });
+    return;
+  }
+
+  const userToUnfollow = await User.findById(userId);
+
+  if (!userToUnfollow) {
+    res.status(404).json({ message: 'User not found' });
+    return;
+  }
+
+  if (!currentUser.followings.includes(userId)) {
+    res.status(400).json({ message: 'You are not following this user.' });
+    return;
+  }
+
+  currentUser.followings = currentUser.followings.filter((id) => id.toString() !== userId);
+  userToUnfollow.followers = userToUnfollow.followers.filter((id) => id.toString() !== currentUser._id.toString());
+
+  await currentUser.save();
+  await userToUnfollow.save();
+
+  res.status(200).json({ message: 'You have unfollowed this user.' });
+});
 
 const generateToken = (id)=>{
   return jwt.sign({id} , process.env.JWT_SECRET , {
@@ -122,5 +181,7 @@ module.exports = {
   registerUser,
   loginUser,
   getMe,
-  searchUsers
+  searchUsers,
+  followUser,
+  unfollowUser
 }

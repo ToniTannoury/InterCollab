@@ -1,8 +1,7 @@
 .item{
-  height: 12rem;
+  height: 9rem;
   min-width:29.5rem;
   padding-right: 20px;
-  padding-top: 20px;
 }
 
 .item img{
@@ -10,14 +9,20 @@
   height: 100%;
   border-radius: 2rem;
   pointer-events: none;
+
 }
 .inner-carousel{
   display: flex;
-  /* background: blue; */
+
+
 }
 
 .carousel{
   /* background-color: red; */
   cursor: grab;
   overflow: hidden;
+ 
+}
+.app{
+  z-index: -1;
 }

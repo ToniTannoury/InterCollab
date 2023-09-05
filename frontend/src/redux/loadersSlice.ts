@@ -3,12 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 const loadersSlice = createSlice({
   name:"users",
   initialState:{
-    loading:false
+    loading:false,
   },
   reducers:{
     setLoading:(state , action)=>{
       state.loading = action.payload
-    }
+    },
+   
   }
 })
 

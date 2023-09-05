@@ -1,0 +1,52 @@
+.info-bar-container{
+  height: 110px;
+  background-color: #F2F7FA;
+  margin-top: 20px;
+  border: solid #3498db;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+}
+.user-image{
+  width: 60px;
+  height: 60px;
+  background-color: #3498db;
+  border-radius: 50%;
+  border: 2px solid  ghostwhite; 
+  margin: auto;
+
+}
+
+.info-box{
+  background-color: #1B3B58;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  border-radius: 10px;
+  font-size: 12px;
+}
+.info-right{
+  display: flex;
+  gap: 8px;
+}
+.username{
+  width: 130px;
+  font-family: 'Apple Chancery',  cursive;
+  font-weight: 600;
+  color:#1B3B58 ;
+  text-align: center;
+}
+
+.add-to-followers{
+  border: 2px grey solid;
+  background-color: white;
+  padding:0 4px;
+  height: 30px !important;
+  border-radius: 5px;
+
+}

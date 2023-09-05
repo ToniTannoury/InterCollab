@@ -64,3 +64,41 @@ color:#213555 ;
   width: 30%;
   height: 40px;
 }
+
+.containing-users {
+  height: 360px !important;
+  margin-top: 10px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.containing-users::-webkit-scrollbar {
+  width: 0; /* Hide scrollbar width */
+  height: 0; /* Hide scrollbar height */
+}
+
+/* Optional: Make the thumb and track transparent */
+.containing-users::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.containing-users::-webkit-scrollbar-track {
+  background: transparent;
+}
+.month-header{
+  font-weight: 1000 !important;
+}
+.bottom-home{
+  padding: 20px 0;
+  width: 30rem;
+  height: 13rem;
+  border-radius: 10px;
+  width: 100%;
+  
+}
+.bottom-button{
+  width: 400px;
+}
+.gray-color{
+  color: #7F7979;
+  width: 400px;
+}

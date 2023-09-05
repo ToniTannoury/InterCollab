@@ -1,6 +1,7 @@
 import Carousel from "@/components/Carousel";
 import {cookies} from 'next/headers'
 import SearchUserInput from "@/components/SearchUserInput";
+import BottomHomeComponent from "@/components/BottomHomeComponent";
 export async function getUser(){
   try {
     const token = cookies().get('token')
@@ -26,9 +27,20 @@ export default async function Home() {
       <div>
         <SearchUserInput/>
       </div>
-      <div>
-        <Carousel/>
+      <div className="flex flex-col my-3">
+        <h1 className="month-header text-2xl font-extrabold text-center text-ICblue ">
+          Rooms Of The Month
+        </h1>
+        <h4 className="font-base text-gray-400 text-center">Check out the most attended or viewed rooms</h4>
       </div>
+      <div>
+        <Carousel />
+      </div>
+        <div className="flex gap-10">
+          <BottomHomeComponent/>
+        </div>
+        
+      
     </div>
   )
 }

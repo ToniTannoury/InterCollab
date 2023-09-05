@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const {registerUser , loginUser , getMe ,  searchUsers} = require('../controllers/userController')
+const {registerUser , loginUser , getMe ,  searchUsers , followUser , unfollowUser} = require('../controllers/userController')
 const {protect} = require('../middleware/authMiddleware')
 const {check , body} = require('express-validator')
 
@@ -28,6 +28,7 @@ router.post('/login' ,
 router.get('/me', protect, getMe)
 
 router.get('/searchUsers', protect, searchUsers)
-
+router.put('/follow/:id', protect, followUser);
+router.put('/unfollow/:id', protect, unfollowUser);
 
 module.exports = router
