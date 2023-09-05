@@ -6,7 +6,7 @@ import Cookie from 'js-cookie'
 import { useRouter } from 'next/navigation'
 import { useDispatch , useSelector } from 'react-redux'
 import { setLoading } from '@/redux/loadersSlice'
-import { setCurrentUser } from '@/redux/usersSlice'
+
 function Login() {
   const dispatch = useDispatch()
   const router = useRouter()

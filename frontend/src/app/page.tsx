@@ -1,9 +1,6 @@
-// 'use client'
-import { Button , message } from "antd";
-// import { useEffect } from "react";
-import Cookie from 'js-cookie'
-// import { useState } from "react";
+import Carousel from "@/components/Carousel";
 import {cookies} from 'next/headers'
+import SearchUserInput from "@/components/SearchUserInput";
 export async function getUser(){
   try {
     const token = cookies().get('token')
@@ -26,7 +23,12 @@ export default async function Home() {
  
   return (
     <div>
-      {user && user.name}
+      <div>
+        <SearchUserInput/>
+      </div>
+      <div>
+        <Carousel/>
+      </div>
     </div>
   )
 }

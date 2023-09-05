@@ -5,9 +5,7 @@ const {validationResult} = require('express-validator')
 
 
 const User = require('../models/userModel')
-// @desc Register a new user
-// @route /api/users 
-// @access Public
+
 const registerUser = asyncHandler(async (req, res)=>{ 
  
   const {email , name , password} = req.body
@@ -54,9 +52,6 @@ const registerUser = asyncHandler(async (req, res)=>{
   }  
 })
 
-// @desc Login a user
-// @route /api/users/login
-// @access Public
 const loginUser =asyncHandler (async (req, res)=>{
   const {email , password } = req.body
 
@@ -86,17 +81,35 @@ const loginUser =asyncHandler (async (req, res)=>{
     throw new Error("Invalid Credentials")
   }
 })
-// @desc Get current user
-// @route /api/users/me
-// @access Private
+
+const searchUsers = asyncHandler(async (req, res) => {
+  const { query } = req.query;
+  if (!query) {
+    res.status(400);
+    throw new Error('Search query is required');
+  }
+
+  const users = await User.find({
+    $or: [
+      { name: { $regex: new RegExp(query, 'i') } },
+      { email: { $regex: new RegExp(query, 'i') } },
+    ],
+  });
+
+  if (users && users.length > 0) {
+    res.status(200).json(users);
+  } else {
+    res.status(404);
+    throw new Error('No users found matching the search query');
+  }
+});
+
 
 const getMe = asyncHandler(async (req, res)=>{
   res.status(200).json(req.user)
 })
 
 
-
-// Generate Token
 const generateToken = (id)=>{
   return jwt.sign({id} , process.env.JWT_SECRET , {
     expiresIn:'30d'
@@ -109,4 +122,5 @@ module.exports = {
   registerUser,
   loginUser,
   getMe,
+  searchUsers
 }
