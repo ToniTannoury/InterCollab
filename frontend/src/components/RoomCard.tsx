@@ -1,17 +1,21 @@
 import Image from 'next/image'
 import '../stylesheets/room.css'
-function RoomCard() {
+function RoomCard({room}:any) {
+  console.log(room)
+  function capitalizeString(str:string) {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
   return (
-    <div className='containing'>
+    <div _id={room._id} className='containing'>
       <div className='flex flex-col justify-around room-card bg-ICblue'>
         <div className='flex pl-4 justify-between'>
-          <h1 className='text-xl text-slate-50'>What are the stars</h1>
+          <h1 className='text-xl text-slate-50'>{capitalizeString(room.title)}</h1>
           <div className='flex gap-3 mx-3'>
             <span className='p-1 px-2 font-semibold text-slate-50 text-center bg-slate-600 rounded'>
-              Anatomy
+              {capitalizeString(room.category)}
             </span>
             <span className='p-1 px-2 text-center text-white bg-green-900 rounded'>
-              Public
+              {capitalizeString(room.type)}
             </span>
           </div>
         </div>
@@ -21,11 +25,11 @@ function RoomCard() {
             </Image>
             <div>
               <h1 className='text-white'>Presenter :</h1>
-              <h1 className='text-white'>Toni Tannoury</h1>
+              <h1 className='text-white'>{capitalizeString(room.user.name)}</h1>
             </div>
           </div>
-          <div className='mr-3 text-white mt-5'>
-            Participants : 300
+          <div className='mr-3 text-white mt-6'>
+            Max number of Participants : {room.totalParticipants.length}
           </div>
         </div>
         <div>

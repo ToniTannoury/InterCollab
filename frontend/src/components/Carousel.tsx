@@ -11,8 +11,8 @@ import {motion} from 'framer-motion'
 import { useRef , useEffect , useState} from 'react'
 import { useDispatch , useSelector } from 'react-redux'
 import { setSearching } from '@/redux/searchingSlice'
-
-function Carousel({children}:any) {
+import RoomCard from './RoomCard'
+function Carousel({rooms , home}:any) {
   const dispatch = useDispatch();
   const [width, setWidth] = useState<number>(0);
   const { searching } = useSelector((state: any) => state.searching);
@@ -32,26 +32,27 @@ function Carousel({children}:any) {
   const handleMouseLeave = () => {
     setHoveredIndex(null);
   };
-
+  console.log(rooms)
   return (
     <>
       <motion.div ref={carousel} className={`carousel relative -z-3 ${searching && 'app'}`}>
         <motion.div drag={searching ? "undefined" : 'x'} dragConstraints={{ right: 0, left: -width }} whileTap={{ cursor: 'grabbing' }} className='inner-carousel gap-5'>
-          {images.map((image, index) => {
+          {rooms.map((room:any, index:number) => {
             return (
               <motion.div
                 className='item'
                 key={index}
-                onMouseEnter={() => handleMouseEnter(index)}
+                onMouseEnter={() => handleMouseEnter(index)} // Add mouse enter event handler
               >
-                {children}
+                
+                <RoomCard room={room}/>
               </motion.div>
             );
           })}
         </motion.div>
       </motion.div>
       <div className='flex gap-4 justify-center items-center mt-3'>
-        {images.map((_, index) => (
+        {home && rooms.map((_, index) => (
           <div
             key={index}
             className={`h-4 w-4 border-ICblue border-2 rounded-3xl ${hoveredIndex === index ? 'bg-ICblue' : ''}`}

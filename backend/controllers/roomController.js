@@ -96,12 +96,37 @@ const searchRoomsByTitle = asyncHandler(async (req, res) => {
 const searchRoomsByUserName = asyncHandler(async (req, res) => {
   const { userName, page = 1, pageSize = 10 } = req.query;
 
+  try {
+    const users = await User.find({ name: { $regex: userName, $options: 'i' } });
+    
+    const userIds = users.map(user => user._id);
+
+    const options = {
+      page: parseInt(page),
+      limit: parseInt(pageSize),
+      populate: 'user'
+    };
+
+    const rooms = await Room.paginate({ 'user': { $in: userIds } }, options);
+
+    if (rooms.docs.length === 0) {
+      res.status(404).json({ message: 'No rooms found matching the criteria.' });
+    } else {
+      res.status(200).json(rooms);
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+const searchRoomsByType = asyncHandler(async (req, res) => {
+  const { type, page = 1, pageSize = 10 } = req.query;
+
   const query = {};
 
-  if (userName) {
-    const userNameRegex = new RegExp(userName, 'i'); 
+  if (type) {
+    const typeRegex = new RegExp(type, 'i'); 
 
-    query['user.name'] = userNameRegex;
+    query.type = typeRegex;
   }
 
   try {
@@ -123,9 +148,11 @@ const searchRoomsByUserName = asyncHandler(async (req, res) => {
   }
 });
 
+
 module.exports = {
   createRoom,
   searchRoomsByCategory,
   searchRoomsByTitle,
-  searchRoomsByUserName
+  searchRoomsByUserName,
+  searchRoomsByType
 }

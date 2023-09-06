@@ -107,3 +107,8 @@ color:#213555 ;
 .input.text-area{
   min-height:200px;
 }
+
+.room-input{
+  display: flex;
+  width: 100vw;
+}
