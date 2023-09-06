@@ -11,8 +11,8 @@ import {motion} from 'framer-motion'
 import { useRef , useEffect , useState} from 'react'
 import { useDispatch , useSelector } from 'react-redux'
 import { setSearching } from '@/redux/searchingSlice'
-import RoomCard from './RoomCard'
-function Carousel() {
+
+function Carousel({children}:any) {
   const dispatch = useDispatch();
   const [width, setWidth] = useState<number>(0);
   const { searching } = useSelector((state: any) => state.searching);
@@ -42,13 +42,9 @@ function Carousel() {
               <motion.div
                 className='item'
                 key={index}
-                onMouseEnter={() => handleMouseEnter(index)} // Add mouse enter event handler
+                onMouseEnter={() => handleMouseEnter(index)}
               >
-                {/* <img src={image.src} alt="img" /> */}
-                {/* {hoveredIndex === index && (
-                  <div className='circle bg-ICblue'></div>
-                )} */}
-                <RoomCard/>
+                {children}
               </motion.div>
             );
           })}

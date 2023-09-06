@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const randomstring = require('randomstring');
-
+const mongoosePaginate = require('mongoose-paginate')
 const roomSchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -21,13 +21,13 @@ const roomSchema = mongoose.Schema({
     type: Number,
     required: [true, 'Please enter the max number of participants']
   },
-  currentParticipants: [
+  currentParticipants: 
     {
       type: [mongoose.Schema.Types.ObjectId],
       ref: 'User',
       default:[]
-    },
-  ],
+    }
+  ,
   title: {
     type: String,
     required: true
@@ -50,9 +50,18 @@ const roomSchema = mongoose.Schema({
     required: false,
     default: 0
   },
+  isRoomOftheMonth: {
+    type: Boolean,
+    default: false
+  },
+  totalParticipants:{
+      type: [mongoose.Schema.Types.ObjectId],
+      ref: 'User',
+      default:[]
+  }
 },
 {
   timestamps: true
 });
-
+roomSchema.plugin(mongoosePaginate);
 module.exports = mongoose.model("Room", roomSchema);

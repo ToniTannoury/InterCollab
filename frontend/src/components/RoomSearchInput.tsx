@@ -13,36 +13,36 @@ function SearchUserInput() {
   const debouncedSearchTerm = useDebounce(searchTerm, 300);
   const [searchResults, setSearchResults] = useState<any>([]);
 
-  useEffect(() => {
-    if (debouncedSearchTerm) {
-      performSearch(debouncedSearchTerm);
-    }
-  }, [debouncedSearchTerm]);
-  useEffect(()=>{
-    searchTerm !== "" ? dispatch(setSearching(true)) : dispatch(setSearching(false))
-  })
-  const performSearch = async (searchTerm:any) => {
-    try {
-      dispatch(setLoading(true));
-      const response = await fetch(`http://localhost:5000/api/users/searchUsers?query=${searchTerm}`, {
-        method: "GET",
-        headers: {
-          "Authorization": `Bearer ${Cookie.get('token')}`,
-        },
-      });
-      const data = await response.json();
-      setSearchResults(data); 
-    } catch (error:any) {
-      message.error(error.message);
-    } finally {
-      dispatch(setLoading(false));
-    }
-  }
+  // useEffect(() => {
+  //   if (debouncedSearchTerm) {
+  //     performSearch(debouncedSearchTerm);
+  //   }
+  // }, [debouncedSearchTerm]);
+  // useEffect(()=>{
+  //   searchTerm !== "" ? dispatch(setSearching(true)) : dispatch(setSearching(false))
+  // })
+  // const performSearch = async (searchTerm:any) => {
+  //   try {
+  //     dispatch(setLoading(true));
+  //     const response = await fetch(`http://localhost:5000/api/users/searchUsers?query=${searchTerm}`, {
+  //       method: "GET",
+  //       headers: {
+  //         "Authorization": `Bearer ${Cookie.get('token')}`,
+  //       },
+  //     });
+  //     const data = await response.json();
+  //     setSearchResults(data); 
+  //   } catch (error:any) {
+  //     message.error(error.message);
+  //   } finally {
+  //     dispatch(setLoading(false));
+  //   }
+  // }
 
   return (
     <div>
       <div className='flex flex-col'>
-        <label className=' text-ICblue ' htmlFor="">Look for other creators</label>
+        <label className=' text-gray-600 ' htmlFor="">Look for Rooms of that suits your mood</label>
         <input
           type="text"
           className='input user-search'
