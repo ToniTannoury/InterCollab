@@ -11,7 +11,7 @@ import {motion} from 'framer-motion'
 import { useRef , useEffect , useState} from 'react'
 import { useDispatch , useSelector } from 'react-redux'
 import { setSearching } from '@/redux/searchingSlice'
-
+import RoomCard from './RoomCard'
 function Carousel() {
   const dispatch = useDispatch();
   const [width, setWidth] = useState<number>(0);
@@ -36,7 +36,7 @@ function Carousel() {
   return (
     <>
       <motion.div ref={carousel} className={`carousel relative -z-3 ${searching && 'app'}`}>
-        <motion.div drag={searching ? "undefined" : 'x'} dragConstraints={{ right: 0, left: -width }} whileTap={{ cursor: 'grabbing' }} className='inner-carousel'>
+        <motion.div drag={searching ? "undefined" : 'x'} dragConstraints={{ right: 0, left: -width }} whileTap={{ cursor: 'grabbing' }} className='inner-carousel gap-5'>
           {images.map((image, index) => {
             return (
               <motion.div
@@ -44,11 +44,11 @@ function Carousel() {
                 key={index}
                 onMouseEnter={() => handleMouseEnter(index)} // Add mouse enter event handler
               >
-                <img src={image.src} alt="img" />
-                {/* Render a blue circle when hovered */}
-                {hoveredIndex === index && (
+                {/* <img src={image.src} alt="img" /> */}
+                {/* {hoveredIndex === index && (
                   <div className='circle bg-ICblue'></div>
-                )}
+                )} */}
+                <RoomCard/>
               </motion.div>
             );
           })}

@@ -175,6 +175,64 @@ const generateToken = (id)=>{
   } )
 }
 
+// Define a route for updating user information
+
+
+// Controller function to update user information
+const updateUser = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+  const updateFields = req.body;
+
+  // Retrieve the user document from the database
+  const user = await User.findById(userId);
+
+  if (!user) {
+    res.status(404).json({ message: 'User not found' });
+    return;
+  }
+
+  // Update the user document with the fields provided in the request body
+  for (const field in updateFields) {
+    if (updateFields.hasOwnProperty(field)) {
+      user[field] = updateFields[field];
+    }
+  }
+
+  try {
+    // Save the updated user document to the database
+    await user.save();
+    res.status(200).json({ message: 'User information updated successfully', data: user });
+  } catch (error) {
+    res.status(500).json({ message: 'Error updating user information', error: error.message });
+  }
+});
+
+const changeProfilePicture = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+  const profilePicture = req.files[0];
+  // Check if the user exists
+  const user = await User.findById(userId);
+  console.log(user)
+  if (!user) {
+    res.status(404).json({ message: 'User not found' });
+    return;
+  }
+  
+  console.log(req.files)
+  console.log( profilePicture)
+  // Update the user's profile picture
+  user.profile_picture = profilePicture.originalname; // Assuming the file field is named 'filename'
+  console.log(user)
+  try {
+    // Save the updated user document with the new profile picture
+    await user.save();
+    res.status(200).json({ message: 'Profile picture updated successfully', data: user });
+  } catch (error) {
+    res.status(500).json({ message: 'Error updating profile picture', error: error.message });
+  }
+});
+
+
 
 
 module.exports = {
@@ -183,5 +241,7 @@ module.exports = {
   getMe,
   searchUsers,
   followUser,
-  unfollowUser
+  unfollowUser,
+  updateUser,
+  changeProfilePicture
 }

@@ -1,11 +1,11 @@
 .item{
-  height: 9rem;
+  height: 9.6rem;
   min-width:29.5rem;
   padding-right: 20px;
 }
 
 .item img{
-  width: 110%;
+  width: 80%;
   height: 100%;
   border-radius: 2rem;
   pointer-events: none;

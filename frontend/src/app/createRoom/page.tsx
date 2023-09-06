@@ -72,10 +72,10 @@ function CreateRoom() {
       
     </>
         <div className='flex justify-end my-3'>
-          <Button onClick={()=>router.push('/')} className='mr-3' type="default" >
+          <Button onClick={()=>router.push('/')} className='mr-3 h-12 font-semibold' type="default" >
             Cancel
           </Button>
-          <Button className='bg-ICblue' type="primary" htmlType='submit'>
+          <Button className='bg-ICblue h-12 font-semibold' type="primary" htmlType='submit'>
           Create Room
           </Button>
         </div>

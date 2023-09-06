@@ -28,7 +28,7 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
     },
     {
       name:'Interactive Rooms',
-      path:'/applications',
+      path:'/rooms',
       icon:"ri-file-list-2-line"
     },
     {
