@@ -44,11 +44,12 @@ function RoomInfo() {
   }
   return (
     roomData && <div>
+      <h1 className="text-2xl -mt-1 mb-3">{roomData.title}</h1>
       <Row gutter={[16,16]}>
         <Col span={12} className="flex flex-col gap-2">
           <div className="flex justify-between">
             <span>
-              Company
+              Creator's name
             </span>
             <span>
               {roomData.user.name}
@@ -56,58 +57,61 @@ function RoomInfo() {
           </div>
           <div className="flex justify-between">
             <span>
-              Location
+            Creator's rating
+            </span>
+            <span>
+              {roomData.user.rating}
+            </span>
+          </div>
+          <div className="flex justify-between">
+            <span>
+            Creator's email
+            </span>
+            <span>
+              {roomData.user.email}
+            </span>
+          </div>
+          <div className="flex justify-between">
+            <span>
+            Room Category
+            </span>
+            <span>
+              {roomData.category}
+            </span>
+          </div>
+          <div className="flex justify-between">
+            <span>
+            Max number of participants
+            </span>
+            <span>
+              {roomData.maxNumberOfParticipants}
+            </span>
+          </div>
+          <div className="flex justify-between">
+            <span>
+              Room Type
             </span>
             <span>
               {roomData.type}
             </span>
           </div>
-          <div className="flex justify-between">
-            <span>
-              Salary
-            </span>
-            <span>
-              {/* {roomData.salaryFromRange} - {roomData.salaryToRange} USD */}11
-            </span>
-          </div>
-          <div className="flex justify-between">
-            <span>
-              {/* Wok Mode */}11
-            </span>
-            <span>
-              {roomData.workMode}
-            </span>
-          </div>
-          <div className="flex justify-between">
-            <span>
-              Job Type
-            </span>
-            <span>
-              {/* {roomData.jobType} */}22
-            </span>
-          </div>
-          <div className="flex justify-between">
-            <span>
-              Experience Required
-            </span>
-            <span>
-              {/* {roomData.experience} Years */}uuu
-            </span>
-          </div>
         </Col>
         <Col span={24} className="flex flex-col gap-2">
-          <h1 className="text-md">
-            Job Description
+          <h1 className="text-xl">
+            About the creator
           </h1>
-          <Divider/>
+          <Divider className="p-0 h-0 m-0"/>
+          <span>{roomData.user.about}</span>
+          <h1 className="text-xl">
+            Room Description
+          </h1>
+          <Divider className="p-0 h-0 m-0"/>
           <span>{roomData.description}</span>
          
           <div className="flex justify-end gap-3">
           
           <Button type="default" onClick={()=>router.back()}>Cancel</Button>
-        
-        
-          <Button type="primary"   onClick={onJoin}>Join</Button>
+          <Button type="primary" className="bg-ICblue"  onClick={onJoin}>Join Now</Button>
         </div>
         </Col>
         
