@@ -1,7 +1,9 @@
 import Image from 'next/image'
 import '../stylesheets/room.css'
+import { useRouter } from 'next/navigation';
 function RoomCard({room}:any) {
   console.log(room)
+  const router = useRouter()
   function capitalizeString(str:string) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   }
@@ -33,7 +35,7 @@ function RoomCard({room}:any) {
           </div>
         </div>
         <div>
-          <button className='bg-slate-50 h-7 w-20 ml-4 font-semibold text-ICblue'>
+          <button  onClick={()=>router.push(`/roomInfo/${room._id}`)} className='bg-slate-50 h-7 w-20 ml-4 font-semibold text-ICblue'>
             Room Info
           </button>
           </div>
