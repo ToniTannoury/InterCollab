@@ -11,24 +11,51 @@ const UserInfoBar = ({ user, search }: any) => {
   const [isFollowing, setIsFollowing] = useState(false);
   const [followerCount, setFollowerCount] = useState(user?.followers?.length || 0);
   const [isEditingProfilePicture, setIsEditingProfilePicture] = useState(false);
-  const [picture  ,setPicture] = useState<File>()
-  const fileInputRef = useRef(null);
-  const buttonRef = useRef(null);
+  const [picture  ,setPicture] = useState<File|string>('')
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     setIsFollowing(currentUser?.followings?.some((followingUser: any) => followingUser === user?._id));
   }, [user?.followings, currentUser?.followings, user?._id]);
 
   const handleFollowClick = async () => {
-    // ... (same as your existing code)
-  };
+    try {
+      const url = isFollowing
+        ? `http://localhost:5000/api/users/unfollow/${user._id}`
+        : `http://localhost:5000/api/users/follow/${user._id}`;
 
+      const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          "Authorization": `Bearer ${Cookies.get('token')}`
+        }
+      });
+
+      if (response.ok) {
+        setIsFollowing(!isFollowing);
+
+        setFollowerCount((prevCount:number )=> isFollowing ? prevCount - 1 : prevCount + 1);
+
+        if (isFollowing) {
+          dispatch(removeFollowing(user._id));
+        } else {
+          dispatch(addFollowing(user._id));
+        }
+      } else {
+        console.error('Error:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
   const userId = user?._id;
 
   const handleProfilePictureClick = () => {
     if (!isEditingProfilePicture) {
       console.log(11)
-      fileInputRef.current.click();
+      fileInputRef.current?.click();
     }
   };
   const handleProfilePictureChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -72,7 +99,7 @@ const UserInfoBar = ({ user, search }: any) => {
   };
   useEffect(() => {
     if (picture) {
-      buttonRef.current.click(); 
+      buttonRef.current?.click(); 
     }
   }, [picture]);
   useEffect(() => {
@@ -94,7 +121,7 @@ const UserInfoBar = ({ user, search }: any) => {
           />
        
             <div>
-              <form onSubmit={handleProfilePictureChange} encType="multipart/form-data">
+              <form onSubmit={()=>{handleProfilePictureChange}} encType="multipart/form-data">
                 <input
                 type="file"
                 ref={fileInputRef}
@@ -104,7 +131,7 @@ const UserInfoBar = ({ user, search }: any) => {
               <button ref={buttonRef} type='submit' style={{ display: 'none' }}  ></button>
               </form>
                 
-            <div className='username' onClick={handleProfilePictureClick}>Edit</div>
+            {search ? <div className='username'>{user.name}</div> :<div className='username' onClick={handleProfilePictureClick}>Edit</div>}
             </div>
           
         </div>

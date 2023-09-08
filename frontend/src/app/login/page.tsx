@@ -53,7 +53,7 @@ function Login() {
           <Button className='bg-ICblue mt-1' type='primary' htmlType='submit'>
             Login
           </Button>
-          <Link className='ml-1 text-ICblue font-semibold hover:text-ICblue w-1/2' href="/register">
+          <Link className='ml-1 text-ICblue font-semibold hover:text-ICblue ' href="/register">
             Dont have an account ? Register
           </Link>
         </Form>

@@ -12,6 +12,7 @@ function RoomInfo() {
   const {roomId} = useParams()
   const dispatch = useDispatch()
   const [roomData , setRoomData] = useState<any>(null)
+  const [joined , setJoined] = useState<any>(false)
   const {currentUser} = useSelector((state:any)=>state.users)
 
   const fetchJob = async()=>{
@@ -39,9 +40,7 @@ function RoomInfo() {
     fetchJob()
   },[])
 
-  const onJoin = async ()=>{
-   
-  }
+  
   return (
     roomData && <div>
       <h1 className="text-2xl -mt-1 mb-3">{roomData.title}</h1>
@@ -111,7 +110,7 @@ function RoomInfo() {
           <div className="flex justify-end gap-3">
           
           <Button type="default" onClick={()=>router.back()}>Cancel</Button>
-          <Button type="primary" className="bg-ICblue"  onClick={onJoin}>Join Now</Button>
+          <Button type="primary" className="bg-ICblue"  onClick={()=>router.push(`/test/${roomData._id}`)}>Join Now</Button>
         </div>
         </Col>
         

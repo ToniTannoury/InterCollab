@@ -23,7 +23,7 @@ function SearchUserInput() {
   })
   const performSearch = async (searchTerm:any) => {
     try {
-      dispatch(setLoading(true));
+    
       const response = await fetch(`http://localhost:5000/api/users/searchUsers?query=${searchTerm}`, {
         method: "GET",
         headers: {
@@ -34,9 +34,7 @@ function SearchUserInput() {
       setSearchResults(data); 
     } catch (error:any) {
       message.error(error.message);
-    } finally {
-      dispatch(setLoading(false));
-    }
+    } 
   }
 
   return (
