@@ -59,7 +59,7 @@ const roomHandler = (socket) => {
       socket.to(roomId).emit("user-joined", {
         peerId,
       });
-    }, 1000);
+    }, 2000);
 
     
     socket.emit("get-users", {

@@ -17,14 +17,14 @@ function CreateRoom() {
   // },[])
   const {ws}  =useContext(RoomContext)
   const createRoom = (roomId:string)=>{
-    console.log(1)
+
     ws.emit('create-room' , {roomId})
     router.push(`/test/${roomId}`)
   }
   const onFinish = async (values:any)=>{
     try {
       dispatch(setLoading(true))
-      console.log(values)
+
       const response = await fetch("http://localhost:5000/api/rooms" , {
         method:"POST",
         headers:{
@@ -34,7 +34,7 @@ function CreateRoom() {
         body:JSON.stringify(values)
       }) 
       const data= await response.json()
-      console.log(data)
+
       message.success("Room Created")
       createRoom(data._id)
       
@@ -43,7 +43,7 @@ function CreateRoom() {
     }finally{
       dispatch(setLoading(false))
     }
-    console.log(values)
+
   }
 
   return (

@@ -9,13 +9,13 @@ const usersSlice = createSlice({
   },
   reducers:{
     setCurrentUser:(state , action)=>{
+      console.log(action.payload)
       state.currentUser = action.payload
     },
     addFollowing: (state, action) => {
       state.followings.push(action.payload);
     },
     removeFollowing: (state, action) => {
-      // Remove a user from the followings array
       state.followings = state.followings.filter(
         (user) => user !== action.payload
       );

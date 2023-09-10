@@ -53,10 +53,8 @@ function RoomSearchInput() {
         },
       });
       const data = await response.json()
-      console.log(data)
       if(data.message==='No rooms found matching the criteria.') setSearchResults([])
       setSearchResults(groupRoomsByCategory(data.docs))
-      console.log(groupRoomsByCategory(data.docs))
       if (response.ok) {
         const data = await response.json();
         setSearchResults(data.docs);

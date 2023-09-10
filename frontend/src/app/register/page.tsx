@@ -17,7 +17,6 @@ function Register() {
     if(response.status !== 201){
       message.error(data.message)
     }else{
-      console.log(data)
       message.success(data.message)
     }
     } catch (error) {

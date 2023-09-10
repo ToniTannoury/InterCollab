@@ -54,13 +54,11 @@ const UserInfoBar = ({ user, search }: any) => {
 
   const handleProfilePictureClick = () => {
     if (!isEditingProfilePicture) {
-      console.log(11)
       fileInputRef.current?.click();
     }
   };
   const handleProfilePictureChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
-    console.log(picture);
     const body = new FormData();
     body.append("filename", picture);
   
@@ -75,7 +73,6 @@ const UserInfoBar = ({ user, search }: any) => {
   
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
         dispatch(setCurrentUser(data.data))
         // Update the image source with the new profile picture URL
         const updatedImageUrl = `http://localhost:5000/images/${data.data.profile_picture}`;
@@ -102,11 +99,7 @@ const UserInfoBar = ({ user, search }: any) => {
       buttonRef.current?.click(); 
     }
   }, [picture]);
-  useEffect(() => {
-    if (picture) {
-      console.log(currentUser); 
-    }
-  }, [currentUser]);
+
 
   return (
     currentUser && user && (

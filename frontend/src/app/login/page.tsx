@@ -22,7 +22,7 @@ function Login() {
       body:JSON.stringify(values),
     })
     const data = await response.json()
-    console.log(response)
+
     if(response.status!==200){
       message.error(data.message)
     }else{

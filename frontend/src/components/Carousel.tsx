@@ -32,7 +32,6 @@ function Carousel({rooms , home}:any) {
   const handleMouseLeave = () => {
     setHoveredIndex(null);
   };
-  console.log(rooms)
   return (
     <>
       <motion.div ref={carousel} className={`carousel relative -z-3 ${searching && 'app'}`}>

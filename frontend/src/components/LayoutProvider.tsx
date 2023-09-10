@@ -52,8 +52,7 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
           "Authorization" : `Bearer ${Cookie.get('token')}`
         }
       })
-      const data = await res.json()
-      console.log(data)    
+      const data = await res.json()   
       dispatch(setCurrentUser(data))
     } catch (error:any) {
       message.error(error.message.data?.message || "Something went left")

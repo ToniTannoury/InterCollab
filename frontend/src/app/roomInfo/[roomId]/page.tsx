@@ -20,14 +20,12 @@ function RoomInfo() {
   const fetchJob = async()=>{
     try {
       dispatch(setLoading(true))
-      console.log(roomId)
       const response = await fetch(`http://localhost:5000/api/rooms/searchRoomById?roomId=${roomId}`,{
         headers:{
           "Authorization":`Bearer ${Cookies.get('token')}`
         }
       })
       const data = await response.json()
-      console.log(data)
       setRoomData(data)
     } catch (error:any) {
       message.error(error.message)

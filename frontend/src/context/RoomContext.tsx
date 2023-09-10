@@ -29,63 +29,57 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
   const path = usePathname()
   const {currentUser} = useSelector((state:any)=>state.users)
   const [me , setMe] = useState<Peer>()
-  const [stream , setStream] = useState<MediaStream>()
+  const [stream , setStream] = useState<MediaStream[]>()
   const [peers , dispatch] = useReducer(peersReducer , {})
   const [connectionArray, setConnectionArray] = useState<any>([]);
   const [roomId , setRoomId] = useState<string>("")
-  console.log(peers)
   const dispatching =  useDispatch()
   const switchStream = (stream: MediaStream)=>{
-    setStream(stream)
+    setStream([stream ])
     setScreenSharringId(!screenSharringId)
-    console.log(connectionArray)
+
     connectionArray?.map((conn:any)=>{
-      console.log(conn.connection)
       const videoTrack = stream?.getTracks().find(track=>track.kind === 'video')
+      const videoTracks = stream?.getTracks().find(track=>track.kind === 'video')
+      console.log(videoTracks)
         conn.peerConnection?.getSenders()[1].replaceTrack(videoTrack).catch(
           (err:any)=>console.log(err))
     })
   }
   const removePeer = (peerId:string , stream: MediaStream)=>{
     dispatch(removePeerAction(peerId , stream))
-
-    console.log(me?.id , peerId)
-
   }
   const getUsers = (participants:{participants:string[]})=>{
-    console.log(participants)
+    // console.log(participants)
   }
   const enterRoom = ({roomId}:{roomId:string})=>{
-    console.log(roomId)
+    // console.log(roomId)
     // navigate(`/room/${roomId}`)
   }
+
   const shareScreen = ()=>{
-    if(screenSharringId){
+    if(screenSharringId ){
       navigator.mediaDevices.getUserMedia({video:true , audio:true}).then(switchStream)
 
     }else{
-      navigator.mediaDevices.getDisplayMedia({}).then(switchStream)
+      navigator.mediaDevices.getDisplayMedia({ video: true, audio: true }).then(switchStream)
 
     }
 
   }
   useEffect(()=>{
-    console.log(path)
     const getCurrentUser = async()=>{
       try {
         dispatching(setLoading(true))
-        console.log(2)
+
         const res = await fetch("http://localhost:5000/api/users/me" , {
           headers:{
             "Authorization" : `Bearer ${Cookies.get('token')}`
           }
         })
-        console.log(1)
         const data = await res.json()
-        console.log(data)    
+        console.log(data)
         const peer = new Peer(data?._id)
-        console.log(peer)
-        console.log(22)
         setMe(peer)
       } catch (error:any) {
         message.error(error.message.data?.message || "Something went left")
@@ -95,8 +89,12 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     } 
     getCurrentUser().then(res=>{
       try {
-        navigator.mediaDevices.getUserMedia({video:true , audio:true}).then((stream)=>{
-          setStream(stream)
+        Promise.all([
+          navigator.mediaDevices.getUserMedia({ video: true, audio: true }),
+          // navigator.mediaDevices.getDisplayMedia({ video: true, audio: true })
+        ])
+        .then(([userMediaStream]) => {
+          setStream([userMediaStream])
         })
       } catch (error) {
         console.log(error)
@@ -113,14 +111,16 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     })
   },[])
   useEffect(()=>{
+    console.log(me)
+    console.log(stream)
     if(!me) return
     if(!stream) return
     me.on("call" , (call)=>{
-      console.log(call)
-      call.answer(stream)
+      console.log('will answer')
+      call.answer(stream[0])
+   
       call.on("stream" , (peerStream)=>{
-             const peerId = call.peer;
-             console.log(12)
+         const peerId = call.peer;
       dispatch(addPeerAction(peerId, peerStream));
       
       setConnectionArray((prevConnections:any) => ([
@@ -130,13 +130,20 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     });
   });
     ws.on("user-joined",({peerId})=>{
-      console.log(me , peerId)
-      const call = me.call(peerId , stream)
+        console.log("bitch joined")
+      const call = me.call(peerId , stream[0])
+      const call1 = me.call(peerId , stream[0])
       console.log(call)
+      console.log(me)
+      console.log(peerId)
       call.on("stream" , (peerStream)=>{
-        console.log(12)
+        console.log(peerStream)
         dispatch(addPeerAction(peerId , peerStream))
       })
+      // call1.on("stream" , (peerStream)=>{
+      //   console.log(peerStream)
+      //   dispatch(addPeerAction(peerId , peerStream))
+      // })
       setConnectionArray((prevConnections:any) => ([
         ...prevConnections,
         call,
@@ -147,13 +154,14 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     });
     })
 
+
   },[me , stream])
-  console.log(peers)
-  console.log(path)
+
   if(!path.startsWith("/test")){
     // ws.disconnect()
     const s = new MediaStream;
    
   }
+  console.log(peers)
   return <RoomContext.Provider value={{ ws , me, stream , peers , shareScreen , setRoomId}}>{children}</RoomContext.Provider>;
 };

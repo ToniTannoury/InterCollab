@@ -34,7 +34,7 @@ function Pofile() {
   // useEffect(()=>{
   //   getUser()
   // },[])
-  console.log(currentUser)
+
   const onFinish = async (values:any)=>{
     try {
       values._id = currentUser._id
@@ -50,7 +50,7 @@ function Pofile() {
       });
       message.success("Profile updated successfully")
       const data = await response.json()
-      console.log(data)
+
       dispatch(setCurrentUser(data.data))
     } catch (error:any) {
       message.error(error.message.data.message || "Something went wrong")

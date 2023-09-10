@@ -6,14 +6,14 @@ import RoomCard from "@/components/RoomCard";
 export async function getUser(){
   try {
     const token = cookies().get('token')
-    console.log(token)
+
     const res = await fetch("http://localhost:5000/api/users/me" , {
         headers:{
           "Authorization" : `Bearer ${token!.value}`
         }
       })
       const data = await res.json()
-      console.log(data)
+
 
       return data
   } catch (error:any) {
