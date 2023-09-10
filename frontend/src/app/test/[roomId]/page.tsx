@@ -15,8 +15,6 @@ function Room() {
   const [room, setRoom] = useState<any>({});
   const {currentUser} = useSelector((state:any)=>state.users)
 
-  const [state , dispatching ] = useReducer(peersReducer , {})
-  const s = new MediaStream
  
   const {ws , me , stream ,peers,shareScreen , setRoomId , screenStream} = useContext(RoomContext)
   const dispatch = useDispatch()
@@ -30,7 +28,6 @@ function Room() {
           }
         })
         const data = await res.json()
-        console.log(data)    
         dispatch(setCurrentUser(data))
       } catch (error:any) {
         message.error(error.message.data?.message || "Something went left")
@@ -46,8 +43,6 @@ function Room() {
           }
         })
         const data = await res.json()
-        console.log(currentUser)
-        console.log(data)
         
         setRoom(data)
       }
@@ -55,26 +50,22 @@ function Room() {
       
     } , [me])
     useEffect(()=>{
-      console.log(me)
-      console.log(roomId)
-      console.log(22222222)
-
       if(me) ws.emit("join-room" , {roomId:roomId , peerId:me._id })
      },[ws , me , roomId ])
     useEffect(()=>{
-      console.log(room)
+      // console.log(room)
      },[room])
   return (
     me !== null && peers.length !== 0 &&  room.user && stream &&
     
     <div>
-  {me?._id === room.user._id && <>{console.log(stream)}<VideoPlayer stream={stream[0]} />{console.log(screenStream)}<VideoPlayer stream={stream[1]} /></>}
+  {me?._id === room.user._id && <>{console.log(stream)}<VideoPlayer stream={stream} /><VideoPlayer stream={stream[1]} /></>}
   {Object.values(peers as PeerState).map((peer, index) =>{ 
     {console.log(Object.keys(peers as PeerState)[index])}
     {console.log(peer)}
     return <div key={index}>
       
-    {Object.keys(peers as PeerState)[index] === room.user._id && <VideoPlayer stream={peer.stream[0]} />}
+    {Object.keys(peers as PeerState)[index] === room.user._id && <VideoPlayer stream={peer.stream} />}
     </div>
   })}
   <div className="fixed bottom-0 p-6 w-full flex justify-center border-t-2">

@@ -8,7 +8,6 @@ import { removeOtherPeersAction } from '@/context/peerActions';
 function RoomCard({room}:any) {
   const [state , dispatching ] = useReducer(peersReducer , {})
   const s = new MediaStream
-  console.log(room)
   const router = useRouter()
   function capitalizeString(str:string) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
