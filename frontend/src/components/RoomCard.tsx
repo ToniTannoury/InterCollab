@@ -1,7 +1,13 @@
 import Image from 'next/image'
 import '../stylesheets/room.css'
 import { useRouter } from 'next/navigation';
+import { useReducer } from 'react';
+import { peersReducer } from '@/context/peerReducer';
+import { removeOtherPeersAction } from '@/context/peerActions';
+
 function RoomCard({room}:any) {
+  const [state , dispatching ] = useReducer(peersReducer , {})
+  const s = new MediaStream
   console.log(room)
   const router = useRouter()
   function capitalizeString(str:string) {
@@ -35,7 +41,13 @@ function RoomCard({room}:any) {
           </div>
         </div>
         <div>
-          <button  onClick={()=>router.push(`/roomInfo/${room._id}`)} className='bg-slate-50 h-7 w-20 ml-4 font-semibold text-ICblue'>
+          <button  onClick={()=>{
+             
+            router.push(`/roomInfo/${room._id}`)
+            setTimeout(()=>{
+              location.reload()
+            },1000)
+            }} className='bg-slate-50 h-7 w-20 ml-4 font-semibold text-ICblue'>
             Room Info
           </button>
           </div>

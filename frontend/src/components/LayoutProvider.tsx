@@ -1,7 +1,7 @@
 'use client'
 import {ConfigProvider, message} from 'antd'
 import { usePathname } from 'next/navigation'
-import {useState , useEffect} from 'react'
+import {useState , useEffect, useReducer} from 'react'
 import {useRouter} from 'next/navigation'
 import "../stylesheets/layout.css"
 import Image from 'next/image'
@@ -10,11 +10,15 @@ import { setCurrentUser } from '@/redux/usersSlice'
 import Loader from './Loader'
 import { setLoading } from '@/redux/loadersSlice'
 import Cookie from 'js-cookie'
+import { removeOtherPeersAction } from '@/context/peerActions'
+import { peersReducer } from '@/context/peerReducer'
 function LayoutProvider({children}:{children:React.ReactNode}) {
   const router = useRouter()
   const {currentUser} = useSelector((state:any)=>state.users)
   const [isSidebarExpanded , setIsSidebarExpanded] = useState(true)
   const {loading} = useSelector((state:any)=>state.loaders)
+  const [peers , dispatching] = useReducer(peersReducer , {})
+
   const [menuItems , setMenuItems] = useState([
     {
       name:'Home',
@@ -105,7 +109,10 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
                 {menuItems.map((item , index)=>{
                   const isActive = pathname === item.path
                   return(
-                  <div style={{justifyContent:isSidebarExpanded?'start':"center"}} className={`menu-item ${isActive ? "active-menu-item" : ""}`} key={index} onClick={()=>router.push(item.path)}>
+                  <div style={{justifyContent:isSidebarExpanded?'start':"center"}} className={`menu-item ${isActive ? "active-menu-item" : ""}`} key={index} onClick={()=>{
+                    const s = new MediaStream
+                    dispatching(removeOtherPeersAction("asss" , s))
+                    router.push(item.path)}}>
                     <i className={item.icon}></i>
                     <span>
                       {isSidebarExpanded && item.name}

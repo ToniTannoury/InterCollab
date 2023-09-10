@@ -1,14 +1,26 @@
 "use client"
 import { Button, Form , Col ,Row ,   message } from 'antd'
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLoading } from '@/redux/loadersSlice'
 import Cookies from 'js-cookie'
+import socketIO from 'socket.io-client'
 import { useRouter } from 'next/navigation'
+import { RoomContext } from '@/context/RoomContext'
 function CreateRoom() {
+  // const WS = "http://localhost:5000"
   const {currentUser} = useSelector((state:any)=>state.users) 
   const dispatch = useDispatch()
   const router = useRouter()
+  // useEffect(()=>{
+  //   socketIO(WS)
+  // },[])
+  const {ws}  =useContext(RoomContext)
+  const createRoom = (roomId:string)=>{
+    console.log(1)
+    ws.emit('create-room' , {roomId})
+    router.push(`/test/${roomId}`)
+  }
   const onFinish = async (values:any)=>{
     try {
       dispatch(setLoading(true))
@@ -24,6 +36,8 @@ function CreateRoom() {
       const data= await response.json()
       console.log(data)
       message.success("Room Created")
+      createRoom(data._id)
+      
     } catch (error:any) {
       message.error(error.message.data.message || "Something went wrong")
     }finally{
@@ -31,6 +45,7 @@ function CreateRoom() {
     }
     console.log(values)
   }
+
   return (
     <div>
       <h1 className='text-3xl mb-3'>Open New Room</h1>

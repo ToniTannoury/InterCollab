@@ -13,7 +13,11 @@ const session = require('express-session')
 const bodyParser= require("body-parser")
 const multer = require('multer')
 const path = require('path');
-const {RtcTokenBuilder, RtcRole} = require('agora-access-token');
+const { Server } = require("socket.io")
+const http = require("http")
+const { createRoom } = require('./controllers/InteractiveRoomController');
+const roomHandler = require('./controllers/InteractiveRoomController');
+// const {RtcTokenBuilder, RtcRole} = require('agora-access-token');
 connectDB();
 app.use(cookieParser())
 app.use(cors());
@@ -42,12 +46,12 @@ app.get('/' , (req ,res)=>{
   })
 })
 
-const nocache = (_, resp, next) => {
-  resp.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-  resp.header('Expires', '-1');
-  resp.header('Pragma', 'no-cache');
-  next();
-}
+// const nocache = (_, resp, next) => {
+//   resp.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+//   resp.header('Expires', '-1');
+//   resp.header('Pragma', 'no-cache');
+//   next();
+// }
 app.get('/', (req, res) => {
   res.status(200).json({ message: "Hello" });
 });
@@ -56,39 +60,53 @@ app.use('/api/users', upload.any(),userRoutes);
 app.use('/api/rooms', roomRoutes);
 app.use(errorHandler);
 
-app.get('/generateAgoraToken',nocache, (req, res) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  const appId = '89da9174634f426da89fe958eb596946';
-  const appCertificate = '4a9f5022f58f4500ac103809b85bf90c';
-  const channelName = req.query.channelName;
-  console.log(channelName)
-  const uid = req.query.uid;
-  if(!uid || uid === '') {
-    return res.status(500).json({ 'error': 'uid is required' });
-  }
+// app.get('/generateAgoraToken',nocache, (req, res) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   const appId = '89da9174634f426da89fe958eb596946';
+//   const appCertificate = '4a9f5022f58f4500ac103809b85bf90c';
+//   const channelName = req.query.channelName;
+//   const uid = req.query.uid;
+//   console.log(uid)
+//   if(!uid || uid === '') {
+//     return res.status(500).json({ 'error': 'uid is required' });
+//   }
 
-  let expireTime = req.query.expiry;
-  if (!expireTime || expireTime === '') {
-    expireTime = 3600;
-  } else {
-    expireTime = parseInt(expireTime, 10);
-  }
-  const currentTime = Math.floor(Date.now() / 1000);
-  const privilegeExpireTime = currentTime + expireTime;
-  let role;
-  if (req.query.role === 'publisher') {
-    role = RtcRole.PUBLISHER;
-  } else if (req.query.role === 'audience') {
-    role = RtcRole.SUBSCRIBER
-  } else {
-    return res.status(500).json({ 'error': 'role is incorrect' });
-  }
-  token = RtcTokenBuilder.buildTokenWithUid(appId, appCertificate, channelName, uid, role, privilegeExpireTime);
-    console.log(token)
-  res.json({ token, channelName });
-});
+//   let expireTime = req.query.expiry;
+//   if (!expireTime || expireTime === '') {
+//     expireTime = 3600;
+//   } else {
+//     expireTime = parseInt(expireTime, 10);
+//   }
+//   const currentTime = Math.floor(Date.now() / 1000);
+//   const privilegeExpireTime = currentTime + expireTime;
+//   let role;
+//   if (req.query.role === 'publisher') {
+//     role = RtcRole.PUBLISHER;
+//   } else if (req.query.role === 'audience') {
+//     role = RtcRole.SUBSCRIBER
+//   } else {
+//     return res.status(500).json({ 'error': 'role is incorrect' });
+//   }
+//   token = RtcTokenBuilder.buildTokenWithUid(appId, appCertificate, channelName, uid, role, privilegeExpireTime);
+//     console.log(token)
+//   res.json({ token, channelName });
+// });
+const server = http.createServer(app)
 
-const server = app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+const io = new Server(server,{
+  cors:{
+    origin:"*",
+    methods:["GET" ,"POST"]
+  }
+})
+io.on("connection" , (socket)=>{
+  // console.log('user is connected')
+  roomHandler(socket)
+ 
+})
+
+
+server.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 
 
 

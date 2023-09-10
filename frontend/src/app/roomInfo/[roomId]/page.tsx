@@ -7,6 +7,8 @@ import { useParams, useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import Cookies from "js-cookie"
+// import socketIO from 'socket.io-client'
+// const WS = 'http://localhost:5000'
 function RoomInfo() {
   const router = useRouter()
   const {roomId} = useParams()

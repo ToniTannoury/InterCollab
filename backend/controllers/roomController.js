@@ -5,7 +5,7 @@ const Room = require('../models/roomModel')
 
 
 const createRoom = asyncHandler(async (req, res)=>{
-  console.log(req.body)
+  
   const {  description , title  ,type , category , maxNumberOfParticipants} = req.body
   
   if(!description){
@@ -28,8 +28,6 @@ const createRoom = asyncHandler(async (req, res)=>{
       title,
       type
   })
-
-  console.log(room)
 
   res.status(200).json(room)
 })
@@ -151,7 +149,6 @@ const searchRoomById = asyncHandler(async (req, res) => {
   const { roomId } = req.query;
 
   try {
-    console.log(roomId)
     const room = await Room.findById(roomId).populate('user');
 
     if (!room) {

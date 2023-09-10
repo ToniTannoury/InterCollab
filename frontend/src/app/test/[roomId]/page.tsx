@@ -1,102 +1,49 @@
 'use client'
-import React, { useEffect, useState } from 'react';
-import AgoraRTC from 'agora-rtc-sdk-ng';
+import React, { useContext, useEffect, useReducer, useState } from 'react'
 import { useParams } from 'next/navigation';
-import Cookies from 'js-cookie';
-const APP_ID = "89da9174634f426da89fe958eb596946";
-const TOKEN = '007eJxTYJjkwpqhwpBZWL7mjxW78izRpxcnSPxkO9yyn8n6n2Z3ZYsCg4VlSqKlobmJmbFJmomRWUqihWVaqqWpRWqSqaWZpYmZjOmvlIZARoZ2tV0sjAwQCOJzMpSkFpfoFuXn5zIwAAAeAR7X';
-const CHANNEL = 'test-room';
+import { RoomContext } from '@/context/RoomContext';
+import { VideoPlayer } from '@/components/VideoPlayer';
+import { PeerState, peersReducer } from '../../../context/peerReducer'
+import { useDispatch } from 'react-redux';
 
-const client = AgoraRTC.createClient({
-  mode: 'rtc',
-  codec: "vp8"
-});
+import { removeOtherPeersAction } from '@/context/peerActions';
+import { ShareScreenButton } from '@/components/ShareScreenButton';
+function Room() {
+  const [callStatus, setCallStatus] = useState("inCall");
 
-function InterActiveRooms() {
-  const {roomId} = useParams()
-  
-  const [users, setUsers] = useState<any[]>([]);
-useEffect(()=>{
-  console.log(1)
-  console.log(users)
-},[users])
-  const handleUserJoined =async (user: any , mediaType:any) => {
-    await client.subscribe(user , mediaType)
+  const [state , dispatching ] = useReducer(peersReducer , {})
+  const s = new MediaStream
+ 
+  const {ws , me , stream ,peers,shareScreen , setRoomId} = useContext(RoomContext)
+  const dispatch = useDispatch()
+    const {roomId} = useParams()
+    useEffect(()=>{
 
-    mediaType === 'video' && setUsers((prevUsers) => [...prevUsers, user]);
-
-  };
-
-  const handleUserLeft = (user: any) => {
-
-  };
-
-  useEffect(() => {
-
-    client.on('user-published', handleUserJoined);
-    client.on('user-left', handleUserLeft);
-    const joinRoom = async()=>{
+    } , [roomId , setRoomId])
+    useEffect(()=>{
       
-      const response = await fetch(`http://localhost:5000/generateAgoraToken?channelName=${roomId}&uid=${Cookies.get('token')}&role=publisher`);
-      console.log(client)
-      const data = await response.json();
-      console.log(response)
-      console.log(data)
-      const { token, channelName } = data;
-      console.log(token)
-      client
-      .join(APP_ID, channelName, token,Cookies.get('token') )
-      .then((uid) =>
-      Promise.all([
-        AgoraRTC.createMicrophoneAudioTrack(),
-        AgoraRTC.createCameraVideoTrack(),
-      ])
-        .then((tracks) => {
-          const [audioTrack, videoTrack] = tracks;
-          setUsers((prevUsers) => [
-            ...prevUsers,
-            {
-              uid,
-              audioTrack,
-              videoTrack,
-            },
-          ]);
-          return client.publish([audioTrack, videoTrack]);
-        })
-        .catch((error) => {
-          console.error('Error creating and publishing tracks:', error);
-        }))
-    }
-    joinRoom()
+      
+      console.log(me)
+      console.log(roomId)
+      console.log(22222222)
 
-   
-
-    return () => {
-      client.off('user-published', handleUserJoined);
-      client.off('user-left', handleUserLeft);
-    };
-  }, []);
-
+      if(me) ws.emit("join-room" , {roomId:roomId , peerId:me._id })
+     },[ws , me , roomId ])
   return (
-    <div className='Inter'>
-      clg
-      {users.map((user) => (
-  <div key={user.uid}>
-    User {user.uid}
-    {console.log(user.videoTrack)}
-    {user.videoTrack && (
-      <video
-        ref={(ref) => {
-          if (ref) {
-            user.videoTrack.play(ref);
-          }
-        }}
-      />
-    )}
-  </div>
-))}
+    me && peers.length !== 0 &&
+    
+    <div>
+      
+      <VideoPlayer stream={stream}/>
+      
+      {Object.values(peers as PeerState).map((peer)=>(
+        <VideoPlayer stream={peer.stream}/>
+      ))}
+       <div className="fixed bottom-0 p-6 w-full flex justify-center border-t-2">
+      <ShareScreenButton onClick={shareScreen}/>
     </div>
-  );
+    </div>
+  )
 }
 
-export default InterActiveRooms;
+export default Room

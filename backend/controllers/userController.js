@@ -67,7 +67,6 @@ const loginUser =asyncHandler (async (req, res)=>{
   }
 
   const token = generateToken(user._id)
-  console.log(token)
   if(user && (await bcrypt.compare(password , user.password))){
    
     res.status(200).json({
@@ -212,19 +211,13 @@ const changeProfilePicture = asyncHandler(async (req, res) => {
   const profilePicture = req.files[0];
   // Check if the user exists
   const user = await User.findById(userId);
-  console.log(user)
   if (!user) {
     res.status(404).json({ message: 'User not found' });
     return;
   }
   
-  console.log(req.files)
-  console.log( profilePicture)
-  // Update the user's profile picture
-  user.profile_picture = profilePicture.originalname; // Assuming the file field is named 'filename'
-  console.log(user)
+  user.profile_picture = profilePicture.originalname; 
   try {
-    // Save the updated user document with the new profile picture
     await user.save();
     res.status(200).json({ message: 'Profile picture updated successfully', data: user });
   } catch (error) {
