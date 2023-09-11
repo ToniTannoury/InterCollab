@@ -70,7 +70,7 @@ color:#213555 ;
   height: 360px !important;
   margin-top: 10px;
   overflow: hidden;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 .containing-users::-webkit-scrollbar {
   width: 0; /* Hide scrollbar width */
@@ -111,4 +111,38 @@ color:#213555 ;
 .room-input{
   display: flex;
   width: 100vw;
+}
+
+
+.users{
+  background-color: white;
+  height:565px;
+  width: 50vh;
+  border-radius: 2rem;
+}
+.users1{
+  background-color: white;
+  height:565px;
+  width: 39vh;
+  border-radius: 2rem;
+}
+
+video{
+  /* width:750px !important; */
+  border-radius: 2rem;
+  border: white 4px solid;
+}
+
+.not-sharing{
+  display: flex;
+  height:560px;
+  width:750px;
+  background:grey;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color:white;
+  font-weight: 600;
+  border-radius: 2rem;
 }

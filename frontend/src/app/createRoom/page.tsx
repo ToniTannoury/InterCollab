@@ -12,13 +12,16 @@ function CreateRoom() {
   const {currentUser} = useSelector((state:any)=>state.users) 
   const dispatch = useDispatch()
   const router = useRouter()
-  // useEffect(()=>{
+  
+  // useEffect(()=>{  
   //   socketIO(WS)
   // },[])
-  const {ws}  =useContext(RoomContext)
+  
+  const {ws }  =useContext(RoomContext)
   const createRoom = (roomId:string)=>{
 
     ws.emit('create-room' , {roomId})
+    
     router.push(`/test/${roomId}`)
   }
   const onFinish = async (values:any)=>{

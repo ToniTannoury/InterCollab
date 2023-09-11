@@ -46,12 +46,6 @@ app.get('/' , (req ,res)=>{
   })
 })
 
-// const nocache = (_, resp, next) => {
-//   resp.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-//   resp.header('Expires', '-1');
-//   resp.header('Pragma', 'no-cache');
-//   next();
-// }
 app.get('/', (req, res) => {
   res.status(200).json({ message: "Hello" });
 });
@@ -60,37 +54,7 @@ app.use('/api/users', upload.any(),userRoutes);
 app.use('/api/rooms', roomRoutes);
 app.use(errorHandler);
 
-// app.get('/generateAgoraToken',nocache, (req, res) => {
-//   res.header('Access-Control-Allow-Origin', '*');
-//   const appId = '89da9174634f426da89fe958eb596946';
-//   const appCertificate = '4a9f5022f58f4500ac103809b85bf90c';
-//   const channelName = req.query.channelName;
-//   const uid = req.query.uid;
-//   console.log(uid)
-//   if(!uid || uid === '') {
-//     return res.status(500).json({ 'error': 'uid is required' });
-//   }
 
-//   let expireTime = req.query.expiry;
-//   if (!expireTime || expireTime === '') {
-//     expireTime = 3600;
-//   } else {
-//     expireTime = parseInt(expireTime, 10);
-//   }
-//   const currentTime = Math.floor(Date.now() / 1000);
-//   const privilegeExpireTime = currentTime + expireTime;
-//   let role;
-//   if (req.query.role === 'publisher') {
-//     role = RtcRole.PUBLISHER;
-//   } else if (req.query.role === 'audience') {
-//     role = RtcRole.SUBSCRIBER
-//   } else {
-//     return res.status(500).json({ 'error': 'role is incorrect' });
-//   }
-//   token = RtcTokenBuilder.buildTokenWithUid(appId, appCertificate, channelName, uid, role, privilegeExpireTime);
-//     console.log(token)
-//   res.json({ token, channelName });
-// });
 const server = http.createServer(app)
 
 const io = new Server(server,{
@@ -101,8 +65,28 @@ const io = new Server(server,{
 })
 io.on("connection" , (socket)=>{
   // console.log('user is connected')
+  socket.on('join',async ({roomId}) => { 
+    
+    socket.join(roomId.toString()); 
+    console.log(`joined chat of ${roomId}`)
+  });
+  const emitMessage = ({message , roomId , userName})=>{
+    socket.to(roomId.toString()).emit('Messages',{ message , userName})
+  }
+  const emitScreenShare = ({status , roomId })=>{
+    socket.to(roomId._id).emit('screenSharing',{ status })
+  }
+  const stopShare = ({mediaShareStatus , roomId })=>{
+    console.log(mediaShareStatus ,roomId)
+    socket.to(roomId).emit('mediaSharing',{ mediaShareStatus })
+  }
+
+  socket.on('stopShare',stopShare);
+  socket.on('chatMessage',emitMessage);
+  socket.on('screensharing',emitScreenShare);
   roomHandler(socket)
  
+
 })
 
 

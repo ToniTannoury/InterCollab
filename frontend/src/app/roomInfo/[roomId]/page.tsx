@@ -14,7 +14,6 @@ function RoomInfo() {
   const {roomId} = useParams()
   const dispatch = useDispatch()
   const [roomData , setRoomData] = useState<any>(null)
-  const [joined , setJoined] = useState<any>(false)
   const {currentUser} = useSelector((state:any)=>state.users)
 
   const fetchJob = async()=>{
@@ -51,7 +50,7 @@ function RoomInfo() {
               Creator's name
             </span>
             <span>
-              {roomData.user.name}
+              {roomData.user?.name}
             </span>
           </div>
           <div className="flex justify-between">
@@ -59,7 +58,7 @@ function RoomInfo() {
             Creator's rating
             </span>
             <span>
-              {roomData.user.rating}
+              {roomData.user?.rating}
             </span>
           </div>
           <div className="flex justify-between">
@@ -67,7 +66,7 @@ function RoomInfo() {
             Creator's email
             </span>
             <span>
-              {roomData.user.email}
+              {roomData.user?.email}
             </span>
           </div>
           <div className="flex justify-between">
@@ -100,7 +99,7 @@ function RoomInfo() {
             About the creator
           </h1>
           <Divider className="p-0 h-0 m-0"/>
-          <span>{roomData.user.about}</span>
+          <span>{roomData.user?.about}</span>
           <h1 className="text-xl">
             Room Description
           </h1>

@@ -224,7 +224,16 @@ const changeProfilePicture = asyncHandler(async (req, res) => {
     res.status(500).json({ message: 'Error updating profile picture', error: error.message });
   }
 });
+const getUserById = asyncHandler(async (req, res) => {
+  const {userId} = req.query; 
+  const user = await User.findById(userId);
 
+  if (!user) {
+    res.status(404).json({ message: 'User not found' });
+    return;
+  }
+  res.status(200).json(user);
+});
 
 
 
@@ -236,5 +245,6 @@ module.exports = {
   followUser,
   unfollowUser,
   updateUser,
-  changeProfilePicture
+  changeProfilePicture,
+  getUserById
 }

@@ -6,6 +6,6 @@ export const store = configureStore({
   reducer:{
     users:usersReducer,
     loaders:loadersReducer,
-    searching:searchReducer
+    searching:searchReducer,
   }
 })

@@ -18,7 +18,7 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
   const [isSidebarExpanded , setIsSidebarExpanded] = useState(true)
   const {loading} = useSelector((state:any)=>state.loaders)
   const [peers , dispatching] = useReducer(peersReducer , {})
-
+  const path  = usePathname()
   const [menuItems , setMenuItems] = useState([
     {
       name:'Home',
@@ -93,7 +93,7 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
         }
       }}>
         {loading && <Loader/>}
-        {pathname === "/login" || pathname === "/register" ? <div>{children}</div> : 
+        {pathname === "/login" || pathname === "/register" || path.startsWith("/test") ? <div>{children}</div> : 
         (
           <div className='layout-parent'>
             <div className={`sidebar ${isSidebarExpanded ? "w-1/6":"w-20"}`}>
@@ -109,8 +109,7 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
                   const isActive = pathname === item.path
                   return(
                   <div style={{justifyContent:isSidebarExpanded?'start':"center"}} className={`menu-item ${isActive ? "active-menu-item" : ""}`} key={index} onClick={()=>{
-                    const s = new MediaStream
-                    dispatching(removeOtherPeersAction("asss" , s))
+               
                     router.push(item.path)}}>
                     <i className={item.icon}></i>
                     <span>
