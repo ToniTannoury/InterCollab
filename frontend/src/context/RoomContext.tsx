@@ -8,7 +8,7 @@ import { setLoading } from "@/redux/loadersSlice";
 import { setCurrentUser } from "@/redux/usersSlice";
 import { message } from "antd";
 import { peersReducer } from "./peerReducer";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import Cookies from "js-cookie";
 import { addPeerAction, removePeerAction,removeOtherPeersAction  } from "./peerActions";
@@ -36,7 +36,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
   const [roomId , setRoomId] = useState<any>("")
   const [messages,setMessages] = useState<any>([]) 
   const [mediaShareStatus, setMediaShareStatus] = useState<boolean>(true);
- 
+ const router = useRouter()
   const dispatching =  useDispatch()
   const switchStream = (stream: MediaStream)=>{
     setStream(stream )
@@ -47,7 +47,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
       const videoTrack = stream?.getTracks().find(track=>track.kind === 'video')
       const videoTracks = stream?.getTracks().find(track=>track.kind === 'video')
       console.log(videoTracks)
-        conn.peerConnection?.getSenders()[1].replaceTrack(videoTrack).catch(
+        conn.peerConnection?.getSenders()[1]?.replaceTrack(videoTrack).catch(
           (err:any)=>console.log(err))
     })
   }
@@ -81,6 +81,11 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
 
     }
 
+  }
+  const leaveRoom = async()=>{
+    console.log(me)
+    ws.disconnect()
+    router.push('/')
   }
   const handleScreenShare = async(status:any)=>{
     setScreenSharringId(status)
@@ -239,5 +244,5 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
   console.log(peers)
   console.log(Cookies.get('token'))
   console.log(roomId)
-  return <RoomContext.Provider value={{ ws , me, stream , peers , shareScreen , setRoomId  , participants , roomId , screenSharringId , messages,mediaShareStatus, setMediaShareStatus}}>{children}</RoomContext.Provider>;
+  return <RoomContext.Provider value={{ ws , me, stream , peers , shareScreen , setRoomId  , participants , roomId , screenSharringId , messages,mediaShareStatus, setMediaShareStatus , leaveRoom}}>{children}</RoomContext.Provider>;
 };

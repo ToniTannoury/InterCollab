@@ -13,6 +13,7 @@ import { setCurrentUser } from '@/redux/usersSlice';
 import { message } from 'antd';
 import Image from 'next/image';
 import StopSharingButton from '@/components/StopSharingButton';
+import LeaveRoomButton from '@/components/LeaveRoomButton';
 interface Participant {
   _id: string;
   name: string;
@@ -26,7 +27,7 @@ function Room() {
   const {currentUser} = useSelector((state:any)=>state.users)
 
   
-  const {ws , me , stream ,peers,shareScreen , participants ,setRoomId,roomId:id,screenSharringId , messages, mediaShareStatus, setMediaShareStatus} = useContext(RoomContext)
+  const {ws , me , stream ,peers,shareScreen , participants ,setRoomId,roomId:id,screenSharringId , messages, mediaShareStatus, setMediaShareStatus , leaveRoom} = useContext(RoomContext)
   console.log(id)
   const dispatch = useDispatch()
   const [state , dispatching] = useReducer(peersReducer , {})
@@ -191,6 +192,7 @@ function Room() {
   <div className="fixed bottom-0 p-6 w-full flex justify-center border-t-2">
     {me?._id === room.user._id &&<ShareScreenButton onClick={shareScreen} />}
     {me?._id === room.user._id &&<StopSharingButton onClick={emitStopSharing}/>}
+    <LeaveRoomButton onClick={leaveRoom}/>
   </div>
   
 </div>
