@@ -106,13 +106,13 @@ function Room() {
     
     <div className=' bg-ICblue h-full'>
       
-      <div className='flex w-full h-screen pt-3 pb-3 gap-4 justify-between'>
+      <div className='flex w-full h-screen pt-3 pb-3 gap-2 justify-center'>
       <section className=' users1 ml-10 '>
 
-          <span className='text-black min-w-full text-3xl border-b-2 pl-8 mt-4 pr-10'>
+          <p className='text-ICblue min-w-full text-3xl border-b-2 pl-8 mt-4 pr-10 room-header p-1'>
             
             Users In Call
-          </span>
+          </p>
           <div>
             
             {filterDuplicateParticipants(participants)?.map((participant:any)=>
@@ -147,14 +147,14 @@ function Room() {
           
           <section className='self-stretch users mr-10 flex flex-col justify-between'>
             <div>
-            <div className='text-black min-w-full text-center text-3xl border-b-2 align-center' style={{width:"200px" , textAlign:'center'}}>
+            <div className='text-ICblue room-header min-w-full text-center text-3xl border-b-2 align-center' style={{width:"200px" , textAlign:'center'}}>
             {room.title}
           </div>
-          <div className='flex flex-col scrollable'>
+          <div className='flex flex-col scrollable '>
           {messages?.map((message:any)=>(
-            <div className='my-2 ml-2 '>
-              <b>{message.userName}</b>
-              <p>{message.message}</p>
+            <div className='my-2 ml-2 bg-slate-300 rounded-lg container-message max-w-max pr-10'>
+              <b className='ml-3 text-ICblue'>{message.userName}</b>
+              <p className='ml-3 text-ICblue width break-words'>{message.message}</p>
             </div>
           ))}
           </div>
@@ -163,6 +163,7 @@ function Room() {
 
           <div>
           <form className='mb-10' onSubmit={sendChat} style={{ position: 'relative'}}>
+            <hr className='pb-4'/>
       <input
         type="text"
         value={chat}
@@ -173,17 +174,18 @@ function Room() {
           
           padding: '8px',
           fontSize: '16px',
-          width: '330px',
+          width: '295px',
         }}
       />
       <button
         type="submit"
+        className='bg-ICblue'
         style={{
           position: 'absolute',
-          top: '50%',
+          top: '65%',
           right: '10px',
           transform: 'translateY(-50%)',
-          background: '#4CAF50',
+          
           color: 'white',
           border: 'none',
           padding: '8px',
@@ -199,10 +201,10 @@ function Room() {
           
       </div>
      
-  <div className="fixed bottom-0 p-6 w-full flex justify-center border-t-2">
+  <div className="fixed bottom-0 p-3 w-full flex justify-center border-t-2">
+    <LeaveRoomButton onClick={leaveRoom}/>
     {me?._id === room.user._id &&<ShareScreenButton onClick={shareScreen} />}
     {me?._id === room.user._id &&<StopSharingButton onClick={emitStopSharing}/>}
-    <LeaveRoomButton onClick={leaveRoom}/>
   </div>
   
 </div>

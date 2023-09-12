@@ -60,7 +60,7 @@ function Pofile() {
   }
   return (
     <div>
-      <h1 className='text-3xl mb-3'>Profile</h1>
+      <h1 className='text-4xl mb-3 month-header text-ICblue'>Profile</h1>
     
       <UserInfoBar user={currentUser}/>
     {currentUser &&<Form layout='vertical' initialValues={currentUser} onFinish={onFinish}>

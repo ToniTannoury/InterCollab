@@ -70,7 +70,7 @@ color:#213555 ;
   height: 360px !important;
   margin-top: 10px;
   overflow: hidden;
-  /* overflow-y: scroll; */
+  overflow-y: scroll;
 }
 .containing-users::-webkit-scrollbar {
   width: 0; /* Hide scrollbar width */
@@ -116,27 +116,27 @@ color:#213555 ;
 
 .users{
   background-color: white;
-  height:565px;
+  height:592px;
   width: 50vh;
-  border-radius: 2rem;
+  border-radius: 5px;
 }
 .users1{
   background-color: white;
-  height:565px;
+  height:592px;
   width: 39vh;
-  border-radius: 2rem;
+  border-radius: 5px;
 }
 
 video{
   /* width:750px !important; */
-  border-radius: 2rem;
-  border: white 4px solid;
+  border-radius: 5px;
+  border: white 2px solid;
 }
 
 .not-sharing{
   display: flex;
-  height:560px;
-  width:750px;
+  height:590px;
+  width:790px;
   background:grey;
   text-align: center;
   justify-content: center;
@@ -144,7 +144,7 @@ video{
   font-size: 24px;
   color:white;
   font-weight: 600;
-  border-radius: 2rem;
+  border-radius: 5px;
 }
 
 .scrollable{
@@ -163,4 +163,15 @@ video{
 
 .scrollable::-webkit-scrollbar-thumb {
   background: #888; 
+}
+
+.room-header{
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, Haettenschweiler, 'Arial Narrow Bold', sans-serif !important;
+  font-weight: 800;
+  margin-top: 10px;
+  
+}
+
+.width{
+  max-width: 300px;
 }

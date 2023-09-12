@@ -36,6 +36,11 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
       icon:"ri-file-list-2-line"
     },
     {
+      name:'Followings',
+      path:'/followings',
+      icon:"ri-user-line"
+    },
+    {
       name:'Coins',
       path:'/settings',
       icon:"ri-coin-line"
