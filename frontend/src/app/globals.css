@@ -175,3 +175,7 @@ video{
 .width{
   max-width: 300px;
 }
+.following{
+  width: 300px;
+  height: 300px;
+}
