@@ -27,7 +27,7 @@ function Room() {
   const {currentUser} = useSelector((state:any)=>state.users)
 
   
-  const {ws , me , stream ,peers,shareScreen , participants ,setRoomId,roomId:id,screenSharringId , messages, mediaShareStatus, setMediaShareStatus , leaveRoom} = useContext(RoomContext)
+  const {ws , me , stream ,peers,shareScreen , participants ,setRoomId,roomId:id,screenSharringId , messages, mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages} = useContext(RoomContext)
   console.log(id)
   const dispatch = useDispatch()
   const [state , dispatching] = useReducer(peersReducer , {})
@@ -74,7 +74,7 @@ function Room() {
      
      const sendChat = (e:any)=>{
       e.preventDefault()
- 
+      setMessages((prevState:any) => [...prevState, {userName: "You" , message : chat}]); 
       roomId!==undefined && ws.emit('chatMessage', {"roomId":roomId,"userName":currentUser.name , "message": chat})
       setChat('')
     }
@@ -146,9 +146,21 @@ function Room() {
           </div>}
           
           <section className='self-stretch users mr-10 flex flex-col justify-between'>
-          <div className='text-black min-w-full text-center text-3xl border-b-2 align-center' style={{width:"200px" , textAlign:'center'}}>
+            <div>
+            <div className='text-black min-w-full text-center text-3xl border-b-2 align-center' style={{width:"200px" , textAlign:'center'}}>
             {room.title}
           </div>
+          <div className='flex flex-col scrollable'>
+          {messages?.map((message:any)=>(
+            <div className='my-2 ml-2 '>
+              <b>{message.userName}</b>
+              <p>{message.message}</p>
+            </div>
+          ))}
+          </div>
+            </div>
+          
+
           <div>
           <form className='mb-10' onSubmit={sendChat} style={{ position: 'relative'}}>
       <input
@@ -184,9 +196,7 @@ function Room() {
     </form>
           </div>
           </section >
-          {messages?.map((message:any)=>(
-            message.userName
-          ))}
+          
       </div>
      
   <div className="fixed bottom-0 p-6 w-full flex justify-center border-t-2">

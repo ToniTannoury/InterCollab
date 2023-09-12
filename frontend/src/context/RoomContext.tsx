@@ -244,5 +244,5 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
   console.log(peers)
   console.log(Cookies.get('token'))
   console.log(roomId)
-  return <RoomContext.Provider value={{ ws , me, stream , peers , shareScreen , setRoomId  , participants , roomId , screenSharringId , messages,mediaShareStatus, setMediaShareStatus , leaveRoom}}>{children}</RoomContext.Provider>;
+  return <RoomContext.Provider value={{ ws , me, stream , peers , shareScreen , setRoomId  , participants , roomId , screenSharringId , messages,mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages}}>{children}</RoomContext.Provider>;
 };
