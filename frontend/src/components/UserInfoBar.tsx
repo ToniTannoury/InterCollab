@@ -41,7 +41,8 @@ const UserInfoBar = ({ user, search }: any) => {
         if (isFollowing) {
           dispatch(removeFollowing(user._id));
         } else {
-          dispatch(addFollowing(user._id));
+          console.log(1111)
+          dispatch(addFollowing(user));
         }
       } else {
         console.error('Error:', response.statusText);

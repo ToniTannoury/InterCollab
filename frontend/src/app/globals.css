@@ -61,6 +61,13 @@ color:#213555 ;
   max-width: 500px;
   border-radius: 999999px;
 }
+.img-1{
+  
+  width: 60px !important;
+  height:60px !important;
+  max-width: 500px;
+  border-radius: 999999px;
+}
 .user-search{
   width: 30%;
   height: 40px;
@@ -176,6 +183,30 @@ video{
   max-width: 300px;
 }
 .following{
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 240px;
+}
+
+
+.text-about{
+  width:170px;
+  height: 50px;
+  overflow-y: scroll;
+}
+.message-about{
+  width:170px;
+  height: 35px;
+  word-break: break-all;
+}
+
+.text-about::-webkit-scrollbar {
+  width: 5px; 
+}
+
+.text-about::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+.text-about::-webkit-scrollbar-thumb {
+  background: #888; 
 }

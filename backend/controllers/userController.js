@@ -226,6 +226,7 @@ const changeProfilePicture = asyncHandler(async (req, res) => {
 });
 const getUserById = asyncHandler(async (req, res) => {
   const {userId} = req.query; 
+  console.log(userId)
   const user = await User.findById(userId);
 
   if (!user) {
