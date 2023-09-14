@@ -12,12 +12,26 @@ import { setLoading } from '@/redux/loadersSlice'
 import Cookie from 'js-cookie'
 import { removeOtherPeersAction } from '@/context/peerActions'
 import { peersReducer } from '@/context/peerReducer'
+import Modal from 'react-modal';
 function LayoutProvider({children}:{children:React.ReactNode}) {
   const router = useRouter()
   const {currentUser} = useSelector((state:any)=>state.users)
+  const [selectedBundle, setSelectedBundle] = useState<number | null>(null);
+
   const [isSidebarExpanded , setIsSidebarExpanded] = useState(true)
   const {loading} = useSelector((state:any)=>state.loaders)
   const [peers , dispatching] = useReducer(peersReducer , {})
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleBundleClick = (dataId: number) => {
+    setSelectedBundle(dataId);
+  };
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   const path  = usePathname()
   const [menuItems , setMenuItems] = useState([
     {
@@ -40,12 +54,6 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
       path:'/followings',
       icon:"ri-user-line"
     },
-    {
-      name:'Coins',
-      path:'/settings',
-      icon:"ri-coin-line"
-    },
-
   ])
   const dispatch = useDispatch()
   const pathname = usePathname()
@@ -122,6 +130,12 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
                     </span>
                   </div>
                 )})}
+                <div style={{justifyContent:isSidebarExpanded?'start':"center"}} className='menu-item' onClick={openModal}>
+               <i className={'ri-coin-line'}></i>
+               <span>
+                 {isSidebarExpanded && "Coins"}
+               </span>
+             </div>
               </div>
             
               <div className='user-info flex gap-1 items-center'>
@@ -150,6 +164,47 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
             </div>
           </div>
         )}
+         <Modal
+      isOpen={isModalOpen}
+      onRequestClose={closeModal}
+      contentLabel="Coins Modal"
+      ariaHideApp={false}
+      className={'modal'}
+    >
+      <h2>Get Coins</h2>
+      <div className='flex justify-center items-center gap-4'>
+        <div
+          data-id={1}
+          className={`bundle hover:cursor-pointer ${
+            selectedBundle === 1 ? 'selected-bundle' : ''
+          }`}
+          onClick={() => handleBundleClick(1)} 
+        >
+          <p className='w-3/4 ml-7 mt-5 hover:cursor-pointer'>
+            100 coins for 1.29$
+          </p>
+        </div>
+        <div
+          data-id={2}
+          className={`bundle hover:cursor-pointer ${
+            selectedBundle === 2 ? 'selected-bundle' : ''
+          }`}
+          onClick={() => handleBundleClick(2)} 
+        >
+          <p className='w-3/4 ml-7 mt-5 '>500 coins for 5.55$</p>
+        </div>
+        <div
+          data-id={3}
+          className={`bundle hover:cursor-pointer ${
+            selectedBundle === 3 ? 'selected-bundle' : ''
+          }`}
+          onClick={() => handleBundleClick(3)} 
+        >
+          <p className='w-3/4 ml-7 mt-5 '>1000 coins for 10.00$</p>
+        </div>
+      </div>
+      <button onClick={processCheckout} className='p-1 h-10 bg-white my-4'>Checkout</button>
+    </Modal>
       </ConfigProvider>
     </body>
   </html>

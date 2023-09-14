@@ -42,7 +42,12 @@ const userSchema = mongoose.Schema({
     type:String,
     required:false,
     default:"emptyProfile.png"
-  }
+  },
+  coins:{
+    type:Number,
+    required:false,
+    default:0
+  },
 
 },
 {

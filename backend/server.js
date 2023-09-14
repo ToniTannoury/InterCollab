@@ -17,6 +17,7 @@ const { Server } = require("socket.io")
 const http = require("http")
 const { createRoom } = require('./controllers/InteractiveRoomController');
 const roomHandler = require('./controllers/InteractiveRoomController');
+const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 // const {RtcTokenBuilder, RtcRole} = require('agora-access-token');
 connectDB();
 app.use(cookieParser())
@@ -89,7 +90,17 @@ io.on("connection" , (socket)=>{
 
 })
 
-
+const bundles = new Map([
+  [
+    1 , {priceInCents:100 , name:"1.67 dolar bundle"}
+  ],
+  [
+    2 , {priceInCents:550 , name:"5.55 dolar bundle"}
+  ],
+  [
+    3 , {priceInCents:1000 , name:"10 dolar bundle"}
+  ],
+])
 server.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 
 
