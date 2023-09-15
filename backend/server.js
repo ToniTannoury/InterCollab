@@ -18,10 +18,64 @@ const http = require("http")
 const { createRoom } = require('./controllers/InteractiveRoomController');
 const roomHandler = require('./controllers/InteractiveRoomController');
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
+const User = require("./models/userModel")
 // const {RtcTokenBuilder, RtcRole} = require('agora-access-token');
 connectDB();
 app.use(cookieParser())
 app.use(cors());
+const bundles = new Map([
+  [
+    1 , {priceInCents:100 , name:"1.67 dolar bundle"}
+  ],
+  [
+    2 , {priceInCents:550 , name:"5.55 dolar bundle"}
+  ],
+  [
+    3 , {priceInCents:1000 , name:"10 dolar bundle"}
+  ],
+])
+
+let endpointSecret 
+endpointSecret= "whsec_99de9c0d940a9b0193357d7eceb01c10eada61cc61d31f4eca53346669109e4d";
+// Define the webhook route without body parsing middleware
+app.post('/webhook', express.raw({type: 'application/json'})  ,(req, res) => {
+  const sig = req.headers['stripe-signature'];
+
+  let data;
+  let eventType;
+
+  let event;
+  try {
+    // Parse the raw request body as a Buffer
+    const rawBody = req.body;
+    event = stripe.webhooks.constructEvent(rawBody, sig, endpointSecret);
+    console.log("webhook");
+  } catch (err) {
+    console.log(err.message);
+    res.status(400).send(`Webhook Error: ${err.message}`);
+    return;
+  }
+  data = event.data.object;
+  eventType = event.type;
+
+  if(eventType==="checkout.session.completed"){
+    stripe.customers.retrieve(data.customer).then(
+      async(customer)=>{
+   
+        console.log(customer.metadata.bundle)
+        const user =await User.findById(customer.metadata.userId)
+        user.coins = user.coins + bundles.get(+customer.metadata.bundle).priceInCents
+        await user.save()
+      }
+    ).catch(err=>console.log(err))
+  }
+  
+
+  // Handle the webhook event based on its type here.
+  // Example: if (eventType === 'payment_intent.succeeded') { ... }
+
+  res.send().end();
+});
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.urlencoded({ extended: false }));
@@ -90,17 +144,10 @@ io.on("connection" , (socket)=>{
 
 })
 
-const bundles = new Map([
-  [
-    1 , {priceInCents:100 , name:"1.67 dolar bundle"}
-  ],
-  [
-    2 , {priceInCents:550 , name:"5.55 dolar bundle"}
-  ],
-  [
-    3 , {priceInCents:1000 , name:"10 dolar bundle"}
-  ],
-])
+
+
+
+
 server.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 
 

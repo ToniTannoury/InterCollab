@@ -2,6 +2,7 @@ const asyncHandler = require('express-async-handler')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const {validationResult} = require('express-validator')
+const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 
 
 const User = require('../models/userModel')
@@ -235,8 +236,53 @@ const getUserById = asyncHandler(async (req, res) => {
   }
   res.status(200).json(user);
 });
+const bundles = new Map([
+  [
+    1 , {priceInCents:100 , name:"1.67 dolar bundle"}
+  ],
+  [
+    2 , {priceInCents:550 , name:"5.55 dolar bundle"}
+  ],
+  [
+    3 , {priceInCents:1000 , name:"10 dolar bundle"}
+  ],
+])
+const createCheckoutSession = asyncHandler(async(req , res)=>{
 
-
+  const customer = await stripe.customers.create({
+    metadata:{
+      userId:req.user.id,
+      bundle:JSON.stringify(req.body.bundle)  
+    }
+  })
+  try {
+    const bundle = bundles.get(req.body.bundle)
+    const stripeReq = {
+      price_data:{
+        currency:"usd",
+        product_data:{
+          name: bundle.name
+        },
+        unit_amount:bundle.priceInCents
+      },
+      quantity:1,
+    }
+   
+    let session = await stripe.checkout.sessions.create({
+      payment_method_types:["card"],
+      mode:"payment",
+      customer:customer.id,
+      line_items:[stripeReq],
+      success_url:`${process.env.CLIENT_URL}`,
+      cancel_url:`${process.env.CLIENT_URL}`,
+    }).catch(err=>console.log(err))
+      console.log(session)
+    res.json({url:session.url})
+  } catch (error) {
+    res.status(500).json({error:e.message})
+  }
+  
+})
 
 module.exports = {
   registerUser,
@@ -247,5 +293,7 @@ module.exports = {
   unfollowUser,
   updateUser,
   changeProfilePicture,
-  getUserById
+  getUserById,
+  createCheckoutSession,
+  
 }

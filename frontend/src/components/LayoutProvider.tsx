@@ -81,7 +81,6 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
   const onLogout = async ()=>{
     try {
       dispatch(setLoading(true))
-      // await axios.post('/api/users/logout')
       message.success("Logged out successfully")
       dispatch(setCurrentUser(null))
       Cookie.set('token' , '')
@@ -92,6 +91,28 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
     }finally{
       dispatch(setLoading(false))
     }
+  }
+  const processCheckout = async ()=>{
+    console.log(111)
+    await fetch('http://localhost:5000/api/users/create-checkout-session'  , {
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "Authorization" : `Bearer ${Cookie.get('token')}`
+      },
+      body:JSON.stringify({
+        bundle : +selectedBundle!
+      })
+    }).then((res:any)=>{
+      console.log(res)
+      if(res.ok) return res.json()
+      return res.json().then((json:any)=>Promise.reject(json))
+    }).then(({url})=>{
+      console.log(url)
+      window.location = url
+    }).catch(e=>{
+      console.log(e.error)
+    })
   }
   return (
     <html lang="en">
@@ -152,7 +173,7 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
                   </span>
                   
                   <span className='text-base mb-3'>
-                    {currentUser?.email}
+                    {currentUser?.coins}
                   </span>
                 </div>
                 }
@@ -169,9 +190,9 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
       onRequestClose={closeModal}
       contentLabel="Coins Modal"
       ariaHideApp={false}
-      className={'modal'}
+      className={'modal pt-2'}
     >
-      <h2>Get Coins</h2>
+      <h2 className='text-3xl text-white ml-3 my-3'>Get Coins</h2>
       <div className='flex justify-center items-center gap-4'>
         <div
           data-id={1}
@@ -191,7 +212,7 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
           }`}
           onClick={() => handleBundleClick(2)} 
         >
-          <p className='w-3/4 ml-7 mt-5 '>500 coins for 5.55$</p>
+          <p className='w-3/4 ml-7 mt-5 '>550 coins for 5.55$</p>
         </div>
         <div
           data-id={3}
@@ -203,7 +224,9 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
           <p className='w-3/4 ml-7 mt-5 '>1000 coins for 10.00$</p>
         </div>
       </div>
-      <button onClick={processCheckout} className='p-1 h-10 bg-white my-4'>Checkout</button>
+      <div className='flex w-full justify-end '>
+        <button onClick={processCheckout} className=' h-10 bg-white my-4 p-1 mr-3 rounded font-bold'>Checkout</button>
+      </div>
     </Modal>
       </ConfigProvider>
     </body>

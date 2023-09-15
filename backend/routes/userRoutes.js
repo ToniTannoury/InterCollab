@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const {registerUser , loginUser , getMe ,  searchUsers , followUser , unfollowUser , updateUser , changeProfilePicture  ,getUserById} = require('../controllers/userController')
+const {registerUser , loginUser , getMe ,  searchUsers , followUser , unfollowUser , updateUser , changeProfilePicture  ,getUserById  , createCheckoutSession } = require('../controllers/userController')
 const {protect} = require('../middleware/authMiddleware')
 const {check , body} = require('express-validator')
 
@@ -33,5 +33,6 @@ router.put('/follow/:id', protect, followUser);
 router.put('/unfollow/:id', protect, unfollowUser);
 router.put('/updateUser', protect, updateUser);
 router.put('/changeProfilePicture', protect, changeProfilePicture );
+router.post('/create-checkout-session',protect, createCheckoutSession );
 
 module.exports = router
