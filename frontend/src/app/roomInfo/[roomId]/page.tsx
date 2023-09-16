@@ -14,6 +14,7 @@ function RoomInfo() {
   const {roomId} = useParams()
   const dispatch = useDispatch()
   const [roomData , setRoomData] = useState<any>(null)
+  const [code , setCode] = useState<string>('')
   const {currentUser} = useSelector((state:any)=>state.users)
 
   const fetchJob = async()=>{
@@ -38,6 +39,10 @@ function RoomInfo() {
   useEffect(()=>{
     fetchJob()
   },[])
+  const checkPin = async(e:any)=>{
+    e.preventDefault()
+    roomData.pinCode === code && router.push(`/test/${roomData._id}`)
+  }
 
   
   return (
@@ -109,7 +114,15 @@ function RoomInfo() {
           <div className="flex justify-end gap-3">
           
           <Button type="default" onClick={()=>router.back()}>Cancel</Button>
-          <Button type="primary" className="bg-ICblue"  onClick={()=>router.push(`/test/${roomData._id}`)}>Join Now</Button>
+
+          {(roomData.type === "public" || roomData.user._id === currentUser._id) && <Button type="primary" className="bg-ICblue"  onClick={()=>router.push(`/test/${roomData._id}`)}>Join Now</Button>}
+
+          {roomData.type === "private" && roomData.user._id !== currentUser._id &&
+          (
+            <form onSubmit={checkPin} action="">
+              <input value={code} className="pincode" type="text" onChange={(e)=>setCode(e.target.value)}/>
+            </form>
+          )}
         </div>
         </Col>
         

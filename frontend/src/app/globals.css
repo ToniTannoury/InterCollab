@@ -142,7 +142,7 @@ video{
 
 .not-sharing{
   display: flex;
-  height:520px;
+  height:525px;
   width:790px;
   background:grey;
   text-align: center;
@@ -233,4 +233,10 @@ video{
 .selected-bundle{
   background-color: white;
   color: #213555;
+}
+
+.pincode{
+  border: solid grey 1px;
+  padding: 4px;
+  border-radius: 5px;
 }

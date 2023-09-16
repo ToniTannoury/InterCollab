@@ -146,7 +146,7 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
                
                     router.push(item.path)}}>
                     <i className={item.icon}></i>
-                    <span>
+                    <span style={{width:"290px"}}>
                       {isSidebarExpanded && item.name}
                     </span>
                   </div>
