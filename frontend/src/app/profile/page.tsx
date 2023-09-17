@@ -13,27 +13,6 @@ function Pofile() {
   const dispatch = useDispatch()
   const router = useRouter()
  
-  // const getUser= async()=>{
-  //   try {
-  //     const token = Cookies.get('token')
-  //     console.log(token)
-  //     const res = await fetch("http://localhost:5000/api/users/me" , {
-  //         headers:{
-  //           "Authorization" : `Bearer ${token}`
-  //         }
-  //       })
-  //       const data = await res.json()
-  //       dispatch(setCurrentUser(data))
-  //       console.log(data)
-  
-  //       return data
-  //   } catch (error:any) {
-  //     console.log(error)
-  //   }
-  // }
-  // useEffect(()=>{
-  //   getUser()
-  // },[])
 
   const onFinish = async (values:any)=>{
     try {

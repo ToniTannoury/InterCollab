@@ -232,7 +232,7 @@ const changeProfilePicture = asyncHandler(async (req, res) => {
     res.status(404).json({ message: 'User not found' });
     return;
   }
-  
+  console.log(profilePicture)
   user.profile_picture = profilePicture.originalname; 
   try {
     await user.save();

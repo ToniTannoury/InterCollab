@@ -53,7 +53,7 @@ const roomHandler = (socket) => {
 
     room.currentParticipants.push(user);
     await room.save();
-
+    if (!room.totalParticipants.includes(user)) room.totalParticipants.push(user)
 
     setTimeout(() => {
       console.log(`User ${peerId} joined`);

@@ -59,10 +59,16 @@ const UserInfoBar = ({ user, search }: any) => {
     }
   };
   const handleProfilePictureChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    
     event.preventDefault();
     const body = new FormData();
+    console.log(3)
+    console.log(picture)
     body.append("filename", picture);
-  
+    body.forEach((value, key) => {
+      console.log(key, value);
+    });
+   
     try {
       const response = await fetch('http://localhost:5000/api/users/changeProfilePicture', {
         method: "PUT",
@@ -74,6 +80,7 @@ const UserInfoBar = ({ user, search }: any) => {
   
       if (response.ok) {
         const data = await response.json();
+        console.log(data)
         dispatch(setCurrentUser(data.data))
         // Update the image source with the new profile picture URL
         const updatedImageUrl = `http://localhost:5000/images/${data.data.profile_picture}`;
@@ -93,11 +100,16 @@ const UserInfoBar = ({ user, search }: any) => {
 
   const handleFileInputChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile =event.target.files !== null && event.target.files[0];
+    
+   
+    console.log(selectedFile)
+    console.log(1)
     selectedFile && setPicture(selectedFile) 
   };
   useEffect(() => {
     if (picture) {
-      buttonRef.current?.click(); 
+      console.log(2)
+      buttonRef.current?.click()
     }
   }, [picture]);
 
@@ -115,7 +127,7 @@ const UserInfoBar = ({ user, search }: any) => {
           />
        
             <div>
-              <form onSubmit={()=>{handleProfilePictureChange}} encType="multipart/form-data">
+              <form onSubmit={handleProfilePictureChange} encType="multipart/form-data">
                 <input
                 type="file"
                 ref={fileInputRef}
