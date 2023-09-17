@@ -6,7 +6,7 @@ const Room = require('../models/roomModel')
 
 const createRoom = asyncHandler(async (req, res)=>{
   
-  const {  description , title  ,type , category , maxNumberOfParticipants} = req.body
+  const {  description , title  ,type , category , maxNumberOfParticipants , priceToEnter} = req.body
   
   if(!description){
     res.status(400)
@@ -19,15 +19,28 @@ const createRoom = asyncHandler(async (req, res)=>{
     res.status(401)
     throw new Error('User not found')
   }
+  if(type!=="paid"){
+    
+  }
  
-  const room = await Room.create({
+  const room = type === "paid" ? await Room.create({
       description,
       user: req.user.id,
       maxNumberOfParticipants,
       category,
       title,
-      type
-  })
+      type,
+      priceToEnter
+  }):await Room.create({
+    description,
+    user: req.user.id,
+    maxNumberOfParticipants,
+    category,
+    title,
+    type,
+    
+})
+
 
   res.status(200).json(room)
 })

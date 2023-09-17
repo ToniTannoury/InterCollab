@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const {validationResult} = require('express-validator')
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
-
+const Room = require('../models/roomModel')
 
 const User = require('../models/userModel')
 
@@ -207,6 +207,22 @@ const updateUser = asyncHandler(async (req, res) => {
   }
 });
 
+const coinTransfer = asyncHandler(async(req , res)=>{
+  
+  const enteringRoom =await Room.findById(req.body.roomId).populate("user")
+  console.log(enteringRoom)
+  const roomCreator = enteringRoom.user
+  console.log(roomCreator)
+  const sender = await User.findById(req.user._id)
+  sender.coins = sender.coins  -  req.body.amount
+  await sender.save()
+  console.log(sender)
+  roomCreator.coins = roomCreator.coins  +  req.body.amount
+  console.log(roomCreator)
+  await roomCreator.save()
+
+})
+
 const changeProfilePicture = asyncHandler(async (req, res) => {
   const userId = req.user.id;
   const profilePicture = req.files[0];
@@ -295,5 +311,6 @@ module.exports = {
   changeProfilePicture,
   getUserById,
   createCheckoutSession,
+  coinTransfer
   
 }

@@ -2,11 +2,11 @@
 
 import { setLoading } from "@/redux/loadersSlice"
 import { Button, Col, Divider, Row, message } from "antd"
-import axios from "axios"
 import { useParams, useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import Cookies from "js-cookie"
+import { setCurrentUser } from "@/redux/usersSlice"
 // import socketIO from 'socket.io-client'
 // const WS = 'http://localhost:5000'
 function RoomInfo() {
@@ -15,7 +15,7 @@ function RoomInfo() {
   const dispatch = useDispatch()
   const [roomData , setRoomData] = useState<any>(null)
   const [code , setCode] = useState<string>('')
-  const {currentUser} = useSelector((state:any)=>state.users)
+  const {currentUser } = useSelector((state:any)=>state.users)
 
   const fetchJob = async()=>{
     try {
@@ -34,11 +34,45 @@ function RoomInfo() {
     }
   }
 
+  const coinTransfer = async ()=>{
+    if(currentUser.coins<=roomData.priceToEnter){
+      message.error("Not enough coins to  join")
+      return
+    }
+    router.push(`/test/${roomData._id}`)
+    dispatch(setCurrentUser({
+      ...currentUser,
+      coins:currentUser.coins-roomData.priceToEnter
+    }))
+      const response = await fetch(`http://localhost:5000/api/users/coinTransfer`,{
+      method:"POST",
+        headers:{
+          "Content-Type":"application/json",
+          "Authorization":`Bearer ${Cookies.get('token')}`
+        },
+        body:JSON.stringify({
+          roomId:roomId,
+          amount:roomData.priceToEnter
+        })
+      })
+      console.log(333)
+      const data = await response.json()
+      console.log(data)
+      
+   
+    console.log("push")
+    
+    
+  }
+
   
   
   useEffect(()=>{
     fetchJob()
   },[])
+  useEffect(()=>{
+    console.log(currentUser)
+  },[currentUser])
   const checkPin = async(e:any)=>{
     e.preventDefault()
     roomData.pinCode === code && router.push(`/test/${roomData._id}`)
@@ -115,7 +149,7 @@ function RoomInfo() {
           
           <Button type="default" onClick={()=>router.back()}>Cancel</Button>
 
-          {(roomData.type === "public" || roomData.user._id === currentUser._id) && <Button type="primary" className="bg-ICblue"  onClick={()=>router.push(`/test/${roomData._id}`)}>Join Now</Button>}
+          {(roomData.type === "public" || roomData.user._id === currentUser._id)&&roomData.type !== "paid" && <Button type="primary" className="bg-ICblue"  onClick={()=>router.push(`/test/${roomData._id}`)}>Join Now</Button>}
 
           {roomData.type === "private" && roomData.user._id !== currentUser._id &&
           (
@@ -123,7 +157,10 @@ function RoomInfo() {
               <input value={code} className="pincode" type="text" onChange={(e)=>setCode(e.target.value)}/>
             </form>
           )}
+           {(roomData.type === "paid" )&&roomData.type !== "public" &&  roomData.user._id !== currentUser._id&&<Button onClick={coinTransfer} type="primary" className="bg-ICblue" >Join Now For {roomData.priceToEnter} Coins</Button>}
+           {(roomData.type === "paid" )&&roomData.type !== "public" &&  roomData.user._id === currentUser._id&&<Button type="primary" className="bg-ICblue"  onClick={()=>router.push(`/test/${roomData._id}`)}>Join Now</Button>}
         </div>
+       
         </Col>
         
       </Row>
