@@ -19,6 +19,8 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
   const [selectedBundle, setSelectedBundle] = useState<number | null>(null);
 
   const [isSidebarExpanded , setIsSidebarExpanded] = useState(true)
+  const [rating, setRating] = useState<number>(0);
+  const [isRating, setIsRating] = useState<boolean>(false);
   const {loading} = useSelector((state:any)=>state.loaders)
   const [peers , dispatching] = useReducer(peersReducer , {})
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -31,6 +33,9 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+  const handleStarClick = (index:number) => {
+    setRating(index + 1);
   };
   const path  = usePathname()
   const [menuItems , setMenuItems] = useState([
@@ -227,6 +232,28 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
       <div className='flex w-full justify-end '>
         <button onClick={processCheckout} className=' h-10 bg-white my-4 p-1 mr-3 rounded font-bold'>Checkout</button>
       </div>
+    </Modal>
+    <Modal
+      isOpen={isRating}
+      onRequestClose={closeModal}
+      contentLabel="Coins Modal"
+      ariaHideApp={false}
+      className={'modal pt-2'}
+    >
+          <div>
+          <p>Rating: {rating} out of 5</p>
+          <div className="star-rating">
+            {[...Array(5)].map((_, index) => (
+              <span
+                key={index}
+                className={index < rating ? 'star filled' : 'star'}
+                onClick={() => handleStarClick(index)}
+              >
+                &#9733; {/* Unicode character for a star */}
+              </span>
+            ))}
+          </div>
+        </div>
     </Modal>
       </ConfigProvider>
     </body>

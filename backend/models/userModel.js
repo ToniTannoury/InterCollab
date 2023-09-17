@@ -38,6 +38,11 @@ const userSchema = mongoose.Schema({
     required:false,
     default:5
   },
+  ratings:{
+    type: Number,
+    required:false,
+    default:0
+  },
   profile_picture:{
     type:String,
     required:false,
