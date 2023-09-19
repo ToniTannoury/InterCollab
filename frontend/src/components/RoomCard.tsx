@@ -35,7 +35,7 @@ function RoomCard({room}:any) {
             </div>
           </div>
           <div className='mr-3 text-white mt-6'>
-            Max number of Participants : {room.totalParticipants.length}
+            Number of Participants : {room.totalParticipants.length}
           </div>
         </div>
         <div>

@@ -20,6 +20,20 @@ export async function getUser(){
     console.log(error)
   }
 }
+const getTop5RoomsByTotalParticipants = async()=>{
+  const token = cookies().get('token')
+  console.log(token)
+  console.log(1111)
+  const res = await fetch("http://localhost:5000/api/rooms/getTop5RoomsByTotalParticipants" , {
+    headers:{
+      "Authorization" : `Bearer ${token!.value}`
+    }
+  })
+  const data = await res.json()
+  return data
+//   console.log(2324)
+//   console.log(data)
+}
 const roomsOfTheMonth = 
   [
     {
@@ -177,7 +191,8 @@ const roomsOfTheMonth =
 
 export default async function Home() {
   const user =await getUser()
- 
+  const rooms:any = await getTop5RoomsByTotalParticipants()
+  
   return (
     <div>
         <h1 className="month-header text-4xl font-extrabold  text-ICblue ">
@@ -190,7 +205,7 @@ export default async function Home() {
         <h4 className="font-base text-gray-600 text-center">Check out the most attended or viewed rooms</h4>
       </div>
       <div>
-        <Carousel rooms={roomsOfTheMonth} home/>
+        <Carousel rooms={rooms?.topRooms} home/>
       </div>
         <div className="flex gap-10">
           <BottomHomeComponent/>

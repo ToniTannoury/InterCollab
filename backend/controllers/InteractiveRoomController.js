@@ -52,9 +52,10 @@ const roomHandler = (socket) => {
     }
 
     room.currentParticipants.push(user);
+   console.log(user._id)
+   console.log(room.totalParticipants.includes(user._id))
+    if (!room.totalParticipants.includes(user._id)) room.totalParticipants.push(user._id)
     await room.save();
-    if (!room.totalParticipants.includes(user)) room.totalParticipants.push(user)
-
     setTimeout(() => {
       console.log(`User ${peerId} joined`);
       socket.to(roomId).emit("user-joined", {
@@ -67,24 +68,6 @@ const roomHandler = (socket) => {
       roomId,
       participants: room.currentParticipants,
     });
-    
-      // socket.on('chatMessage', (props) => {
-      //   const {message , roomName , userName} = props
-      //   console.log(roomId)
-      //   console.log(userName)
-      //   console.log(message)
-      //   console.log("Naaaaaaaameeeeeeeeeeee")
-      //   socket.join(roomId)
-        
-      //   setTimeout(() => {
-      //     console.log(Object.keys(socket.rooms))
-      //     socket.emit('Messages',{ message , userName});
-      //   }, 2000);
-       
-      // })
-
-   
-    
     socket.on('disconnect', () => {
       console.log("Plzzzzzzzzzzzzzzzz disconnected");
       leaveRoom({ roomId, peerId });
