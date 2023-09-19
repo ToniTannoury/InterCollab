@@ -89,7 +89,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
   }
   const leaveRoom = async()=>{
     console.log(roomId)
-    setIsRating(true)
+    roomId.user._id !== currentUser._id && setIsRating(true)
     dispatch(removeOtherPeersAction())
     setParticipants([])
     Cookies.set('creator_id' , roomId.user._id)
