@@ -1,7 +1,7 @@
 'use client'
 import {ConfigProvider, message} from 'antd'
 import { usePathname } from 'next/navigation'
-import {useState , useEffect, useReducer} from 'react'
+import {useState , useEffect, useReducer, useContext} from 'react'
 import {useRouter} from 'next/navigation'
 import "../stylesheets/layout.css"
 import Image from 'next/image'
@@ -13,14 +13,14 @@ import Cookie from 'js-cookie'
 import { removeOtherPeersAction } from '@/context/peerActions'
 import { peersReducer } from '@/context/peerReducer'
 import Modal from 'react-modal';
+import { RoomContext } from '@/context/RoomContext'
 function LayoutProvider({children}:{children:React.ReactNode}) {
   const router = useRouter()
   const {currentUser} = useSelector((state:any)=>state.users)
   const [selectedBundle, setSelectedBundle] = useState<number | null>(null);
-
+  const {isRating, setIsRating} = useContext(RoomContext)
   const [isSidebarExpanded , setIsSidebarExpanded] = useState(true)
   const [rating, setRating] = useState<number>(0);
-  const [isRating, setIsRating] = useState<boolean>(false);
   const {loading} = useSelector((state:any)=>state.loaders)
   const [peers , dispatching] = useReducer(peersReducer , {})
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -118,6 +118,20 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
     }).catch(e=>{
       console.log(e.error)
     })
+  }
+  const rateCreator = async()=>{
+    const res = await fetch("http://localhost:5000/api/users/rateCreator" , {
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "Authorization" : `Bearer ${Cookie.get('token')}`
+      },
+      body:JSON.stringify({
+        creator_id:Cookie.get("creator_id"),
+        rating
+      })
+    })
+    const data = await res.json()  
   }
   return (
     <html lang="en">
@@ -235,7 +249,7 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
     </Modal>
     <Modal
       isOpen={isRating}
-      onRequestClose={closeModal}
+      onRequestClose={()=>setIsRating(false)}
       contentLabel="Coins Modal"
       ariaHideApp={false}
       className={'modal pt-2'}
@@ -249,10 +263,11 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
                 className={index < rating ? 'star filled' : 'star'}
                 onClick={() => handleStarClick(index)}
               >
-                &#9733; {/* Unicode character for a star */}
+                &#9733; 
               </span>
             ))}
           </div>
+          <button onClick={rateCreator}>Submit</button>
         </div>
     </Modal>
       </ConfigProvider>

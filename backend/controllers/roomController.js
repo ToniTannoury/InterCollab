@@ -173,7 +173,19 @@ const searchRoomById = asyncHandler(async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+const getTop5RoomsByTotalParticipants = async () => {
+  try {
+    // Sort rooms in descending order of totalParticipants and limit to 5
+    const top5Rooms = await Room.find()
+      .sort({ totalParticipants: -1 })
+      .limit(5);
 
+    return top5Rooms;
+  } catch (error) {
+    // Handle any errors that may occur during the database query
+    throw new Error('Error fetching top 5 rooms: ' + error.message);
+  }
+};
 
 
 module.exports = {
@@ -182,5 +194,6 @@ module.exports = {
   searchRoomsByTitle,
   searchRoomsByUserName,
   searchRoomsByType,
-  searchRoomById
+  searchRoomById,
+  getTop5RoomsByTotalParticipants
 }

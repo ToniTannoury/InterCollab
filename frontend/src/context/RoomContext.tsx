@@ -32,6 +32,8 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
   const [stream , setStream] = useState<MediaStream>()
   const [peers , dispatch] = useReducer(peersReducer , {})
   const [participants , setParticipants] = useState<any>([])
+  const [isRating, setIsRating] = useState<boolean>(true);
+
   const [connectionArray, setConnectionArray] = useState<any>([]);
   const [roomId , setRoomId] = useState<any>("")
   const [messages,setMessages] = useState<any>([]) 
@@ -83,7 +85,9 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
 
   }
   const leaveRoom = async()=>{
-    console.log(me)
+    console.log(roomId)
+    setIsRating(true)
+    Cookies.set('creator_id' , roomId.user._id)
     ws.disconnect()
     router.push('/')
   }
@@ -244,5 +248,5 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
   console.log(peers)
   console.log(Cookies.get('token'))
   console.log(roomId)
-  return <RoomContext.Provider value={{ ws , me, stream , peers , shareScreen , setRoomId  , participants , roomId , screenSharringId , messages,mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages}}>{children}</RoomContext.Provider>;
+  return <RoomContext.Provider value={{ ws , me, stream , peers , shareScreen , setRoomId  , participants , roomId , screenSharringId , messages,mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages,isRating, setIsRating}}>{children}</RoomContext.Provider>;
 };
