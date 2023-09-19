@@ -301,18 +301,20 @@ const createCheckoutSession = asyncHandler(async(req , res)=>{
 })
 const rateCreator = asyncHandler(async(req , res)=>{
   const {creator_id , rating} = req.body
-  let currentNumRatings = req.user.ratings+1
-  let currentAverage =req.user.rating;
+  const creator = await User.findById(creator_id)
+  console.log(creator)
+  let currentNumRatings = creator.ratings+1
+  let currentAverage =creator.rating;
   let newRating = rating
   let currentSum = currentAverage * currentNumRatings;
   let newSum = currentSum + newRating;
   currentNumRatings++;
   let newAverage = newSum / currentNumRatings;
-
-  req.user.rating = newAverage
-  req.user.ratings = currentNumRatings-1
-  await req.user.save()
-  console.log(req.user)
+  
+  creator.rating = newAverage
+  creator.ratings = currentNumRatings-1
+  await creator.save()
+  console.log(creator)
 })
 
 module.exports = {
