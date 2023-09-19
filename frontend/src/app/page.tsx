@@ -195,9 +195,6 @@ export default async function Home() {
   
   return (
     <div>
-        <h1 className="month-header text-4xl font-extrabold  text-ICblue ">
-          Home
-        </h1>
       <div className="flex flex-col my-3">
         <h1 className="month-header text-2xl font-extrabold text-center text-ICblue ">
           Rooms Of The Month
