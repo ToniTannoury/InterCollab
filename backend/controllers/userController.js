@@ -210,15 +210,12 @@ const updateUser = asyncHandler(async (req, res) => {
 const coinTransfer = asyncHandler(async(req , res)=>{
   
   const enteringRoom =await Room.findById(req.body.roomId).populate("user")
-  console.log(enteringRoom)
   const roomCreator = enteringRoom.user
   console.log(roomCreator)
   const sender = await User.findById(req.user._id)
   sender.coins = sender.coins  -  req.body.amount
   await sender.save()
-  console.log(sender)
   roomCreator.coins = roomCreator.coins  +  req.body.amount
-  console.log(roomCreator)
   await roomCreator.save()
 
 })
@@ -232,7 +229,6 @@ const changeProfilePicture = asyncHandler(async (req, res) => {
     res.status(404).json({ message: 'User not found' });
     return;
   }
-  console.log(profilePicture)
   user.profile_picture = profilePicture.originalname; 
   try {
     await user.save();
@@ -243,7 +239,6 @@ const changeProfilePicture = asyncHandler(async (req, res) => {
 });
 const getUserById = asyncHandler(async (req, res) => {
   const {userId} = req.query; 
-  console.log(userId)
   const user = await User.findById(userId);
 
   if (!user) {
@@ -292,7 +287,6 @@ const createCheckoutSession = asyncHandler(async(req , res)=>{
       success_url:`${process.env.CLIENT_URL}`,
       cancel_url:`${process.env.CLIENT_URL}`,
     }).catch(err=>console.log(err))
-      console.log(session)
     res.json({url:session.url})
   } catch (error) {
     res.status(500).json({error:e.message})
@@ -302,7 +296,6 @@ const createCheckoutSession = asyncHandler(async(req , res)=>{
 const rateCreator = asyncHandler(async(req , res)=>{
   const {creator_id , rating} = req.body
   const creator = await User.findById(creator_id)
-  console.log(creator)
   let currentNumRatings = creator.ratings+1
   let currentAverage =creator.rating;
   let newRating = rating
@@ -314,7 +307,6 @@ const rateCreator = asyncHandler(async(req , res)=>{
   creator.rating = newAverage
   creator.ratings = currentNumRatings-1
   await creator.save()
-  console.log(creator)
 })
 
 module.exports = {

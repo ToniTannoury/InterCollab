@@ -214,7 +214,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     })
 
 
-  },[me , stream])
+  },[me?.id , stream])
 
   if(!path.startsWith("/test")){
     // ws.disconnect()

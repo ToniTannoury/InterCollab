@@ -26,9 +26,6 @@ const roomHandler = (socket) => {
 
       room.currentParticipants = room.currentParticipants.filter((participant) => {
         const objectId1 = new mongoose.Types.ObjectId(peerId);
-        console.log(participant._id.toString() != objectId1.toString())
-        console.log(participant._id)
-        console.log(objectId1)
         return participant._id.toString() !== objectId1.toString();
       });
 
@@ -52,6 +49,7 @@ const roomHandler = (socket) => {
     }
 
     room.currentParticipants.push(user);
+    console.log(1)
    console.log(user._id)
    console.log(room.totalParticipants.includes(user._id))
     if (!room.totalParticipants.includes(user._id)) room.totalParticipants.push(user._id)
@@ -63,7 +61,9 @@ const roomHandler = (socket) => {
       });
     }, 2000);
 
+
     
+
     socket.emit("get-users", {
       roomId,
       participants: room.currentParticipants,

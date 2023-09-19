@@ -49,7 +49,6 @@ app.post('/webhook', express.raw({type: 'application/json'})  ,(req, res) => {
     // Parse the raw request body as a Buffer
     const rawBody = req.body;
     event = stripe.webhooks.constructEvent(rawBody, sig, endpointSecret);
-    console.log("webhook");
   } catch (err) {
     console.log(err.message);
     res.status(400).send(`Webhook Error: ${err.message}`);
@@ -62,7 +61,6 @@ app.post('/webhook', express.raw({type: 'application/json'})  ,(req, res) => {
     stripe.customers.retrieve(data.customer).then(
       async(customer)=>{
    
-        console.log(customer.metadata.bundle)
         const user =await User.findById(customer.metadata.userId)
         user.coins = user.coins + bundles.get(+customer.metadata.bundle).priceInCents
         await user.save()
@@ -119,11 +117,9 @@ const io = new Server(server,{
   }
 })
 io.on("connection" , (socket)=>{
-  // console.log('user is connected')
   socket.on('join',async ({roomId}) => { 
     
     socket.join(roomId.toString()); 
-    console.log(`joined chat of ${roomId}`)
   });
   const emitMessage = ({message , roomId , userName})=>{
     socket.to(roomId.toString()).emit('Messages',{ message , userName})
@@ -132,7 +128,6 @@ io.on("connection" , (socket)=>{
     socket.to(roomId._id).emit('screenSharing',{ status })
   }
   const stopShare = ({mediaShareStatus , roomId })=>{
-    console.log(mediaShareStatus ,roomId)
     socket.to(roomId).emit('mediaSharing',{ mediaShareStatus })
   }
 

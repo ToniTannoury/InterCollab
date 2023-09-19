@@ -175,12 +175,10 @@ const searchRoomById = asyncHandler(async (req, res) => {
 });
 const getTop5RoomsByTotalParticipants = asyncHandler(async (req , res) => {
   try {
-    console.log(5)
     const top5Rooms = await Room.find().populate('user')
       .sort({ totalParticipants: -1 })
       .limit(5);
       res.status(200).json({ topRooms: top5Rooms })
-      console.log(top5Rooms)
     return top5Rooms;
   } catch (error) {
     console.log(error.message)
