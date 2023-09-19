@@ -45,7 +45,7 @@ function RoomCard({room}:any) {
             setTimeout(()=>{
               location.reload()
             },1000)
-            }} className='bg-slate-50 h-7 w-20 ml-4 font-semibold text-ICblue'>
+            }} className='bg-slate-50 h-7 w-20 ml-4 font-semibold text-ICblue card-button'>
             Room Info
           </button>
           </div>

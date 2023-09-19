@@ -253,3 +253,9 @@ video{
 .star.filled {
   color: gold; /* Filled star color */
 }
+
+.card-button{
+  width: 120px;
+  border-radius: 7px;
+  font-size: 13px;
+}
