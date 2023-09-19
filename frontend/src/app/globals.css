@@ -220,6 +220,15 @@ video{
   border: transparent;
   border-radius: 10px;
 }
+.rating-modal{
+  width: 300px !important;
+  height: 200px !important;
+  background: #213555;
+  margin: auto;
+  margin-top: 110px;
+  border: transparent;
+  border-radius: 10px;
+}
 .bundle{
   width: 150px;
   height: 100px;
@@ -244,6 +253,8 @@ video{
 
 .star-rating {
   font-size: 55px;
+  display: flex;
+  justify-content: center;
 }
 
 .star {

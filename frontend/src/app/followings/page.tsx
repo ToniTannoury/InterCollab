@@ -105,7 +105,6 @@ const handleUnFollowClick = async (e:any) => {
       </div>
       <div>
        <div className='flex gap-5 flex-wrap'>
-        {console.log(filteredArray)}
         {filteredArray?.map((user:any)=>{
             return (
               user && <div data-id={user._id} className='following bg-ICblue rounded-xl'>

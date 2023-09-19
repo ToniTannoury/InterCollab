@@ -260,7 +260,7 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
       onRequestClose={()=>setIsRating(false)}
       contentLabel="Coins Modal"
       ariaHideApp={false}
-      className={'modal pt-2'}
+      className={'rating-modal pt-2'}
     >
           <div>
             <div className='flex justify-center text-2xl font-semibold text-white'>
@@ -277,7 +277,9 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
               </span>
             ))}
           </div>
-          <button onClick={rate}>Submit</button>
+          <div className='flex justify-center items-center ml-10 bg-white w-3/4 rounded font-semibold hover:text-xl cursor-pointer'>
+            <button onClick={rate}>Submit</button>
+          </div>
         </div>
     </Modal>
       </ConfigProvider>
