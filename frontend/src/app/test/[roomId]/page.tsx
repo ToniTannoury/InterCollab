@@ -27,7 +27,7 @@ function Room() {
   const {currentUser} = useSelector((state:any)=>state.users)
 
   
-  const {ws , me , stream ,peers,shareScreen , participants ,setRoomId,roomId:id,screenSharringId , messages, mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages , } = useContext(RoomContext)
+  const {ws , me , stream ,peers,shareScreen , participants ,setRoomId,roomId:id,screenSharringId , messages, mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages ,removeAllPeers } = useContext(RoomContext)
   console.log(id)
   const dispatch = useDispatch()
   const [state , dispatching] = useReducer(peersReducer , {})

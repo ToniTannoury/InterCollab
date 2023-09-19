@@ -84,9 +84,13 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     }
 
   }
+  const removeAllPeers = async()=>{
+    
+  }
   const leaveRoom = async()=>{
     console.log(roomId)
     setIsRating(true)
+    dispatch(removeOtherPeersAction())
     Cookies.set('creator_id' , roomId.user._id)
     ws.disconnect()
     router.push('/')
@@ -248,5 +252,5 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
   console.log(peers)
   console.log(Cookies.get('token'))
   console.log(roomId)
-  return <RoomContext.Provider value={{ ws , me, stream , peers , shareScreen , setRoomId  , participants , roomId , screenSharringId , messages,mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages,isRating, setIsRating}}>{children}</RoomContext.Provider>;
+  return <RoomContext.Provider value={{ ws , me, stream , peers , shareScreen , setRoomId  , participants , roomId , screenSharringId , messages,mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages,isRating, setIsRating , removeAllPeers}}>{children}</RoomContext.Provider>;
 };
