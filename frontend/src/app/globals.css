@@ -258,4 +258,8 @@ video{
   width: 120px;
   border-radius: 7px;
   font-size: 13px;
+  
+}
+.logout-button{
+  font-size: 50px !important;
 }
