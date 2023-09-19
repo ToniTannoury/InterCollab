@@ -91,7 +91,7 @@ function RoomSearchInput() {
       <h1 className="month-header text-4xl font-extrabold  text-ICblue ">
           Interactive Rooms
         </h1>
-        <div className='flex flex-col'>
+        <div className='flex flex-col -mt-2'>
         <label className='text-gray-600' htmlFor="">Look for Rooms that suit your mood</label>
         <div className='flex'>
         
