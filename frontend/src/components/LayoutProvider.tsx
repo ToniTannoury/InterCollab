@@ -263,7 +263,9 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
       className={'modal pt-2'}
     >
           <div>
-          <p>Rating: {rating} out of 5</p>
+            <div className='flex justify-center text-2xl font-semibold text-white'>
+              <p >Rate the creator</p>
+            </div>
           <div className="star-rating">
             {[...Array(5)].map((_, index) => (
               <span
