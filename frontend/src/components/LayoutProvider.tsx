@@ -131,7 +131,15 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
         rating
       })
     })
-    const data = await res.json()  
+    
+    const data = await res.json() 
+    
+  }
+  const rate = async ()=>{
+    rateCreator()
+    Cookie.remove("creator_id") 
+    setIsRating(false)
+    console.log(rating)
   }
   return (
     <html lang="en">
@@ -267,7 +275,7 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
               </span>
             ))}
           </div>
-          <button onClick={rateCreator}>Submit</button>
+          <button onClick={rate}>Submit</button>
         </div>
     </Modal>
       </ConfigProvider>
