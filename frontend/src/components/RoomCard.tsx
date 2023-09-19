@@ -3,7 +3,7 @@ import '../stylesheets/room.css'
 import { useRouter } from 'next/navigation';
 import { useReducer } from 'react';
 import { peersReducer } from '@/context/peerReducer';
-import { removeOtherPeersAction } from '@/context/peerActions';
+
 
 function RoomCard({room}:any) {
   const [state , dispatching ] = useReducer(peersReducer , {})
@@ -42,10 +42,6 @@ function RoomCard({room}:any) {
           <button  onClick={()=>{
              
             router.push(`/roomInfo/${room._id}`)
-            console.log(state)
-            // setTimeout(()=>{
-            //   location.reload()
-            // },1000)
             }} className='bg-slate-50 h-7 w-20 ml-4 font-semibold text-ICblue card-button'>
             Room Info
           </button>

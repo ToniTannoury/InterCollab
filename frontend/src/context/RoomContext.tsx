@@ -91,6 +91,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     console.log(roomId)
     setIsRating(true)
     dispatch(removeOtherPeersAction())
+    setParticipants([])
     Cookies.set('creator_id' , roomId.user._id)
     ws.disconnect()
     router.push('/')

@@ -10,7 +10,6 @@ import { setCurrentUser } from '@/redux/usersSlice'
 import Loader from './Loader'
 import { setLoading } from '@/redux/loadersSlice'
 import Cookie from 'js-cookie'
-import { removeOtherPeersAction } from '@/context/peerActions'
 import { peersReducer } from '@/context/peerReducer'
 import Modal from 'react-modal';
 import { RoomContext } from '@/context/RoomContext'

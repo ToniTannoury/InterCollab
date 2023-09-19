@@ -6,7 +6,6 @@ import { VideoPlayer } from '@/components/VideoPlayer';
 import { PeerState, peersReducer } from '../../../context/peerReducer'
 import { useDispatch, useSelector } from 'react-redux';
 import Cookies from 'js-cookie';
-import { removeOtherPeersAction } from '@/context/peerActions';
 import { ShareScreenButton } from '@/components/ShareScreenButton';
 import { setLoading } from '@/redux/loadersSlice';
 import { setCurrentUser } from '@/redux/usersSlice';
