@@ -87,12 +87,14 @@ function RoomSearchInput() {
   }
   return (
     <div>
-      <div className='flex flex-col'>
-        <label className='text-gray-600' htmlFor="">Look for Rooms that suit your mood</label>
-        <div className='flex'>
-        <h1 className="month-header text-4xl font-extrabold  text-ICblue ">
+      <div className='flex justify-between'>
+      <h1 className="month-header text-4xl font-extrabold  text-ICblue ">
           Interactive Rooms
         </h1>
+        <div className='flex flex-col'>
+        <label className='text-gray-600' htmlFor="">Look for Rooms that suit your mood</label>
+        <div className='flex'>
+        
           <input
             type="text"
             className='input user-search'
@@ -117,6 +119,8 @@ function RoomSearchInput() {
         </div>
         
       </div>
+      </div>
+      
       <div className='relative'>
       {searchResults.map((categoryGroup, index) => (
           <div key={index}>
