@@ -108,7 +108,7 @@ const handleUnFollowClick = async (e:any) => {
         {console.log(filteredArray)}
         {filteredArray?.map((user:any)=>{
             return (
-              user && <div data-id={user._id} className='following bg-ICblue rounded'>
+              user && <div data-id={user._id} className='following bg-ICblue rounded-xl'>
                 <div className='flex items-center gap-3'>
                   <Image className='img-1 ml-5 mt-5 ' src={(`http://localhost:5000/images/${user.profile_picture}`)} alt='logo' width={2000} height={500}>
 
