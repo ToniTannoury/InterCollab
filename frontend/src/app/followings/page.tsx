@@ -115,7 +115,7 @@ const handleUnFollowClick = async (e:any) => {
                   </Image>  
                   <span className='flex flex-col pt-6'>
                     <b className='text-lg text-white'>{user.name}</b>
-                    <b className='flex gap-1 text-lg text-white'>{user.rating}<div  className='ri-star-line text-yellow-400 font-extrabold'></div></b>
+                    <b className='flex gap-1 text-lg text-white'>{user.rating.toFixed(2)}<div  className='ri-star-line text-yellow-400 font-extrabold'></div></b>
                   </span>
                   
                 </div>
@@ -132,7 +132,7 @@ const handleUnFollowClick = async (e:any) => {
                   </div>
                 </div>
                 <div className='flex justify-end'>
-                <button onClick={handleUnFollowClick} className='pl-2 pr-2 bg-white h-7  mr-11 my-4 rounded card-button'>Unfollow</button>
+                <button onClick={handleUnFollowClick} className='pl-2 pr-2 bg-white h-7  mr-3 my-4 rounded card-button'>Unfollow</button>
 
                 </div>
               </div>
