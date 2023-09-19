@@ -131,7 +131,10 @@ const handleUnFollowClick = async (e:any) => {
                     </p>
                   </div>
                 </div>
-                <button onClick={handleUnFollowClick} className='pl-2 pr-2 bg-white h-7 ml-6  mt-2 rounded'>Unfollow</button>
+                <div className='flex justify-end'>
+                <button onClick={handleUnFollowClick} className='pl-2 pr-2 bg-white h-7  mr-11 my-4 rounded card-button'>Unfollow</button>
+
+                </div>
               </div>
             )
           })}
