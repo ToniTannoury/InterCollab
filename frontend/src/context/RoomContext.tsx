@@ -32,7 +32,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
   const [stream , setStream] = useState<MediaStream>()
   const [peers , dispatch] = useReducer(peersReducer , {})
   const [participants , setParticipants] = useState<any>([])
-  const [isRating, setIsRating] = useState<boolean>(true);
+  const [isRating, setIsRating] = useState<boolean>(false);
 
   const [connectionArray, setConnectionArray] = useState<any>([]);
   const [roomId , setRoomId] = useState<any>("")

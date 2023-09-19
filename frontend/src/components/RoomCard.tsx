@@ -42,9 +42,10 @@ function RoomCard({room}:any) {
           <button  onClick={()=>{
              
             router.push(`/roomInfo/${room._id}`)
-            setTimeout(()=>{
-              location.reload()
-            },1000)
+            console.log(state)
+            // setTimeout(()=>{
+            //   location.reload()
+            // },1000)
             }} className='bg-slate-50 h-7 w-20 ml-4 font-semibold text-ICblue card-button'>
             Room Info
           </button>

@@ -23,7 +23,7 @@ export const peersReducer = (state:PeerState,action:peerAction)=>{
       const{[action.payload.peerId]:deleted , ...rest} = state
       return rest
     case REMOVE_OTHER_PEERS:
-      console.log(action.payload)
+      console.log("peers removed")
       return {}
     default:
       return {...state}
