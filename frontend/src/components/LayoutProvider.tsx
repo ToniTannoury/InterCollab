@@ -38,7 +38,28 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
     setRating(index + 1);
   };
   const path  = usePathname()
-
+  const [menuItems , setMenuItems] = useState([
+    {
+      name:'Home',
+      path:'/',
+      icon:"ri-home-7-line"
+    },
+    {
+      name:'Profile',
+      path:'/profile',
+      icon:"ri-shield-user-line"
+    },
+    {
+      name:'Interactive Rooms',
+      path:'/rooms',
+      icon:"ri-file-list-2-line"
+    },
+    {
+      name:'Followings',
+      path:'/followings',
+      icon:"ri-user-line"
+    },
+  ])
   const dispatch = useDispatch()
   const pathname = usePathname()
   const getCurrentUser = async()=>{
