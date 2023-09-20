@@ -1,15 +1,12 @@
-const { Socket } = require("socket.io");
-const { v4: uuidV4 } = require('uuid');
 const Room = require('../models/roomModel');
 const User = require('../models/userModel');
 const mongoose = require('mongoose')
-const rooms = {};
+
 
 const roomHandler = (socket) => {
  
   const createRoom = ({ roomId }) => {
     socket.emit('room-created', { roomId });
-    // console.log(`user created the room ${roomId}`);
   };
 
   const leaveRoom = async ({ roomId, peerId }) => {
@@ -44,7 +41,6 @@ const roomHandler = (socket) => {
     socket.join(roomId);
 
     const user = await User.findById(peerId);
-    // console.log(user)
     const room = await Room.findById(roomId);
     if (!user || !room) {
       console.error("User or room not found.");
@@ -52,8 +48,6 @@ const roomHandler = (socket) => {
     }
 
     room.currentParticipants.push(user);
-    console.log(1)
-   console.log(user._id)
    console.log(room.totalParticipants.includes(user._id))
     if (!room.totalParticipants.includes(user._id)) room.totalParticipants.push(user._id)
     await room.save();
