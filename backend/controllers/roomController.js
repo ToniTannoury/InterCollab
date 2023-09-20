@@ -158,6 +158,37 @@ const searchRoomsByUserName = asyncHandler(async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
+const searchRoomsByType = asyncHandler(async (req, res) => {
+  const { type, page = 1, pageSize = 10 } = req.query;
+
+  const query = {};
+
+  if (type) {
+    const typeRegex = new RegExp(type, 'i'); 
+
+    query.type = typeRegex;
+  }
+
+  try {
+    const options = {
+      page: parseInt(page),
+      limit: parseInt(pageSize),
+      populate: 'user'
+    };
+
+    const rooms = await Room.paginate(query, options);
+
+    if (rooms.docs.length === 0) {
+      res.status(404).json({ message: 'No room found for the specific criteria' });
+    } else {
+      res.status(200).json(rooms);
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 module.exports = {
   createRoom,
   searchRoomsByCategory,
