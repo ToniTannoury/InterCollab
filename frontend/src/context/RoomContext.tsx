@@ -7,7 +7,7 @@ import Peer from "peerjs";
 import { setLoading } from "@/redux/loadersSlice";
 import { setCurrentUser } from "@/redux/usersSlice";
 import { message } from "antd";
-import { peersReducer } from "./peerReducer";
+import { PeerState, peersReducer } from "./peerReducer";
 import { usePathname, useRouter } from "next/navigation";
 
 import Cookies from "js-cookie";
@@ -187,6 +187,10 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
           }
         })
         const data = await res.json()
+        if(Object.keys(peers as PeerState).includes(data._id)) return
+        console.log(data)
+        console.log(participants)
+        console.log("Massage a")
         message.success(`${data?.name} joined the room`)  
         setParticipants((prev:any)=>{
           console.log(prev)
@@ -213,8 +217,8 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     });
     })
 
-
-  },[me?.id , stream])
+    console.log(stream)
+  },[stream])
 
   if(!path.startsWith("/test")){
     // ws.disconnect()
@@ -233,7 +237,6 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     console.log(participants)
   },[participants])
   useEffect(()=>{
-    if(!roomId) return
     if(!me)return
     try {
 
@@ -244,12 +247,13 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
         // navigator.mediaDevices.getDisplayMedia({ video: true, audio: true })
       ])
       .then(([userMediaStream]) => {
+        console.log(223)
         setStream(userMediaStream)
       })
     } catch (error) {
       console.log(error)
     }
-  },[roomId])
+  },[me])
   console.log(peers)
   console.log(Cookies.get('token'))
   console.log(roomId)

@@ -105,7 +105,7 @@ function Room() {
       ws.emit('stopShare' , {roomId:roomId , mediaShareStatus:!mediaShareStatus })
     }
   return (
-    me !== null && peers.length !== 0 &&  room.user && stream &&
+    me !== null && peers?.length !== 0 &&  room.user && stream &&
     
     <div className=' bg-ICblue h-full'>
       
@@ -136,7 +136,7 @@ function Room() {
                 <p>Waiting for the creator...</p>
               </div>}</div>}
           {me?._id !== room.user._id && <div>
-            {Object.values(peers as PeerState).map((peer, index) =>{ 
+            {Object?.values(peers as PeerState).map((peer, index) =>{ 
               {console.log(Object.keys(peers as PeerState)[index])}
               {console.log(peer)}
               return <>
