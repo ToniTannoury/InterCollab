@@ -172,6 +172,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
         const data = await res.json()
         console.log(roomId)
         console.log(peers)
+        console.log(memoizedStream)
         message.success(`${data?.name} joined the room`)  
         setParticipants((prev:any)=>{
           return[
@@ -216,6 +217,6 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     } catch (error) {
       console.log(error)
     }
-  },[roomId])
+  },[roomId._id])
   return <RoomContext.Provider value={{ ws , me, stream , peers , shareScreen , setRoomId  , participants , roomId , screenSharringId , messages,mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages,isRating, setIsRating , removeAllPeers}}>{children}</RoomContext.Provider>;
 };
