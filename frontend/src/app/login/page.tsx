@@ -23,7 +23,9 @@ function Login() {
       body:JSON.stringify(values),
     })
     const data = await response.json()
-    
+    if(data.isAdmin) {
+      router.push('/adminPanel')
+    }
 
     if(response.status!==200){
       message.error(data.message)
