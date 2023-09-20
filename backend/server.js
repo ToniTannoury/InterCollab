@@ -118,7 +118,9 @@ io.on("connection" , (socket)=>{
   const emitScreenShare = ({status , roomId })=>{
     socket.to(roomId._id).emit('screenSharing',{ status })
   }
-
+  const stopShare = ({mediaShareStatus , roomId })=>{
+    socket.to(roomId).emit('mediaSharing',{ mediaShareStatus })
+  }
 
 })
 
