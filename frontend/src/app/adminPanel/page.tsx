@@ -1,11 +1,14 @@
+import ReduxProvider from '@/components/ReduxProvider'
 import React from 'react'
+import AdminHome from '../adminHome/page'
 
 function page() {
+  
   return (
-    <div>
-      adminPanel
-      
-    </div>
+    <ReduxProvider>
+      <AdminHome/>
+    </ReduxProvider>
+   
   )
 }
 

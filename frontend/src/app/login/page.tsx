@@ -25,6 +25,7 @@ function Login() {
     const data = await response.json()
     console.log(data)
     if(data.admin) {
+      Cookie.set('token' , data.token)
       router.push('/adminPanel')
       return
     }
