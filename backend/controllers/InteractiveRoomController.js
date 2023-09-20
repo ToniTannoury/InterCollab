@@ -18,7 +18,7 @@ const roomHandler = (socket) => {
       socket.to(roomId).emit("user-disconnected", peerId);
 
       const room = await Room.findById(roomId);
-
+      console.log(11)
       if (!room) {
         console.error("Room not found.");
         return;
@@ -28,8 +28,9 @@ const roomHandler = (socket) => {
         const objectId1 = new mongoose.Types.ObjectId(peerId);
         return participant._id.toString() !== objectId1.toString();
       });
-
+      console.log(room)
       await room.save();
+      
       console.log(room.currentParticipants)
     } catch (error) {
       console.error("Error leaving room:", error);
@@ -40,6 +41,7 @@ const roomHandler = (socket) => {
     console.log(`User joined the room ${roomId}`);
     socket.join(roomId);
 
+    
     const user = await User.findById(peerId);
     // console.log(user)
     const room = await Room.findById(roomId);

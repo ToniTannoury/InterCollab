@@ -3,10 +3,11 @@
 import { setLoading } from "@/redux/loadersSlice"
 import { Button, Col, Divider, Row, message } from "antd"
 import { useParams, useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import Cookies from "js-cookie"
 import { setCurrentUser } from "@/redux/usersSlice"
+import { RoomContext } from "@/context/RoomContext"
 // import socketIO from 'socket.io-client'
 // const WS = 'http://localhost:5000'
 function RoomInfo() {
@@ -17,6 +18,7 @@ function RoomInfo() {
   const [code , setCode] = useState<string>('')
   const {currentUser } = useSelector((state:any)=>state.users)
 
+  const {ws , me , stream ,peers,shareScreen , participants ,setRoomId,screenSharringId , messages, mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages ,removeAllPeers } = useContext(RoomContext)
   const fetchJob = async()=>{
     try {
       dispatch(setLoading(true))
@@ -77,7 +79,11 @@ function RoomInfo() {
     e.preventDefault()
     roomData.pinCode === code && router.push(`/test/${roomData._id}`)
   }
-
+  const joinNow = async ()=>{
+    console.log('emited')
+    ws.emit("join-room" , {roomId:roomId , peerId:me._id })
+    router.push(`/test/${roomData._id}`)
+  }
   
   return (
     roomData && <div>
@@ -149,7 +155,7 @@ function RoomInfo() {
           
           <Button type="default" onClick={()=>router.back()}>Cancel</Button>
 
-          {(roomData.type === "public" || roomData.user._id === currentUser._id)&&roomData.type !== "paid" && <Button type="primary" className="bg-ICblue"  onClick={()=>router.push(`/test/${roomData._id}`)}>Join Now</Button>}
+          {(roomData.type === "public" || roomData.user._id === currentUser._id)&&roomData.type !== "paid" && <Button type="primary" className="bg-ICblue"  onClick={joinNow}>Join Now</Button>}
 
           {roomData.type === "private" && roomData.user._id !== currentUser._id &&
           (
@@ -158,7 +164,7 @@ function RoomInfo() {
             </form>
           )}
            {(roomData.type === "paid" )&&roomData.type !== "public" &&  roomData.user._id !== currentUser._id&&<Button onClick={coinTransfer} type="primary" className="bg-ICblue" >Join Now For {roomData.priceToEnter} Coins</Button>}
-           {(roomData.type === "paid" )&&roomData.type !== "public" &&  roomData.user._id === currentUser._id&&<Button type="primary" className="bg-ICblue"  onClick={()=>router.push(`/test/${roomData._id}`)}>Join Now</Button>}
+           {(roomData.type === "paid" )&&roomData.type !== "public" &&  roomData.user._id === currentUser._id&&<Button type="primary" className="bg-ICblue"  onClick={joinNow}>Join Now</Button>}
         </div>
        
         </Col>

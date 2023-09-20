@@ -63,7 +63,6 @@ function Room() {
         
       }
       getCurrentUser().then(res=>fetchRoom())
-      
     } , [])
     useEffect(()=>{
       console.log(me)
@@ -72,7 +71,6 @@ function Room() {
       console.log(roomId!==undefined)
       if(me!==undefined && roomId!==undefined) ws.emit("join-room" , {roomId:roomId , peerId:me._id })
       if(me && roomId!==undefined) ws.emit("join" , {roomId:roomId})
-      
      },[ws , me , roomId ])
      
      const sendChat = (e:any)=>{
@@ -86,6 +84,7 @@ function Room() {
         console.log(room)
        return room
       })
+
      },[room])
      function filterDuplicateParticipants(participants: Participant[]): Participant[] {
       const uniqueParticipants: Record<string, boolean> = {};
