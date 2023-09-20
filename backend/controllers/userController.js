@@ -74,7 +74,8 @@ const loginUser =asyncHandler (async (req, res)=>{
       _id: user._id,
       name : user.name,
       email: user.email ,
-      token: token
+      token: token,
+      admin:user.isAdmin
     })
   }else{
     res.status(401)
