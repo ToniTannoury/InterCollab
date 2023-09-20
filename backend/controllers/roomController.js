@@ -171,7 +171,21 @@ const getTop5RoomsByTotalParticipants = asyncHandler(async (req , res) => {
   }
 });
 
+const searchRoomById = asyncHandler(async (req, res) => {
+  const { roomId } = req.query;
 
+  try {
+    const room = await Room.findById(roomId).populate('user');
+
+    if (!room) {
+      res.status(404).json({ message: 'Room not found.' });
+    } else {
+      res.status(200).json(room);
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 module.exports = {
   createRoom,
   searchRoomsByCategory,
