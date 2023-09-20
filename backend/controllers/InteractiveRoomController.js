@@ -2,7 +2,6 @@ const Room = require('../models/roomModel');
 const User = require('../models/userModel');
 const mongoose = require('mongoose')
 
-
 const roomHandler = (socket) => {
  
   const createRoom = ({ roomId }) => {
@@ -33,7 +32,6 @@ const roomHandler = (socket) => {
       console.error("Error leaving room:", error);
     }
   };
-  
 
   const joinRoom = async ({ roomId, peerId }) => {
     console.log(`User joined the room ${roomId}`);
@@ -55,9 +53,6 @@ const roomHandler = (socket) => {
         peerId,
       });
     }, 2000);
-
-
-    
 
     socket.emit("get-users", {
       roomId,

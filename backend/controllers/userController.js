@@ -4,32 +4,26 @@ const jwt = require('jsonwebtoken')
 const {validationResult} = require('express-validator')
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 const Room = require('../models/roomModel')
-
 const User = require('../models/userModel')
 
 const registerUser = asyncHandler(async (req, res)=>{ 
- 
   const {email , name , password , age} = req.body
   const errors = validationResult(req)
   if(!errors.isEmpty()){
     res.status(422)
     throw new Error(errors.array()[0].msg)
   }
-
   if(!name || !email || !password){
     res.status(400)
     throw new Error('Please include all fields')
   }
-
-  const userExists = await User.findOne({email: email})
-
+  const userExists = await User.findOne({email:email})
   if(userExists){
     res.status(400)
     throw new Error('User already exists')
   }
-
   const salt = await bcrypt.genSalt(10)
-  const hashedPassword = await bcrypt.hash(password , salt)
+  const hashedPassword = await bcrypt.hash(password ,salt)
 
   const user = await User.create({
     name ,
@@ -88,7 +82,7 @@ const searchUsers = asyncHandler(async (req, res) => {
   const { query } = req.query;
   if (!query) {
     res.status(400);
-    throw new Error('Search query is required');
+    throw new Error('Search text is required');
   }
 
   const users = await User.find({
@@ -155,7 +149,6 @@ const unfollowUser = asyncHandler(async (req, res) => {
     res.status(404).json({ message: 'User not found' });
     return;
   }
-
   if (!currentUser.followings.includes(userId)) {
     res.status(400).json({ message: 'You are not following this user.' });
     return;
@@ -175,31 +168,6 @@ const generateToken = (id)=>{
     expiresIn:'30d'
   } )
 }
-
-const updateUser = asyncHandler(async (req, res) => {
-  const userId = req.user.id;
-  const updateFields = req.body;
-
-  const user = await User.findById(userId);
-
-  if (!user) {
-    res.status(404).json({ message: 'User not found' });
-    return;
-  }
-
-  for (const field in updateFields) {
-    if (updateFields.hasOwnProperty(field)) {
-      user[field] = updateFields[field];
-    }
-  }
-
-  try {
-    await user.save();
-    res.status(200).json({ message: 'User information updated successfully', data: user });
-  } catch (error) {
-    res.status(500).json({ message: 'Error updating user information', error: error.message });
-  }
-});
 
 const coinTransfer = asyncHandler(async(req , res)=>{
   
