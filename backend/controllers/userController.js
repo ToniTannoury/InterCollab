@@ -9,7 +9,7 @@ const User = require('../models/userModel')
 
 const registerUser = asyncHandler(async (req, res)=>{ 
  
-  const {email , name , password} = req.body
+  const {email , name , password , age} = req.body
   const errors = validationResult(req)
   if(!errors.isEmpty()){
     res.status(422)
@@ -34,7 +34,8 @@ const registerUser = asyncHandler(async (req, res)=>{
   const user = await User.create({
     name ,
     email , 
-    password: hashedPassword
+    password: hashedPassword,
+    age
   })
 
   if(user){
