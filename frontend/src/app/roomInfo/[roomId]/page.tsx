@@ -77,6 +77,7 @@ function RoomInfo() {
   }
   const joinNow = async ()=>{
     // ws.emit("join-room" , {roomId:roomId , peerId:me._id })
+  
     router.push(`/test/${roomData._id}`)
   }
   
