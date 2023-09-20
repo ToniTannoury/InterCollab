@@ -1,6 +1,4 @@
-const Room = require('../models/roomModel');
 const User = require('../models/userModel');
-const mongoose = require('mongoose')
 const asyncHandler = require('express-async-handler')
 
 const groupUsersByAge = asyncHandler(async (req, res) => {
@@ -22,9 +20,8 @@ const groupUsersByAge = asyncHandler(async (req, res) => {
     res.status(200).json(groupedUsers);
   } catch (error) {
     console.error('Error grouping users by age:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: 'Server error' });
   }
 })
 
-// Define a route for grouping users by age
 app.get('/api/users/grouped-by-age', groupUsersByAge);

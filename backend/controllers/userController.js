@@ -140,10 +140,9 @@ const followUser = asyncHandler(async (req, res) => {
   res.status(200).json({ message: 'You are now following this user.' });
 });
 
-// Unfollow a user
 const unfollowUser = asyncHandler(async (req, res) => {
-  const userId = req.params.id; // ID of the user to unfollow
-  const currentUser = req.user; // The user who wants to unfollow
+  const userId = req.params.id; 
+  const currentUser = req.user; 
 
   if (currentUser._id.toString() === userId) {
     res.status(400).json({ message: "You can't unfollow yourself." });
@@ -177,15 +176,10 @@ const generateToken = (id)=>{
   } )
 }
 
-// Define a route for updating user information
-
-
-// Controller function to update user information
 const updateUser = asyncHandler(async (req, res) => {
   const userId = req.user.id;
   const updateFields = req.body;
 
-  // Retrieve the user document from the database
   const user = await User.findById(userId);
 
   if (!user) {
@@ -193,7 +187,6 @@ const updateUser = asyncHandler(async (req, res) => {
     return;
   }
 
-  // Update the user document with the fields provided in the request body
   for (const field in updateFields) {
     if (updateFields.hasOwnProperty(field)) {
       user[field] = updateFields[field];
@@ -201,7 +194,6 @@ const updateUser = asyncHandler(async (req, res) => {
   }
 
   try {
-    // Save the updated user document to the database
     await user.save();
     res.status(200).json({ message: 'User information updated successfully', data: user });
   } catch (error) {
@@ -258,41 +250,7 @@ const bundles = new Map([
     3 , {priceInCents:1000 , name:"10 dolar bundle"}
   ],
 ])
-const createCheckoutSession = asyncHandler(async(req , res)=>{
 
-  const customer = await stripe.customers.create({
-    metadata:{
-      userId:req.user.id,
-      bundle:JSON.stringify(req.body.bundle)  
-    }
-  })
-  try {
-    const bundle = bundles.get(req.body.bundle)
-    const stripeReq = {
-      price_data:{
-        currency:"usd",
-        product_data:{
-          name: bundle.name
-        },
-        unit_amount:bundle.priceInCents
-      },
-      quantity:1,
-    }
-   
-    let session = await stripe.checkout.sessions.create({
-      payment_method_types:["card"],
-      mode:"payment",
-      customer:customer.id,
-      line_items:[stripeReq],
-      success_url:`${process.env.CLIENT_URL}`,
-      cancel_url:`${process.env.CLIENT_URL}`,
-    }).catch(err=>console.log(err))
-    res.json({url:session.url})
-  } catch (error) {
-    res.status(500).json({error:e.message})
-  }
-  
-})
 const rateCreator = asyncHandler(async(req , res)=>{
   const {creator_id , rating} = req.body
   const creator = await User.findById(creator_id)

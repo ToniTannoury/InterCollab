@@ -15,11 +15,9 @@ const multer = require('multer')
 const path = require('path');
 const { Server } = require("socket.io")
 const http = require("http")
-const { createRoom } = require('./controllers/InteractiveRoomController');
 const roomHandler = require('./controllers/InteractiveRoomController');
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 const User = require("./models/userModel")
-// const {RtcTokenBuilder, RtcRole} = require('agora-access-token');
 connectDB();
 app.use(cookieParser())
 app.use(cors());
@@ -37,7 +35,6 @@ const bundles = new Map([
 
 let endpointSecret 
 endpointSecret= "whsec_99de9c0d940a9b0193357d7eceb01c10eada61cc61d31f4eca53346669109e4d";
-// Define the webhook route without body parsing middleware
 app.post('/webhook', express.raw({type: 'application/json'})  ,(req, res) => {
   const sig = req.headers['stripe-signature'];
 
@@ -46,7 +43,6 @@ app.post('/webhook', express.raw({type: 'application/json'})  ,(req, res) => {
 
   let event;
   try {
-    // Parse the raw request body as a Buffer
     const rawBody = req.body;
     event = stripe.webhooks.constructEvent(rawBody, sig, endpointSecret);
   } catch (err) {
@@ -68,10 +64,6 @@ app.post('/webhook', express.raw({type: 'application/json'})  ,(req, res) => {
     ).catch(err=>console.log(err))
   }
   
-
-  // Handle the webhook event based on its type here.
-  // Example: if (eventType === 'payment_intent.succeeded') { ... }
-
   res.send().end();
 });
 app.use(express.json());
