@@ -150,7 +150,7 @@ const searchRoomsByType = asyncHandler(async (req, res) => {
     const rooms = await Room.paginate(query, options);
 
     if (rooms.docs.length === 0) {
-      res.status(404).json({ message: 'No rooms found matching the criteria.' });
+      res.status(404).json({ message: 'No room found for the specific criteria' });
     } else {
       res.status(200).json(rooms);
     }
@@ -158,21 +158,7 @@ const searchRoomsByType = asyncHandler(async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-const searchRoomById = asyncHandler(async (req, res) => {
-  const { roomId } = req.query;
 
-  try {
-    const room = await Room.findById(roomId).populate('user');
-
-    if (!room) {
-      res.status(404).json({ message: 'Room not found.' });
-    } else {
-      res.status(200).json(room);
-    }
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
 const getTop5RoomsByTotalParticipants = asyncHandler(async (req , res) => {
   try {
     const top5Rooms = await Room.find().populate('user')

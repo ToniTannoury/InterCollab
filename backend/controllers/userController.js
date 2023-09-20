@@ -211,7 +211,6 @@ const coinTransfer = asyncHandler(async(req , res)=>{
   
   const enteringRoom =await Room.findById(req.body.roomId).populate("user")
   const roomCreator = enteringRoom.user
-  console.log(roomCreator)
   const sender = await User.findById(req.user._id)
   sender.coins = sender.coins  -  req.body.amount
   await sender.save()
@@ -223,7 +222,6 @@ const coinTransfer = asyncHandler(async(req , res)=>{
 const changeProfilePicture = asyncHandler(async (req, res) => {
   const userId = req.user.id;
   const profilePicture = req.files[0];
-  // Check if the user exists
   const user = await User.findById(userId);
   if (!user) {
     res.status(404).json({ message: 'User not found' });
@@ -232,7 +230,7 @@ const changeProfilePicture = asyncHandler(async (req, res) => {
   user.profile_picture = profilePicture.originalname; 
   try {
     await user.save();
-    res.status(200).json({ message: 'Profile picture updated successfully', data: user });
+    res.status(200).json({ message: 'Picture updated', data: user });
   } catch (error) {
     res.status(500).json({ message: 'Error updating profile picture', error: error.message });
   }

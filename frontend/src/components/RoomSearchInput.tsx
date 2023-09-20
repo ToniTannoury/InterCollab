@@ -125,7 +125,7 @@ function RoomSearchInput() {
       {searchResults.map((categoryGroup, index) => (
           <div key={index}>
             <h2 className="text-lg font-semibold text-gray-800">
-              Category: {categoryGroup[0].category}
+              {categoryGroup[0].category}
             </h2>
             <Carousel rooms={categoryGroup}>
               <div className="grid grid-cols-3 gap-4">
