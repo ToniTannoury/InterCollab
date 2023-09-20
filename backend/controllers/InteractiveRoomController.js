@@ -29,7 +29,6 @@ const roomHandler = (socket) => {
         return;
       }
   
-      console.log(updatedRoom.currentParticipants);
     } catch (error) {
       console.error("Error leaving room:", error);
     }
@@ -48,7 +47,6 @@ const roomHandler = (socket) => {
     }
 
     room.currentParticipants.push(user);
-   console.log(room.totalParticipants.includes(user._id))
     if (!room.totalParticipants.includes(user._id)) room.totalParticipants.push(user._id)
     await room.save();
     setTimeout(() => {

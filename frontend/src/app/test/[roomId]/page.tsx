@@ -55,7 +55,6 @@ function Room() {
           }
         })
         const data = await res.json()
-        console.log("seters")
         setRoom(data)
         
       }
@@ -63,7 +62,6 @@ function Room() {
       
     } , [])
     useEffect(()=>{
-      console.log("settings")
       if(me && roomId) ws.emit("join-room" , {roomId:roomId , peerId:me._id })
       if(me && roomId!==undefined) ws.emit("join" , {roomId:roomId})
       
@@ -80,7 +78,6 @@ function Room() {
       setRoomId((prev:any)=>{
        return room
       })
-      console.log(room._id)
      },[room._id])
      function filterDuplicateParticipants(participants: Participant[]): Participant[] {
       const uniqueParticipants: Record<string, boolean> = {};

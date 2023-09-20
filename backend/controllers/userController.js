@@ -209,7 +209,17 @@ const updateUser = asyncHandler(async (req, res) => {
   }
 });
 
+const coinTransfer = asyncHandler(async(req , res)=>{
+  
+  const enteringRoom =await Room.findById(req.body.roomId).populate("user")
+  const roomCreator = enteringRoom.user
+  const sender = await User.findById(req.user._id)
+  sender.coins = sender.coins  -  req.body.amount
+  await sender.save()
+  roomCreator.coins = roomCreator.coins  +  req.body.amount
+  await roomCreator.save()
 
+})
 
 const changeProfilePicture = asyncHandler(async (req, res) => {
   const userId = req.user.id;
