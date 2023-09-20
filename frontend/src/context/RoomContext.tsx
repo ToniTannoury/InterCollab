@@ -36,6 +36,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
  const router = useRouter()
   const dispatching =  useDispatch()
   const switchStream = (stream: MediaStream)=>{
+    
     setStream(stream )
     setScreenSharringId(!screenSharringId)
     ws.emit('screensharing', {roomId:roomId , status:!screenSharringId})
@@ -85,7 +86,8 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     dispatch(removeOtherPeersAction())
     setParticipants([])
     Cookies.set('creator_id' , roomId.user._id)
-    ws.disconnect()
+    ws.emit('leave-room',{roomId:roomId._id , peerId:currentUser._id})
+    // ws.disconnect()
     router.push('/')
     
   }
@@ -137,6 +139,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     if(!roomId) return
     me.on("call" , async(call)=>{
       console.log('will answer')
+      console.log(stream.id)
       const getJoinedUser = async(id:string)=>{
         const res = await fetch(`http://localhost:5000/api/users/getUserById?userId=${id}` , {
           headers:{
@@ -175,7 +178,6 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
         console.log(roomId)
         console.log(peers)
         console.log(memoizedStream)
-        message.success(`${data?.name} joined the room`)  
         setParticipants((prev:any)=>{
           return[
           ...prev , data
@@ -183,6 +185,8 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
         return data
       }
       const user = await getJoinedUser(peerId)
+      console.log(stream)
+      message.success(`${user.name} joined`)
       const call = me.call(peerId , stream)
       call.on("stream" , (peerStream)=>{
         dispatch(addPeerAction(peerId , peerStream))
@@ -197,7 +201,8 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
         console.error(err);
     });
     })
-  },[memoizedStream])
+    console.log(stream)
+  },[stream?.active])
   if(!path.startsWith("/test")){
     // ws.disconnect()
    
@@ -214,11 +219,12 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
         // navigator.mediaDevices.getDisplayMedia({ video: true, audio: true })
       ])
       .then(([userMediaStream]) => {
+        console.log("set")
         setStream(userMediaStream)
       })
     } catch (error) {
       console.log(error)
     }
-  },[roomId._id])
+  },[roomId])
   return <RoomContext.Provider value={{ ws , me, stream , peers , shareScreen , setRoomId  , participants , roomId , screenSharringId , messages,mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages,isRating, setIsRating , removeAllPeers}}>{children}</RoomContext.Provider>;
 };

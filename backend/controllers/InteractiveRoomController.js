@@ -14,28 +14,30 @@ const roomHandler = (socket) => {
 
   const leaveRoom = async ({ roomId, peerId }) => {
     try {
-      // console.log("User disconnected");
+      console.log("User disconnected");
       socket.to(roomId).emit("user-disconnected", peerId);
-
-      const room = await Room.findById(roomId);
-
-      if (!room) {
+  
+      const objectId1 = new mongoose.Types.ObjectId(peerId);
+  
+      const updatedRoom = await Room.findOneAndUpdate(
+        { _id: roomId },
+        {
+          $pull: { currentParticipants: { _id: objectId1 } },
+        },
+        { new: true }
+      );
+  
+      if (!updatedRoom) {
         console.error("Room not found.");
         return;
       }
-
-      room.currentParticipants = room.currentParticipants.filter((participant) => {
-        const objectId1 = new mongoose.Types.ObjectId(peerId);
-
-        return participant._id.toString() !== objectId1.toString();
-      });
-
-      await room.save();
-      console.log(room.currentParticipants)
+  
+      console.log(updatedRoom.currentParticipants);
     } catch (error) {
       console.error("Error leaving room:", error);
     }
   };
+  
 
   const joinRoom = async ({ roomId, peerId }) => {
     console.log(`User joined the room ${roomId}`);
@@ -68,6 +70,10 @@ const roomHandler = (socket) => {
     socket.emit("get-users", {
       roomId,
       participants: room.currentParticipants,
+    });
+    socket.on('leave-room', () => {
+      console.log("Plzzzzzzzzzzzzzzzz disconnected");
+      leaveRoom({ roomId, peerId });
     });
     socket.on('disconnect', () => {
       console.log("Plzzzzzzzzzzzzzzzz disconnected");
