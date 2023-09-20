@@ -99,7 +99,14 @@ app.use('/api/users', upload.any(),userRoutes);
 app.use('/api/rooms', roomRoutes);
 app.use(errorHandler);
 
+const server = http.createServer(app)
 
+const io = new Server(server,{
+  cors:{
+    origin:"*",
+    methods:["GET" ,"POST"]
+  }
+})
 
 
 
