@@ -59,7 +59,7 @@ const getTop5RoomsByTotalParticipants = asyncHandler(async (req , res) => {
 
 
 const searchRoomsByCategory = asyncHandler(async (req, res) => {
-  const { category, page = 1, pageSize = 10 } = req.query;
+  const { category, page = 1, pageSize = 300 } = req.query;
 
   const query = {};
 
@@ -104,7 +104,7 @@ const searchRoomById = asyncHandler(async (req, res) => {
 });
 
 const searchRoomsByTitle = asyncHandler(async (req, res) => {
-  const { title, page = 1, pageSize = 10 } = req.query;
+  const { title, page = 1, pageSize = 300 } = req.query;
 
   const query = {};
 
@@ -134,7 +134,7 @@ const searchRoomsByTitle = asyncHandler(async (req, res) => {
 });
 
 const searchRoomsByUserName = asyncHandler(async (req, res) => {
-  const { userName, page = 1, pageSize = 10 } = req.query;
+  const { userName, page = 1, pageSize = 300 } = req.query;
 
   try {
     const users = await User.find({ name: { $regex: userName, $options: 'i' } });
@@ -160,7 +160,7 @@ const searchRoomsByUserName = asyncHandler(async (req, res) => {
 });
 
 const searchRoomsByType = asyncHandler(async (req, res) => {
-  const { type, page = 1, pageSize = 10 } = req.query;
+  const { type, page = 1, pageSize = 300 } = req.query;
 
   const query = {};
 

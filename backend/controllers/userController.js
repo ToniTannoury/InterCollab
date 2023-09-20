@@ -269,6 +269,30 @@ const createCheckoutSession = asyncHandler(async(req , res)=>{
   }
   
 })
+const updateUser = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+  const updateFields = req.body;
+
+  const user = await User.findById(userId);
+
+  if (!user) {
+    res.status(404).json({ message: 'User not found' });
+    return;
+  }
+
+  for (const field in updateFields) {
+    if (updateFields.hasOwnProperty(field)) {
+      user[field] = updateFields[field];
+    }
+  }
+
+  try {
+    await user.save();
+    res.status(200).json({ message: 'User information updated successfully', data: user });
+  } catch (error) {
+    res.status(500).json({ message: 'Error updating user information', error: error.message });
+  }
+});
 module.exports = {
   registerUser,
   loginUser,

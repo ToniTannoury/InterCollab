@@ -87,7 +87,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 app.get('/' , (req ,res)=>{
   res.status(200).json({
-    message:"Welcome to the book share api"
+    message:"Welcome to the inter collab api"
   })
 })
 
@@ -99,37 +99,6 @@ app.use('/api/users', upload.any(),userRoutes);
 app.use('/api/rooms', roomRoutes);
 app.use(errorHandler);
 
-
-const server = http.createServer(app)
-
-const io = new Server(server,{
-  cors:{
-    origin:"*",
-    methods:["GET" ,"POST"]
-  }
-})
-io.on("connection" , (socket)=>{
-  socket.on('join',async ({roomId}) => { 
-    
-    socket.join(roomId.toString()); 
-  });
-  const emitMessage = ({message , roomId , userName})=>{
-    socket.to(roomId.toString()).emit('Messages',{ message , userName})
-  }
-  const emitScreenShare = ({status , roomId })=>{
-    socket.to(roomId._id).emit('screenSharing',{ status })
-  }
-  const stopShare = ({mediaShareStatus , roomId })=>{
-    socket.to(roomId).emit('mediaSharing',{ mediaShareStatus })
-  }
-
-  socket.on('stopShare',stopShare);
-  socket.on('chatMessage',emitMessage);
-  socket.on('screensharing',emitScreenShare);
-  roomHandler(socket)
- 
-
-})
 
 
 

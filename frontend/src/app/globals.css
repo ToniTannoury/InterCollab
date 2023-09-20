@@ -13,7 +13,6 @@ html,body{
 }
 .card{
   box-sizing: border-box;
-
   border-radius: 4px;
   box-shadow:0px 0px 2px rgba(81,81,81,0.2);
 }
@@ -80,11 +79,10 @@ color:#213555 ;
   overflow-y: scroll;
 }
 .containing-users::-webkit-scrollbar {
-  width: 0; /* Hide scrollbar width */
-  height: 0; /* Hide scrollbar height */
+  width: 0; 
+  height: 0; 
 }
 
-/* Optional: Make the thumb and track transparent */
 .containing-users::-webkit-scrollbar-thumb {
   background: transparent;
 }
@@ -135,7 +133,6 @@ color:#213555 ;
 }
 
 video{
-  /* width:750px !important; */
   border-radius: 5px;
   border: white 2px solid;
 }
@@ -258,12 +255,12 @@ video{
 }
 
 .star {
-  color: #ccc; /* Default star color */
+  color: #ccc; 
   cursor: pointer;
 }
 
 .star.filled {
-  color: gold; /* Filled star color */
+  color: gold; 
 }
 
 .card-button{
