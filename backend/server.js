@@ -112,7 +112,9 @@ io.on("connection" , (socket)=>{
     
     socket.join(roomId.toString()); 
   });
-
+  const emitMessage = ({message , roomId , userName})=>{
+    socket.to(roomId.toString()).emit('Messages',{ message , userName})
+  }
   
 })
 
