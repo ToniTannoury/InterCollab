@@ -6,7 +6,6 @@ import { VideoPlayer } from '@/components/VideoPlayer';
 import { PeerState, peersReducer } from '../../../context/peerReducer'
 import { useDispatch, useSelector } from 'react-redux';
 import Cookies from 'js-cookie';
-import { removeOtherPeersAction } from '@/context/peerActions';
 import { ShareScreenButton } from '@/components/ShareScreenButton';
 import { setLoading } from '@/redux/loadersSlice';
 import { setCurrentUser } from '@/redux/usersSlice';
@@ -26,7 +25,7 @@ function Room() {
   
   const {currentUser} = useSelector((state:any)=>state.users)
   
-  const {ws , me , stream ,peers,shareScreen , participants ,setRoomId,roomId:id,screenSharringId , messages, mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages ,removeAllPeers } = useContext(RoomContext)
+  const {ws , me , stream ,peers,shareScreen , participants ,setRoomId,screenSharringId , messages, mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages , } = useContext(RoomContext)
   const dispatch = useDispatch()
   const [state , dispatching] = useReducer(peersReducer , {})
   const [chat , setChat] = useState('')

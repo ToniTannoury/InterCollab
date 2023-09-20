@@ -148,7 +148,7 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
         }
       }}>
         {loading && <Loader/>}
-        {pathname === "/login" || pathname === "/register" || path.startsWith("/test") ? <div>{children}</div> : 
+        {pathname === "/login" || pathname === "/register"||pathname === "/adminPanel" || path.startsWith("/test") ? <div>{children}</div> : 
         (
           <div className='layout-parent'>
             <div className={`sidebar ${isSidebarExpanded ? "w-1/6":"w-20"}`}>
