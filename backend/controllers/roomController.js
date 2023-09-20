@@ -132,6 +132,32 @@ const searchRoomsByTitle = asyncHandler(async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
+const searchRoomsByUserName = asyncHandler(async (req, res) => {
+  const { userName, page = 1, pageSize = 10 } = req.query;
+
+  try {
+    const users = await User.find({ name: { $regex: userName, $options: 'i' } });
+    
+    const userIds = users.map(user => user._id);
+
+    const options = {
+      page: parseInt(page),
+      limit: parseInt(pageSize),
+      populate: 'user'
+    };
+
+    const rooms = await Room.paginate({ 'user': { $in: userIds } }, options);
+
+    if (rooms.docs.length === 0) {
+      res.status(404).json({ message: 'No rooms found matching the criteria.' });
+    } else {
+      res.status(200).json(rooms);
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 module.exports = {
   createRoom,
   searchRoomsByCategory,
