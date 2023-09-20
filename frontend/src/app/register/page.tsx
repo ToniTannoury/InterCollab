@@ -34,6 +34,9 @@ function Register() {
           <Form.Item label='Name' name='name'>
             <input name='name' type="text" className='input'/>
           </Form.Item>
+          <Form.Item label='Age' name='age'>
+            <input name='age' type="number" className='input'/>
+          </Form.Item>
           <Form.Item label='Email' name='email'>
             <input name='email' type="email" className='input'/>
           </Form.Item>
