@@ -115,7 +115,11 @@ io.on("connection" , (socket)=>{
   const emitMessage = ({message , roomId , userName})=>{
     socket.to(roomId.toString()).emit('Messages',{ message , userName})
   }
-  
+  const emitScreenShare = ({status , roomId })=>{
+    socket.to(roomId._id).emit('screenSharing',{ status })
+  }
+
+
 })
 
 
