@@ -122,6 +122,10 @@ io.on("connection" , (socket)=>{
     socket.to(roomId).emit('mediaSharing',{ mediaShareStatus })
   }
 
+  socket.on('stopShare',stopShare);
+  socket.on('chatMessage',emitMessage);
+  socket.on('screensharing',emitScreenShare);
+  roomHandler(socket)
 })
 
 
