@@ -57,12 +57,9 @@ function RoomInfo() {
           amount:roomData.priceToEnter
         })
       })
-      console.log(333)
       const data = await response.json()
-      console.log(data)
       
    
-    console.log("push")
     
     
   }
@@ -73,14 +70,12 @@ function RoomInfo() {
     fetchJob()
   },[])
   useEffect(()=>{
-    console.log(currentUser)
   },[currentUser])
   const checkPin = async(e:any)=>{
     e.preventDefault()
     roomData.pinCode === code && router.push(`/test/${roomData._id}`)
   }
   const joinNow = async ()=>{
-    console.log('emited')
     ws.emit("join-room" , {roomId:roomId , peerId:me._id })
     router.push(`/test/${roomData._id}`)
   }

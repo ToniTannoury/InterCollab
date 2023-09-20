@@ -36,12 +36,10 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
   const switchStream = (stream: MediaStream)=>{
     setStream(stream )
     setScreenSharringId(!screenSharringId)
-    console.log(12341234)
     ws.emit('screensharing', {roomId:roomId , status:!screenSharringId})
     connectionArray?.map((conn:any)=>{
       const videoTrack = stream?.getTracks().find(track=>track.kind === 'video')
       const videoTracks = stream?.getTracks().find(track=>track.kind === 'video')
-      console.log(videoTracks)
         conn.peerConnection?.getSenders()[1]?.replaceTrack(videoTrack).catch(
           (err:any)=>console.log(err))
     })
@@ -78,7 +76,9 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
   }
   const leaveRoom = async()=>{
     console.log(roomId)
-    currentUser !== undefined && setIsRating(true)
+    console.log(currentUser)
+    console.log(currentUser._id !== roomId.user._id)
+    currentUser._id !== roomId.user._id && setIsRating(true)
     dispatch(removeOtherPeersAction())
     setParticipants([])
     Cookies.set('creator_id' , roomId.user._id)
@@ -89,7 +89,6 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     setScreenSharringId(status)
   }
   const handleMediaShare = async(mediaShareStatus:any)=>{
-    console.log(mediaShareStatus)
     setMediaShareStatus(mediaShareStatus.mediaShareStatus)
   }
   useEffect(()=>{
@@ -112,14 +111,8 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
       }
     } 
     getCurrentUser().then(res=>{
-      console.log(path)
-      console.log(me)
-      console.log(currentUser)
-      console.log(peers)
       ws.on('Messages' , (data:any)=>{
-        console.log(data)
         setMessages((prevState:any) => [...prevState, {userName: data.userName , message : data.message}]); 
-        console.log(messages)
       })
       ws.on("mediaSharing" , handleMediaShare)
       ws.on("screenSharing" , handleScreenShare)
@@ -147,7 +140,6 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
         })
         const data = await res.json()
         setParticipants((prev:any)=>{
-          console.log(prev)
           return[
           ...prev , data
         ]})
@@ -177,14 +169,12 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
         const data = await res.json()
         message.success(`${data?.name} joined the room`)  
         setParticipants((prev:any)=>{
-          console.log(prev)
           return[
           ...prev , data
         ]})
         return data
       }
       const user = await getJoinedUser(peerId)
-      console.log(user)
       const call = me.call(peerId , stream)
       call.on("stream" , (peerStream)=>{
         dispatch(addPeerAction(peerId , peerStream))
@@ -199,7 +189,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
         console.error(err);
     });
     })
-  },[me , stream])
+  },[me?.id , stream])
   if(!path.startsWith("/test")){
     // ws.disconnect()
    
@@ -210,12 +200,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
   useEffect(()=>{
     console.log(stream)
   },[stream])
-  useEffect(()=>{
-    console.log(peers)
-  },[peers])
-  useEffect(()=>{
-    console.log(participants)
-  },[participants])
+
   useEffect(()=>{
     if(!roomId) return
     if(!me)return
@@ -232,8 +217,5 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
       console.log(error)
     }
   },[roomId])
-  console.log(peers)
-  console.log(Cookies.get('token'))
-  console.log(roomId)
   return <RoomContext.Provider value={{ ws , me, stream , peers , shareScreen , setRoomId  , participants , roomId , screenSharringId , messages,mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages,isRating, setIsRating , removeAllPeers}}>{children}</RoomContext.Provider>;
 };

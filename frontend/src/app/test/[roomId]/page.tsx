@@ -27,7 +27,6 @@ function Room() {
   const {currentUser} = useSelector((state:any)=>state.users)
   
   const {ws , me , stream ,peers,shareScreen , participants ,setRoomId,roomId:id,screenSharringId , messages, mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages ,removeAllPeers } = useContext(RoomContext)
-  console.log(id)
   const dispatch = useDispatch()
   const [state , dispatching] = useReducer(peersReducer , {})
   const [chat , setChat] = useState('')
@@ -78,7 +77,6 @@ function Room() {
     }
     useEffect(()=>{
       setRoomId((prev:any)=>{
-        console.log(room)
        return room
       })
      },[room])
@@ -130,8 +128,6 @@ function Room() {
               </div>}</div>}
           {me?._id !== room.user._id && <div>
             {Object.values(peers as PeerState).map((peer, index) =>{ 
-              {console.log(Object.keys(peers as PeerState)[index])}
-              {console.log(peer)}
               return <>
               {Object.keys(peers as PeerState)[index] === room.user._id && mediaShareStatus ? <VideoPlayer screenSharringId={screenSharringId} stream={peer.stream} />:
               <div className='not-sharing'>

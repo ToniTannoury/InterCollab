@@ -22,8 +22,6 @@ export async function getUser(){
 }
 const getTop5RoomsByTotalParticipants = async()=>{
   const token = cookies().get('token')
-  console.log(token)
-  console.log(1111)
   const res = await fetch("http://localhost:5000/api/rooms/getTop5RoomsByTotalParticipants" , {
     headers:{
       "Authorization" : `Bearer ${token!.value}`
