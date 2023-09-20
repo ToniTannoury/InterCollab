@@ -80,6 +80,9 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     console.log(roomId)
     console.log(currentUser)
     console.log(currentUser._id !== roomId.user._id)
+    setTimeout(()=>{
+
+    },1000)
     currentUser._id !== roomId.user._id && setIsRating(true)
     dispatch(removeOtherPeersAction())
     setParticipants([])
