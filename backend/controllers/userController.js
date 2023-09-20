@@ -266,7 +266,41 @@ const rateCreator = asyncHandler(async(req , res)=>{
   creator.ratings = currentNumRatings-1
   await creator.save()
 })
+const createCheckoutSession = asyncHandler(async(req , res)=>{
 
+  const customer = await stripe.customers.create({
+    metadata:{
+      userId:req.user.id,
+      bundle:JSON.stringify(req.body.bundle)  
+    }
+  })
+  try {
+    const bundle = bundles.get(req.body.bundle)
+    const stripeReq = {
+      price_data:{
+        currency:"usd",
+        product_data:{
+          name: bundle.name
+        },
+        unit_amount:bundle.priceInCents
+      },
+      quantity:1,
+    }
+   
+    let session = await stripe.checkout.sessions.create({
+      payment_method_types:["card"],
+      mode:"payment",
+      customer:customer.id,
+      line_items:[stripeReq],
+      success_url:`${process.env.CLIENT_URL}`,
+      cancel_url:`${process.env.CLIENT_URL}`,
+    }).catch(err=>console.log(err))
+    res.json({url:session.url})
+  } catch (error) {
+    res.status(500).json({error:e.message})
+  }
+  
+})
 module.exports = {
   registerUser,
   loginUser,
