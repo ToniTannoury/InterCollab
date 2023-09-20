@@ -6,6 +6,7 @@ import { VideoPlayer } from '@/components/VideoPlayer';
 import { PeerState, peersReducer } from '../../../context/peerReducer'
 import { useDispatch, useSelector } from 'react-redux';
 import Cookies from 'js-cookie';
+import { removeOtherPeersAction } from '@/context/peerActions';
 import { ShareScreenButton } from '@/components/ShareScreenButton';
 import { setLoading } from '@/redux/loadersSlice';
 import { setCurrentUser } from '@/redux/usersSlice';
@@ -24,13 +25,11 @@ function Room() {
   const [room, setRoom] = useState<any>({});
   
   const {currentUser} = useSelector((state:any)=>state.users)
-
   
   const {ws , me , stream ,peers,shareScreen , participants ,setRoomId,roomId:id,screenSharringId , messages, mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages ,removeAllPeers } = useContext(RoomContext)
   console.log(id)
   const dispatch = useDispatch()
   const [state , dispatching] = useReducer(peersReducer , {})
-
   const [chat , setChat] = useState('')
     const {roomId} = useParams()
     
@@ -63,14 +62,12 @@ function Room() {
         
       }
       getCurrentUser().then(res=>fetchRoom())
+      
     } , [])
     useEffect(()=>{
-      console.log(me)
-      console.log(roomId)
-      console.log(me!==undefined)
-      console.log(roomId!==undefined)
-      if(me!==undefined && roomId!==undefined) ws.emit("join-room" , {roomId:roomId , peerId:me._id })
+      if(me && roomId) ws.emit("join-room" , {roomId:roomId , peerId:me._id })
       if(me && roomId!==undefined) ws.emit("join" , {roomId:roomId})
+      
      },[ws , me , roomId ])
      
      const sendChat = (e:any)=>{
@@ -84,7 +81,6 @@ function Room() {
         console.log(room)
        return room
       })
-
      },[room])
      function filterDuplicateParticipants(participants: Participant[]): Participant[] {
       const uniqueParticipants: Record<string, boolean> = {};
@@ -104,13 +100,12 @@ function Room() {
       ws.emit('stopShare' , {roomId:roomId , mediaShareStatus:!mediaShareStatus })
     }
   return (
-    me !== null && peers?.length !== 0 &&  room.user && stream &&
+    me !== null && peers.length !== 0 &&  room.user && stream &&
     
     <div className=' bg-ICblue h-full'>
       
       <div className='flex w-full h-screen pt-3 pb-3 gap-2 justify-center'>
       <section className=' users1 ml-10 '>
-
           <p className='text-ICblue min-w-full text-3xl border-b-2 pl-8 mt-4 pr-10 room-header p-1'>
             
             Users In Call
@@ -120,7 +115,6 @@ function Room() {
             {filterDuplicateParticipants(participants)?.map((participant:any)=>
               (<div className='flex gap-2 items-center ml-5 mt-3'>
                 <Image className='img mr-1 ' src={(`http://localhost:5000/images/emptyProfile.png`)} alt='logo' width={1000} height={500}>
-
                 </Image>
                 <div>
                   {participant.name}
@@ -135,7 +129,7 @@ function Room() {
                 <p>Waiting for the creator...</p>
               </div>}</div>}
           {me?._id !== room.user._id && <div>
-            {Object?.values(peers as PeerState).map((peer, index) =>{ 
+            {Object.values(peers as PeerState).map((peer, index) =>{ 
               {console.log(Object.keys(peers as PeerState)[index])}
               {console.log(peer)}
               return <>
@@ -162,7 +156,6 @@ function Room() {
           </div>
             </div>
           
-
           <div>
           <form className='mb-10' onSubmit={sendChat} style={{ position: 'relative'}}>
             <hr className='pb-4'/>
@@ -210,8 +203,6 @@ function Room() {
   </div>
   
 </div>
-
   )
 }
-
 export default Room

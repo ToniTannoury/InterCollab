@@ -1,5 +1,4 @@
 'use client'
-
 import socketIO from "socket.io-client";
 import { createContext, ReactNode, useEffect, useState , useReducer} from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,21 +6,16 @@ import Peer from "peerjs";
 import { setLoading } from "@/redux/loadersSlice";
 import { setCurrentUser } from "@/redux/usersSlice";
 import { message } from "antd";
-import { PeerState, peersReducer } from "./peerReducer";
+import { peersReducer } from "./peerReducer";
 import { usePathname, useRouter } from "next/navigation";
-
 import Cookies from "js-cookie";
 import { addPeerAction, removePeerAction,removeOtherPeersAction  } from "./peerActions";
 type RoomProviderProps = {
   children: ReactNode; 
 };
-
 const WS = "http://localhost:5000";
-
 export const RoomContext = createContext<null | any>(null);
 const ws = socketIO(WS);
-
-
 export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
   children,
 }) => {
@@ -33,7 +27,6 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
   const [peers , dispatch] = useReducer(peersReducer , {})
   const [participants , setParticipants] = useState<any>([])
   const [isRating, setIsRating] = useState<boolean>(false);
-
   const [connectionArray, setConnectionArray] = useState<any>([]);
   const [roomId , setRoomId] = useState<any>("")
   const [messages,setMessages] = useState<any>([]) 
@@ -58,7 +51,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
       const removedParticipant = prevParticipants.find(
         (prevParticipant:any) => prevParticipant._id === peerId
       );  
-      message.error(`${removedParticipant?.name} left`)
+      removedParticipant !== undefined && message.error(`${removedParticipant?.name} left`)
     
       return prevParticipants.filter((participant) => participant._id !== peerId)
     });
@@ -73,23 +66,19 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     // console.log(roomId)
     // navigate(`/room/${roomId}`)
   }
-
   const shareScreen = ()=>{
     if(screenSharringId ){
       navigator.mediaDevices.getUserMedia({video:true , audio:true}).then(switchStream)
-
     }else{
       navigator.mediaDevices.getDisplayMedia({ video: true, audio: true }).then(switchStream)
-
     }
-
   }
   const removeAllPeers = async()=>{
     
   }
   const leaveRoom = async()=>{
     console.log(roomId)
-    roomId.user._id !== currentUser._id && setIsRating(true)
+    currentUser !== undefined && setIsRating(true)
     dispatch(removeOtherPeersAction())
     setParticipants([])
     Cookies.set('creator_id' , roomId.user._id)
@@ -107,7 +96,6 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     const getCurrentUser = async()=>{
       try {
         dispatching(setLoading(true))
-
         const res = await fetch("http://localhost:5000/api/users/me" , {
           headers:{
             "Authorization" : `Bearer ${Cookies.get('token')}`
@@ -187,10 +175,6 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
           }
         })
         const data = await res.json()
-        if(Object.keys(peers as PeerState).includes(data._id)) return
-        console.log(data)
-        console.log(participants)
-        console.log("Massage a")
         message.success(`${data?.name} joined the room`)  
         setParticipants((prev:any)=>{
           console.log(prev)
@@ -202,7 +186,6 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
       const user = await getJoinedUser(peerId)
       console.log(user)
       const call = me.call(peerId , stream)
-
       call.on("stream" , (peerStream)=>{
         dispatch(addPeerAction(peerId , peerStream))
       })
@@ -216,10 +199,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
         console.error(err);
     });
     })
-
-    console.log(stream)
-  },[stream])
-
+  },[me , stream])
   if(!path.startsWith("/test")){
     // ws.disconnect()
    
@@ -237,23 +217,21 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     console.log(participants)
   },[participants])
   useEffect(()=>{
+    if(!roomId) return
     if(!me)return
     try {
-
     
       Promise.all([
-
         navigator.mediaDevices.getUserMedia({ video: true, audio: true }),
         // navigator.mediaDevices.getDisplayMedia({ video: true, audio: true })
       ])
       .then(([userMediaStream]) => {
-        console.log(223)
         setStream(userMediaStream)
       })
     } catch (error) {
       console.log(error)
     }
-  },[me])
+  },[roomId])
   console.log(peers)
   console.log(Cookies.get('token'))
   console.log(roomId)

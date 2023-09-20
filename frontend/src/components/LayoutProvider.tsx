@@ -10,6 +10,7 @@ import { setCurrentUser } from '@/redux/usersSlice'
 import Loader from './Loader'
 import { setLoading } from '@/redux/loadersSlice'
 import Cookie from 'js-cookie'
+import { removeOtherPeersAction } from '@/context/peerActions'
 import { peersReducer } from '@/context/peerReducer'
 import Modal from 'react-modal';
 import { RoomContext } from '@/context/RoomContext'
@@ -29,7 +30,6 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
   const openModal = () => {
     setIsModalOpen(true);
   };
-
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -88,7 +88,6 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
       message.success("Logged out successfully")
       dispatch(setCurrentUser(null))
       Cookie.set('token' , '')
-
       router.push('/login')
     } catch (error:any) {
       message.error(error.response.data?.message || "Something went left")
@@ -286,5 +285,4 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
   </html>
   )
 }
-
 export default LayoutProvider
