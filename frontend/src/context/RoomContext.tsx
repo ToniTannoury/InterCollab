@@ -1,6 +1,6 @@
 'use client'
 import socketIO from "socket.io-client";
-import { createContext, ReactNode, useEffect, useState , useReducer} from "react";
+import { createContext, ReactNode, useEffect, useState , useReducer, useMemo} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Peer from "peerjs";
 import { setLoading } from "@/redux/loadersSlice";
@@ -31,6 +31,8 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
   const [roomId , setRoomId] = useState<any>("")
   const [messages,setMessages] = useState<any>([]) 
   const [mediaShareStatus, setMediaShareStatus] = useState<boolean>(true);
+  const memoizedStream = useMemo(() => stream, [stream]);
+
  const router = useRouter()
   const dispatching =  useDispatch()
   const switchStream = (stream: MediaStream)=>{
@@ -130,6 +132,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
   useEffect(()=>{
     if(!me) return
     if(!stream) return
+    if(!roomId) return
     me.on("call" , async(call)=>{
       console.log('will answer')
       const getJoinedUser = async(id:string)=>{
@@ -167,6 +170,8 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
           }
         })
         const data = await res.json()
+        console.log(roomId)
+        console.log(peers)
         message.success(`${data?.name} joined the room`)  
         setParticipants((prev:any)=>{
           return[
@@ -189,17 +194,12 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
         console.error(err);
     });
     })
-  },[me?.id , stream])
+  },[memoizedStream])
   if(!path.startsWith("/test")){
     // ws.disconnect()
    
   }
-  useEffect(()=>{
-    console.log(me)
-  },[me])
-  useEffect(()=>{
-    console.log(stream)
-  },[stream])
+
 
   useEffect(()=>{
     if(!roomId) return

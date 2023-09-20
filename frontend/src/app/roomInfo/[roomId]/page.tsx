@@ -76,7 +76,7 @@ function RoomInfo() {
     roomData.pinCode === code && router.push(`/test/${roomData._id}`)
   }
   const joinNow = async ()=>{
-    ws.emit("join-room" , {roomId:roomId , peerId:me._id })
+    // ws.emit("join-room" , {roomId:roomId , peerId:me._id })
     router.push(`/test/${roomData._id}`)
   }
   
