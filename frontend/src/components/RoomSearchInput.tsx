@@ -86,7 +86,45 @@ function RoomSearchInput() {
     return groupedRooms;
   }
   return (
-    
+    <div>
+      <div className='flex justify-between'>
+      <h1 className="month-header text-4xl font-extrabold  text-ICblue ">
+          Interactive Rooms
+        </h1>
+        <div className='flex flex-col -mt-2'>
+        <label className='text-gray-600' htmlFor="">Look for Rooms that suit your mood</label>
+        <div className='flex'>
+        
+          <input
+            type="text"
+            className='input user-search'
+            placeholder="Search"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <span className='flex flex-col'>
+          <label className='ml-3 text-gray-600 -mt-6' htmlFor="">Choose a filter</label>
+          <select
+            className='border-slate-900 border ml-3 p-2 rounded'
+            value={searchCriteria}
+            onChange={(e) => setSearchCriteria(e.target.value)}
+          >
+            <option className='option' value="userName">User Name</option>
+            <option value="category">Room Category</option>
+            <option value="type">Room Type</option>
+            <option value="title">Room Title</option>
+          </select>
+          </span>
+          
+        </div>
+        
+      </div>
+      </div>
+      
+      <div className='relative'>
+  
+      </div>
+    </div>
   );
 }
 
