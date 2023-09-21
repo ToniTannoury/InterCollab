@@ -10,7 +10,6 @@ import { setCurrentUser } from "@/redux/usersSlice"
 import { RoomContext } from "@/context/RoomContext"
 function RoomInfoModal() {
   const router = useRouter()
-  const {roomId} = useParams()
   const dispatch = useDispatch()
   const [roomData , setRoomData] = useState<any>(null)
   const [code , setCode] = useState<string>('')
@@ -22,19 +21,23 @@ function RoomInfoModal() {
     setIsRoomInfoModalOpen(false)
   }
   const fetchJob = async()=>{
+    chosenRoom !== ""
+    console.log(chosenRoom)
+
     try {
-      dispatch(setLoading(true))
-      const response = await fetch(`http://localhost:5000/api/rooms/searchRoomById?roomId=${roomId}`,{
+      // dispatch(setLoading(true))
+      const response = await fetch(`http://localhost:5000/api/rooms/searchRoomById?roomId=${chosenRoom}`,{
         headers:{
           "Authorization":`Bearer ${Cookies.get('token')}`
         }
       })
       const data = await response.json()
+      console.log(data)
       setRoomData(data)
     } catch (error:any) {
       message.error(error.message)
     }finally{
-      dispatch(setLoading(false))
+      // dispatch(setLoading(false))
     }
   }
   const coinTransfer = async ()=>{
@@ -54,7 +57,7 @@ function RoomInfoModal() {
           "Authorization":`Bearer ${Cookies.get('token')}`
         },
         body:JSON.stringify({
-          roomId:roomId,
+          roomId:chosenRoom,
           amount:roomData.priceToEnter
         })
       })
@@ -62,7 +65,7 @@ function RoomInfoModal() {
   }
   useEffect(()=>{
     fetchJob()
-  },[])
+  },[chosenRoom])
   const checkPin = async(e:any)=>{
     e.preventDefault()
     roomData.pinCode === code && router.push(`/test/${roomData._id}`)
@@ -76,9 +79,93 @@ function RoomInfoModal() {
     onRequestClose={closeRoomInfoModal}
     contentLabel="RoomInfo"
     ariaHideApp={false}
-    className={'modal pt-2'}
+    className={'modalInfo pt-2'}
   >
-    {chosenRoom}
+    <div>
+      <h1 className="text-2xl -mt-1 mb-3">{roomData.title}</h1>
+      <Row gutter={[16,16]}>
+        <Col span={12} className="flex flex-col gap-2">
+          <div className="flex justify-between">
+            <span>
+              Creator's name
+            </span>
+            <span>
+              {roomData.user?.name}
+            </span>
+          </div>
+          <div className="flex justify-between">
+            <span>
+            Creator's rating
+            </span>
+            <span>
+              {roomData.user?.rating}
+            </span>
+          </div>
+          <div className="flex justify-between">
+            <span>
+            Creator's email
+            </span>
+            <span>
+              {roomData.user?.email}
+            </span>
+          </div>
+          <div className="flex justify-between">
+            <span>
+            Room Category
+            </span>
+            <span>
+              {roomData.category}
+            </span>
+          </div>
+          <div className="flex justify-between">
+            <span>
+            Max number of participants
+            </span>
+            <span>
+              {roomData.maxNumberOfParticipants}
+            </span>
+          </div>
+          <div className="flex justify-between">
+            <span>
+              Room Type
+            </span>
+            <span>
+              {roomData.type}
+            </span>
+          </div>
+        </Col>
+        <Col span={24} className="flex flex-col gap-2">
+          <h1 className="text-xl">
+            About the creator
+          </h1>
+          <Divider className="p-0 h-0 m-0"/>
+          <span>{roomData.user?.about}</span>
+          <h1 className="text-xl">
+            Room Description
+          </h1>
+          <Divider className="p-0 h-0 m-0"/>
+          <span>{roomData.description}</span>
+         
+          <div className="flex justify-end gap-3">
+          
+          <Button type="default" onClick={()=>router.back()}>Cancel</Button>
+
+          {(roomData?.type === "public" || roomData?.user?._id === currentUser._id)&&roomData?.type !== "paid" && <Button type="primary" className="bg-ICblue"  onClick={joinNow}>Join Now</Button>}
+
+          {roomData?.type === "private" && roomData?.user?._id !== currentUser._id &&
+          (
+            <form onSubmit={checkPin} action="">
+              <input value={code} className="pincode" type="text" onChange={(e)=>setCode(e.target.value)}/>
+            </form>
+          )}
+           {(roomData.type === "paid" )&&roomData.type !== "public" &&  roomData.user._id !== currentUser._id&&<Button onClick={coinTransfer} type="primary" className="bg-ICblue" >Join Now For {roomData.priceToEnter} Coins</Button>}
+           {(roomData.type === "paid" )&&roomData.type !== "public" &&  roomData.user._id === currentUser._id&&<Button type="primary" className="bg-ICblue"  onClick={joinNow}>Join Now</Button>}
+        </div>
+       
+        </Col>
+        
+      </Row>
+    </div>
   </Modal>
   )
 }
