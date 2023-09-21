@@ -19,7 +19,7 @@ function Pofile() {
       values._id = currentUser._id
       values.userType = currentUser.userType
       dispatch(setLoading(true))
-      const response = await fetch("http://localhost:5000/api/users/updateUser", {
+      const response = await fetch("http://16.171.116.7:5000/api/users/updateUser", {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

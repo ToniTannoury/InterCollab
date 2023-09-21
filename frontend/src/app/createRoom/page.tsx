@@ -23,7 +23,7 @@ function CreateRoom() {
   const onFinish = async (values: any) => {
     try {
       dispatch(setLoading(true));
-      const response = await fetch('http://localhost:5000/api/rooms', {
+      const response = await fetch('http://16.171.116.7:5000/api/rooms', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${Cookies.get('token')}`,

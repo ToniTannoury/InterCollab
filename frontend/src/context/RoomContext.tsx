@@ -13,7 +13,7 @@ import { addPeerAction, removePeerAction,removeOtherPeersAction  } from "./peerA
 type RoomProviderProps = {
   children: ReactNode; 
 };
-const WS = "http://localhost:5000";
+const WS = "http://16.171.116.7:5000";
 export const RoomContext = createContext<null | any>(null);
 const ws = socketIO(WS);
 export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
@@ -101,7 +101,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     const getCurrentUser = async()=>{
       try {
         dispatching(setLoading(true))
-        const res = await fetch("http://localhost:5000/api/users/me" , {
+        const res = await fetch("http://16.171.116.7:5000/api/users/me" , {
           headers:{
             "Authorization" : `Bearer ${Cookies.get('token')}`
           }
@@ -141,7 +141,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
       console.log('will answer')
       console.log(stream.id)
       const getJoinedUser = async(id:string)=>{
-        const res = await fetch(`http://localhost:5000/api/users/getUserById?userId=${id}` , {
+        const res = await fetch(`http://16.171.116.7:5000/api/users/getUserById?userId=${id}` , {
           headers:{
             "Authorization" : `Bearer ${Cookies.get('token')}`
           }
@@ -169,7 +169,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     ws.on("user-joined",async ({peerId})=>{
       console.log("bitch joined")
       const getJoinedUser = async(id:string)=>{
-        const res = await fetch(`http://localhost:5000/api/users/getUserById?userId=${id}` , {
+        const res = await fetch(`http://16.171.116.7:5000/api/users/getUserById?userId=${id}` , {
           headers:{
             "Authorization" : `Bearer ${Cookies.get('token')}`
           }

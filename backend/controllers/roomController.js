@@ -94,6 +94,7 @@ const searchRoomById = asyncHandler(async (req, res) => {
   try {
     const room = await Room.findById(roomId).populate('user');
 
+    
     if (!room) {
       res.status(404).json({ message: 'Room not found.' });
     } else {

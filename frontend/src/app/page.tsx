@@ -7,7 +7,7 @@ export async function getUser(){
   try {
     const token = cookies().get('token')
 
-    const res = await fetch("http://localhost:5000/api/users/me" , {
+    const res = await fetch("http://16.171.116.7:5000/api/users/me" , {
         headers:{
           "Authorization" : `Bearer ${token!.value}`
         }
@@ -22,7 +22,7 @@ export async function getUser(){
 }
 const getTop5RoomsByTotalParticipants = async()=>{
   const token = cookies().get('token')
-  const res = await fetch("http://localhost:5000/api/rooms/getTop5RoomsByTotalParticipants" , {
+  const res = await fetch("http://16.171.116.7:5000/api/rooms/getTop5RoomsByTotalParticipants" , {
     headers:{
       "Authorization" : `Bearer ${token!.value}`
     }

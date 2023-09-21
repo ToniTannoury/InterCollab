@@ -34,7 +34,7 @@ function Room() {
     const getCurrentUser = async()=>{
       try {
         dispatch(setLoading(true))
-        const res = await fetch("http://localhost:5000/api/users/me" , {
+        const res = await fetch("http://16.171.116.7:5000/api/users/me" , {
           headers:{
             "Authorization" : `Bearer ${Cookies.get('token')}`
           }
@@ -49,7 +49,7 @@ function Room() {
     }
     useEffect(()=>{
       const fetchRoom = async()=>{
-        const res = await fetch(`http://localhost:5000/api/rooms/searchRoomById?roomId=${roomId}` , {
+        const res = await fetch(`http://16.171.116.7:5000/api/rooms/searchRoomById?roomId=${roomId}` , {
           headers:{
             'Authorization': `Bearer ${Cookies.get('token')}`
           }
@@ -111,7 +111,7 @@ function Room() {
             
             {filterDuplicateParticipants(participants)?.map((participant:any)=>
               (<div className='flex gap-2 items-center ml-5 mt-3'>
-                <Image className='img mr-1 ' src={(`http://localhost:5000/images/emptyProfile.png`)} alt='logo' width={1000} height={500}>
+                <Image className='img mr-1 ' src={(`http://16.171.116.7:5000/images/emptyProfile.png`)} alt='logo' width={1000} height={500}>
                 </Image>
                 <div>
                   {participant.name}

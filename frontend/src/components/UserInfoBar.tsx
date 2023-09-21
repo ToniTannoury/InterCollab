@@ -22,8 +22,8 @@ const UserInfoBar = ({ user, search }: any) => {
   const handleFollowClick = async () => {
     try {
       const url = isFollowing
-        ? `http://localhost:5000/api/users/unfollow/${user._id}`
-        : `http://localhost:5000/api/users/follow/${user._id}`;
+        ? `http://16.171.116.7:5000/api/users/unfollow/${user._id}`
+        : `http://16.171.116.7:5000/api/users/follow/${user._id}`;
 
       const response = await fetch(url, {
         method: 'PUT',
@@ -67,7 +67,7 @@ const UserInfoBar = ({ user, search }: any) => {
     });
    
     try {
-      const response = await fetch('http://localhost:5000/api/users/changeProfilePicture', {
+      const response = await fetch('http://16.171.116.7:5000/api/users/changeProfilePicture', {
         method: "PUT",
         headers: {
           "Authorization": `Bearer ${Cookies.get('token')}`
@@ -79,7 +79,7 @@ const UserInfoBar = ({ user, search }: any) => {
         const data = await response.json();
         dispatch(setCurrentUser(data.data))
         // Update the image source with the new profile picture URL
-        const updatedImageUrl = `http://localhost:5000/images/${data.data.profile_picture}`;
+        const updatedImageUrl = `http://16.171.116.7:5000/images/${data.data.profile_picture}`;
         document.querySelector('.user-image')?.setAttribute('src', updatedImageUrl);
   
         setIsEditingProfilePicture(false);
@@ -112,7 +112,7 @@ const UserInfoBar = ({ user, search }: any) => {
           <img
             className='user-image'
             style={search ? { width: "60px", height: "60px" } : { width: "75px", height: "75px" }}
-            src={`http://localhost:5000/images/${user.profile_picture}`}
+            src={`http://16.171.116.7:5000/images/${user.profile_picture}`}
             alt=""
             
           />

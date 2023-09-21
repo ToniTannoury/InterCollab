@@ -25,7 +25,7 @@ function page() {
       const userfollowings = currentUser?.followings?.map(async (user: any) => {
         console.log(user);
       
-        const res = await fetch(`http://localhost:5000/api/users/getUserById?userId=${user}`, {
+        const res = await fetch(`http://16.171.116.7:5000/api/users/getUserById?userId=${user}`, {
           headers: {
             "Authorization": `Bearer ${Cookies.get('token')}`
           }
@@ -76,7 +76,7 @@ const filteredArray: MyObject[] = followings.filter((obj:any) => {
 const handleUnFollowClick = async (e:any) => {
   const id = e.target.parentElement.getAttribute("data-id")
   try {
-    const url =  `http://localhost:5000/api/users/unfollow/${id}`
+    const url =  `http://16.171.116.7:5000/api/users/unfollow/${id}`
      
 
     const response = await fetch(url, {
@@ -109,7 +109,7 @@ const handleUnFollowClick = async (e:any) => {
             return (
               user && <div data-id={user._id} className='following bg-ICblue rounded-xl'>
                 <div className='flex items-center gap-3'>
-                  <Image className='img-1 ml-5 mt-5 ' src={(`http://localhost:5000/images/${user.profile_picture}`)} alt='logo' width={2000} height={500}>
+                  <Image className='img-1 ml-5 mt-5 ' src={(`http://16.171.116.7:5000/images/${user.profile_picture}`)} alt='logo' width={2000} height={500}>
 
                   </Image>  
                   <span className='flex flex-col pt-6'>

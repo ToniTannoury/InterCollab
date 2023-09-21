@@ -24,7 +24,7 @@ function SearchUserInput() {
   const performSearch = async (searchTerm:any) => {
     try {
     
-      const response = await fetch(`http://localhost:5000/api/users/searchUsers?query=${searchTerm}`, {
+      const response = await fetch(`http://16.171.116.7:5000/api/users/searchUsers?query=${searchTerm}`, {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${Cookie.get('token')}`,

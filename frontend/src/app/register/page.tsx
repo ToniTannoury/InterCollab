@@ -6,7 +6,7 @@ import { error } from 'console'
 function Register() {
   const onFinish =async (values:{name:string , email:string , password:string , confirmPassword:string})=>{
     try {
-      const response = await fetch('http://localhost:5000/api/users',{
+      const response = await fetch('http://16.171.116.7:5000/api/users',{
       method:"POST",
       headers:{
         "Content-Type":"application/json"

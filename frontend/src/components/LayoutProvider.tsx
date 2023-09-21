@@ -65,7 +65,7 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
   const getCurrentUser = async()=>{
     try {
       dispatch(setLoading(true))
-      const res = await fetch("http://localhost:5000/api/users/me" , {
+      const res = await fetch("http://16.171.116.7:5000/api/users/me" , {
         headers:{
           "Authorization" : `Bearer ${Cookie.get('token')}`
         }
@@ -97,7 +97,7 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
     }
   }
   const processCheckout = async ()=>{
-    await fetch('http://localhost:5000/api/users/create-checkout-session'  , {
+    await fetch('http://16.171.116.7:5000/api/users/create-checkout-session'  , {
       method:"POST",
       headers:{
         "Content-Type":"application/json",
@@ -116,7 +116,7 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
     })
   }
   const rateCreator = async()=>{
-    const res = await fetch("http://localhost:5000/api/users/rateCreator" , {
+    const res = await fetch("http://16.171.116.7:5000/api/users/rateCreator" , {
       method:"POST",
       headers:{
         "Content-Type":"application/json",
@@ -184,7 +184,7 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
               <div className='user-info  flex gap-1 items-center'>
                { isSidebarExpanded &&
                 <span className=''>
-                  <Image className='img mr-1 mb-2' src={(`http://localhost:5000/images/${currentUser?.profile_picture}`)} alt='logo' width={1000} height={500}>
+                  <Image className='img mr-1 mb-2' src={(`http://16.171.116.7:5000/images/${currentUser?.profile_picture}`)} alt='logo' width={1000} height={500}>
                   </Image>
                 </span>}
                 {isSidebarExpanded && 

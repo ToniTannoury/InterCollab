@@ -46,7 +46,7 @@ function RoomSearchInput() {
           break;
       }
 
-      const response = await fetch(`http://localhost:5000/api/rooms/${endpoint}?${searchCriteria}=${searchTerm}`, {
+      const response = await fetch(`http://16.171.116.7:5000/api/rooms/${endpoint}?${searchCriteria}=${searchTerm}`, {
         method: "GET",
         headers: {
           'Authorization': `Bearer ${Cookie.get('token')}`

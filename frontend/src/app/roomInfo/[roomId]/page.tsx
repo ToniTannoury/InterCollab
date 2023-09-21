@@ -9,7 +9,7 @@ import Cookies from "js-cookie"
 import { setCurrentUser } from "@/redux/usersSlice"
 import { RoomContext } from "@/context/RoomContext"
 // import socketIO from 'socket.io-client'
-// const WS = 'http://localhost:5000'
+// const WS = 'http://16.171.116.7:5000'
 function RoomInfo() {
   const router = useRouter()
   const {roomId} = useParams()
@@ -22,7 +22,7 @@ function RoomInfo() {
   const fetchJob = async()=>{
     try {
       dispatch(setLoading(true))
-      const response = await fetch(`http://localhost:5000/api/rooms/searchRoomById?roomId=${roomId}`,{
+      const response = await fetch(`http://16.171.116.7:5000/api/rooms/searchRoomById?roomId=${roomId}`,{
         headers:{
           "Authorization":`Bearer ${Cookies.get('token')}`
         }
@@ -46,7 +46,7 @@ function RoomInfo() {
       ...currentUser,
       coins:currentUser.coins-roomData.priceToEnter
     }))
-      const response = await fetch(`http://localhost:5000/api/users/coinTransfer`,{
+      const response = await fetch(`http://16.171.116.7:5000/api/users/coinTransfer`,{
       method:"POST",
         headers:{
           "Content-Type":"application/json",

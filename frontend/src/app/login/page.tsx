@@ -14,7 +14,7 @@ function Login() {
   const onFinish =async (values:{email:string , password:string})=>{
     try {
       dispatch(setLoading(true))
-      const response = await fetch('http://localhost:5000/api/users/login',{
+      const response = await fetch('http://16.171.116.7:5000/api/users/login',{
       credentials: 'same-origin',
       method:"POST",
       headers:{

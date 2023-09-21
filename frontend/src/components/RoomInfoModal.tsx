@@ -26,7 +26,7 @@ function RoomInfoModal() {
 
     try {
       // dispatch(setLoading(true))
-      const response = await fetch(`http://localhost:5000/api/rooms/searchRoomById?roomId=${chosenRoom}`,{
+      const response = await fetch(`http://16.171.116.7:5000/api/rooms/searchRoomById?roomId=${chosenRoom}`,{
         headers:{
           "Authorization":`Bearer ${Cookies.get('token')}`
         }
@@ -50,7 +50,7 @@ function RoomInfoModal() {
       ...currentUser,
       coins:currentUser.coins-roomData.priceToEnter
     }))
-      const response = await fetch(`http://localhost:5000/api/users/coinTransfer`,{
+      const response = await fetch(`http://16.171.116.7:5000/api/users/coinTransfer`,{
       method:"POST",
         headers:{
           "Content-Type":"application/json",
