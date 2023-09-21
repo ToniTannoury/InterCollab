@@ -37,6 +37,30 @@ function RoomInfoModal() {
       dispatch(setLoading(false))
     }
   }
+  const coinTransfer = async ()=>{
+    if(currentUser.coins<roomData.priceToEnter){
+      message.error("Not enough coins to  join")
+      return
+    }
+    router.push(`/test/${roomData._id}`)
+    dispatch(setCurrentUser({
+      ...currentUser,
+      coins:currentUser.coins-roomData.priceToEnter
+    }))
+      const response = await fetch(`http://localhost:5000/api/users/coinTransfer`,{
+      method:"POST",
+        headers:{
+          "Content-Type":"application/json",
+          "Authorization":`Bearer ${Cookies.get('token')}`
+        },
+        body:JSON.stringify({
+          roomId:roomId,
+          amount:roomData.priceToEnter
+        })
+      })
+      const data = await response.json() 
+  }
+
   return (
     chosenRoom !== "" && <Modal
     isOpen={isRoomInfoModalOpen}

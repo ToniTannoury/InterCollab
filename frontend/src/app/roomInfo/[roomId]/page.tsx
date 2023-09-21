@@ -57,11 +57,7 @@ function RoomInfo() {
           amount:roomData.priceToEnter
         })
       })
-      const data = await response.json()
-      
-   
-    
-    
+      const data = await response.json() 
   }
 
   
