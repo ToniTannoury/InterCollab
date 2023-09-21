@@ -9,8 +9,15 @@ import Cookies from "js-cookie"
 import { setCurrentUser } from "@/redux/usersSlice"
 import { RoomContext } from "@/context/RoomContext"
 function RoomInfoModal() {
-  const { setIsRoomInfoModalOpen , isRoomInfoModalOpen,chosenRoom , setChosenRoom } = useContext(RoomContext);
+  const router = useRouter()
+  const {roomId} = useParams()
+  const dispatch = useDispatch()
+  const [roomData , setRoomData] = useState<any>(null)
+  const [code , setCode] = useState<string>('')
+  const {currentUser } = useSelector((state:any)=>state.users)
 
+  const {ws , me , stream ,peers,shareScreen , participants ,setRoomId,screenSharringId , messages, mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages ,removeAllPeers,setIsRoomInfoModalOpen , isRoomInfoModalOpen,chosenRoom , setChosenRoom  } = useContext(RoomContext)
+  
   const closeRoomInfoModal = ()=>{
     setIsRoomInfoModalOpen(false)
   }
