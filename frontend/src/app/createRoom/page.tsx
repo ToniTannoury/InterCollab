@@ -15,7 +15,10 @@ function CreateRoom() {
   const { ws } = useContext(RoomContext);
   const [showCoinInput, setShowCoinInput] = useState(false); // Add state for showing coin input
 
-
+  const createRoom = (roomId: string) => {
+    ws.emit('create-room', { roomId });
+    router.push(`/test/${roomId}`);
+  };
 
   const onFinish = async (values: any) => {
    
