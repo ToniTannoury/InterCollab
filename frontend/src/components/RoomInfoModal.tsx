@@ -21,6 +21,22 @@ function RoomInfoModal() {
   const closeRoomInfoModal = ()=>{
     setIsRoomInfoModalOpen(false)
   }
+  const fetchJob = async()=>{
+    try {
+      dispatch(setLoading(true))
+      const response = await fetch(`http://localhost:5000/api/rooms/searchRoomById?roomId=${roomId}`,{
+        headers:{
+          "Authorization":`Bearer ${Cookies.get('token')}`
+        }
+      })
+      const data = await response.json()
+      setRoomData(data)
+    } catch (error:any) {
+      message.error(error.message)
+    }finally{
+      dispatch(setLoading(false))
+    }
+  }
   return (
     chosenRoom !== "" && <Modal
     isOpen={isRoomInfoModalOpen}
