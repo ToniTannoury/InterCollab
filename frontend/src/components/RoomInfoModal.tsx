@@ -1,6 +1,13 @@
-import { RoomContext } from '@/context/RoomContext';
-import React , {useContext, useState} from 'react'
+'use client'
 import Modal from 'react-modal'
+import { setLoading } from "@/redux/loadersSlice"
+import { Button, Col, Divider, Row, message } from "antd"
+import { useParams, useRouter } from "next/navigation"
+import { useContext, useEffect, useState } from "react"
+import { useDispatch, useSelector } from 'react-redux'
+import Cookies from "js-cookie"
+import { setCurrentUser } from "@/redux/usersSlice"
+import { RoomContext } from "@/context/RoomContext"
 function RoomInfoModal() {
   const { setIsRoomInfoModalOpen , isRoomInfoModalOpen,chosenRoom , setChosenRoom } = useContext(RoomContext);
 
