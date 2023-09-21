@@ -198,3 +198,4 @@ module.exports = {
   searchRoomById,
   getTop5RoomsByTotalParticipants
 }
+

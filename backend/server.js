@@ -99,6 +99,7 @@ app.use('/api/users', upload.any(),userRoutes);
 app.use('/api/rooms', roomRoutes);
 app.use(errorHandler);
 
+
 const server = http.createServer(app)
 
 const io = new Server(server,{
@@ -127,6 +128,7 @@ io.on("connection" , (socket)=>{
   socket.on('screensharing',emitScreenShare);
   roomHandler(socket)
 })
+
 
 
 
