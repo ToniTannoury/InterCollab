@@ -18,7 +18,7 @@ function Pofile() {
     try {
       values._id = currentUser._id
       values.userType = currentUser.userType
-      
+      dispatch(setLoading(true))
       const response = await fetch("http://16.171.116.7:5000/api/users/updateUser", {
         method: 'PUT',
         headers: {
@@ -33,11 +33,15 @@ function Pofile() {
       dispatch(setCurrentUser(data.data))
     } catch (error:any) {
       message.error(error.message.data.message || "Something went wrong")
+    }finally{
+      dispatch(setLoading(false))
     }
   }
   return (
     <div>
+      <h1 className='text-4xl mb-3 month-header text-ICblue'>Profile</h1>
     
+      <UserInfoBar user={currentUser}/>
     
     </div>
   )
