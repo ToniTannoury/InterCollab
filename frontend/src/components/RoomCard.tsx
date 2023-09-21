@@ -15,7 +15,14 @@ function RoomCard({room}:any) {
   const { setIsRoomInfoModalOpen , isRoomInfoModalOpen,chosenRoom , setChosenRoom } = useContext(RoomContext);
 
   return (
+    <div _id={room._id} className='containing'>
+      
+          </div>
+      </div>
+      <div>
 
+      </div>
+    </div>
   )
 }
 
