@@ -22,7 +22,7 @@ function CreateRoom() {
 
   const onFinish = async (values: any) => {
     try {
-
+      dispatch(setLoading(true));
       const response = await fetch('http://16.171.116.7:5000/api/rooms', {
         method: 'POST',
         headers: {
@@ -37,10 +37,15 @@ function CreateRoom() {
       createRoom(data._id);
     } catch (error: any) {
       message.error(error.message.data.message || 'Something went wrong');
+    } finally {
+      dispatch(setLoading(false));
     }
   };
 
-
+  // Handle the "Type" field change to show/hide the coin input
+  const handleTypeChange = (value: string) => {
+    setShowCoinInput(value === 'paid');
+  };
 
   return (
     
