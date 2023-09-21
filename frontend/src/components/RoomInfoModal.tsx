@@ -18,6 +18,7 @@ function RoomInfoModal() {
   const {ws , me , stream ,peers,shareScreen , participants ,setRoomId,screenSharringId , messages, mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages ,removeAllPeers,setIsRoomInfoModalOpen , isRoomInfoModalOpen,chosenRoom , setChosenRoom  } = useContext(RoomContext)
   
   const closeRoomInfoModal = ()=>{
+    setRoomData('')
     setIsRoomInfoModalOpen(false)
   }
   const fetchJob = async()=>{
@@ -71,6 +72,8 @@ function RoomInfoModal() {
     roomData.pinCode === code && router.push(`/test/${roomData._id}`)
   }
   const joinNow = async ()=>{  
+    closeRoomInfoModal()
+    
     router.push(`/test/${roomData._id}`)
   }
   return (
