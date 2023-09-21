@@ -29,9 +29,6 @@ function Carousel({rooms , home}:any) {
     setHoveredIndex(index);
   };
 
-  const handleMouseLeave = () => {
-    setHoveredIndex(null);
-  };
   return (
     <>
       <motion.div ref={carousel} className={`carousel relative -z-3 ${searching && 'app'}`}>
@@ -54,7 +51,7 @@ function Carousel({rooms , home}:any) {
         {home && rooms.map((_, index) => (
           <div
             key={index}
-            className={`h-4 w-4 border-ICblue border-2 rounded-3xl ${hoveredIndex === index ? 'bg-ICblue' : ''}`}
+            className={`h-3 w-3 border-ICblue border-2 rounded-3xl ${hoveredIndex === index ? 'bg-ICblue' : ''}`}
           ></div>
         ))}
       </div>

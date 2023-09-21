@@ -87,7 +87,6 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     setParticipants([])
     Cookies.set('creator_id' , roomId.user._id)
     ws.emit('leave-room',{roomId:roomId._id , peerId:currentUser._id})
-    // ws.disconnect()
     router.push('/')
     
   }
