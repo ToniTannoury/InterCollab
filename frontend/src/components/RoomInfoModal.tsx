@@ -60,6 +60,13 @@ function RoomInfoModal() {
       })
       const data = await response.json() 
   }
+  useEffect(()=>{
+    fetchJob()
+  },[])
+  const checkPin = async(e:any)=>{
+    e.preventDefault()
+    roomData.pinCode === code && router.push(`/test/${roomData._id}`)
+  }
 
   return (
     chosenRoom !== "" && <Modal
