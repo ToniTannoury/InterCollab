@@ -122,7 +122,23 @@ function RoomSearchInput() {
       </div>
       
       <div className='relative'>
-  
+      {searchResults.map((categoryGroup, index) => (
+          <div key={index}>
+            <h2 className="text-lg font-semibold text-gray-800">
+              {categoryGroup[0].category}
+            </h2>
+            <Carousel rooms={categoryGroup}>
+              <div className="grid grid-cols-3 gap-4">
+                {categoryGroup.map((room) => (
+                  <div key={room._id} className="border rounded p-2">
+                    <h3 className="text-md font-semibold">{room.title}</h3>
+                    <p>Type: {room.type}</p>
+                  </div>
+                ))}
+              </div>
+            </Carousel>
+          </div>
+        ))}
       </div>
     </div>
   );
