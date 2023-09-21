@@ -12,7 +12,7 @@ function RoomCard({room}:any) {
   function capitalizeString(str:string) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   }
-  const { setIsRoomInfoModalOpen , isRoomInfoModalOpen } = useContext(RoomContext);
+  const { setIsRoomInfoModalOpen , isRoomInfoModalOpen,chosenRoom , setChosenRoom } = useContext(RoomContext);
 
   return (
     <div _id={room._id} className='containing'>
@@ -44,6 +44,7 @@ function RoomCard({room}:any) {
         <div>
           <button  onClick={()=>{
              setIsRoomInfoModalOpen(true)
+             setChosenRoom(room._id)
             // router.push(`/roomInfo/${room._id}`)
             }} className='bg-slate-50 h-7 w-20 ml-4 font-semibold text-ICblue card-button'>
             Room Info

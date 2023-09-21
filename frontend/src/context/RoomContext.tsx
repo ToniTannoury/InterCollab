@@ -33,6 +33,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
   const [mediaShareStatus, setMediaShareStatus] = useState<boolean>(true);
   const memoizedStream = useMemo(() => stream, [stream]);
   const [isRoomInfoModalOpen , setIsRoomInfoModalOpen] = useState<boolean>(false)
+  const [chosenRoom , setChosenRoom] = useState<string>('')
  const router = useRouter()
   const dispatching =  useDispatch()
   const switchStream = (stream: MediaStream)=>{
@@ -226,5 +227,5 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
       console.log(error)
     }
   },[roomId])
-  return <RoomContext.Provider value={{ ws , me, stream , peers , shareScreen , setRoomId  , participants , roomId , screenSharringId , messages,mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages,isRating, setIsRating , removeAllPeers , isRoomInfoModalOpen , setIsRoomInfoModalOpen}}>{children}</RoomContext.Provider>;
+  return <RoomContext.Provider value={{ ws , me, stream , peers , shareScreen , setRoomId  , participants , roomId , screenSharringId , messages,mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages,isRating, setIsRating , removeAllPeers , isRoomInfoModalOpen , setIsRoomInfoModalOpen,chosenRoom , setChosenRoom}}>{children}</RoomContext.Provider>;
 };
