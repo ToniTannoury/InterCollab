@@ -4,6 +4,7 @@ import {ConfigProvider} from 'antd'
 import LayoutProvider from '@/components/LayoutProvider'
 import ReduxProvider from '@/components/ReduxProvider'
 import './../stylesheets/loader.css'
+
 import { RoomProvider } from '@/context/RoomContext'
 export const metadata: Metadata = {
   title: 'InterCollab',

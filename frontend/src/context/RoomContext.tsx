@@ -183,11 +183,12 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
         ]})
         return data
       }
+      
       const user = await getJoinedUser(peerId)
       console.log(stream)
       message.success(`${user.name} joined`)
       const call = me.call(peerId , stream)
-      call.on("stream" , (peerStream)=>{
+      call?.on("stream" , (peerStream)=>{
         dispatch(addPeerAction(peerId , peerStream))
       })
  
