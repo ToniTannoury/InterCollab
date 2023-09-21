@@ -42,7 +42,43 @@ function Pofile() {
       <h1 className='text-4xl mb-3 month-header text-ICblue'>Profile</h1>
     
       <UserInfoBar user={currentUser}/>
+    {currentUser &&<Form layout='vertical' initialValues={currentUser} onFinish={onFinish}>
+      <>
+      <Row gutter={[16,16]}>
+        
+        <Col span={8}>
+          <Form.Item label='Name' name="name" >
+            <input className='input' type="text" required/>
+          </Form.Item>
+        </Col>
+        <Col span={8}>
+          <Form.Item label='Email' name="email" >
+            <input className='input' type="text" required/>
+          </Form.Item>
+        </Col>
+        <Col span={8}>
+          <Form.Item label='Phone' name="phone" >
+            <input className='input ' type="text" required/>
+          </Form.Item>
+        </Col>
+        <Col span={24}>
+          <Form.Item label='About' name="about" >
+            <textarea className='input text-area' required/>
+          </Form.Item>
+        </Col>
+   
+      
+      </Row>
+      
+      
+    </>
+        <div className='flex justify-end my-3'>
     
+          <Button className='bg-ICblue h-10' type="primary" htmlType='submit'>
+            Save
+          </Button>
+        </div>
+      </Form>}
     </div>
   )
 }
