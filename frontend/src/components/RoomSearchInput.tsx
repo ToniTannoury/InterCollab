@@ -46,7 +46,25 @@ function RoomSearchInput() {
           break;
       }
 
-
+      const response = await fetch(`http://16.171.116.7:5000/api/rooms/${endpoint}?${searchCriteria}=${searchTerm}`, {
+        method: "GET",
+        headers: {
+          'Authorization': `Bearer ${Cookie.get('token')}`
+        },
+      });
+      const data = await response.json()
+      if(data.message==='No rooms found matching the criteria.') setSearchResults([])
+      setSearchResults(groupRoomsByCategory(data.docs))
+      if (response.ok) {
+        const data = await response.json();
+        setSearchResults(data.docs);
+      } else {
+        console.error('Failed to fetch search results');
+      }
+    } catch (error) {
+      console.error('Error fetching search results:', error);
+    }
+  };
 
   return (
     
