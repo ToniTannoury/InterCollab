@@ -48,7 +48,59 @@ function CreateRoom() {
   };
 
   return (
-    
+    <div>
+      <h1 className="text-3xl mb-3">Open New Room</h1>
+      <Form layout="vertical" initialValues={currentUser} onFinish={onFinish}>
+        <>
+          <Row gutter={[16, 16]}>
+            <Col span={24}>
+              <Form.Item label="Title" name="title">
+                <input className="input" type="text" required />
+              </Form.Item>
+            </Col>
+            <Col span={24}>
+              <Form.Item label="Description" name="description">
+                <textarea className="input" required />
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item label="Category" name="category">
+                <input className="input" type="text" required />
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item label="Max number of participants" name="maxNumberOfParticipants">
+                <input className="input" type="number" required />
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item label="Type" name="type">
+                <select className="input" onChange={(e) => handleTypeChange(e.target.value)} required>
+                  <option value="public">Public</option>
+                  <option value="private">Private</option>
+                  <option value="paid">Paid</option>
+                </select>
+              </Form.Item>
+            </Col>
+            {showCoinInput && ( // Conditionally render the coin input field
+              <Col span={8}>
+                <Form.Item label="Coins" name="priceToEnter">
+                  <input className="input" type="number" required />
+                </Form.Item>
+              </Col>
+            )}
+          </Row>
+        </>
+        <div className="flex justify-end my-3">
+          <Button onClick={() => router.push('/')} className="mr-3 h-12 font-semibold" type="default">
+            Cancel
+          </Button>
+          <Button className="bg-ICblue h-12 font-semibold" type="primary" htmlType="submit">
+            Create Room
+          </Button>
+        </div>
+      </Form>
+    </div>
   );
 }
 
