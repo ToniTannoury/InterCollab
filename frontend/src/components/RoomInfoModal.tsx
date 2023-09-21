@@ -1,7 +1,8 @@
-import React , {useState} from 'react'
+import { RoomContext } from '@/context/RoomContext';
+import React , {useContext, useState} from 'react'
 import Modal from 'react-modal'
 function RoomInfoModal() {
-  const [isRoomInfoModalOpen , setIsRoomInfoModalOpen] = useState<boolean>(true)
+  const { setIsRoomInfoModalOpen , isRoomInfoModalOpen } = useContext(RoomContext);
   const closeRoomInfoModal = ()=>{
     setIsRoomInfoModalOpen(false)
   }
@@ -13,7 +14,7 @@ function RoomInfoModal() {
     ariaHideApp={false}
     className={'modal pt-2'}
   >
-    
+    h1
   </Modal>
   )
 }

@@ -14,6 +14,7 @@ import { removeOtherPeersAction } from '@/context/peerActions'
 import { peersReducer } from '@/context/peerReducer'
 import Modal from 'react-modal';
 import { RoomContext } from '@/context/RoomContext'
+import RoomInfoModal from './RoomInfoModal'
 function LayoutProvider({children}:{children:React.ReactNode}) {
   const router = useRouter()
   const {currentUser} = useSelector((state:any)=>state.users)
@@ -277,6 +278,7 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
         </div>
     </Modal>
       </ConfigProvider>
+      <RoomInfoModal/>
     </body>
   </>
   )

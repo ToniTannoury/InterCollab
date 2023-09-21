@@ -32,7 +32,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
   const [messages,setMessages] = useState<any>([]) 
   const [mediaShareStatus, setMediaShareStatus] = useState<boolean>(true);
   const memoizedStream = useMemo(() => stream, [stream]);
-
+  const [isRoomInfoModalOpen , setIsRoomInfoModalOpen] = useState<boolean>(false)
  const router = useRouter()
   const dispatching =  useDispatch()
   const switchStream = (stream: MediaStream)=>{
@@ -183,7 +183,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
         ]})
         return data
       }
-      
+
       const user = await getJoinedUser(peerId)
       console.log(stream)
       message.success(`${user.name} joined`)
@@ -226,5 +226,5 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
       console.log(error)
     }
   },[roomId])
-  return <RoomContext.Provider value={{ ws , me, stream , peers , shareScreen , setRoomId  , participants , roomId , screenSharringId , messages,mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages,isRating, setIsRating , removeAllPeers}}>{children}</RoomContext.Provider>;
+  return <RoomContext.Provider value={{ ws , me, stream , peers , shareScreen , setRoomId  , participants , roomId , screenSharringId , messages,mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages,isRating, setIsRating , removeAllPeers , isRoomInfoModalOpen , setIsRoomInfoModalOpen}}>{children}</RoomContext.Provider>;
 };

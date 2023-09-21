@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import '../stylesheets/room.css'
 import { useRouter } from 'next/navigation';
-import { useReducer } from 'react';
+import { useContext, useReducer } from 'react';
 import { peersReducer } from '@/context/peerReducer';
+import { RoomContext } from '@/context/RoomContext';
 
 
 function RoomCard({room}:any) {
@@ -11,6 +12,8 @@ function RoomCard({room}:any) {
   function capitalizeString(str:string) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   }
+  const { setIsRoomInfoModalOpen , isRoomInfoModalOpen } = useContext(RoomContext);
+
   return (
     <div _id={room._id} className='containing'>
       <div className='flex flex-col justify-around room-card bg-ICblue'>
@@ -40,8 +43,8 @@ function RoomCard({room}:any) {
         </div>
         <div>
           <button  onClick={()=>{
-             
-            router.push(`/roomInfo/${room._id}`)
+             setIsRoomInfoModalOpen(true)
+            // router.push(`/roomInfo/${room._id}`)
             }} className='bg-slate-50 h-7 w-20 ml-4 font-semibold text-ICblue card-button'>
             Room Info
           </button>
