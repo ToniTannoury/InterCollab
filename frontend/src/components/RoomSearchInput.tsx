@@ -26,6 +26,26 @@ function RoomSearchInput() {
   const [searchResults, setSearchResults] = useState<Room[][]|[]>([]);
 
   const fetchSearchResults = async () => {
+    try {
+      let endpoint = ''; 
+      switch (searchCriteria) {
+        case 'userName':
+          endpoint = 'searchRoomsByUserName';
+          break;
+        case 'category':
+          endpoint = 'searchRooms';
+          break;
+        case 'type':
+          endpoint = 'searchRoomsByType';
+          break;
+        case 'title':
+          endpoint = 'searchRoomsByTitle';
+          break;
+        default:
+          endpoint = 'searchRooms';
+          break;
+      }
+
 
 
   return (
