@@ -7,7 +7,12 @@ import { RoomContext } from '@/context/RoomContext';
 
 
 function RoomCard({room}:any) {
-  
+  const [state , dispatching ] = useReducer(peersReducer , {})
+  const router = useRouter()
+  function capitalizeString(str:string) {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
+  const { setIsRoomInfoModalOpen , isRoomInfoModalOpen,chosenRoom , setChosenRoom } = useContext(RoomContext);
 
   return (
 
