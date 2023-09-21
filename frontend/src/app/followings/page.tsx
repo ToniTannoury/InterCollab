@@ -73,7 +73,29 @@ const filteredArray: MyObject[] = followings.filter((obj:any) => {
   }
   return false;
 });
+const handleUnFollowClick = async (e:any) => {
+  const id = e.target.parentElement.getAttribute("data-id")
+  try {
+    const url =  `http://16.171.116.7:5000/api/users/unfollow/${id}`
+     
 
+    const response = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        "Authorization": `Bearer ${Cookies.get('token')}`
+      }
+    });
+
+    if (response.ok) {
+      dispatch(removeFollowing(id));
+    } else {
+      console.error('Error:', response.statusText);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
   return (
    
   )
