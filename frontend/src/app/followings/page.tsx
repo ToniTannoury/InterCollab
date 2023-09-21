@@ -15,6 +15,44 @@ interface MyObject {
   followings: any[]; 
 }
 function page() {
+  const { currentUser } = useSelector((state: any) => state.users);
+  const [followings , setFollowings] = useState<any>([])
+  const dispatch = useDispatch()
+  const getFollowingInfo = async()=>{
+    try {
+      
+      const userfollowings = currentUser?.followings?.map(async (user: any) => {
+        console.log(user);
+      
+        const res = await fetch(`http://16.171.116.7:5000/api/users/getUserById?userId=${user}`, {
+          headers: {
+            "Authorization": `Bearer ${Cookies.get('token')}`
+          }
+        });
+      
+        const data = await res.json();
+        console.log(data);
+      
+        return data; // Return the result for each user
+      });
+      
+      // Wait for all promises to resolve and get an array of results
+      Promise.all(userfollowings)
+        .then(results => {
+          console.log("All user data:", results);
+          setFollowings(results)
+        })
+        .catch(error => {
+          console.error("Error:", error);
+        });
+      
+      const a = userfollowings
+      console.log(a)
+    } catch (error:any) {
+      message.error(error.message)
+      console.log(error)
+    }
+  }
 
 
 
