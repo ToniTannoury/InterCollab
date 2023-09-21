@@ -153,16 +153,16 @@ function RoomInfoModal() {
           
           <Button type="default" onClick={()=>router.back()}>Cancel</Button>
 
-          {(roomData?.type === "public" || roomData?.user?._id === currentUser._id)&&roomData?.type !== "paid" && <Button type="primary" className="bg-ICblue"  onClick={joinNow}>Join Now</Button>}
+          {(roomData?.type === "public" || roomData?.user?._id === currentUser?._id)&&roomData?.type !== "paid" && <Button type="primary" className="bg-ICblue"  onClick={joinNow}>Join Now</Button>}
 
-          {roomData?.type === "private" && roomData?.user?._id !== currentUser._id &&
+          {roomData?.type === "private" && roomData?.user?._id !== currentUser?._id &&
           (
             <form onSubmit={checkPin} action="">
               <input value={code} className="pincode" type="text" onChange={(e)=>setCode(e.target.value)}/>
             </form>
           )}
-           {(roomData.type === "paid" )&&roomData.type !== "public" &&  roomData.user._id !== currentUser._id&&<Button onClick={coinTransfer} type="primary" className="bg-ICblue" >Join Now For {roomData.priceToEnter} Coins</Button>}
-           {(roomData.type === "paid" )&&roomData.type !== "public" &&  roomData.user._id === currentUser._id&&<Button type="primary" className="bg-ICblue"  onClick={joinNow}>Join Now</Button>}
+           {(roomData?.type === "paid" )&&roomData?.type !== "public" &&  roomData?.user?._id !== currentUser?._id&&<Button onClick={coinTransfer} type="primary" className="bg-ICblue" >Join Now For {roomData?.priceToEnter} Coins</Button>}
+           {(roomData?.type === "paid" )&&roomData?.type !== "public" &&  roomData?.user?._id === currentUser?._id&&<Button type="primary" className="bg-ICblue"  onClick={joinNow}>Join Now</Button>}
         </div>
        
         </Col>
