@@ -63,7 +63,8 @@ const roomHandler = (socket) => {
     });
   };
   
-
+  socket.on("create-room", createRoom);
+  socket.on("join-room", joinRoom);
 };
 
 module.exports = roomHandler;
