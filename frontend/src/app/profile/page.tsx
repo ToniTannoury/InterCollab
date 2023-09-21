@@ -15,7 +15,25 @@ function Pofile() {
  
 
   const onFinish = async (values:any)=>{
- 
+    try {
+      values._id = currentUser._id
+      values.userType = currentUser.userType
+      
+      const response = await fetch("http://16.171.116.7:5000/api/users/updateUser", {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          "Authorization": `Bearer ${Cookies.get('token')}`
+        },
+        body:JSON.stringify(values)
+      });
+      message.success("Profile updated successfully")
+      const data = await response.json()
+
+      dispatch(setCurrentUser(data.data))
+    } catch (error:any) {
+      message.error(error.message.data.message || "Something went wrong")
+    }
   }
   return (
     <div>
