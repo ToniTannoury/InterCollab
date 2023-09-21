@@ -97,7 +97,51 @@ const handleUnFollowClick = async (e:any) => {
   }
 };
   return (
-   
+    filteredArray &&
+    <div>
+      <h1 className='text-4xl mb-3 month-header text-ICblue'>Followings</h1>
+       <div className='my-5'>
+        <SearchUserInput/>
+      </div>
+      <div>
+       <div className='flex gap-5 flex-wrap'>
+        {filteredArray?.map((user:any)=>{
+            return (
+              user && <div data-id={user._id} className='following bg-ICblue rounded-xl'>
+                <div className='flex items-center gap-3'>
+                  <Image className='img-1 ml-5 mt-5 ' src={(`http://16.171.116.7:5000/images/${user.profile_picture}`)} alt='logo' width={2000} height={500}>
+
+                  </Image>  
+                  <span className='flex flex-col pt-6'>
+                    <b className='text-lg text-white'>{user.name}</b>
+                    <b className='flex gap-1 text-lg text-white'>{user.rating.toFixed(2)}<div  className='ri-star-line text-yellow-400 font-extrabold'></div></b>
+                  </span>
+                  
+                </div>
+                <div>
+                  
+                  
+                  <div className='flex gap-1 ml-6 mt-3 text-white'>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className=" h-7 w-7 text-white -ml-1">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                    <p className='text-about'>
+                      {user.about}
+                    </p>
+                  </div>
+                </div>
+                <div className='flex justify-end'>
+                <button onClick={handleUnFollowClick} className='pl-2 pr-2 bg-white h-7  mr-3 my-4 rounded card-button'>Unfollow</button>
+
+                </div>
+              </div>
+            )
+          })}
+       </div>
+        
+        
+      </div>
+    </div>
   )
 }
 
