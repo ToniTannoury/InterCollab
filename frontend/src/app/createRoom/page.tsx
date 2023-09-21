@@ -21,7 +21,23 @@ function CreateRoom() {
   };
 
   const onFinish = async (values: any) => {
-   
+    try {
+
+      const response = await fetch('http://16.171.116.7:5000/api/rooms', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${Cookies.get('token')}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+      const data = await response.json();
+
+      message.success('Room Created');
+      createRoom(data._id);
+    } catch (error: any) {
+      message.error(error.message.data.message || 'Something went wrong');
+    }
   };
 
 
