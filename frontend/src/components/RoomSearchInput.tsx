@@ -1,7 +1,21 @@
 
 'use client'
 import React, { useState, useEffect } from 'react';
-
+import { Form, message } from "antd";
+import { useDispatch } from 'react-redux';
+import { setLoading } from '@/redux/loadersSlice';
+import Cookie from 'js-cookie';
+import useDebounce from '../customHooks/useDebounce';
+import UserInfoBar from './UserInfoBar';
+import { setSearching } from '@/redux/searchingSlice';
+import Carousel from './Carousel';
+interface Room {
+  category: string;
+  title: string;
+  type: string;
+  _id:string
+  
+}
 
 
 function RoomSearchInput() {
