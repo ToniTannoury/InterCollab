@@ -66,6 +66,25 @@ function RoomSearchInput() {
     }
   };
 
+  useEffect(() => {
+    fetchSearchResults();
+  }, [debouncedSearchTerm, searchCriteria]);
+  function groupRoomsByCategory(rooms: Room[]): Room[][] {
+    const groupedRooms: Room[][] = [];
+  
+    rooms.forEach((room) => {
+      const { category } = room;
+      const existingCategory = groupedRooms.find((group) => group[0]?.category === category);
+  
+      if (existingCategory) {
+        existingCategory.push(room);
+      } else {
+        groupedRooms.push([room]);
+      }
+    });
+  
+    return groupedRooms;
+  }
   return (
     
   );
