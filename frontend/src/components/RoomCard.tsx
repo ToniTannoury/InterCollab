@@ -23,7 +23,7 @@ function RoomCard({room}:any) {
             <span className='p-1 px-2 font-semibold text-slate-50 text-center bg-slate-600 rounded'>
               {capitalizeString(room.category)}
             </span>
-            <span className='p-1 px-2 text-center text-white bg-green-900 rounded'>
+            <span className={`p-1 px-2 text-center text-white ${room.type === 'public' && " bg-green-900 rounded"} ${room.type === 'paid' && " bg-yellow-700 rounded"} ${room.type === 'private' && " bg-blue-800 rounded"}` }>
               {capitalizeString(room.type)}
             </span>
           </div>
