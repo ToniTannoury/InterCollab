@@ -20,7 +20,8 @@ function page() {
   const dispatch = useDispatch()
   const getFollowingInfo = async()=>{
     try {
-      
+      dispatch(setLoading(true))
+      console.log(currentUser?.followings)
       const userfollowings = currentUser?.followings?.map(async (user: any) => {
         console.log(user);
       
@@ -51,10 +52,27 @@ function page() {
     } catch (error:any) {
       message.error(error.message)
       console.log(error)
+    }finally{
+      dispatch(setLoading(false))
     }
   }
+  useEffect(()=>{
+    getFollowingInfo()
+  },[currentUser])
+ 
+  
 
+  // Filter duplicates
+  const uniqueIds = new Set<string>();
 
+const filteredArray: MyObject[] = followings.filter((obj:any) => {
+  if (!uniqueIds.has(obj._id)) {
+    uniqueIds.add(obj._id);
+    console.log(1111111111)
+    return true;
+  }
+  return false;
+});
 
   return (
    
