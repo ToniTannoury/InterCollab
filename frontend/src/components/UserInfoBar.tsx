@@ -15,6 +15,9 @@ const UserInfoBar = ({ user, search }: any) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
+  useEffect(() => {
+    setIsFollowing(currentUser?.followings?.some((followingUser: any) => followingUser === user?._id));
+  }, [user?.followings, currentUser?.followings, user?._id]);
 
 
 
