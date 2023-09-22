@@ -53,6 +53,17 @@ function Room() {
 
      
 
+   
+     function filterDuplicateParticipants(participants: Participant[]): Participant[] {
+      const uniqueParticipants: Record<string, boolean> = {};
+      const result: Participant[] = [];
+    
+      participants.forEach((participant) => {
+        if (!uniqueParticipants[participant._id]) {
+          uniqueParticipants[participant._id] = true;
+          result.push(participant);
+        }
+      });
     
       return result;
     }
