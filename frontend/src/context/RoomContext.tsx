@@ -36,6 +36,18 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
   const [chosenRoom , setChosenRoom] = useState<string>('')
  const router = useRouter()
   const dispatching =  useDispatch()
+  const switchStream = (stream: MediaStream)=>{
+    
+    setStream(stream )
+    setScreenSharringId(!screenSharringId)
+    ws.emit('screensharing', {roomId:roomId , status:!screenSharringId})
+    connectionArray?.map((conn:any)=>{
+      const videoTrack = stream?.getTracks().find(track=>track.kind === 'video')
+      const videoTracks = stream?.getTracks().find(track=>track.kind === 'video')
+        conn.peerConnection?.getSenders()[1]?.replaceTrack(videoTrack).catch(
+          (err:any)=>console.log(err))
+    })
+  }
 
 
 
