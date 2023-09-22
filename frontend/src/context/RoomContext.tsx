@@ -85,6 +85,28 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
       dispatch(setLoading(false))
     }
   }
+  const closeRoom = async({roomid , peerId}:{roomid:string , peerId:string})=>{
+    const user  = await getCurrentUser()
+    console.log(user)
+    dispatch(removeOtherPeersAction())
+    setParticipants([])
+    setMessages([])
+    console.log(peerId)
+    Cookies.set('creator_id' , peerId)
+    setIsRating(true)
+    ws.emit('leave-room',{roomId:roomid, peerId:user._id})
+    router.push('/')
+  }
+  const shareScreen = ()=>{
+    if(screenSharringId ){
+      navigator.mediaDevices.getUserMedia({video:true , audio:true}).then(switchStream)
+    }else{
+      navigator.mediaDevices.getDisplayMedia({ video: true, audio: true }).then(switchStream)
+    }
+  }
+  const removeAllPeers = async()=>{
+    
+  }
 
 
 
