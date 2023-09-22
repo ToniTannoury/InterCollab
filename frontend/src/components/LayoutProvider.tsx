@@ -8,8 +8,24 @@ import Image from 'next/image'
 import { useDispatch , useSelector } from 'react-redux'
 import { setCurrentUser } from '@/redux/usersSlice'
 import Loader from './Loader'
-
+import { setLoading } from '@/redux/loadersSlice'
+import Cookie from 'js-cookie'
+import { removeOtherPeersAction } from '@/context/peerActions'
+import { peersReducer } from '@/context/peerReducer'
+import Modal from 'react-modal';
+import { RoomContext } from '@/context/RoomContext'
+import RoomInfoModal from './RoomInfoModal'
 function LayoutProvider({children}:{children:React.ReactNode}) {
+  const router = useRouter()
+  const {currentUser} = useSelector((state:any)=>state.users)
+  const [selectedBundle, setSelectedBundle] = useState<number | null>(null);
+  const {isRating, setIsRating} = useContext(RoomContext)
+  const [isSidebarExpanded , setIsSidebarExpanded] = useState(true)
+  const [rating, setRating] = useState<number>(0);
+  const {loading} = useSelector((state:any)=>state.loaders)
+  const [peers , dispatching] = useReducer(peersReducer , {})
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
 
   return (
     <>
