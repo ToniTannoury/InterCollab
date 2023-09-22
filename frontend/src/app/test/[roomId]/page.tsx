@@ -23,7 +23,16 @@ interface Participant {
   followings: any[]; 
 }
 function Room() {
-
+  const [room, setRoom] = useState<any>({});
+  
+  const {currentUser} = useSelector((state:any)=>state.users)
+  const router = useRouter()
+  const {ws , me , stream ,peers,shareScreen , participants ,setRoomId,screenSharringId , messages, mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages ,setParticipants } = useContext(RoomContext)
+  const dispatch = useDispatch()
+  const [state , dispatching] = useReducer(peersReducer , {})
+  const [chat , setChat] = useState('')
+    const {roomId} = useParams()
+    
 
 
      
