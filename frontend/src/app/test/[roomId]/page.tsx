@@ -136,7 +136,58 @@ function Room() {
             })}
           </div>}
           
+          <section className='self-stretch users mr-10 flex flex-col justify-between'>
+            <div>
+            <div className='text-ICblue room-header min-w-full text-center text-3xl border-b-2 align-center' style={{width:"200px" , textAlign:'center'}}>
+            {room.title}
+          </div>
+          <div className='flex flex-col scrollable '>
+          {messages?.map((message:any)=>(
+            <div className='my-2 ml-2 bg-slate-300 rounded-lg container-message max-w-max pr-10'>
+              <b className='ml-3 text-ICblue'>{message.userName}</b>
+              <p className='ml-3 text-ICblue width break-words'>{message.message}</p>
+            </div>
+          ))}
+          </div>
+            </div>
           
+          <div>
+          <form className='mb-10' onSubmit={sendChat} style={{ position: 'relative'}}>
+            <hr className='pb-4'/>
+      <input
+        type="text"
+        value={chat}
+        onChange={(e)=>setChat(e.target.value)}
+        placeholder="Type a message..."
+        className='focus:border-transparent'
+        style={{
+          
+          padding: '8px',
+          fontSize: '16px',
+          width: '295px',
+        }}
+      />
+      <button
+        type="submit"
+        className='bg-ICblue'
+        style={{
+          position: 'absolute',
+          top: '65%',
+          right: '10px',
+          transform: 'translateY(-50%)',
+          
+          color: 'white',
+          border: 'none',
+          padding: '8px',
+          borderRadius: '40px',
+          cursor: 'pointer',
+        }}
+      >
+        Send
+      </button>
+    </form>
+          </div>
+          </section >
           
       </div>
      
