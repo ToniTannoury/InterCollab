@@ -164,7 +164,81 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
       }
     })
   },[])
+  useEffect(()=>{
+    if(!me) return
+    if(!stream) return
+    if(!roomId) return
+    me.on("call" , async(call)=>{
+      console.log('will answer')
+      console.log(stream.id)
+      const getJoinedUser = async(id:string)=>{
+        const res = await fetch(`http://16.171.116.7:5000/api/users/getUserById?userId=${id}` , {
+          headers:{
+            "Authorization" : `Bearer ${Cookies.get('token')}`
+          }
+        })
+        const data = await res.json()
+        setParticipants((prev:any)=>{
+          return[
+          ...prev , data
+        ]})
+        return data
+      }
+      const user = await getJoinedUser(call.peer)
+      call.answer(stream)
+   
+      call.on("stream" , (peerStream)=>{
+         const peerId = call.peer;
+      dispatch(addPeerAction(peerId, peerStream));
+      
+      setConnectionArray((prevConnections:any) => ([
+        ...prevConnections,
+        call,
+      ]));
+    });
+  });
+    ws.on("user-joined",async ({peerId})=>{
+      console.log("bitch joined")
+      const getJoinedUser = async(id:string)=>{
+        const res = await fetch(`http://16.171.116.7:5000/api/users/getUserById?userId=${id}` , {
+          headers:{
+            "Authorization" : `Bearer ${Cookies.get('token')}`
+          }
+        })
+        const data = await res.json()
+        console.log(roomId)
+        console.log(peers)
+        console.log(memoizedStream)
+        setParticipants((prev:any)=>{
+          return[
+          ...prev , data
+        ]})
+        return data
+      }
 
+      const user = await getJoinedUser(peerId)
+      console.log(stream)
+      message.success(`${user.name} joined`)
+      const call = me.call(peerId , stream)
+      call?.on("stream" , (peerStream)=>{
+        dispatch(addPeerAction(peerId , peerStream))
+      })
+ 
+      setConnectionArray((prevConnections:any) => ([
+        ...prevConnections,
+        call,
+      ]));
+    
+      call.on("error", function (err) {
+        console.error(err);
+    });
+    })
+    console.log(stream)
+  },[stream?.active])
+  if(!path.startsWith("/test")){
+    // ws.disconnect()
+   
+  }
 
   return <RoomContext.Provider value={{ }}>{children}</RoomContext.Provider>;
 };
