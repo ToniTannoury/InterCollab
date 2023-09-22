@@ -53,7 +53,12 @@ const UserInfoBar = ({ user, search }: any) => {
 
   const userId = user?._id;
 
-
+  const handleProfilePictureClick = () => {
+    if (!isEditingProfilePicture) {
+      fileInputRef.current?.click();
+    }
+  };
+  
   
 
 
