@@ -58,7 +58,41 @@ const UserInfoBar = ({ user, search }: any) => {
       fileInputRef.current?.click();
     }
   };
+  const handleProfilePictureChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    
+    event.preventDefault();
+    const body = new FormData();
+    body.append("filename", picture);
+    body.forEach((value, key) => {
+      console.log(key, value);
+    });
+   
+    try {
+      const response = await fetch('http://16.171.116.7:5000/api/users/changeProfilePicture', {
+        method: "PUT",
+        headers: {
+          "Authorization": `Bearer ${Cookies.get('token')}`
+        },
+        body: body
+      });
   
+      if (response.ok) {
+        const data = await response.json();
+        dispatch(setCurrentUser(data.data))
+        // Update the image source with the new profile picture URL
+        const updatedImageUrl = `http://16.171.116.7:5000/images/${data.data.profile_picture}`;
+        document.querySelector('.user-image')?.setAttribute('src', updatedImageUrl);
+  
+        setIsEditingProfilePicture(false);
+       
+      } else {
+        // Handle the error case
+        console.error('Failed to change profile picture');
+      }
+    } catch (error) {
+      console.error('Error occurred:', error);
+    }
+  };
   
 
 
