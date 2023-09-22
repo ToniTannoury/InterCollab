@@ -89,8 +89,7 @@ const searchRoomsByCategory = asyncHandler(async (req, res) => {
 });
 const searchRoomById = asyncHandler(async (req, res) => {
   const { roomId } = req.query;
-  console.log(roomId)
-  console.log(2)
+
   try {
     const room = await Room.findById(roomId).populate('user');
 

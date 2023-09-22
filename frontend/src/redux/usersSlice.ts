@@ -13,7 +13,6 @@ const usersSlice = createSlice({
     },
     addFollowing: (state, action) => {
       const follow = [...state!.currentUser!.followings , action.payload._id]
-      console.log(follow)
       state!.currentUser!.followings = follow
       
     },

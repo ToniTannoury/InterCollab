@@ -50,6 +50,7 @@ const UserInfoBar = ({ user, search }: any) => {
       console.error('Error:', error);
     }
   };
+  
   const userId = user?._id;
 
   const handleProfilePictureClick = () => {

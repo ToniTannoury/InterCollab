@@ -46,10 +46,8 @@ function page() {
         });
       
       const a = userfollowings
-      console.log(a)
     } catch (error:any) {
       message.error(error.message)
-      console.log(error)
     }finally{
       dispatch(setLoading(false))
     }
@@ -57,10 +55,7 @@ function page() {
   useEffect(()=>{
     getFollowingInfo()
   },[currentUser])
- 
-  
 
-  // Filter duplicates
   const uniqueIds = new Set<string>();
 
 const filteredArray: MyObject[] = followings.filter((obj:any) => {
@@ -69,7 +64,12 @@ const filteredArray: MyObject[] = followings.filter((obj:any) => {
     return true;
   }
   return false;
-});
+});  
+
+
+
+
+
 const handleUnFollowClick = async (e:any) => {
   const id = e.target.parentElement.parentElement.getAttribute("data-id")
   try {

@@ -21,7 +21,6 @@ const roomHandler = (socket) => {
   
       await room.deleteOne({ _id: roomId });
       socket.leave(roomId)
-      console.log('Room deleted successfully.');
     } catch (error) {
       console.error('Error closing room:', error.message);
     }
@@ -58,7 +57,6 @@ const roomHandler = (socket) => {
     socket.join(roomId);
 
     const user = await User.findById(peerId);
-    // console.log(user)
     const room = await Room.findById(roomId);
     if (!user || !room) {
       console.error("User or room not found.");
@@ -66,8 +64,7 @@ const roomHandler = (socket) => {
     }
 
     room.currentParticipants.push(user);
-    console.log(1)
-   console.log(user._id)
+
     if (!room.totalParticipants.includes(user._id)) room.totalParticipants.push(user._id)
     await room.save();
     setTimeout(() => {
@@ -86,7 +83,6 @@ const roomHandler = (socket) => {
       participants: room.currentParticipants,
     });
     socket.on('leave-room', () => {
-      console.log("Plzzzzzzzzzzzzzzzz disconnected");
       leaveRoom({ roomId, peerId });
     });
 
@@ -96,7 +92,6 @@ const roomHandler = (socket) => {
     });
 
     socket.on('disconnect', () => {
-      console.log("Plzzzzzzzzzzzzzzzz disconnected");
       leaveRoom({ roomId, peerId });
     });
   };

@@ -6,7 +6,7 @@ function AdminHome() {
   const {currentUser} = useSelector((state:any)=>state.users)
   return (
     <div>
-      111111111111
+      {console.log(currentUser)}
     </div>
   )
 }

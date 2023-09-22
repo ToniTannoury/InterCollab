@@ -66,7 +66,6 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
   }
   const enterRoom = ({roomId}:{roomId:string})=>{
     // console.log(roomId)
-    // navigate(`/room/${roomId}`)
   }
   const getCurrentUser = async()=>{
     try {
