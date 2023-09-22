@@ -62,6 +62,23 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
   ])
   const dispatch = useDispatch()
   const pathname = usePathname()
+  const getCurrentUser = async()=>{
+    try {
+      dispatch(setLoading(true))
+      const res = await fetch("http://16.171.116.7:5000/api/users/me" , {
+        headers:{
+          "Authorization" : `Bearer ${Cookie.get('token')}`
+        }
+      })
+      const data = await res.json()   
+      dispatch(setCurrentUser(data))
+    } catch (error:any) {
+      message.error(error.message.data?.message || "Something went left")
+    }finally{
+      dispatch(setLoading(false))
+    }
+  }
+
 
 
 
