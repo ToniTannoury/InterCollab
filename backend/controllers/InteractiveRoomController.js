@@ -20,7 +20,7 @@ const roomHandler = (socket) => {
       socket.to(roomId).emit('room-closed', { roomId });
   
       await room.deleteOne({ _id: roomId });
-  
+      socket.leave(roomId)
       console.log('Room deleted successfully.');
     } catch (error) {
       console.error('Error closing room:', error.message);
