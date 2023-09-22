@@ -115,7 +115,22 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
       console.log(e.error)
     })
   }
-
+  const rateCreator = async()=>{
+    const res = await fetch("http://16.171.116.7:5000/api/users/rateCreator" , {
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "Authorization" : `Bearer ${Cookie.get('token')}`
+      },
+      body:JSON.stringify({
+        creator_id:Cookie.get("creator_id"),
+        rating
+      })
+    })
+    
+    const data = await res.json() 
+    
+  }
 
   return (
     <>
