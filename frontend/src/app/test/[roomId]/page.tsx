@@ -13,7 +13,8 @@ import { message } from 'antd';
 import Image from 'next/image';
 import StopSharingButton from '@/components/StopSharingButton';
 import LeaveRoomButton from '@/components/LeaveRoomButton';
-import CloseRoomButton from '@/components/CloseRoomButton';
+import { CloseRoomButton } from '@/components/CloseRoomButton';
+
 interface Participant {
   _id: string;
   name: string;
@@ -96,6 +97,9 @@ function Room() {
     const emitStopSharing = async()=>{
       setMediaShareStatus(!mediaShareStatus)
       ws.emit('stopShare' , {roomId:roomId , mediaShareStatus:!mediaShareStatus })
+    }
+    const emitCloseRoom = async()=>{
+     console.log('closing')
     }
   return (
     me !== null && peers.length !== 0 &&  room.user && stream &&
@@ -196,7 +200,7 @@ function Room() {
     <LeaveRoomButton onClick={leaveRoom}/>
     {me?._id === room.user._id &&<ShareScreenButton onClick={shareScreen} />}
     {me?._id === room.user._id &&<StopSharingButton onClick={emitStopSharing}/>}
-    {me?._id === room.user._id &&<CloseRoomButton />}
+    {me?._id === room.user._id &&<CloseRoomButton onClick={emitCloseRoom}/>}
   </div>
   
 </div>
