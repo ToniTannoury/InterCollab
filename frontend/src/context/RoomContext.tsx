@@ -146,7 +146,24 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
         dispatching(setLoading(false))
       }
     } 
-
+    getCurrentUser().then(res=>{
+      ws.on('Messages' , (data:any)=>{
+        setMessages((prevState:any) => [...prevState, {userName: data.userName , message : data.message}]); 
+      })
+      ws.on("mediaSharing" , handleMediaShare)
+      ws.on("room-closed" , closeRoom)
+      ws.on("screenSharing" , handleScreenShare)
+      ws.on("room-created" , enterRoom)
+      ws.on("get-users" , getUsers)
+      ws.on("user-disconnected" , removePeer)
+      return ()=>{
+        ws.off("room-created")
+        ws.off("get-users")
+        ws.off("user-disconnected")
+        ws.off("user-joined")
+      }
+    })
+  },[])
 
 
   return <RoomContext.Provider value={{ }}>{children}</RoomContext.Provider>;
