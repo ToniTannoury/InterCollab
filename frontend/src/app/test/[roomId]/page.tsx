@@ -49,7 +49,20 @@ function Room() {
         dispatch(setLoading(false))
       }
     }
-
+    useEffect(()=>{
+      const fetchRoom = async()=>{
+        const res = await fetch(`http://16.171.116.7:5000/api/rooms/searchRoomById?roomId=${roomId}` , {
+          headers:{
+            'Authorization': `Bearer ${Cookies.get('token')}`
+          }
+        })
+        const data = await res.json()
+        setRoom(data)
+        
+      }
+      getCurrentUser().then(res=>fetchRoom())
+      
+    } , [])
     useEffect(()=>{
       if(me && roomId) ws.emit("join-room" , {roomId:roomId , peerId:me._id })
       if(me && roomId!==undefined) ws.emit("join" , {roomId:roomId})
@@ -62,7 +75,12 @@ function Room() {
       roomId!==undefined && ws.emit('chatMessage', {"roomId":roomId,"userName":currentUser.name , "message": chat})
       setChat('')
     }
-   
+    useEffect(()=>{
+      if(room._id === undefined) return
+      setRoomId((prev:any)=>{
+       return room
+      })
+     },[room._id])
      function filterDuplicateParticipants(participants: Participant[]): Participant[] {
       const uniqueParticipants: Record<string, boolean> = {};
       const result: Participant[] = [];
