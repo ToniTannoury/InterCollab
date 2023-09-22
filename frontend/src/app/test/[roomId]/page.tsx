@@ -112,7 +112,14 @@ function Room() {
           
           
           
-
+      </div>
+     
+  <div className="fixed bottom-0 p-3 w-full flex justify-center border-t-2">
+    <LeaveRoomButton onClick={leaveRoom}/>
+    {me?._id === room.user._id &&<ShareScreenButton onClick={shareScreen} />}
+    {me?._id === room.user._id &&<CloseRoomButton onClick={emitCloseRoom}/>}
+  </div>
+  
 </div>
   )
 }
