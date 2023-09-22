@@ -30,14 +30,14 @@ function RoomInfoModal() {
         }
       })
       const data = await response.json()
-      console.log(data)
+     
       setRoomData(data)
     } catch (error:any) {
       message.error(error.message)
     }
   }
 
-  
+
   const coinTransfer = async ()=>{
     if(currentUser.coins<roomData.priceToEnter){
       message.error("Not enough coins to  join")

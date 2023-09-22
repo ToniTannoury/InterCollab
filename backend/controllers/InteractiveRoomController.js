@@ -87,7 +87,6 @@ const roomHandler = (socket) => {
     });
 
     socket.on('CloseRoom', () => {
-      console.log("closing room");
       closeRoom({ roomId , peerId });
     });
 

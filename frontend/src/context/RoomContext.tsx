@@ -108,8 +108,8 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     
   }
   const leaveRoom = async()=>{
-    console.log(roomId)
-    console.log(currentUser)
+
+  
     console.log(currentUser._id !== roomId.user._id)
     
     currentUser._id !== roomId.user._id && setIsRating(true)
