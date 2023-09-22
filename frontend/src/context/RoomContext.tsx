@@ -127,7 +127,25 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
   const handleMediaShare = async(mediaShareStatus:any)=>{
     setMediaShareStatus(mediaShareStatus.mediaShareStatus)
   }
-
+  useEffect(()=>{
+    const getCurrentUser = async()=>{
+      try {
+        dispatching(setLoading(true))
+        const res = await fetch("http://16.171.116.7:5000/api/users/me" , {
+          headers:{
+            "Authorization" : `Bearer ${Cookies.get('token')}`
+          }
+        })
+        const data = await res.json()
+        const peer = new Peer(data?._id)
+        setMe(peer)
+      } catch (error:any) {
+        message.error(error.message.data?.message || "Something went left")
+        
+      }finally{
+        dispatching(setLoading(false))
+      }
+    } 
 
 
 
