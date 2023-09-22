@@ -11,6 +11,7 @@ import { setLoading } from '@/redux/loadersSlice';
 import { setCurrentUser } from '@/redux/usersSlice';
 import { message } from 'antd';
 import Image from 'next/image';
+import StopSharingButton from '@/components/StopSharingButton';
 import LeaveRoomButton from '@/components/LeaveRoomButton';
 import { CloseRoomButton } from '@/components/CloseRoomButton';
 import { removeOtherPeersAction } from '@/context/peerActions';
@@ -94,8 +95,19 @@ function Room() {
     
       return result;
     }
-
-
+    const emitStopSharing = async()=>{
+      setMediaShareStatus(!mediaShareStatus)
+      ws.emit('stopShare' , {roomId:roomId , mediaShareStatus:!mediaShareStatus })
+    }
+    const emitCloseRoom = async()=>{
+      ws.emit('CloseRoom' , {roomId:roomId ,peerId: me._id})
+      dispatch(removeOtherPeersAction())
+      setParticipants([])
+      setMessages([])
+      router.push('/')
+      
+      
+    }
   return (
     me !== null && peers.length !== 0 &&  room.user && stream &&
     
@@ -194,6 +206,7 @@ function Room() {
   <div className="fixed bottom-0 p-3 w-full flex justify-center border-t-2">
     <LeaveRoomButton onClick={leaveRoom}/>
     {me?._id === room.user._id &&<ShareScreenButton onClick={shareScreen} />}
+    {me?._id === room.user._id &&<StopSharingButton onClick={emitStopSharing}/>}
     {me?._id === room.user._id &&<CloseRoomButton onClick={emitCloseRoom}/>}
   </div>
   
