@@ -10,14 +10,14 @@ const roomHandler = (socket) => {
   const createRoom = ({ roomId }) => {
     socket.emit('room-created', { roomId });
   };
-  const closeRoom = async ({ roomId }) => {
+  const closeRoom = async ({ roomId , peerId }) => {
     try {
       const room = await Room.findById(roomId);
   
       if (!room) {
         throw new Error('Room not found');
       }
-      socket.to(roomId).emit('room-closed', { roomId });
+      socket.to(roomId).emit('room-closed', { roomId , peerId });
   
       await room.deleteOne({ _id: roomId });
       socket.leave(roomId)
@@ -89,10 +89,12 @@ const roomHandler = (socket) => {
       console.log("Plzzzzzzzzzzzzzzzz disconnected");
       leaveRoom({ roomId, peerId });
     });
+
     socket.on('CloseRoom', () => {
       console.log("closing room");
-      closeRoom({ roomId });
+      closeRoom({ roomId , peerId });
     });
+
     socket.on('disconnect', () => {
       console.log("Plzzzzzzzzzzzzzzzz disconnected");
       leaveRoom({ roomId, peerId });
