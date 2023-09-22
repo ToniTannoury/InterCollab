@@ -240,5 +240,23 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
    
   }
 
-  return <RoomContext.Provider value={{ }}>{children}</RoomContext.Provider>;
+
+  useEffect(()=>{
+    if(!roomId) return
+    if(!me)return
+    try {
+    
+      Promise.all([
+        navigator.mediaDevices.getUserMedia({ video: true, audio: true }),
+        // navigator.mediaDevices.getDisplayMedia({ video: true, audio: true })
+      ])
+      .then(([userMediaStream]) => {
+        console.log("set")
+        setStream(userMediaStream)
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  },[roomId])
+  return <RoomContext.Provider value={{ ws , me, stream , peers , shareScreen , setRoomId  , participants , roomId , screenSharringId , messages,mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages,isRating, setIsRating , removeAllPeers , isRoomInfoModalOpen , setIsRoomInfoModalOpen,chosenRoom , setChosenRoom ,setParticipants}}>{children}</RoomContext.Provider>;
 };
