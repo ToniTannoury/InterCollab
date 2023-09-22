@@ -71,7 +71,7 @@ const filteredArray: MyObject[] = followings.filter((obj:any) => {
   return false;
 });
 const handleUnFollowClick = async (e:any) => {
-  const id = e.target.parentElement.getAttribute("data-id")
+  const id = e.target.parentElement.parentElement.getAttribute("data-id")
   try {
     const url =  `http://16.171.116.7:5000/api/users/unfollow/${id}`
      
