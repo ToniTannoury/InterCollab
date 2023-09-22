@@ -39,10 +39,10 @@ export default async function Home() {
   return (
     <div>
       <div className="flex flex-col my-3">
-        <h1 className="month-header text-2xl font-extrabold text-center text-ICblue ">
+        <h1 className="month-header text-3xl font-extrabold text-center text-ICblue ">
           Rooms Of The Month
         </h1>
-        <h4 className="font-base text-gray-600 text-center">Check out the most attended or viewed rooms</h4>
+        <h4 className="font-base text-gray-600 text-center mb-3">Check out the most attended or viewed rooms</h4>
       </div>
       <div>
         <Carousel rooms={rooms?.topRooms} home/>
