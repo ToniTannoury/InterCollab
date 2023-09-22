@@ -97,7 +97,17 @@ function Room() {
 
 
   return (
-
+    me !== null && peers.length !== 0 &&  room.user && stream &&
+    
+    <div className=' bg-ICblue h-full'>
+      
+      <div className='flex w-full h-screen pt-3 pb-3 gap-2 justify-center'>
+      <section className=' users1 ml-10 '>
+          <p className='text-ICblue min-w-full text-3xl border-b-2 pl-8 mt-4 pr-10 room-header p-1'>
+            
+            Users In Call
+          </p>
+          <div>
          
           
           
