@@ -78,7 +78,24 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
       dispatch(setLoading(false))
     }
   }
-
+  useEffect(()=>{
+    if(pathname !== '/login' && pathname !== "/register" && !currentUser){
+      getCurrentUser()
+    }
+  },[pathname])
+  const onLogout = async ()=>{
+    try {
+      dispatch(setLoading(true))
+      message.success("Logged out successfully")
+      dispatch(setCurrentUser(null))
+      Cookie.set('token' , '')
+      router.push('/login')
+    } catch (error:any) {
+      message.error(error.response.data?.message || "Something went left")
+    }finally{
+      dispatch(setLoading(false))
+    }
+  }
 
 
 
