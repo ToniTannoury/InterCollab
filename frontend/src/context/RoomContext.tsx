@@ -77,17 +77,23 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
         }
       })
       const data = await res.json()
+      
       dispatch(setCurrentUser(data))
+      return data
     } catch (error:any) {
       message.error(error.message.data?.message || "Something went left")
     }finally{
       dispatch(setLoading(false))
     }
   }
-  const closeRoom = async({roomId}:{roomId:string})=>{
-    console.log(roomId)
+  const closeRoom = async({roomid}:{roomid:string})=>{
     const user  = await getCurrentUser()
-    setCurrentUser(user)
+    console.log(user)
+    dispatch(removeOtherPeersAction())
+    setParticipants([])
+    setMessages([])
+    // Cookies.set('creator_id' , roomId.user._id)
+    ws.emit('leave-room',{roomId:roomId, peerId:user._id})
     router.push('/')
   }
   const shareScreen = ()=>{
@@ -251,5 +257,5 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
       console.log(error)
     }
   },[roomId])
-  return <RoomContext.Provider value={{ ws , me, stream , peers , shareScreen , setRoomId  , participants , roomId , screenSharringId , messages,mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages,isRating, setIsRating , removeAllPeers , isRoomInfoModalOpen , setIsRoomInfoModalOpen,chosenRoom , setChosenRoom}}>{children}</RoomContext.Provider>;
+  return <RoomContext.Provider value={{ ws , me, stream , peers , shareScreen , setRoomId  , participants , roomId , screenSharringId , messages,mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages,isRating, setIsRating , removeAllPeers , isRoomInfoModalOpen , setIsRoomInfoModalOpen,chosenRoom , setChosenRoom ,setParticipants}}>{children}</RoomContext.Provider>;
 };

@@ -14,6 +14,7 @@ import Image from 'next/image';
 import StopSharingButton from '@/components/StopSharingButton';
 import LeaveRoomButton from '@/components/LeaveRoomButton';
 import { CloseRoomButton } from '@/components/CloseRoomButton';
+import { removeOtherPeersAction } from '@/context/peerActions';
 
 interface Participant {
   _id: string;
@@ -27,7 +28,7 @@ function Room() {
   
   const {currentUser} = useSelector((state:any)=>state.users)
   const router = useRouter()
-  const {ws , me , stream ,peers,shareScreen , participants ,setRoomId,screenSharringId , messages, mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages , } = useContext(RoomContext)
+  const {ws , me , stream ,peers,shareScreen , participants ,setRoomId,screenSharringId , messages, mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages ,setParticipants } = useContext(RoomContext)
   const dispatch = useDispatch()
   const [state , dispatching] = useReducer(peersReducer , {})
   const [chat , setChat] = useState('')
@@ -99,6 +100,9 @@ function Room() {
       ws.emit('stopShare' , {roomId:roomId , mediaShareStatus:!mediaShareStatus })
     }
     const emitCloseRoom = async()=>{
+      dispatch(removeOtherPeersAction())
+      setParticipants([])
+      setMessages([])
       router.push('/')
       ws.emit('CloseRoom' , {roomId:roomId})
     }
