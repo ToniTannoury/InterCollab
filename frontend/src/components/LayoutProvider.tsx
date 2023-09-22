@@ -181,7 +181,26 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
              </div>
               </div>
             
-              
+              <div className='user-info  flex gap-1 items-center'>
+               { isSidebarExpanded &&
+                <span className=''>
+                  <Image className='img mr-1 mb-2' src={(`http://16.171.116.7:5000/images/${currentUser?.profile_picture}`)} alt='logo' width={1000} height={500}>
+                  </Image>
+                </span>}
+                {isSidebarExpanded && 
+                <div className='flex flex-col'>
+                  
+                  <span className='text-base'>
+                    {currentUser?.name}
+                  </span>
+                  
+                  <span className='text-base mb-3'>
+                    {currentUser?.coins} <i className={'ri-coin-line'} style={{fontSize:"20px"}}></i>
+                  </span>
+                </div>
+                }
+                <i onClick={onLogout} className='ri-logout-box-r-line mb-1 text-2xl'></i>
+              </div>
             </div>
             <div className="body">
               {children}
