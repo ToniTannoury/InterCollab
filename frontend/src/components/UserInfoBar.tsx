@@ -95,6 +95,11 @@ const UserInfoBar = ({ user, search }: any) => {
   };
   
 
+  const handleFileInputChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile =event.target.files !== null && event.target.files[0];
+    selectedFile && setPicture(selectedFile) 
+  };
+
 
 
 
