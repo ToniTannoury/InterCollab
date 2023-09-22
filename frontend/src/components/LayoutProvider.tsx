@@ -160,7 +160,26 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
                 
                 
               </div>
-             
+              <div className='menu-items '>
+                {menuItems.map((item , index)=>{
+                  const isActive = pathname === item.path
+                  return(
+                  <div style={{justifyContent:isSidebarExpanded?'start':"center"}} className={`menu-item ${isActive ? "active-menu-item" : ""}`} key={index} onClick={()=>{
+               
+                    router.push(item.path)}}>
+                    <i className={item.icon}></i>
+                    <span style={{width:"290px"}}>
+                      {isSidebarExpanded && item.name}
+                    </span>
+                  </div>
+                )})}
+                <div style={{justifyContent:isSidebarExpanded?'start':"center"}} className='menu-item' onClick={openModal}>
+               <i className={'ri-coin-line'}></i>
+               <span>
+                 {isSidebarExpanded && "Coins"}
+               </span>
+             </div>
+              </div>
             
               
             </div>
