@@ -11,6 +11,10 @@ const roomHandler = (socket) => {
     socket.emit('room-created', { roomId });
     // console.log(`user created the room ${roomId}`);
   };
+  const CloseRoom = ({ roomId }) => {
+    socket.emit('room-created', { roomId });
+    console.log(`room closed ${roomId}`);
+  };
 
   const leaveRoom = async ({ roomId, peerId }) => {
     try {
