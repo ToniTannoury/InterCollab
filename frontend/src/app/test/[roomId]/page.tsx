@@ -1,6 +1,6 @@
 'use client'
 import React, { useContext, useEffect, useReducer, useState } from 'react'
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { RoomContext } from '@/context/RoomContext';
 import { VideoPlayer } from '@/components/VideoPlayer';
 import { PeerState, peersReducer } from '../../../context/peerReducer'
@@ -26,7 +26,7 @@ function Room() {
   const [room, setRoom] = useState<any>({});
   
   const {currentUser} = useSelector((state:any)=>state.users)
-  
+  const router = useRouter()
   const {ws , me , stream ,peers,shareScreen , participants ,setRoomId,screenSharringId , messages, mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages , } = useContext(RoomContext)
   const dispatch = useDispatch()
   const [state , dispatching] = useReducer(peersReducer , {})
@@ -99,7 +99,7 @@ function Room() {
       ws.emit('stopShare' , {roomId:roomId , mediaShareStatus:!mediaShareStatus })
     }
     const emitCloseRoom = async()=>{
-      console.log("emit")
+      router.push('/')
       ws.emit('CloseRoom' , {roomId:roomId})
     }
   return (

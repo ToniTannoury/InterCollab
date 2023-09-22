@@ -68,9 +68,26 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     // console.log(roomId)
     // navigate(`/room/${roomId}`)
   }
-  const closeRoom = ({roomId}:{roomId:string})=>{
+  const getCurrentUser = async()=>{
+    try {
+      dispatch(setLoading(true))
+      const res = await fetch("http://16.171.116.7:5000/api/users/me" , {
+        headers:{
+          "Authorization" : `Bearer ${Cookies.get('token')}`
+        }
+      })
+      const data = await res.json()
+      dispatch(setCurrentUser(data))
+    } catch (error:any) {
+      message.error(error.message.data?.message || "Something went left")
+    }finally{
+      dispatch(setLoading(false))
+    }
+  }
+  const closeRoom = async({roomId}:{roomId:string})=>{
     console.log(roomId)
-    
+    const user  = await getCurrentUser()
+    setCurrentUser(user)
     router.push('/')
   }
   const shareScreen = ()=>{
