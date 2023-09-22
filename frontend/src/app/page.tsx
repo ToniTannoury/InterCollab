@@ -3,6 +3,7 @@ import {cookies} from 'next/headers'
 import SearchUserInput from "@/components/SearchUserInput";
 import BottomHomeComponent from "@/components/BottomHomeComponent";
 import RoomCard from "@/components/RoomCard";
+import TopRooms from "@/components/TopRooms";
 export async function getUser(){
   try {
     const token = cookies().get('token')
@@ -45,7 +46,7 @@ export default async function Home() {
         <h4 className="font-base text-gray-600 text-center mb-3">Check out the most attended or viewed rooms</h4>
       </div>
       <div>
-        <Carousel rooms={rooms?.topRooms} home/>
+       <TopRooms/>
       </div>
         <div className="flex gap-10">
           <BottomHomeComponent/>
