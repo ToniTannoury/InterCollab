@@ -48,6 +48,26 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
           (err:any)=>console.log(err))
     })
   }
+  const removePeer = (peerId: string, stream: MediaStream) => {
+    setParticipants((prevParticipants: any[]) =>{
+      const removedParticipant = prevParticipants.find(
+        (prevParticipant:any) => prevParticipant._id === peerId
+      );  
+      removedParticipant !== undefined && message.error(`${removedParticipant?.name} left`)
+    
+      return prevParticipants.filter((participant) => participant._id !== peerId)
+    });
+  
+    dispatch(removePeerAction(peerId, stream));
+  };
+  
+  const getUsers = (participants:{participants:string[]})=>{
+    // console.log(participants)
+  }
+  const enterRoom = ({roomId}:{roomId:string})=>{
+    // console.log(roomId)
+  }
+
 
 
 
