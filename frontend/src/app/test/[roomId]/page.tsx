@@ -99,6 +99,7 @@ function Room() {
       ws.emit('stopShare' , {roomId:roomId , mediaShareStatus:!mediaShareStatus })
     }
     const emitCloseRoom = async()=>{
+      console.log("emit")
       ws.emit('CloseRoom' , {roomId:roomId})
     }
   return (

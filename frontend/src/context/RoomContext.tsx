@@ -68,6 +68,10 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     // console.log(roomId)
     // navigate(`/room/${roomId}`)
   }
+  const closeRoom = ({roomId}:{roomId:string})=>{
+    console.log(roomId)
+    // navigate(`/room/${roomId}`)
+  }
   const shareScreen = ()=>{
     if(screenSharringId ){
       navigator.mediaDevices.getUserMedia({video:true , audio:true}).then(switchStream)

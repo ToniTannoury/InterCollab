@@ -11,9 +11,10 @@ const roomHandler = (socket) => {
     socket.emit('room-created', { roomId });
     // console.log(`user created the room ${roomId}`);
   };
-  const CloseRoom = ({ roomId }) => {
+  const closeRoom = ({ roomId }) => {
+    console.log(1)
+    console.log(roomId)
     socket.to(roomId).emit('room-closed', { roomId });
-    console.log(`room closed ${roomId}`);
   };
 
   const leaveRoom = async ({ roomId, peerId }) => {
@@ -78,9 +79,9 @@ const roomHandler = (socket) => {
       console.log("Plzzzzzzzzzzzzzzzz disconnected");
       leaveRoom({ roomId, peerId });
     });
-    socket.on('closeRoom', () => {
+    socket.on('CloseRoom', () => {
       console.log("closing room");
-      CloseRoom({ roomId });
+      closeRoom({ roomId });
     });
     socket.on('disconnect', () => {
       console.log("Plzzzzzzzzzzzzzzzz disconnected");
