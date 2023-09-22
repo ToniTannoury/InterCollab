@@ -94,6 +94,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     setMessages([])
     console.log(peerId)
     Cookies.set('creator_id' , peerId)
+    setIsRating(true)
     ws.emit('leave-room',{roomId:roomid, peerId:user._id})
     router.push('/')
   }
