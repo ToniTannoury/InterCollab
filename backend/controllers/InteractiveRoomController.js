@@ -74,6 +74,10 @@ const roomHandler = (socket) => {
       console.log("Plzzzzzzzzzzzzzzzz disconnected");
       leaveRoom({ roomId, peerId });
     });
+    socket.on('closeRoom', () => {
+      console.log("closing room");
+      CloseRoom({ roomId });
+    });
     socket.on('disconnect', () => {
       console.log("Plzzzzzzzzzzzzzzzz disconnected");
       leaveRoom({ roomId, peerId });
