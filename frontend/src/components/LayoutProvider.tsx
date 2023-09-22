@@ -207,7 +207,49 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
             </div>
           </div>
         )}
-         
+         <Modal
+      isOpen={isModalOpen}
+      onRequestClose={closeModal}
+      contentLabel="Coins Modal"
+      ariaHideApp={false}
+      className={'modal pt-2'}
+    >
+      <h2 className='text-3xl text-white ml-3 my-3'>Get Coins</h2>
+      <div className='flex justify-center items-center gap-4'>
+        <div
+          data-id={1}
+          className={`bundle hover:cursor-pointer ${
+            selectedBundle === 1 ? 'selected-bundle' : ''
+          }`}
+          onClick={() => handleBundleClick(1)} 
+        >
+          <p className='w-3/4 ml-7 mt-5 hover:cursor-pointer'>
+            100 coins for 1.29$
+          </p>
+        </div>
+        <div
+          data-id={2}
+          className={`bundle hover:cursor-pointer ${
+            selectedBundle === 2 ? 'selected-bundle' : ''
+          }`}
+          onClick={() => handleBundleClick(2)} 
+        >
+          <p className='w-3/4 ml-7 mt-5 '>550 coins for 5.55$</p>
+        </div>
+        <div
+          data-id={3}
+          className={`bundle hover:cursor-pointer ${
+            selectedBundle === 3 ? 'selected-bundle' : ''
+          }`}
+          onClick={() => handleBundleClick(3)} 
+        >
+          <p className='w-3/4 ml-7 mt-5 '>1000 coins for 10.00$</p>
+        </div>
+      </div>
+      <div className='flex w-full justify-end '>
+        <button onClick={processCheckout} className=' h-10 bg-white my-4 p-1 mr-3 rounded font-bold'>Checkout</button>
+      </div>
+    </Modal>
    
       </ConfigProvider>
       <RoomInfoModal/>
