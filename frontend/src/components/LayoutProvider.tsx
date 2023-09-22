@@ -250,7 +250,33 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
         <button onClick={processCheckout} className=' h-10 bg-white my-4 p-1 mr-3 rounded font-bold'>Checkout</button>
       </div>
     </Modal>
-   
+    <Modal
+      isOpen={isRating}
+      onRequestClose={()=>setIsRating(false)}
+      contentLabel="Coins Modal"
+      ariaHideApp={false}
+      className={'rating-modal pt-2'}
+    >
+          <div>
+            <div className='flex justify-center text-2xl font-semibold text-white'>
+              <p >Rate the creator</p>
+            </div>
+          <div className="star-rating">
+            {[...Array(5)].map((_, index) => (
+              <span
+                key={index}
+                className={index < rating ? 'star filled' : 'star'}
+                onClick={() => handleStarClick(index)}
+              >
+                &#9733; 
+              </span>
+            ))}
+          </div>
+          <div className='flex justify-center items-center ml-10 bg-white w-3/4 rounded font-semibold hover:text-xl cursor-pointer'>
+            <button onClick={rate}>Submit</button>
+          </div>
+        </div>
+    </Modal>
       </ConfigProvider>
       <RoomInfoModal/>
     </body>
