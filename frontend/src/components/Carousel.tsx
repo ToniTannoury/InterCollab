@@ -32,7 +32,7 @@ function Carousel({rooms , home}:any) {
   return (
     <>
       <motion.div ref={carousel} className={`carousel relative -z-3 ${searching && 'app'}`}>
-        <motion.div drag={searching ? "undefined" : 'x'} dragConstraints={{ right: 0, left: -width }} whileTap={{ cursor: 'grabbing' }} className='inner-carousel gap-5'>
+        <motion.div drag={searching ? "undefined" : 'x'} dragConstraints={{ right: 0, left: -width }} whileTap={{ cursor: 'grabbing' }} className='inner-carousel gap-2'>
           {rooms.map((room:any, index:number) => {
             return (
               <motion.div
