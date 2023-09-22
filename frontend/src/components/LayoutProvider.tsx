@@ -25,6 +25,20 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
   const {loading} = useSelector((state:any)=>state.loaders)
   const [peers , dispatching] = useReducer(peersReducer , {})
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleBundleClick = (dataId: number) => {
+    setSelectedBundle(dataId);
+  };
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+  const handleStarClick = (index:number) => {
+    setRating(index + 1);
+  };
+  const path  = usePathname()
+
 
 
   return (
