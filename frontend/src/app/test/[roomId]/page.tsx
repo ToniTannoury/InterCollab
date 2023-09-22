@@ -33,6 +33,22 @@ function Room() {
   const [chat , setChat] = useState('')
     const {roomId} = useParams()
     
+    const getCurrentUser = async()=>{
+      try {
+        dispatch(setLoading(true))
+        const res = await fetch("http://16.171.116.7:5000/api/users/me" , {
+          headers:{
+            "Authorization" : `Bearer ${Cookies.get('token')}`
+          }
+        })
+        const data = await res.json()
+        dispatch(setCurrentUser(data))
+      } catch (error:any) {
+        message.error(error.message.data?.message || "Something went left")
+      }finally{
+        dispatch(setLoading(false))
+      }
+    }
 
 
      
