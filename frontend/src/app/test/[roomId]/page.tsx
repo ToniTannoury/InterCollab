@@ -50,9 +50,18 @@ function Room() {
       }
     }
 
-
+    useEffect(()=>{
+      if(me && roomId) ws.emit("join-room" , {roomId:roomId , peerId:me._id })
+      if(me && roomId!==undefined) ws.emit("join" , {roomId:roomId})
+      
+     },[ws , me , roomId ])
      
-
+     const sendChat = (e:any)=>{
+      e.preventDefault()
+      setMessages((prevState:any) => [...prevState, {userName: "You" , message : chat}]); 
+      roomId!==undefined && ws.emit('chatMessage', {"roomId":roomId,"userName":currentUser.name , "message": chat})
+      setChat('')
+    }
    
      function filterDuplicateParticipants(participants: Participant[]): Participant[] {
       const uniqueParticipants: Record<string, boolean> = {};
