@@ -63,7 +63,7 @@ function Pofile() {
         </Col>
         <Col span={24}>
           <Form.Item label='About' name="about" >
-            <textarea className='input text-area' required/>
+            <textarea className='input text-area p-2' required/>
           </Form.Item>
         </Col>
    

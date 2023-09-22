@@ -96,7 +96,7 @@ function RoomInfoModal() {
             Creator's rating
             </span>
             <span>
-              {roomData.user?.rating}
+              {roomData.user?.rating.toFixed(2)}
             </span>
           </div>
           <div className="flex justify-between">
