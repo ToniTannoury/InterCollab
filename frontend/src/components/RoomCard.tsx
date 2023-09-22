@@ -7,8 +7,6 @@ import { RoomContext } from '@/context/RoomContext';
 
 
 function RoomCard({room}:any) {
-  const [state , dispatching ] = useReducer(peersReducer , {})
-  const router = useRouter()
   function capitalizeString(str:string) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   }
@@ -45,7 +43,6 @@ function RoomCard({room}:any) {
           <button  onClick={()=>{
              setIsRoomInfoModalOpen(true)
              setChosenRoom(room._id)
-            // router.push(`/roomInfo/${room._id}`)
             }} className='bg-slate-50 h-7 w-20 ml-4 font-semibold text-ICblue card-button'>
             Room Info
           </button>
