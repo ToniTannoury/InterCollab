@@ -111,7 +111,7 @@ function Room() {
             
             {filterDuplicateParticipants(participants)?.map((participant:any)=>
               (<div className='flex gap-2 items-center ml-5 mt-3'>
-                <Image className='img mr-1 ' src={(`http://16.171.116.7:5000/images/emptyProfile.png`)} alt='logo' width={1000} height={500}>
+                <Image className='img mr-1 ' src={(`http://16.171.116.7:5000/images/${participant.profile_picture}`)} alt='logo' width={1000} height={500}>
                 </Image>
                 <div>
                   {participant.name}
