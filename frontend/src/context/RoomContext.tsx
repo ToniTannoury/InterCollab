@@ -86,14 +86,15 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
       dispatch(setLoading(false))
     }
   }
-  const closeRoom = async({roomid}:{roomid:string})=>{
+  const closeRoom = async({roomid , creatorId}:{roomid:string , creatorId:string})=>{
     const user  = await getCurrentUser()
     console.log(user)
     dispatch(removeOtherPeersAction())
     setParticipants([])
     setMessages([])
+    console.log(roomId)
     // Cookies.set('creator_id' , roomId.user._id)
-    ws.emit('leave-room',{roomId:roomId, peerId:user._id})
+    ws.emit('leave-room',{roomId:roomid, peerId:user._id})
     router.push('/')
   }
   const shareScreen = ()=>{

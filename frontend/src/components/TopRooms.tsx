@@ -24,7 +24,7 @@ function TopRooms() {
     }
     
     getTopRooms()
-  })
+  },[])
   return (
     
        rooms &&   
