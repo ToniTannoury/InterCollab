@@ -21,9 +21,7 @@ function page() {
   const getFollowingInfo = async()=>{
     try {
       dispatch(setLoading(true))
-      console.log(currentUser?.followings)
       const userfollowings = currentUser?.followings?.map(async (user: any) => {
-        console.log(user);
       
         const res = await fetch(`http://16.171.116.7:5000/api/users/getUserById?userId=${user}`, {
           headers: {
@@ -68,7 +66,6 @@ function page() {
 const filteredArray: MyObject[] = followings.filter((obj:any) => {
   if (!uniqueIds.has(obj._id)) {
     uniqueIds.add(obj._id);
-    console.log(1111111111)
     return true;
   }
   return false;

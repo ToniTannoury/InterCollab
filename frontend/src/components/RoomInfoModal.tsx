@@ -23,10 +23,7 @@ function RoomInfoModal() {
   }
   const fetchJob = async()=>{
     chosenRoom !== ""
-    console.log(chosenRoom)
-
     try {
-      // dispatch(setLoading(true))
       const response = await fetch(`http://16.171.116.7:5000/api/rooms/searchRoomById?roomId=${chosenRoom}`,{
         headers:{
           "Authorization":`Bearer ${Cookies.get('token')}`
@@ -37,8 +34,6 @@ function RoomInfoModal() {
       setRoomData(data)
     } catch (error:any) {
       message.error(error.message)
-    }finally{
-      // dispatch(setLoading(false))
     }
   }
   const coinTransfer = async ()=>{
