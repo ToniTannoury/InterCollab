@@ -131,7 +131,11 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
     const data = await res.json() 
     
   }
-
+  const rate = async ()=>{
+    rateCreator()
+    Cookie.remove("creator_id") 
+    setIsRating(false)
+  }
   return (
     <>
       <head>
