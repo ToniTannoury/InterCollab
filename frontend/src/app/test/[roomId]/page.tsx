@@ -13,6 +13,7 @@ import { message } from 'antd';
 import Image from 'next/image';
 import StopSharingButton from '@/components/StopSharingButton';
 import LeaveRoomButton from '@/components/LeaveRoomButton';
+import CloseRoomButton from '@/components/CloseRoomButton';
 interface Participant {
   _id: string;
   name: string;
@@ -195,7 +196,7 @@ function Room() {
     <LeaveRoomButton onClick={leaveRoom}/>
     {me?._id === room.user._id &&<ShareScreenButton onClick={shareScreen} />}
     {me?._id === room.user._id &&<StopSharingButton onClick={emitStopSharing}/>}
-    {me?._id === room.user._id &&<CloseRoomButton onClick={emitCloseRoom}/>}
+    {me?._id === room.user._id &&<CloseRoomButton />}
   </div>
   
 </div>
