@@ -99,7 +99,11 @@ const UserInfoBar = ({ user, search }: any) => {
     const selectedFile =event.target.files !== null && event.target.files[0];
     selectedFile && setPicture(selectedFile) 
   };
-
+  useEffect(() => {
+    if (picture) {
+      buttonRef.current?.click()
+    }
+  }, [picture]);
 
 
   return (
