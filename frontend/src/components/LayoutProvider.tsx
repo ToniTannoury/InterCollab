@@ -96,7 +96,25 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
       dispatch(setLoading(false))
     }
   }
-
+  const processCheckout = async ()=>{
+    await fetch('http://16.171.116.7:5000/api/users/create-checkout-session'  , {
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "Authorization" : `Bearer ${Cookie.get('token')}`
+      },
+      body:JSON.stringify({
+        bundle : +selectedBundle!
+      })
+    }).then((res:any)=>{
+      if(res.ok) return res.json()
+      return res.json().then((json:any)=>Promise.reject(json))
+    }).then(({url})=>{
+      window.location = url
+    }).catch(e=>{
+      console.log(e.error)
+    })
+  }
 
 
   return (
