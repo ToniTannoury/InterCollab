@@ -70,7 +70,8 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
   }
   const closeRoom = ({roomId}:{roomId:string})=>{
     console.log(roomId)
-    // navigate(`/room/${roomId}`)
+    
+    router.push('/')
   }
   const shareScreen = ()=>{
     if(screenSharringId ){

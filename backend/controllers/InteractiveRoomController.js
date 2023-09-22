@@ -9,12 +9,22 @@ const roomHandler = (socket) => {
  
   const createRoom = ({ roomId }) => {
     socket.emit('room-created', { roomId });
-    // console.log(`user created the room ${roomId}`);
   };
-  const closeRoom = ({ roomId }) => {
-    console.log(1)
-    console.log(roomId)
-    socket.to(roomId).emit('room-closed', { roomId });
+  const closeRoom = async ({ roomId }) => {
+    try {
+      const room = await Room.findById(roomId);
+  
+      if (!room) {
+        throw new Error('Room not found');
+      }
+      socket.to(roomId).emit('room-closed', { roomId });
+  
+      await room.remove();
+  
+      console.log('Room deleted successfully.');
+    } catch (error) {
+      console.error('Error closing room:', error.message);
+    }
   };
 
   const leaveRoom = async ({ roomId, peerId }) => {
