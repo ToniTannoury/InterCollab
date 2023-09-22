@@ -50,7 +50,7 @@ const UserInfoBar = ({ user, search }: any) => {
       console.error('Error:', error);
     }
   };
-
+  
   const userId = user?._id;
 
   const handleProfilePictureClick = () => {
@@ -99,14 +99,63 @@ const UserInfoBar = ({ user, search }: any) => {
     const selectedFile =event.target.files !== null && event.target.files[0];
     selectedFile && setPicture(selectedFile) 
   };
-  useEffect(() => {
-    if (picture) {
-      buttonRef.current?.click()
-    }
-  }, [picture]);
 
 
 
+  return (
+    currentUser && user && (
+      <div userid={userId} className='info-bar-container'>
+        <div>
+          <img
+            className='user-image'
+            style={search ? { width: "60px", height: "60px" } : { width: "75px", height: "75px" }}
+            src={`http://16.171.116.7:5000/images/${user.profile_picture}`}
+            alt=""
+            
+          />
+       
+            <div>
+              <form onSubmit={handleProfilePictureChange} encType="multipart/form-data">
+                <input
+                type="file"
+                ref={fileInputRef}
+                style={{ display: 'none' }} // Hide the file input
+                onChange={handleFileInputChange}
+              />
+              <button ref={buttonRef} type='submit' style={{ display: 'none' }}  ></button>
+              </form>
+                
+            {search ? <div className='username'>{user.name}</div> :<div className='username' onClick={handleProfilePictureClick}>Edit</div>}
+            </div>
+          
+        </div>
+        <div className='info-right'>
+          <div className='info-box'>
+            <span>{followerCount}</span>
+            <span>Followers</span>
+          </div>
+          <div className='info-box'>
+            <span>{user.followings?.length || 0}</span>
+            <span>Following</span>
+          </div>
+          <div className='info-box'>
+            <span>0</span>
+            <span>Rating</span>
+          </div>
+        </div>
+        {search && (
+          <div>
+            <button
+              className='add-to-followers'
+              onClick={handleFollowClick}
+            >
+              {isFollowing ? 'Following' : 'Follow'}
+            </button>
+          </div>
+        )}
+      </div>
+    )
+  );
 };
 
 export default UserInfoBar;
