@@ -12,7 +12,7 @@ const roomHandler = (socket) => {
     // console.log(`user created the room ${roomId}`);
   };
   const CloseRoom = ({ roomId }) => {
-    socket.emit('room-created', { roomId });
+    socket.to(roomId).emit('room-closed', { roomId });
     console.log(`room closed ${roomId}`);
   };
 

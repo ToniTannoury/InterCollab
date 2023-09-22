@@ -122,6 +122,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
         setMessages((prevState:any) => [...prevState, {userName: data.userName , message : data.message}]); 
       })
       ws.on("mediaSharing" , handleMediaShare)
+      ws.on("room-closed" , closeRoom)
       ws.on("screenSharing" , handleScreenShare)
       ws.on("room-created" , enterRoom)
       ws.on("get-users" , getUsers)
