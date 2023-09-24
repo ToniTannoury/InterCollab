@@ -169,7 +169,7 @@ function RoomInfoModal() {
               <input value={code} className="pincode" type="text" onChange={(e)=>setCode(e.target.value)}/>
             </form>
           )}
-           {(roomData?.type === "paid" )&&roomData?.type !== "public" &&  roomData?.user?._id !== currentUser?._id&&<Button onClick={coinTransfer} type="primary" className="bg-ICblue" >Join Now For {roomData?.priceToEnter} Coins</Button>}
+           {(roomData?.type === "paid" )&&roomData?.type !== "public" &&  roomData?.user?._id !== currentUser?._id&&<Button onClick={coinTransfer} type="primary" className="bg-ICblue border-white" >Join Now For {roomData?.priceToEnter} Coins</Button>}
            {(roomData?.type === "paid" )&&roomData?.type !== "public" &&  roomData?.user?._id === currentUser?._id&&<Button type="primary" className="bg-ICblue"  onClick={joinNow}>Join Now</Button>}
         </div>
        

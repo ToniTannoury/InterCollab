@@ -99,7 +99,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     console.log(peerId)
     Cookies.set('creator_id' , peerId)
     setIsRating(true)
-    // dispatching(setCurrentUser(currentUser))
+    dispatching(setCurrentUser(currentUser))
     message.error("The creator closed the room")
     ws.emit('leave-room',{roomId:roomid, peerId:user._id})
     router.push('/')
