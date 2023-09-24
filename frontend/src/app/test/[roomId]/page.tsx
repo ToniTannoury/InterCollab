@@ -208,7 +208,7 @@ function Room() {
     {me?._id === room.user._id &&<ShareScreenButton onClick={shareScreen} />}
     {me?._id === room.user._id &&<StopSharingButton onClick={emitStopSharing}/>}
     {me?._id === room.user._id &&<CloseRoomButton onClick={emitCloseRoom}/>}
-    {me?._id === room.user._id && room.pinCode}
+    {me?._id === room.user._id && <div className='text-white flex flex-col justify-center items-center border-white border-1 p-1'><div>Room's PIN</div>{room.pinCode}</div>}
   </div>
   
 </div>
