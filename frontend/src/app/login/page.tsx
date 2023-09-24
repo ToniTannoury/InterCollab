@@ -33,9 +33,10 @@ function Login() {
     if(response.status!==200){
       message.error(data.message)
     }else{
-      message.success("Login Successfull")
+      
       setTimeout(()=>{
         location.reload()
+        
       },100)
       router.push("/")
       Cookie.set('token' , data.token)
