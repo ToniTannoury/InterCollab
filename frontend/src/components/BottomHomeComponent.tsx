@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation"
 function BottomHomeComponent() {
   const router = useRouter()
-  return (
+    return (
     <div className="flex w-full gap-10">
      <div className="bottom-home flex ">
       <div className="flex justify-center font-extrabold  items-center bottom-home bg-blue-100 h-200">

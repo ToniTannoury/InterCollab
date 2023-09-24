@@ -34,6 +34,8 @@ const getRoomsByAscendingParticipants = asyncHandler(async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
+
+  
 });
 app.get('/api/users/grouped-by-age', groupUsersByAge);
 app.get('/api/rooms/grouped-by-participants', getRoomsByAscendingParticipants);

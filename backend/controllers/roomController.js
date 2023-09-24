@@ -22,7 +22,7 @@ const createRoom = asyncHandler(async (req, res)=>{
   if(type!=="paid"){
     
   }
- 
+
   const room = type === "paid" ? await Room.create({
       description,
       user: req.user.id,

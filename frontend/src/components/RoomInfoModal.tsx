@@ -22,6 +22,7 @@ function RoomInfoModal() {
     setIsRoomInfoModalOpen(false)
   }
   const fetchJob = async()=>{
+    if(!chosenRoom)return
     chosenRoom !== ""
     try {
       const response = await fetch(`http://16.171.116.7:5000/api/rooms/searchRoomById?roomId=${chosenRoom}`,{
@@ -82,7 +83,7 @@ function RoomInfoModal() {
     className={'modalInfo pt-2'}
   >
     <div>
-      <h1 className="text-2xl -mt-1 mb-3">{roomData.title}</h1>
+      <h1 className="text-2xl -mt-1 mb-3">{roomData?.title}</h1>
       <Row gutter={[16,16]}>
         <Col span={12} className="flex flex-col gap-2">
           <div className="flex justify-between">
@@ -90,7 +91,7 @@ function RoomInfoModal() {
               Creator's name
             </span>
             <span>
-              {roomData.user?.name}
+              {roomData?.user?.name}
             </span>
           </div>
           <div className="flex justify-between">
@@ -98,7 +99,7 @@ function RoomInfoModal() {
             Creator's rating
             </span>
             <span>
-              {roomData.user?.rating.toFixed(2)}
+              {roomData?.user?.rating.toFixed(2)}
             </span>
           </div>
           <div className="flex justify-between">
@@ -106,7 +107,7 @@ function RoomInfoModal() {
             Creator's email
             </span>
             <span>
-              {roomData.user?.email}
+              {roomData?.user?.email}
             </span>
           </div>
           <div className="flex justify-between">
@@ -114,7 +115,7 @@ function RoomInfoModal() {
             Room Category
             </span>
             <span>
-              {roomData.category}
+              {roomData?.category}
             </span>
           </div>
           <div className="flex justify-between">
@@ -122,7 +123,7 @@ function RoomInfoModal() {
             Max number of participants
             </span>
             <span>
-              {roomData.maxNumberOfParticipants}
+              {roomData?.maxNumberOfParticipants}
             </span>
           </div>
           <div className="flex justify-between">
@@ -130,7 +131,7 @@ function RoomInfoModal() {
               Room Type
             </span>
             <span>
-              {roomData.type}
+              {roomData?.type}
             </span>
           </div>
         </Col>
@@ -139,12 +140,12 @@ function RoomInfoModal() {
             About the creator
           </h1>
           <Divider className="p-0 h-0 m-0"/>
-          <span>{roomData.user?.about}</span>
+          <span>{roomData?.user?.about}</span>
           <h1 className="text-xl">
             Room Description
           </h1>
           <Divider className="p-0 h-0 m-0"/>
-          <span>{roomData.description}</span>
+          <span>{roomData?.description}</span>
          
           <div className="flex justify-end gap-3">
           

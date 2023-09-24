@@ -65,7 +65,7 @@ function Room() {
       
     } , [])
     useEffect(()=>{
-      if(me && roomId) ws.emit("join-room" , {roomId:roomId , peerId:me._id })
+            if(me && roomId) ws.emit("join-room" , {roomId:roomId , peerId:me._id })
       if(me && roomId!==undefined) ws.emit("join" , {roomId:roomId})
       
      },[ws , me , roomId ])

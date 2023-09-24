@@ -69,7 +69,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
   }
   const getCurrentUser = async()=>{
     try {
-      dispatch(setLoading(true))
+      // dispatch(setLoading(true))
       const res = await fetch("http://16.171.116.7:5000/api/users/me" , {
         headers:{
           "Authorization" : `Bearer ${Cookies.get('token')}`
@@ -82,7 +82,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     } catch (error:any) {
       message.error(error.message.data?.message || "Something went left")
     }finally{
-      dispatch(setLoading(false))
+      // dispatch(setLoading(false))
     }
   }
   const closeRoom = async({roomid , peerId}:{roomid:string , peerId:string})=>{
@@ -128,6 +128,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     setMediaShareStatus(mediaShareStatus.mediaShareStatus)
   }
   useEffect(()=>{
+    if(Cookies.get('token')?.length===0)return
     const getCurrentUser = async()=>{
       try {
         dispatching(setLoading(true))
@@ -137,9 +138,9 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
           }
         })
         const data = await res.json()
-        const peer = new Peer(data?._id)
-        setMe(peer)
-      } catch (error:any) {
+                  const peer = new Peer(data?._id)
+                    setMe(peer)
+              } catch (error:any) {
         message.error(error.message.data?.message || "Something went left")
         
       }finally{
@@ -166,9 +167,9 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
   },[])
   useEffect(()=>{
     if(!me) return
-    if(!stream) return
+        if(!stream) return
     if(!roomId) return
-    me.on("call" , async(call)=>{
+        me.on("call" , async(call)=>{
       console.log('will answer')
       console.log(stream.id)
       const getJoinedUser = async(id:string)=>{
@@ -198,6 +199,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     });
   });
     ws.on("user-joined",async ({peerId})=>{
+      console.log(me)
       console.log("bitch joined")
       const getJoinedUser = async(id:string)=>{
         const res = await fetch(`http://16.171.116.7:5000/api/users/getUserById?userId=${id}` , {
@@ -219,8 +221,8 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
       const user = await getJoinedUser(peerId)
       console.log(stream)
       message.success(`${user.name} joined`)
-      const call = me.call(peerId , stream)
-      call?.on("stream" , (peerStream)=>{
+            const call = me.call(peerId , stream)
+            call?.on("stream" , (peerStream)=>{
         dispatch(addPeerAction(peerId , peerStream))
       })
  
@@ -232,15 +234,15 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
       call.on("error", function (err) {
         console.error(err);
     });
-    })
+          })
     console.log(stream)
   },[stream?.active])
   if(!path.startsWith("/test")){
     // ws.disconnect()
    
   }
-
-
+  
+  
   useEffect(()=>{
     if(!roomId) return
     if(!me)return
@@ -258,5 +260,6 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
       console.log(error)
     }
   },[roomId])
-  return <RoomContext.Provider value={{ ws , me, stream , peers , shareScreen , setRoomId  , participants , roomId , screenSharringId , messages,mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages,isRating, setIsRating , removeAllPeers , isRoomInfoModalOpen , setIsRoomInfoModalOpen,chosenRoom , setChosenRoom ,setParticipants}}>{children}</RoomContext.Provider>;
+  console.log(me)
+    return <RoomContext.Provider value={{ ws , me, stream , peers , shareScreen , setRoomId  , participants , roomId , screenSharringId , messages,mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages,isRating, setIsRating , removeAllPeers , isRoomInfoModalOpen , setIsRoomInfoModalOpen,chosenRoom , setChosenRoom ,setParticipants}}>{children}</RoomContext.Provider>;
 };

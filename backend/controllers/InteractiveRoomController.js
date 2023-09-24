@@ -55,44 +55,50 @@ const roomHandler = (socket) => {
   const joinRoom = async ({ roomId, peerId }) => {
     console.log(`User joined the room ${roomId}`);
     socket.join(roomId);
-
-    const user = await User.findById(peerId);
-    const room = await Room.findById(roomId);
-    if (!user || !room) {
-      console.error("User or room not found.");
-      return;
+    try {
+      const user = await User.findById(peerId);
+      const room = await Room.findById(roomId);
+      if (!user || !room) {
+        console.error("User or room not found.");
+        return;
+  
+      }
+  
+  
+      room.currentParticipants.push(user);
+  
+      if (!room.totalParticipants.includes(user._id)) room.totalParticipants.push(user._id)
+      await room.save();
+      setTimeout(() => {
+        console.log(`User ${peerId} joined`);
+        socket.to(roomId).emit("user-joined", {
+          peerId,
+        });
+      }, 2000);
+  
+  
+  
+      
+  
+      socket.emit("get-users", {
+        roomId,
+        participants: room.currentParticipants,
+      });
+      socket.on('leave-room', () => {
+        leaveRoom({ roomId, peerId });
+      });
+  
+      socket.on('CloseRoom', () => {
+        closeRoom({ roomId , peerId });
+      });
+  
+      socket.on('disconnect', () => {
+        leaveRoom({ roomId, peerId });
+      });
+    } catch (error) {
+      console.log(error.message)
     }
 
-    room.currentParticipants.push(user);
-
-    if (!room.totalParticipants.includes(user._id)) room.totalParticipants.push(user._id)
-    await room.save();
-    setTimeout(() => {
-      console.log(`User ${peerId} joined`);
-      socket.to(roomId).emit("user-joined", {
-        peerId,
-      });
-    }, 2000);
-
-
-
-    
-
-    socket.emit("get-users", {
-      roomId,
-      participants: room.currentParticipants,
-    });
-    socket.on('leave-room', () => {
-      leaveRoom({ roomId, peerId });
-    });
-
-    socket.on('CloseRoom', () => {
-      closeRoom({ roomId , peerId });
-    });
-
-    socket.on('disconnect', () => {
-      leaveRoom({ roomId, peerId });
-    });
   };
   
   socket.on("create-room", createRoom);
