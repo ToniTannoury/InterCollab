@@ -102,8 +102,8 @@ function RoomInfoModal() {
             <span>
             Creator's rating
             </span>
-            <span>
-              {roomData?.user?.rating.toFixed(2)}
+            <span className='flex'>
+              {roomData?.user?.rating.toFixed(2) } <div  className='ri-star-line text-yellow-400 font-extrabold ml-2'></div>
             </span>
           </div>
           <div className="flex justify-between">
@@ -143,12 +143,12 @@ function RoomInfoModal() {
           <h1 className="text-xl">
             About the creator
           </h1>
-          <Divider className="p-0 h-0 m-0"/>
+          <Divider className="p-0 h-0 m-0 bg-white"/>
           <span>{roomData?.user?.about}</span>
           <h1 className="text-xl">
             Room Description
           </h1>
-          <Divider className="p-0 h-0 m-0"/>
+          <Divider className="p-0 h-0 m-0  bg-white"/>
           <span>{roomData?.description}</span>
          
           <div className="flex justify-end gap-3">
