@@ -18,6 +18,7 @@ function RoomInfoModal() {
   const {ws , me , stream ,peers,shareScreen , participants ,setRoomId,screenSharringId , messages, mediaShareStatus, setMediaShareStatus , leaveRoom , setMessages ,removeAllPeers,setIsRoomInfoModalOpen , isRoomInfoModalOpen,chosenRoom , setChosenRoom  } = useContext(RoomContext)
   
   const closeRoomInfoModal = ()=>{
+    setChosenRoom('')
     setRoomData('')
     setIsRoomInfoModalOpen(false)
   }
@@ -63,8 +64,10 @@ function RoomInfoModal() {
       const data = await response.json() 
   }
   useEffect(()=>{
+    if(!chosenRoom)return
+    console.log("chosen room")
     fetchJob()
-  },[chosenRoom])
+  },[isRoomInfoModalOpen])
   const checkPin = async(e:any)=>{
     e.preventDefault()
     roomData?.pinCode === code && router.push(`/test/${roomData?._id}`)
@@ -75,14 +78,14 @@ function RoomInfoModal() {
     router.push(`/test/${roomData?._id}`)
   }
   return (
-    chosenRoom !== "" && <Modal
+     <Modal
     isOpen={isRoomInfoModalOpen}
     onRequestClose={closeRoomInfoModal}
     contentLabel="RoomInfo"
     ariaHideApp={false}
     className={'modalInfo pt-2'}
   >
-    {console.log(roomData)}
+   
     <div>
       <h1 className="text-2xl -mt-1 mb-3">{roomData?.title}</h1>
       <Row gutter={[16,16]}>
