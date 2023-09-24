@@ -75,6 +75,7 @@ function RoomInfoModal() {
   },[isRoomInfoModalOpen])
   const checkPin = async(e:any)=>{
     e.preventDefault()
+    closeRoomInfoModal()
     roomData?.pinCode === code && router.push(`/test/${roomData?._id}`)
   }
   const joinNow = async ()=>{  
