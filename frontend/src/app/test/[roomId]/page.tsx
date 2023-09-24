@@ -21,7 +21,7 @@ interface Participant {
   name: string;
   email: string;
   password: string;
-  followings: any[]; 
+  followings: []; 
 }
 function Room() {
   const [room, setRoom] = useState<any>({});
@@ -70,9 +70,9 @@ function Room() {
       
      },[ws , me , roomId ])
      
-     const sendChat = (e:any)=>{
+     const sendChat = (e:React.FormEvent)=>{
       e.preventDefault()
-      setMessages((prevState:any) => [...prevState, {userName: "You" , message : chat}]); 
+      setMessages((prevState:Participant[]) => [...prevState, {userName: "You" , message : chat}]); 
       roomId!==undefined && ws.emit('chatMessage', {"roomId":roomId,"userName":currentUser.name , "message": chat})
       setChat('')
     }
@@ -121,7 +121,7 @@ function Room() {
           </p>
           <div>
             
-            {filterDuplicateParticipants(participants)?.map((participant:any)=>
+            {filterDuplicateParticipants(participants)?.map((participant:Participant)=>
               (<div className='flex gap-2 items-center ml-5 mt-3'>
                 <Image className='img mr-1 ' src={(`http://16.171.116.7:5000/images/${participant.profile_picture}`)} alt='logo' width={1000} height={500}>
                 </Image>
