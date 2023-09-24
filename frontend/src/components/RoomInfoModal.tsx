@@ -153,7 +153,7 @@ function RoomInfoModal() {
          
           <div className="flex justify-end gap-3">
           
-          {(roomData?.type === "public" || roomData?.user?._id === currentUser?._id)&&roomData?.type !== "paid" && <Button type="primary" className="bg-ICblue"  onClick={joinNow}>Join Now</Button>}
+          {(roomData?.type === "public" || roomData?.user?._id === currentUser?._id)&&roomData?.type !== "paid" && <Button type="primary" className="bg-ICblue border-white"  onClick={joinNow}>Join Now</Button>}
 
           {roomData?.type === "private" && roomData?.user?._id !== currentUser?._id &&
           (
