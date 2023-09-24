@@ -100,6 +100,10 @@ function Room() {
       ws.emit('stopShare' , {roomId:roomId , mediaShareStatus:!mediaShareStatus })
     }
     const emitCloseRoom = async()=>{
+      console.log("emiting closeroom")
+      console.log(roomId)
+      console.log(me)
+      if(me?._id !== room.user._id)return
       ws.emit('CloseRoom' , {roomId:roomId ,peerId: me._id})
       dispatch(removeOtherPeersAction())
       setParticipants([])

@@ -86,6 +86,11 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     }
   }
   const closeRoom = async({roomid , peerId}:{roomid:string , peerId:string})=>{
+    
+    const roomIid = path.substring(6)
+    console.log(roomid , roomIid)
+    if(roomid!==roomIid)return
+    console.log("closed rooming ")
     const user  = await getCurrentUser()
     console.log(user)
     dispatch(removeOtherPeersAction())
@@ -94,7 +99,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     console.log(peerId)
     Cookies.set('creator_id' , peerId)
     setIsRating(true)
-    dispatching(setCurrentUser(currentUser))
+    // dispatching(setCurrentUser(currentUser))
     message.error("The creator closed the room")
     ws.emit('leave-room',{roomId:roomid, peerId:user._id})
     router.push('/')

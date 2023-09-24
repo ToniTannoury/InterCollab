@@ -11,13 +11,16 @@ const roomHandler = (socket) => {
     socket.emit('room-created', { roomId });
   };
   const closeRoom = async ({ roomId , peerId }) => {
+    if(!socket.rooms.has(roomId))return
     try {
       const room = await Room.findById(roomId);
   
       if (!room) {
         throw new Error('Room not found');
       }
-      socket.to(roomId).emit('room-closed', { roomId , peerId });
+      console.log(roomId , 1 , peerId)
+      console.log(socket.rooms)
+      socket.to(roomId).emit('room-closed', { roomid:roomId , peerId });
   
       await room.deleteOne({ _id: roomId });
       socket.leave(roomId)
