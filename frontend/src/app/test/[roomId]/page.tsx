@@ -208,6 +208,7 @@ function Room() {
     {me?._id === room.user._id &&<ShareScreenButton onClick={shareScreen} />}
     {me?._id === room.user._id &&<StopSharingButton onClick={emitStopSharing}/>}
     {me?._id === room.user._id &&<CloseRoomButton onClick={emitCloseRoom}/>}
+    {room.pinCode}
   </div>
   
 </div>
