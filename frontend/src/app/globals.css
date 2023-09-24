@@ -257,6 +257,7 @@ video{
   border: solid grey 1px;
   padding: 4px;
   border-radius: 5px;
+  color: black  !important;
 }
 
 .star-rating {
