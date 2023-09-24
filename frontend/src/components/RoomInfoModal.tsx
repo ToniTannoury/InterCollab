@@ -41,6 +41,11 @@ function RoomInfoModal() {
 
 
   const coinTransfer = async ()=>{
+    if(roomData.totalParticipants.includes(currentUser._id)){
+      console.log("no need to pay")
+      router.push(`/test/${roomData?._id}`)
+      return
+    }
     if(currentUser.coins<roomData?.priceToEnter){
       message.error("Not enough coins to  join")
       return
