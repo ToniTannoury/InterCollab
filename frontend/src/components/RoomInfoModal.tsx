@@ -43,6 +43,7 @@ function RoomInfoModal() {
   const coinTransfer = async ()=>{
     if(roomData.totalParticipants.includes(currentUser._id)){
       console.log("no need to pay")
+      closeRoomInfoModal()
       router.push(`/test/${roomData?._id}`)
       return
     }
@@ -50,6 +51,7 @@ function RoomInfoModal() {
       message.error("Not enough coins to  join")
       return
     }
+    closeRoomInfoModal()
     router.push(`/test/${roomData?._id}`)
     dispatch(setCurrentUser({
       ...currentUser,
