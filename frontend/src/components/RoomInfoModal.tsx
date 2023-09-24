@@ -40,14 +40,14 @@ function RoomInfoModal() {
 
 
   const coinTransfer = async ()=>{
-    if(currentUser.coins<roomData.priceToEnter){
+    if(currentUser.coins<roomData?.priceToEnter){
       message.error("Not enough coins to  join")
       return
     }
-    router.push(`/test/${roomData._id}`)
+    router.push(`/test/${roomData?._id}`)
     dispatch(setCurrentUser({
       ...currentUser,
-      coins:currentUser.coins-roomData.priceToEnter
+      coins:currentUser.coins-roomData?.priceToEnter
     }))
       const response = await fetch(`http://16.171.116.7:5000/api/users/coinTransfer`,{
       method:"POST",
@@ -57,7 +57,7 @@ function RoomInfoModal() {
         },
         body:JSON.stringify({
           roomId:chosenRoom,
-          amount:roomData.priceToEnter
+          amount:roomData?.priceToEnter
         })
       })
       const data = await response.json() 
@@ -67,12 +67,12 @@ function RoomInfoModal() {
   },[chosenRoom])
   const checkPin = async(e:any)=>{
     e.preventDefault()
-    roomData.pinCode === code && router.push(`/test/${roomData._id}`)
+    roomData?.pinCode === code && router.push(`/test/${roomData?._id}`)
   }
   const joinNow = async ()=>{  
     closeRoomInfoModal()
     
-    router.push(`/test/${roomData._id}`)
+    router.push(`/test/${roomData?._id}`)
   }
   return (
     chosenRoom !== "" && <Modal
@@ -82,6 +82,7 @@ function RoomInfoModal() {
     ariaHideApp={false}
     className={'modalInfo pt-2'}
   >
+    {console.log(roomData)}
     <div>
       <h1 className="text-2xl -mt-1 mb-3">{roomData?.title}</h1>
       <Row gutter={[16,16]}>
@@ -149,8 +150,6 @@ function RoomInfoModal() {
          
           <div className="flex justify-end gap-3">
           
-          <Button type="default" onClick={()=>router.back()}>Cancel</Button>
-
           {(roomData?.type === "public" || roomData?.user?._id === currentUser?._id)&&roomData?.type !== "paid" && <Button type="primary" className="bg-ICblue"  onClick={joinNow}>Join Now</Button>}
 
           {roomData?.type === "private" && roomData?.user?._id !== currentUser?._id &&
