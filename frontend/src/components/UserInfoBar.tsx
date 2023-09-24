@@ -143,7 +143,7 @@ const UserInfoBar = ({ user, search }: any) => {
             <span>Following</span>
           </div>
           <div className='info-box'>
-            <span>0</span>
+            <span className='flex items-center justify-center gap-1'>{user.rating} <div  className='ri-star-line text-yellow-400 font-extrabold '></div></span>
             <span>Rating</span>
           </div>
         </div>
