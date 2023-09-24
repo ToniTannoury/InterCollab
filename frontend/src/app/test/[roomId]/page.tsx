@@ -154,7 +154,7 @@ function Room() {
             {room.title}
           </div>
           <div className='flex flex-col scrollable '>
-          {messages?.map((message:any)=>(
+          {messages?.map((message:{userName:string , message:string})=>(
             <div className='my-2 ml-2 bg-slate-300 rounded-lg container-message max-w-max pr-10'>
               <b className='ml-3 text-ICblue'>{message.userName}</b>
               <p className='ml-3 text-ICblue width break-words'>{message.message}</p>
