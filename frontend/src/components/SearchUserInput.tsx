@@ -44,7 +44,7 @@ function SearchUserInput() {
         <div className='flex '>
           <input
             type="text"
-            className='input user-search'
+            className='input-1 user-search'
             placeholder="Search"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}

@@ -18,6 +18,17 @@ html,body{
 }
 .input{
   height: 35px;
+  width: 100%;
+  border: 1px solid #999999;
+  padding-left: 5px;
+  border-radius: 2px;
+}
+input:focus{
+  outline: none;
+  border:1px solid #999999
+}
+.input-1{
+  height: 35px;
   width: 90%;
   border: 1px solid #999999;
   padding-left: 5px;
@@ -25,7 +36,7 @@ html,body{
   border-right: 0px;
   margin-right: -1px;
 }
-input:focus{
+.input-1:focus{
   outline: none;
   border:1px solid #999999;
   border-right: 0;
