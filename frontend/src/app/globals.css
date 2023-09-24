@@ -27,7 +27,8 @@ html,body{
 }
 input:focus{
   outline: none;
-  border:1px solid #999999
+  border:1px solid #999999;
+  border-right: 0;
 }
 button{
   border: none;

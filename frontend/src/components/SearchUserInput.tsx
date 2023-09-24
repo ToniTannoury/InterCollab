@@ -49,7 +49,7 @@ function SearchUserInput() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <i className='ri-close-line font-extrabold  border-black border-1 pt-2 mr-1 pr-1'></i>
+          <i onClick={()=>{setSearchTerm('')}} className='ri-close-line font-extrabold  border-black border-1 pt-2 mr-1 pr-1'></i>
         </div>
       </div>
       <div className='relative'>
