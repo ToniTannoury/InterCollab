@@ -18,10 +18,12 @@ html,body{
 }
 .input{
   height: 35px;
-  width: 100%;
+  width: 90%;
   border: 1px solid #999999;
   padding-left: 5px;
   border-radius: 2px;
+  border-right: 0px;
+  margin-right: -1px;
 }
 input:focus{
   outline: none;
@@ -283,4 +285,8 @@ video{
 }
 .logout-button{
   font-size: 50px !important;
+}
+.border-1{
+  border: #999999 solid 1px ;
+  border-left: 0px;
 }

@@ -41,13 +41,16 @@ function SearchUserInput() {
     <div>
       <div className='flex flex-col'>
         <label className=' text-ICblue ' htmlFor="">Look for other creators</label>
-        <input
-          type="text"
-          className='input user-search'
-          placeholder="Search"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
+        <div className='flex '>
+          <input
+            type="text"
+            className='input user-search'
+            placeholder="Search"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <i className='ri-close-line font-extrabold  border-black border-1 pt-2 mr-1 pr-1'></i>
+        </div>
       </div>
       <div className='relative'>
         {searchTerm && searchResults.message !=='No users found matching the search query' &&<div className='containing-users fixed w-1/3'>
