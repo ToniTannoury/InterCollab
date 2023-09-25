@@ -66,7 +66,7 @@ function AdminHome() {
   const [radarState , setRadarState] = useState<any>({
     options: {
       chart: {
-        id: "area-bar"
+        id: "radar-bar"
       },
       xaxis: {
         categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
@@ -75,7 +75,7 @@ function AdminHome() {
     series: [
       {
         name: "series-1",
-        data: [55, 23, 45, 36, 49, 60, 12, 15]
+        data: [22, 77, 45, 11, 99, 33, 44, 11]
       },
       {
         name: "series-2",
