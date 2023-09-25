@@ -110,6 +110,13 @@ function AdminHome() {
               type="radar"
               width="500"
             />
+      <Chart
+              options={areaState.options}
+              series={areaState.series}
+              type="scatter"
+              width="500"
+            />
+    
     </div>
   )
 }
