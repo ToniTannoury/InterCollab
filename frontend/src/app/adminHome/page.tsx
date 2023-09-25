@@ -58,6 +58,12 @@ function AdminHome() {
               type="line"
               width="500"
             />
+      <Chart
+              options={lineState.options}
+              series={lineState.series}
+              type="area"
+              width="500"
+            />
     </div>
   )
 }
