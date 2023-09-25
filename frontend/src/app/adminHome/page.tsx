@@ -6,7 +6,7 @@ function AdminHome() {
   const [state , setState] = useState<any>({
     options: {
       chart: {
-        id: "basic-bar"
+        id: "bar-chart"
       },
       xaxis: {
         categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
@@ -26,7 +26,7 @@ function AdminHome() {
   const [lineState , setLineState] = useState<any>({
     options: {
       chart: {
-        id: "basic-bar"
+        id: "line-chart"
       },
       xaxis: {
         categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
@@ -79,8 +79,8 @@ function AdminHome() {
               width="500"
             />
       <Chart
-              options={lineState.options}
-              series={lineState.series}
+              options={areaState.options}
+              series={areaState.series}
               type="area"
               width="500"
             />
