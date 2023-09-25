@@ -35,7 +35,7 @@ function AdminHome() {
     series: [
       {
         name: "series-1",
-        data: [30, 40, 45, 50, 49, 60, 70, 91]
+        data: [55, 23, 45, 36, 49, 60, 12, 15]
       },
       {
         name: "series-2",
@@ -53,8 +53,8 @@ function AdminHome() {
               width="500"
             />
       <Chart
-              options={state.options}
-              series={state.series}
+              options={lineState.options}
+              series={lineState.series}
               type="line"
               width="500"
             />
