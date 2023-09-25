@@ -46,7 +46,7 @@ function AdminHome() {
   const [areaState , setAreaState] = useState<any>({
     options: {
       chart: {
-        id: "area-bar"
+        id: "area-chart"
       },
       xaxis: {
         categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
@@ -66,7 +66,7 @@ function AdminHome() {
   const [radarState , setRadarState] = useState<any>({
     options: {
       chart: {
-        id: "radar-bar"
+        id: "radar-chart"
       },
       xaxis: {
         categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
@@ -86,7 +86,7 @@ function AdminHome() {
   const [scatterState , setScatterState] = useState<any>({
     options: {
       chart: {
-        id: "scatter-bar"
+        id: "scatter-plot"
       },
       xaxis: {
         categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
@@ -157,8 +157,8 @@ function AdminHome() {
               width="500"
             />
       <Chart
-              options={scatterState.options}
-              series={scatterState.series}
+              options={heatState.options}
+              series={heatState.series}
               type="heatmap"
               width="500"
             />
