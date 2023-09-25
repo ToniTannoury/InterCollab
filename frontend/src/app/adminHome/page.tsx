@@ -32,6 +32,12 @@ function AdminHome() {
               type="bar"
               width="500"
             />
+      <Chart
+              options={state.options}
+              series={state.series}
+              type="line"
+              width="500"
+            />
     </div>
   )
 }
