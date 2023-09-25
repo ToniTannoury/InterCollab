@@ -27,24 +27,24 @@ function Register() {
   }
   return (
     <div className='flex justify-center h-screen items-center bg-ICblue'>
-      <div className='card p-4 bg-white w-1/4'>
+      <div className='card p-4 bg-white w-1/2'>
         <h1 className='text-4xl my-3 font-dark'>InterCollab - Register</h1>
         <hr className='mb-3' />
         <Form onFinish={onFinish} className='flex flex-col gap-3 text-ICblue' layout='vertical'  >
           <Form.Item label='Name' name='name'>
-            <input name='name' type="text" className='input'/>
+            <input name='name' type="text" className='input' required/>
           </Form.Item>
           <Form.Item label='Age' name='age'>
             <input name='age' type="number" className='input'/>
           </Form.Item>
           <Form.Item label='Email' name='email'>
-            <input name='email' type="email" className='input'/>
+            <input name='email' type="email" className='input' required/>
           </Form.Item>
           <Form.Item label='Password' name='password'>
-            <input name='password' type="password" className='input'/>
+            <input name='password' type="password" className='input' required/>
           </Form.Item>
           <Form.Item label='Verify Password' name='confirmPassword'>
-            <input name='verifyPassword' type="password" className='input'/>
+            <input name='verifyPassword' type="password" className='input' required/>
           </Form.Item>
           <Button className='bg-ICblue mt-1' type='primary' htmlType='submit'>
             Register
