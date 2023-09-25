@@ -136,6 +136,12 @@ function AdminHome() {
               type="scatter"
               width="500"
             />
+      <Chart
+              options={scatterState.options}
+              series={scatterState.series}
+              type="heatmap"
+              width="500"
+            />
     
     </div>
   )
