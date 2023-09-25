@@ -125,14 +125,14 @@ function AdminHome() {
               width="500"
             />
       <Chart
-              options={areaState.options}
-              series={areaState.series}
+              options={radarState.options}
+              series={radarState.series}
               type="radar"
               width="500"
             />
       <Chart
-              options={areaState.options}
-              series={areaState.series}
+              options={scatterState.options}
+              series={scatterState.series}
               type="scatter"
               width="500"
             />
