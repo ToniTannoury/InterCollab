@@ -103,6 +103,26 @@ function AdminHome() {
       }
     ]
   })
+  const [heatState , setHeatState] = useState<any>({
+    options: {
+      chart: {
+        id: "heat-map"
+      },
+      xaxis: {
+        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
+      }
+    },
+    series: [
+      {
+        name: "series-1",
+        data: [22, 77, 45, 11, 99, 33, 44, 11]
+      },
+      {
+        name: "series-2",
+        data: [22, 11, 33, 40, 20, 77, 89, 91]
+      }
+    ]
+  })
   const {currentUser} = useSelector((state:any)=>state.users)
   return (
     <div>
