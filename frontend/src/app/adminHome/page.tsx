@@ -43,6 +43,26 @@ function AdminHome() {
       }
     ]
   })
+  const [areaState , setAreaState] = useState<any>({
+    options: {
+      chart: {
+        id: "area-bar"
+      },
+      xaxis: {
+        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
+      }
+    },
+    series: [
+      {
+        name: "series-1",
+        data: [55, 23, 45, 36, 49, 60, 12, 15]
+      },
+      {
+        name: "series-2",
+        data: [30, 40, 45, 50, 50, 60, 70, 91]
+      }
+    ]
+  })
   const {currentUser} = useSelector((state:any)=>state.users)
   return (
     <div>
