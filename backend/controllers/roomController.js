@@ -47,14 +47,49 @@ const createRoom = asyncHandler(async (req, res)=>{
 
 const getTop5RoomsByTotalParticipants = asyncHandler(async (req , res) => {
   try {
-    const top5Rooms = await Room.find().populate('user')
-      .sort({ totalParticipants: -1 })
-      .limit(5);
-      res.status(200).json({ topRooms: top5Rooms })
-    return top5Rooms;
+    const top5Rooms = await Room.aggregate([
+      {
+        $project: {
+          _id: 1,
+          user: 1,
+          title:1,
+          category:1,
+          type:1,
+          priceToEnter:1,
+          description:1,
+          pinCode:1,
+          totalParticipants: 1,
+          currentParticipants:1,
+          maxNumberOfParticipants: 1,
+          totalParticipantsSum: {
+            $size: { $setUnion: ["$totalParticipants"] }
+          }
+        }
+      },
+      {
+        $sort: { totalParticipantsSum: -1 }
+      },
+      {
+        $limit: 5
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "user",
+          foreignField: "_id",
+          as: "user"
+        }
+      },
+      {
+        $unwind: "$user"
+      }
+    ]);
+  
+    res.status(200).json({ topRooms: top5Rooms });
   } catch (error) {
-    console.log(error.message)
+    console.log(error.message);
   }
+  
 });
 
 
