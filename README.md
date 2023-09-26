@@ -13,4 +13,9 @@
 
 <img  id="project-philosophy" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/798af04e-9ac9-4628-b78e-79f4e2d7b924"/>
 
+>Have you ever wanted to livestream your content to an unlimited audience and potentially monetize it? InterCollab was developed to make this process easy and accessible to everyone.
+
+
+
+
 
