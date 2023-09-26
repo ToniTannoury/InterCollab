@@ -86,7 +86,11 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 | ------ | ------ | 
 | ![All Rooms](https://github.com/ToniTannoury/InterCollab/assets/138028340/8734a0b1-f0ef-4120-9d0a-548d76c74bf0) | ![Search Rooms ](https://github.com/ToniTannoury/InterCollab/assets/138028340/5ee7dec5-fbb9-4d11-a853-7b3d8427f434) | 
 
+<br><br>
 
+| Edit Profile | Follow Unfollow | 
+| ------ | ------ 
+| ![Edit Profile](https://github.com/ToniTannoury/InterCollab/assets/138028340/de4fe203-05b8-4f32-89a7-294def1620a8) |
 
 
 
