@@ -100,6 +100,8 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
 <br><br>
 
-
+| Pay To Enter | Rating Creator on Room Leave | 
+| ------ | ------ | 
+| ![Pay To Enter](https://github.com/ToniTannoury/InterCollab/assets/138028340/ab015dbb-bcb6-4ceb-8f86-6b91bca958ba) | 
 
 
