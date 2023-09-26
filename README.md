@@ -105,4 +105,8 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 | ![Pay To Enter](https://github.com/ToniTannoury/InterCollab/assets/138028340/ab015dbb-bcb6-4ceb-8f86-6b91bca958ba) | ![Rating Creator on Room Leave](https://github.com/ToniTannoury/InterCollab/assets/138028340/2324b69a-124a-463a-b34b-d093e32aab2e) |
 <br><br>
 
+#### Creator Screen Inside Room Video
+
+[![Watch the video](https://github.com/ToniTannoury/InterCollab/assets/138028340/db62ec67-e4fe-4626-96c2-dbeb8dcbd400)](https://github.com/ToniTannoury/InterCollab/assets/138028340/e8fb3a41-187a-4c58-9f3a-1a54b94dbdd9)
+
 
