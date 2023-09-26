@@ -41,6 +41,10 @@ function RoomInfoModal() {
 
 
   const coinTransfer = async ()=>{
+    if(roomData.maxNumberOfParticipants <= roomData.totalParticipants.length){
+      message.error("No place left try again later")
+      return
+    }
     if(roomData.totalParticipants.includes(currentUser._id)){
       console.log("no need to pay")
       closeRoomInfoModal()
@@ -77,10 +81,18 @@ function RoomInfoModal() {
   },[isRoomInfoModalOpen])
   const checkPin = async(e:any)=>{
     e.preventDefault()
+    if(roomData.maxNumberOfParticipants <= roomData.totalParticipants.length){
+      message.error("No place left try again later")
+      return
+    }
     closeRoomInfoModal()
     roomData?.pinCode === code && router.push(`/test/${roomData?._id}`)
   }
   const joinNow = async ()=>{  
+    if(roomData.maxNumberOfParticipants <= roomData.totalParticipants.length){
+      message.error("No place left try again later")
+      return
+    }
     closeRoomInfoModal()
     
     router.push(`/test/${roomData?._id}`)
