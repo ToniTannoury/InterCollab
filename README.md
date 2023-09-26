@@ -96,7 +96,9 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
 | Join Rooms | Get Coins
 | ------ | ------
-| ![Join Rooms](https://github.com/ToniTannoury/InterCollab/assets/138028340/60d2e8a5-2d33-4c7a-a4bb-78cbf73a7c1a) |
+| ![Join Rooms](https://github.com/ToniTannoury/InterCollab/assets/138028340/60d2e8a5-2d33-4c7a-a4bb-78cbf73a7c1a) | ![Get Coins](https://github.com/ToniTannoury/InterCollab/assets/138028340/6fd05336-e18b-4f95-8bca-2289cc1a54ab) | 
+
+<br><br>
 
 
 
