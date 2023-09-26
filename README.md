@@ -51,6 +51,9 @@
 
 Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
+- This project uses the [Next.js development framework](https://nextjs.dev/) for the development of the core content of the application. Next.js is The React Framework for the Web which lets you elevate your react app to the next level, it extends React's capabilities by providing a framework server render your JavaScript code , use middlewares on your routes , improve SAO, facilitates cache manipulation ...
+
+
 
 
 
