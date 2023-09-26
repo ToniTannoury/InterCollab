@@ -36,6 +36,9 @@
 
 
 
+| Create Room | User Profile | Search Rooms |
+| ------ | ------ | ------ |
+| ![LandingScreen](https://github.com/ToniTannoury/InterCollab/assets/138028340/dad02324-256e-47d1-99a2-db0a4eb6fe64) |
 
 
 
