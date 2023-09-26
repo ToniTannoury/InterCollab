@@ -76,7 +76,9 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
 
 
-
+| Rooms of the month | Create Room |
+| ------ | ------ |
+| ![Rooms of the month](https://github.com/ToniTannoury/InterCollab/assets/138028340/618ff162-880e-4383-a664-34f88ff2188d) |
 
 
 
