@@ -35,15 +35,16 @@ const roomHandler = (socket) => {
       socket.to(roomId).emit("user-disconnected", peerId);
       socket.leave(roomId)
       const objectId1 = new mongoose.Types.ObjectId(peerId);
-  
+      console.log(peerId)
+      console.log(roomId)
       const updatedRoom = await Room.findOneAndUpdate(
         { _id: roomId },
         {
-          $pull: { currentParticipants: { _id: objectId1 } },
+          $pull: { currentParticipants: objectId1 },
         },
         { new: true }
       );
-  
+        console.log(updatedRoom)
       if (!updatedRoom) {
         console.error("Room not found.");
         return;
