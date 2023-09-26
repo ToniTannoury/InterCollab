@@ -65,6 +65,10 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
 - Concerning the get coins functionality,InterCollab uses [Stripe](https://stripe.com/en-gb-us) with its webhook to successfully and securely process payments from users credit cards.
 
+- [Ant Design](https://ant.design/) and [tailwindcss](https://tailwindcss.com/) where used for styling
+
+<br><br>
+<img id="features" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/1efd2b02-cf75-41c4-ad40-a220d6c1ac4c"/>
 
 
 
