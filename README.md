@@ -90,7 +90,8 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
 | Edit Profile | Follow Unfollow | 
 | ------ | ------ 
-| ![Edit Profile](https://github.com/ToniTannoury/InterCollab/assets/138028340/de4fe203-05b8-4f32-89a7-294def1620a8) |
+| ![Edit Profile](https://github.com/ToniTannoury/InterCollab/assets/138028340/de4fe203-05b8-4f32-89a7-294def1620a8) | ![Follow Unfollow](https://github.com/ToniTannoury/InterCollab/assets/138028340/9475f120-bcb2-4b4d-8962-1161629dd8e3)|
+
 
 
 
