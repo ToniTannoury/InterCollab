@@ -155,7 +155,7 @@ video{
 .not-sharing{
   display: flex;
   height:525px;
-  width:780px;
+  width:705px;
   background:grey;
   text-align: center;
   justify-content: center;

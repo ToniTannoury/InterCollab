@@ -10,6 +10,7 @@ import { peersReducer } from "./peerReducer";
 import { usePathname, useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { addPeerAction, removePeerAction,removeOtherPeersAction  } from "./peerActions";
+import { useParams } from "next/navigation";
 type RoomProviderProps = {
   children: ReactNode; 
 };
@@ -21,6 +22,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
 }) => {
   const [screenSharringId , setScreenSharringId] = useState<boolean>(false)
   const path = usePathname()
+  const params = useParams()
   const {currentUser} = useSelector((state:any)=>state.users)
   const [me , setMe] = useState<Peer>()
   const [stream , setStream] = useState<MediaStream>()
@@ -89,7 +91,12 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     
     const roomIid = path.substring(6)
     console.log(roomid , roomIid)
-    if(roomid!==roomIid)return
+    
+    console.log(params)
+    if(roomId){
+      if(roomid!==roomIid)return
+      console.log(roomId)
+    }
     console.log("closed rooming ")
     const user  = await getCurrentUser()
     console.log(user)
