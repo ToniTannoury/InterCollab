@@ -45,6 +45,13 @@
 |![Create Room](https://github.com/ToniTannoury/InterCollab/assets/138028340/4710f203-7443-451d-8b6c-9c6295f685c4) | ![Interactive Room](https://github.com/ToniTannoury/InterCollab/assets/138028340/dd758cc2-276a-4f68-bbc4-b206d29537a0) |  ![Search Rooms](https://github.com/ToniTannoury/InterCollab/assets/138028340/75a4bb58-9f4f-4271-9c3e-7138ba01d5be) 
 
 
+<br><br>
+
+<img id="tech-stack" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/8d6f6279-3c15-41e7-889a-dfa209b5af7f"/>
+
+Here's a brief high-level overview of the tech stack the InterCollab app uses:
+
+
 
 
 
