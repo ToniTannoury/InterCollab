@@ -82,7 +82,9 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
 <br><br>
 
-
+| All Rooms | Search Rooms 
+| ------ | ------ | 
+| ![All Rooms](https://github.com/ToniTannoury/InterCollab/assets/138028340/8734a0b1-f0ef-4120-9d0a-548d76c74bf0) |
 
 
 
