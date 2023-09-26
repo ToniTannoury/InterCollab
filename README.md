@@ -17,6 +17,18 @@
 
 >InterCollab is here to enhance content creation, providing you with the ability to host multiple live rooms tailored to your chosen categories. You can share your audio, video, engage in chat, and exchange ideas with participants from all around the world. InterCollab offers the flexibility to create public rooms open to anyone, private rooms requiring a unique PIN provided by the creator for access, and paid rooms that necessitate users to pay a specific amount of coins for entry.
 
+### User Stories
+- As a user I want to be able to share my live camera footage in a room I created
+- As a user I want to be able to share my LIVE audio footage in a room I created
+- As a user I want to be able to share my screen live in a room I created
+- As a user I want to be able to receive the coins a participant pays to enter a room i created 
+- As a user I want to be able to chat via text with the participants of a room i created
+- As a user I want to be able to monitor the users entering and leaving the rooms i created
+- As a user i want to be able to follow my favorite creator
+- As a user i want to be able to rate the creator of a certain room
+
+
+
 
 
 
