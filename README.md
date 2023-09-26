@@ -28,6 +28,13 @@
 - As a user i want to be able to rate the creator of a certain room
 
 
+<br><br>
+
+<img id="wireframes" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/3fe41cf1-f842-4c56-9e01-75e6f6f0db7e"/>
+
+> This design was planned before on Figma app.
+
+
 
 
 
