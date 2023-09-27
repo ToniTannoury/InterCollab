@@ -257,6 +257,14 @@ async function getMedianAgeByCategory(req, res) {
     res.status(500).json({ error: 'Server error' });
   }
 }
+async function addCoinsAndNotifyUser(req, res) {
+  try {
+    const { userId, coinsToAdd } = req.body;
+
+    // Find the user by their ID
+    const user = await User.findById(userId);
+
+    if (!user) {
 
 app.put('/api/users/:id/block', blockUserById);
 
