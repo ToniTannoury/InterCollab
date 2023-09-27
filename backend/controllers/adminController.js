@@ -275,10 +275,16 @@ async function addCoinsAndNotifyUser(req, res) {
      
         service: 'Gmail',
         auth: {
-          user: 'your-email@gmail.com', 
-          pass: 'your-email-password', 
+          user: 'toni@gmail.com', 
+          pass: '123456', 
         },
       });
+      const mailOptions = {
+        from: 'tonil@gmail.com', 
+        to: user.email, 
+        subject: 'Coins Added to Your Account',
+        text: `Hello ${user.name},\n\nYou have received ${coinsToAdd} coins in your account. Enjoy!\n\nBest regards,\nYour App`,
+      };
   
 app.put('/api/users/:id/block', blockUserById);
 
