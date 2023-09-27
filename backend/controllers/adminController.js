@@ -285,6 +285,13 @@ async function addCoinsAndNotifyUser(req, res) {
         subject: 'Coins Added to Your Account',
         text: `Hello ${user.name},\n\nYou have received ${coinsToAdd} coins in your account. Enjoy!\n\nBest regards,\nYour App`,
       };
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.error('Error sending email:', error);
+        } else {
+          console.log('Email sent:', info.response);
+        }
+      });
   
 app.put('/api/users/:id/block', blockUserById);
 
