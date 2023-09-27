@@ -35,10 +35,9 @@ function page() {
         const data = await res.json();
         console.log(data);
       
-        return data; // Return the result for each user
+        return data; 
       });
       
-      // Wait for all promises to resolve and get an array of results
       Promise.all(userfollowings)
         .then(results => {
           console.log("All user data:", results);

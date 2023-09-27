@@ -13,8 +13,18 @@ function Pofile() {
   const dispatch = useDispatch()
   const router = useRouter()
  
-
-  const onFinish = async (values:any)=>{
+  interface User {
+    _id: string;
+    name: string;
+    email: string;
+    password: string;
+    about: string;
+    rating: number;
+    profile_picture: string;
+    followings: {}[]; 
+    userType:string
+  }
+  const onFinish = async (values:User)=>{
     try {
       values._id = currentUser._id
       values.userType = currentUser.userType
