@@ -179,16 +179,20 @@ async function sendAdminLoginNotification(adminEmail, userEmail, userIpAddress, 
 }
 
 function switchToLightMode() {
-  if (appMode === 'dark') {
-    appMode = 'light';
-      document.body.style.backgroundColor = 'white';
-      document.body.style.color = 'black';
-  
-      updateUIForLightMode();
-  
-      saveModePreferenceToLocalStorage();
-  
-      sendAnalyticsEvent('ModeChange', 'LightMode');
+  (req, res) => {
+    if (appMode === 'dark') {
+      appMode = 'light';
+      res.json({ message: 'Switched to light mode' });
+    } else {
+      res.status(400).json({ message: 'Already in light mode' });
+    }
+  });
+  function switchToDarkMode(req, res) {
+    if (appMode === 'light') {
+      appMode = 'dark';
+      res.json({ message: 'Switched to dark mode' });
+    } else {
+      res.status(400).json({ message: 'Already in dark mode' });
     }
   }
 
