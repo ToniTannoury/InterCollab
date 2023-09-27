@@ -61,9 +61,9 @@ function page() {
 
   const uniqueIds = new Set<string>();
 
-const filteredArray: User[] = followings.filter((obj:any) => {
-  if (!uniqueIds.has(obj._id)) {
-    uniqueIds.add(obj._id);
+const filteredArray: User[] = followings.filter((user:User) => {
+  if (!uniqueIds.has(user._id)) {
+    uniqueIds.add(user._id);
     return true;
   }
   return false;
