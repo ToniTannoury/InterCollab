@@ -382,6 +382,11 @@ async function updateRoomInfoById(req, res) {
     res.status(500).json({ error: 'Server error' });
   }
 }
+async function kickUserFromRoom(req, res) {
+  try {
+    const roomId = req.params.roomId; 
+    const userId = req.params.userId; 
+
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
