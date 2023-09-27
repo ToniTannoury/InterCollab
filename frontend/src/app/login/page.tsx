@@ -24,11 +24,7 @@ function Login() {
     })
     const data = await response.json()
    
-    if(data.admin) {
-      Cookie.set('token' , data.token)
-      router.push('/adminPanel')
-      return
-    }
+   
 
     if(response.status!==200){
       message.error(data.message)
