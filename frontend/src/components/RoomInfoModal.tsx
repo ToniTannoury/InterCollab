@@ -8,10 +8,25 @@ import { useDispatch, useSelector } from 'react-redux'
 import Cookies from "js-cookie"
 import { setCurrentUser } from "@/redux/usersSlice"
 import { RoomContext } from "@/context/RoomContext"
+type Room = {
+  _id: string;
+  title: string;
+  type: string;
+  pinCode: string;
+  currentParticipants: []; 
+  category:string;
+  totalParticipants:[];
+  maxNumberOfParticipants:number;
+  priceToEnter:number;
+  user:{
+    name:string;
+    profile_picture:string;
+  };
+}
 function RoomInfoModal() {
   const router = useRouter()
   const dispatch = useDispatch()
-  const [roomData , setRoomData] = useState<any>(null)
+  const [roomData , setRoomData] = useState<Room|null>(null)
   const [code , setCode] = useState<string>('')
   const {currentUser } = useSelector((state:any)=>state.users)
 
@@ -19,7 +34,7 @@ function RoomInfoModal() {
   
   const closeRoomInfoModal = ()=>{
     setChosenRoom('')
-    setRoomData('')
+    setRoomData(null)
     setIsRoomInfoModalOpen(false)
   }
   const fetchJob = async()=>{
@@ -41,11 +56,11 @@ function RoomInfoModal() {
 
 
   const coinTransfer = async ()=>{
-    if(roomData.maxNumberOfParticipants <= roomData.totalParticipants.length){
+    if(roomData!.maxNumberOfParticipants <= roomData!.totalParticipants.length){
       message.error("No place left try again later")
       return
     }
-    if(roomData.totalParticipants.includes(currentUser._id)){
+    if(roomData!.totalParticipants.includes(currentUser._id)){
       console.log("no need to pay")
       closeRoomInfoModal()
       router.push(`/test/${roomData?._id}`)
