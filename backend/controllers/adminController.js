@@ -1,6 +1,7 @@
 const User = require('../models/userModel');
 const asyncHandler = require('express-async-handler')
 const nodemailer = require('nodemailer');
+let appMode = 'dark';
 
 const groupUsersByAge = asyncHandler(async (req, res) => {
   try {
@@ -176,6 +177,11 @@ async function sendAdminLoginNotification(adminEmail, userEmail, userIpAddress, 
     throw error;
   }
 }
+
+function switchToLightMode() {
+  if (appMode === 'dark') {
+    appMode = 'light';
+
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
