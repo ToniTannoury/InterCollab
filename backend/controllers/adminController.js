@@ -195,73 +195,19 @@ function switchToLightMode() {
       res.status(400).json({ message: 'Already in dark mode' });
     }
   }
-  function createAdmin(req, res) {
-    const { username, password } = req.body;
   
-    if (!username || !password) {
-      return res.status(400).json({ message: 'Username and password are required' });
-    } if (admins.find((admin) => admin.username === username)) {
-      return res.status(409).json({ message: 'Username is already taken' });
-    }
-  
-    const newAdmin = {
-      username,
-      password, 
-    };
-  
-    admins.push(newAdmin);
-  
-    res.status(201).json({ message: 'Admin created successfully', admin: newAdmin });
-  }
-  async function getRoomsWithMostParticipantsAndCategories(req, res) {
-    try {
-      
-      const rooms = await Room.aggregate([
-        {
-          $group: {
-            _id: '$category', 
-            maxParticipants: { $max: '$totalParticipants' },
-            rooms: { $push: '$$ROOT' }, 
-          },
+async function getMedianAgeByCategory(req, res) {
+  try {
+    const medianAgesByCategory = await Room.aggregate([
+      {
+        $lookup: {
+          from: 'users',
+          localField: 'totalParticipants',
+          foreignField: '_id',
+          as: 'participants',
         },
-        {
-          $sort: { maxParticipants: -1 },
-        },
-        {
-          $limit: 10, 
-        },
-      ]);
-  
-      const response = rooms.map((categoryInfo) => ({
-        category: categoryInfo._id,
-        maxParticipants: categoryInfo.maxParticipants,
-        rooms: categoryInfo.rooms.map((room) => ({
-          _id: room._id,
-          title: room.title,
-          description: room.description,
-          totalParticipants: room.totalParticipants,
-        })),
-      }));
-  
-
-      res.status(200).json({ rooms: response });
-    } catch (error) {
-      console.error('Error fetching rooms:', error);
-      
-      res.status(500).json({ error: 'Server error' });
-    }
-  }
-  async function getMedianAgeByCategory(req, res) {
-    try {
-      const medianAgesByCategory = await Room.aggregate([
-        {
-          $lookup: {
-            from: 'users',
-            localField: 'totalParticipants',
-            foreignField: '_id',
-            as: 'participants',
-          },
-        },
+      },
+      {
         $unwind: '$participants',
       },
       {
@@ -276,33 +222,42 @@ function switchToLightMode() {
           category: '$_id',
           medianAge: {
             $cond: [
-              { $eq: [{ $size: '$ages' }, 0] },
+              { $eq: [{ $size: '$ages' }, 0] }, 
               null,
               {
                 $let: {
                   vars: {
                     middle: { $floor: { $divide: [{ $size: '$ages' }, 2] } },
-                  },            middle: { $floor: { $divide: [{ $size: '$ages' }, 2] } },
-                },
-                in: {
-                  $cond: [
-                    { $eq: [{ $mod: [{ $size: '$ages' }, 2] }, 0] },
-                    {
-                      $avg: [
-                        { $arrayElemAt: ['$ages', { $subtract: ['$middle', 1] }] },
-                        { $arrayElemAt: ['$ages', '$middle'] },
-                      ],
-                    },
-                    { $arrayElemAt: ['$ages', '$middle'] },
-                  ],
+                  },
+                  in: {
+                    $cond: [
+                      { $eq: [{ $mod: [{ $size: '$ages' }, 2] }, 0] },
+                      {
+                        $avg: [
+                          { $arrayElemAt: ['$ages', { $subtract: ['$middle', 1] }] },
+                          { $arrayElemAt: ['$ages', '$middle'] },
+                        ],
+                      },
+                      { $arrayElemAt: ['$ages', '$middle'] },
+                    ],
+                  },
                 },
               },
-            },
-          ],
+            ],
+          },
         },
       },
-    },
-  ]);
+    ]);
+
+    res.status(200).json({ medianAgesByCategory });
+  } catch (error) {
+    console.error('Error fetching and calculating median ages by category:', error);
+
+
+    res.status(500).json({ error: 'Server error' });
+  }
+}
+
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
@@ -311,3 +266,4 @@ app.get('/api/rooms/sendAdminLoginNotification', sendAdminLoginNotification);
 app.get('/api/rooms/switchThemeToDark', switchToDarkMode);
 app.get('/api/rooms/switchThemeToLight', switchToLightkMode);
 app.get('/api/rooms/getRoomsWithMost', getRoomsWithMostParticipantsAndCategories)
+app.get('/api/rooms/getMedianAgeByCategory', getMedianAgeByCategory)
