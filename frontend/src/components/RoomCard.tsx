@@ -4,16 +4,26 @@ import { useRouter } from 'next/navigation';
 import { useContext, useReducer } from 'react';
 import { peersReducer } from '@/context/peerReducer';
 import { RoomContext } from '@/context/RoomContext';
+type Room = {
+  _id: string;
+  title: string;
+  type: string;
+  pinCode: string;
+  currentParticipants: []; 
+ 
+}
+interface Props{
+  
+}
 
-
-function RoomCard({room}:any) {
+function RoomCard({room}:Props) {
   function capitalizeString(str:string) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   }
   const { setIsRoomInfoModalOpen , isRoomInfoModalOpen,chosenRoom , setChosenRoom } = useContext(RoomContext);
 
   return (
-    <div _id={room._id} className='containing'>
+    <div data-id={room._id} className='containing'>
       <div className='flex flex-col justify-around room-card bg-ICblue'>
         <div className='flex pl-4 justify-between'>
           <h1 className='text-xl text-slate-50'>{capitalizeString(room.title)}</h1>
