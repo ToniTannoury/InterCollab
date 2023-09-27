@@ -86,7 +86,20 @@ const editUserProfile = asyncHandler(async (req, res) => {
   try {
 
     const user = await User.findById(userId);
-    
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    if (updatedProfile.email && !isValidEmail(updatedProfile.email)) {
+      return res.status(400).json({ message: 'Invalid email address' });
+    }
+
+    if (updatedProfile.password) {
+      updatedProfile.password = await hashPassword(updatedProfile.password);
+    }
+
+    Object.assign(user, updatedProfile);
+    await user.save();
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
