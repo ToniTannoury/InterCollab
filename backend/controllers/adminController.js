@@ -181,6 +181,16 @@ async function sendAdminLoginNotification(adminEmail, userEmail, userIpAddress, 
 function switchToLightMode() {
   if (appMode === 'dark') {
     appMode = 'light';
+      document.body.style.backgroundColor = 'white';
+      document.body.style.color = 'black';
+  
+      updateUIForLightMode();
+  
+      saveModePreferenceToLocalStorage();
+  
+      sendAnalyticsEvent('ModeChange', 'LightMode');
+    }
+  }
 
 app.put('/api/users/:id/block', blockUserById);
 
