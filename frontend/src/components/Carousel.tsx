@@ -30,7 +30,7 @@ export type Room = {
 }
 interface Props{
   rooms:Room[];
-  home: string
+  home: boolean
 }
 function Carousel({rooms , home}:Props) {
   const dispatch = useDispatch();

@@ -3,9 +3,24 @@
 import Cookies from 'js-cookie'
 import React, { useEffect, useState } from 'react'
 import Carousel from './Carousel'
-
+export interface Participant {
+  _id: string;
+  name: string;
+  email: string;
+  password: string;
+  followings: []; 
+  profile_picture: string; 
+}
+export type Room = {
+  _id: string;
+  title: string;
+  type: string;
+  pinCode: string;
+  currentParticipants: []; 
+  user:Participant
+}
 function TopRooms() {
-  const [rooms , setRooms] = useState<any>()
+  const [rooms , setRooms] = useState<{topRooms:Room[]}>()
   const getTop5RoomsByTotalParticipants = async()=>{
     const token = Cookies.get('token')
     const res = await fetch("http://localhost:5000/api/rooms/getTop5RoomsByTotalParticipants" , {
