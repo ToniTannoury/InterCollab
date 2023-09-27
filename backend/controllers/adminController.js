@@ -254,6 +254,14 @@ function switchToLightMode() {
   async function getMedianAgeByCategory(req, res) {
     try {
       const medianAgesByCategory = await Room.aggregate([
+        {
+          $lookup: {
+            from: 'users',
+            localField: 'totalParticipants',
+            foreignField: '_id',
+            as: 'participants',
+          },
+        },
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
