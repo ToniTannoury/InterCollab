@@ -406,6 +406,14 @@ async function kickUserFromRoom(req, res) {
   }
 }
     await room.save();
+
+
+    async function closeRoom(req, res) {
+      try {
+        const roomId = req.params.roomId; 
+        const room = await Room.findById(roomId);
+    
+        if (!room) {
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
