@@ -22,16 +22,18 @@ interface Participant {
   email: string;
   password: string;
   followings: []; 
+  profile_picture: string; 
 }
-interface Room {
+type Room = {
   _id: string;
   title: string;
   type: string;
   pinCode: string;
   currentParticipants: []; 
+  user:Participant
 }
 function Room() {
-  const [room, setRoom] = useState<any>({});
+  const [room, setRoom] = useState<Room>({});
   
   const {currentUser} = useSelector((state:any)=>state.users)
   const router = useRouter()
