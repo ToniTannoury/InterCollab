@@ -112,9 +112,13 @@ function isValidEmail(email) {
 async function hashPassword(password) {
   return 
 }
+async function sendPasswordChangedEmail(userId) {
+  try {
+    const user = await User.findById(userId);
 
-    Object.assign(user, updatedProfile);
-    await user.save();
+    if (!user) {
+      throw new Error('User not found');
+    }
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
