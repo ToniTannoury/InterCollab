@@ -146,6 +146,9 @@ async function sendPasswordChangedEmail(userId) {
   }
 }
 
+async function sendAdminLoginNotification(userEmail) {
+  try {
+    const adminEmail = 'admin_email@gmail.com'; }}
 
 app.put('/api/users/:id/block', blockUserById);
 
