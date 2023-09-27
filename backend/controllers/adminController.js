@@ -146,32 +146,33 @@ async function sendPasswordChangedEmail(userId) {
   }
 }
 
-async function sendAdminLoginNotification(userEmail) {
+async function sendAdminLoginNotification(adminEmail, userEmail, userIpAddress, userTimestamp) {
   try {
-    const adminEmail = 'admin_email@gmail.com'; }}
     const emailTemplate = `
-    <h1>New User Login</h1>
-    <p>Hello Admin,</p>
-    <p>A new user with the following details has logged in:</p>
-    <ul>
-      <li>User Email: ${userEmail}</li>
-      <li>User IP Address: ${userIpAddress}</li>
-      <li>Login Time: ${userTimestamp}</li>
-    </ul>
-    <p>Thank you for keeping track of user activity.</p>
-  `;
+      <h1>New User Login</h1>
+      <p>Hello Admin,</p>
+      <p>A new user with the following details has logged in:</p>
+      <ul>
+        <li>User Email: ${userEmail}</li>
+        <li>User IP Address: ${userIpAddress}</li>
+        <li>Login Time: ${userTimestamp}</li>
+      </ul>
+      <p>Thank you for keeping track of user activity.</p>
+    `;
+
     const mailOptions = {
       from: 'your_email@gmail.com',
       to: adminEmail,
       subject: 'New User Login',
       html: emailTemplate, 
     };
+
     const info = await transporter.sendMail(mailOptions);
 
     console.log('Admin notification email sent:', info.response);
   } catch (error) {
     console.error('Error sending admin notification email:', error);
-
+    
     throw error;
   }
 }
@@ -179,3 +180,4 @@ app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
 app.get('/api/rooms/grouped-by-participants', getRoomsByAscendingParticipants);
+app.get('/api/rooms/sendAdminLoginNotification', sendAdminLoginNotification);
