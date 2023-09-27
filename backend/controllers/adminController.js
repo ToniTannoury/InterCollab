@@ -125,6 +125,13 @@ async function sendPasswordChangedEmail(userId) {
     <p>If you didn't request this change, please contact our support team.</p>
     <p>Thank you for using our service.</p>
   `;
+  const mailOptions = {
+    from: 'your_email@gmail.com',
+    to: user.email,
+    subject: 'Password Changed',
+    html: emailTemplate, // Use HTML for a rich email template
+  };
+
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
