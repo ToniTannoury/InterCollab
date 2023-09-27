@@ -230,6 +230,16 @@ function switchToLightMode() {
         $limit: 10,
       },
     ]);
+    const response = rooms.map((categoryInfo) => ({
+      category: categoryInfo._id,
+      maxParticipants: categoryInfo.maxParticipants,
+      rooms: categoryInfo.rooms.map((room) => ({
+        _id: room._id,
+        title: room.title,
+        description: room.description,
+        totalParticipants: room.totalParticipants,
+      })),
+    }));
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
