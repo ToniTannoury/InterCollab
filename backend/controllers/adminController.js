@@ -292,6 +292,16 @@ async function addCoinsAndNotifyUser(req, res) {
           console.log('Email sent:', info.response);
         }
       });
+      
+    res.status(200).json({ message: 'Coins added successfully', user });
+  } catch (error) {
+    console.error('Error adding coins and notifying user:', error);
+    
+
+    res.status(500).json({ error: 'Server error' });
+  }
+}
+
   
 app.put('/api/users/:id/block', blockUserById);
 
