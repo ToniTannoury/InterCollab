@@ -302,6 +302,9 @@ async function addCoinsAndNotifyUser(req, res) {
   }
 }
 
+async function changeUserRatingById(req, res) {
+  try {
+    const { userId, newRating } = req.body;
   
 app.put('/api/users/:id/block', blockUserById);
 
