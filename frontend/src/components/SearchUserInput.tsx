@@ -21,7 +21,7 @@ function SearchUserInput() {
   useEffect(()=>{
     searchTerm !== "" ? dispatch(setSearching(true)) : dispatch(setSearching(false))
   })
-  const performSearch = async (searchTerm:any) => {
+  const performSearch = async (searchTerm:string) => {
     try {
     
       const response = await fetch(`http://16.171.116.7:5000/api/users/searchUsers?query=${searchTerm}`, {

@@ -99,7 +99,7 @@ function RoomInfoModal() {
     console.log("chosen room")
     fetchJob()
   },[isRoomInfoModalOpen])
-  const checkPin = async(e:any)=>{
+  const checkPin = async(e:React.FormEvent)=>{
     e.preventDefault()
     if(roomData!.maxNumberOfParticipants <= roomData!.totalParticipants.length){
       message.error("No place left try again later")

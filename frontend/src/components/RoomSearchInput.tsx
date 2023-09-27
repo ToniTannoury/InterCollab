@@ -9,19 +9,29 @@ import useDebounce from '../customHooks/useDebounce';
 import UserInfoBar from './UserInfoBar';
 import { setSearching } from '@/redux/searchingSlice';
 import Carousel from './Carousel';
+export interface Participant {
+  _id: string;
+  name: string;
+  email: string;
+  password: string;
+  followings: []; 
+  profile_picture: string; 
+}
 interface Room {
   category: string;
   title: string;
   type: string;
-  _id:string
-  
+  _id:string,
+  pinCode:string;
+  currentParticipants:[],
+  user:Participant
 }
 
 
 function RoomSearchInput() {
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchCriteria, setSearchCriteria] = useState<string>('userName'); // Default search criteria
+  const [searchCriteria, setSearchCriteria] = useState<string>('userName'); 
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
   const [searchResults, setSearchResults] = useState<Room[][]|[]>([]);
 
