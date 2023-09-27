@@ -38,11 +38,11 @@ function Carousel({rooms , home}:Props) {
   const { searching } = useSelector((state: any) => state.searching);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  const carousel: any = useRef();
+  const carousel = useRef<HTMLDivElement|null>(null);
   const images = [image1, image2, image3, image4, image5, image6];
 
   useEffect(() => {
-    setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
+    setWidth(carousel.current!.scrollWidth - carousel.current!.offsetWidth);
   }, []);
 
   const handleMouseEnter = (index: number) => {
@@ -53,7 +53,7 @@ function Carousel({rooms , home}:Props) {
     <>
       <motion.div ref={carousel} className={`carousel relative -z-3 ${searching && 'app'}`}>
         <motion.div drag={searching ? "undefined" : 'x'} dragConstraints={{ right: 0, left: -width }} whileTap={{ cursor: 'grabbing' }} className='inner-carousel gap-2'>
-          {rooms?.map((room:any, index:number) => {
+          {rooms?.map((room:Room, index:number) => {
             return (
               <motion.div
                 className='item'
@@ -68,7 +68,7 @@ function Carousel({rooms , home}:Props) {
         </motion.div>
       </motion.div>
       <div className='flex gap-4 justify-center items-center mt-3'>
-        {home && rooms.map((_, index) => (
+        {home && rooms.map((_:Room, index:number) => (
           <div
             key={index}
             className={`h-3 w-3 border-ICblue border-2 rounded-3xl ${hoveredIndex === index ? 'bg-ICblue' : ''}`}
