@@ -12,6 +12,9 @@ interface User {
   name: string;
   email: string;
   password: string;
+  about: string;
+  rating: number;
+  profile_picture: string;
   followings: {}[]; 
 }
 function page() {
@@ -108,7 +111,7 @@ const handleUnFollowClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
       </div>
       <div>
        <div className='flex gap-5 flex-wrap'>
-        {filteredArray?.map((user:any)=>{
+        {filteredArray?.map((user:User)=>{
             return (
               user && <div data-id={user._id} className='following bg-ICblue rounded-xl'>
                 <div className='flex items-center gap-3'>
