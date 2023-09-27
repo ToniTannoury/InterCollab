@@ -18,10 +18,14 @@ type Room = {
   totalParticipants:[];
   maxNumberOfParticipants:number;
   priceToEnter:number;
+  description:string;
   user:{
     name:string;
     profile_picture:string;
-    rating:string;
+    rating:number;
+    email:string;
+    about:string;
+    _id :string
   };
 }
 function RoomInfoModal() {
