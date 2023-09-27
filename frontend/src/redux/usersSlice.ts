@@ -16,6 +16,7 @@ const usersSlice = createSlice({
   },
   reducers:{
     setCurrentUser:(state , action)=>{
+      console.log(action.payload)
       state.currentUser = action.payload
     },
     addFollowing: (state, action) => {

@@ -130,7 +130,7 @@ export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({
     dispatch(removeOtherPeersAction())
     setParticipants([])
     setMessages([])
-    dispatching(setCurrentUser(currentUser))
+    dispatching(setCurrentUser({...currentUser}))
     Cookies.set('creator_id' , roomId.user._id)
     ws.emit('leave-room',{roomId:roomId._id , peerId:currentUser._id})
     router.push('/')
