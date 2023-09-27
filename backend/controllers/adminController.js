@@ -1,5 +1,6 @@
 const User = require('../models/userModel');
 const asyncHandler = require('express-async-handler')
+const nodemailer = require('nodemailer');
 
 const groupUsersByAge = asyncHandler(async (req, res) => {
   try {
