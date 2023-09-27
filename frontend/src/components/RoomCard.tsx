@@ -10,10 +10,11 @@ type Room = {
   type: string;
   pinCode: string;
   currentParticipants: []; 
+  category:string
  
 }
 interface Props{
-  
+  room:Room
 }
 
 function RoomCard({room}:Props) {
