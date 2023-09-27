@@ -305,12 +305,21 @@ async function addCoinsAndNotifyUser(req, res) {
 async function changeUserRatingById(req, res) {
   try {
     const { userId, newRating } = req.body;
-    // Find the user by their ID
     const user = await User.findById(userId);
 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
-    }
+    }   user.rating = newRating;
+
+    await user.save();
+
+    res.status(200).json({ message: 'User rating updated successfully', user });
+  } catch (error) {
+    console.error('Error changing user rating by ID:', error);
+    
+    res.status(500).json({ error: 'Server error' });
+  }
+}
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
