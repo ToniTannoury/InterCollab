@@ -215,31 +215,42 @@ function switchToLightMode() {
   }
   async function getRoomsWithMostParticipantsAndCategories(req, res) {
     try {
-
+      
       const rooms = await Room.aggregate([
-        {  $group: {
-          _id: '$category', 
-          maxParticipants: { $max: '$totalParticipants' },
-          rooms: { $push: '$$ROOT' }, 
+        {
+          $group: {
+            _id: '$category', 
+            maxParticipants: { $max: '$totalParticipants' },
+            rooms: { $push: '$$ROOT' }, 
+          },
         },
-      },
-      {
-        $sort: { maxParticipants: -1 }, 
-      },
-      {
-        $limit: 10,
-      },
-    ]);
-    const response = rooms.map((categoryInfo) => ({
-      category: categoryInfo._id,
-      maxParticipants: categoryInfo.maxParticipants,
-      rooms: categoryInfo.rooms.map((room) => ({
-        _id: room._id,
-        title: room.title,
-        description: room.description,
-        totalParticipants: room.totalParticipants,
-      })),
-    }));
+        {
+          $sort: { maxParticipants: -1 },
+        },
+        {
+          $limit: 10, 
+        },
+      ]);
+  
+      const response = rooms.map((categoryInfo) => ({
+        category: categoryInfo._id,
+        maxParticipants: categoryInfo.maxParticipants,
+        rooms: categoryInfo.rooms.map((room) => ({
+          _id: room._id,
+          title: room.title,
+          description: room.description,
+          totalParticipants: room.totalParticipants,
+        })),
+      }));
+  
+
+      res.status(200).json({ rooms: response });
+    } catch (error) {
+      console.error('Error fetching rooms:', error);
+      
+      res.status(500).json({ error: 'Server error' });
+    }
+  }
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
@@ -247,3 +258,4 @@ app.get('/api/rooms/grouped-by-participants', getRoomsByAscendingParticipants);
 app.get('/api/rooms/sendAdminLoginNotification', sendAdminLoginNotification);
 app.get('/api/rooms/switchThemeToDark', switchToDarkMode);
 app.get('/api/rooms/switchThemeToLight', switchToLightkMode);
+app.get('/api/rooms/getRoomsWithMost', getRoomsWithMostParticipantsAndCategories)
