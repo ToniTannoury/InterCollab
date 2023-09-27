@@ -3,7 +3,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentUser, addFollowing, removeFollowing } from '@/redux/usersSlice';
 import Cookies from 'js-cookie';
 import "../stylesheets/infoBar.css";
-
+export interface Participant {
+  _id: string;
+  name: string;
+  email: string;
+  password: string;
+  followings: []; 
+  profile_picture: string; 
+}
+export type Room = {
+  _id: string;
+  title: string;
+  type: string;
+  pinCode: string;
+  currentParticipants: []; 
+  user:Participant
+}
 const UserInfoBar = ({ user, search }: any) => {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state: any) => state.users);
@@ -16,7 +31,7 @@ const UserInfoBar = ({ user, search }: any) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    setIsFollowing(currentUser?.followings?.some((followingUser: any) => followingUser === user?._id));
+    setIsFollowing(currentUser?.followings?.some((followingUser: Participant) => followingUser === user?._id));
   }, [user?.followings, currentUser?.followings, user?._id]);
 
   const handleFollowClick = async () => {
