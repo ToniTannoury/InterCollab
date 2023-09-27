@@ -217,7 +217,19 @@ function switchToLightMode() {
     try {
 
       const rooms = await Room.aggregate([
-        {
+        {  $group: {
+          _id: '$category', 
+          maxParticipants: { $max: '$totalParticipants' },
+          rooms: { $push: '$$ROOT' }, 
+        },
+      },
+      {
+        $sort: { maxParticipants: -1 }, 
+      },
+      {
+        $limit: 10,
+      },
+    ]);
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
