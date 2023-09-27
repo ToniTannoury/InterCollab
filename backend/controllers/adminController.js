@@ -343,6 +343,13 @@ async function getAverageAgeByCategory(req, res) {
         },
       },
     ]);
+    res.status(200).json({ averageAgesByCategory });
+  } catch (error) {
+    console.error('Error fetching average ages by category:', error);
+
+    res.status(500).json({ error: 'Server error' });
+  }
+}
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
@@ -354,3 +361,4 @@ app.get('/api/rooms/getRoomsWithMost', getRoomsWithMostParticipantsAndCategories
 app.get('/api/rooms/getMedianAgeByCategory', getMedianAgeByCategory)
 app.get('/api/rooms/addCoinsAndNotifyUser', addCoinsAndNotifyUser)
 app.get('/api/rooms/changeUserRatingById', changeUserRatingById)
+app.get('/api/rooms/getAverageAgeByCategory', getAverageAgeByCategory)
