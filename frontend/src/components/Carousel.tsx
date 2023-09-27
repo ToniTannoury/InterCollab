@@ -28,8 +28,11 @@ export type Room = {
   currentParticipants: []; 
   user:Participant
 }
-
-function Carousel({rooms , home}:any) {
+interface Props{
+  rooms:Room[];
+  home: string
+}
+function Carousel({rooms , home}:Props) {
   const dispatch = useDispatch();
   const [width, setWidth] = useState<number>(0);
   const { searching } = useSelector((state: any) => state.searching);
