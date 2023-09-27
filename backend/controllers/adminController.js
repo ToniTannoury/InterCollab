@@ -53,20 +53,32 @@ const deleteUserById = asyncHandler(async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 });
+const User = require('../models/userModel');
+const asyncHandler = require('express-async-handler');
+
 const blockUserById = asyncHandler(async (req, res) => {
-  const updatedUser = await User.findByIdAndUpdate(
-    userId,
-    { blocked: blockStatus },
-    { new: true }
-  );
+  const userId = req.params.id; 
+  const blockStatus = req.body.blocked; 
 
-  // Check if the user was found and updated
-  if (!updatedUser) {
-    return res.status(404).json({ message: 'User not found' });
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { blocked: blockStatus },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    console.error('Error blocking/unblocking user:', error);
+    res.status(500).json({ error: 'Server error' });
   }
+});
 
-  // Respond with the updated user object (including the block status)
-  res.status(200).json(updatedUser);
+app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
 app.get('/api/rooms/grouped-by-participants', getRoomsByAscendingParticipants);
