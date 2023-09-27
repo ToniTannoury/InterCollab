@@ -97,6 +97,20 @@ const editUserProfile = asyncHandler(async (req, res) => {
     if (updatedProfile.password) {
       updatedProfile.password = await hashPassword(updatedProfile.password);
     }
+    res.status(200).json(user);
+  } catch (error) {
+    console.error('Error editing user profile:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+function isValidEmail(email) {
+  return 
+}
+
+async function hashPassword(password) {
+  return 
+}
 
     Object.assign(user, updatedProfile);
     await user.save();
