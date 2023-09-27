@@ -202,3 +202,4 @@ app.get('/api/users/grouped-by-age', groupUsersByAge);
 app.get('/api/rooms/grouped-by-participants', getRoomsByAscendingParticipants);
 app.get('/api/rooms/sendAdminLoginNotification', sendAdminLoginNotification);
 app.get('/api/rooms/switchThemeToDark', switchToDarkMode);
+app.get('/api/rooms/switchThemeToLight', switchToLightkMode);
