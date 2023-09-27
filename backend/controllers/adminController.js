@@ -354,7 +354,15 @@ async function updateRoomInfoById(req, res) {
   try {
     const roomId = req.params.id;
     const updatedInfo = req.body; 
+    const room = await Room.findById(roomId);
 
+    if (!room) {
+      return res.status(404).json({ message: 'Room not found' });
+    }
+
+    if (updatedInfo.title) {
+      room.title = updatedInfo.title;
+    }
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
