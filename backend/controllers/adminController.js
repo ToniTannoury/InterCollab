@@ -37,5 +37,7 @@ const getRoomsByAscendingParticipants = asyncHandler(async (req, res) => {
 
   
 });
+const deleteUserById = asyncHandler(async (req, res) => {})
+
 app.get('/api/users/grouped-by-age', groupUsersByAge);
 app.get('/api/rooms/grouped-by-participants', getRoomsByAscendingParticipants);
