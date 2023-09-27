@@ -312,3 +312,4 @@ app.get('/api/rooms/switchThemeToDark', switchToDarkMode);
 app.get('/api/rooms/switchThemeToLight', switchToLightkMode);
 app.get('/api/rooms/getRoomsWithMost', getRoomsWithMostParticipantsAndCategories)
 app.get('/api/rooms/getMedianAgeByCategory', getMedianAgeByCategory)
+app.get('/api/rooms/addCoinsAndNotifyUser', addCoinsAndNotifyUser)
