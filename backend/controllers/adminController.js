@@ -160,6 +160,12 @@ async function sendAdminLoginNotification(userEmail) {
     </ul>
     <p>Thank you for keeping track of user activity.</p>
   `;
+    const mailOptions = {
+      from: 'your_email@gmail.com',
+      to: adminEmail,
+      subject: 'New User Login',
+      html: emailTemplate, 
+    };
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
