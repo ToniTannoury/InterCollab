@@ -13,14 +13,14 @@ function CreateRoom() {
   const dispatch = useDispatch();
   const router = useRouter();
   const { ws } = useContext(RoomContext);
-  const [showCoinInput, setShowCoinInput] = useState(false); // Add state for showing coin input
+  const [showCoinInput, setShowCoinInput] = useState(false);
 
   const createRoom = (roomId: string) => {
     ws.emit('create-room', { roomId });
     router.push(`/test/${roomId}`);
   };
 
-  const onFinish = async (values: any) => {
+  const onFinish = async (values: {}) => {
     try {
       dispatch(setLoading(true));
       const response = await fetch('http://16.171.116.7:5000/api/rooms', {
@@ -42,7 +42,6 @@ function CreateRoom() {
     }
   };
 
-  // Handle the "Type" field change to show/hide the coin input
   const handleTypeChange = (value: string) => {
     setShowCoinInput(value === 'paid');
   };
