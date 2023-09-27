@@ -10,6 +10,8 @@ export interface Participant {
   password: string;
   followings: []; 
   profile_picture: string; 
+  followers: [];
+  rating:number
 }
 export type Room = {
   _id: string;
@@ -17,9 +19,14 @@ export type Room = {
   type: string;
   pinCode: string;
   currentParticipants: []; 
+   
   user:Participant
 }
-const UserInfoBar = ({ user, search }: any) => {
+interface Props {
+  user:Participant;
+  search:boolean
+}
+const UserInfoBar = ({ user, search }: Props) => {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state: any) => state.users);
 
@@ -31,7 +38,7 @@ const UserInfoBar = ({ user, search }: any) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    setIsFollowing(currentUser?.followings?.some((followingUser: Participant) => followingUser === user?._id));
+    setIsFollowing(currentUser?.followings?.some((followingUser: string) => followingUser === user?._id));
   }, [user?.followings, currentUser?.followings, user?._id]);
 
   const handleFollowClick = async () => {
@@ -94,14 +101,14 @@ const UserInfoBar = ({ user, search }: any) => {
       if (response.ok) {
         const data = await response.json();
         dispatch(setCurrentUser(data.data))
-        // Update the image source with the new profile picture URL
+   
         const updatedImageUrl = `http://16.171.116.7:5000/images/${data.data.profile_picture}`;
         document.querySelector('.user-image')?.setAttribute('src', updatedImageUrl);
   
         setIsEditingProfilePicture(false);
        
       } else {
-        // Handle the error case
+      
         console.error('Failed to change profile picture');
       }
     } catch (error) {
