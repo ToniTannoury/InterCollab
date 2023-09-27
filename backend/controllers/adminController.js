@@ -166,6 +166,15 @@ async function sendAdminLoginNotification(userEmail) {
       subject: 'New User Login',
       html: emailTemplate, 
     };
+    const info = await transporter.sendMail(mailOptions);
+
+    console.log('Admin notification email sent:', info.response);
+  } catch (error) {
+    console.error('Error sending admin notification email:', error);
+
+    throw error;
+  }
+}
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
