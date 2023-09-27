@@ -16,7 +16,7 @@ import LeaveRoomButton from '@/components/LeaveRoomButton';
 import { CloseRoomButton } from '@/components/CloseRoomButton';
 import { removeOtherPeersAction } from '@/context/peerActions';
 
-interface Participant {
+export interface Participant {
   _id: string;
   name: string;
   email: string;
@@ -24,7 +24,7 @@ interface Participant {
   followings: []; 
   profile_picture: string; 
 }
-type Room = {
+export type Room = {
   _id: string;
   title: string;
   type: string;

@@ -12,6 +12,23 @@ import { useRef , useEffect , useState} from 'react'
 import { useDispatch , useSelector } from 'react-redux'
 import { setSearching } from '@/redux/searchingSlice'
 import RoomCard from './RoomCard'
+export interface Participant {
+  _id: string;
+  name: string;
+  email: string;
+  password: string;
+  followings: []; 
+  profile_picture: string; 
+}
+export type Room = {
+  _id: string;
+  title: string;
+  type: string;
+  pinCode: string;
+  currentParticipants: []; 
+  user:Participant
+}
+
 function Carousel({rooms , home}:any) {
   const dispatch = useDispatch();
   const [width, setWidth] = useState<number>(0);
