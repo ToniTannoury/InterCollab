@@ -332,7 +332,17 @@ async function getAverageAgeByCategory(req, res) {
           foreignField: '_id',
           as: 'participants',
         },
+      },  {
+        $unwind: '$participants',
       },
+      
+      {
+        $group: {
+          _id: '$category', 
+          averageAge: { $avg: '$participants.age' }, 
+        },
+      },
+    ]);
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
