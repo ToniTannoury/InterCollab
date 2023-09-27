@@ -386,6 +386,13 @@ async function kickUserFromRoom(req, res) {
   try {
     const roomId = req.params.roomId; 
     const userId = req.params.userId; 
+    const room = await Room.findById(roomId);
+
+    if (!room) {
+      return res.status(404).json({ message: 'Room not found' });
+    }
+
+    const userIndex = room.currentParticipants.indexOf(userId);
 
 app.put('/api/users/:id/block', blockUserById);
 
