@@ -350,6 +350,11 @@ async function getAverageAgeByCategory(req, res) {
     res.status(500).json({ error: 'Server error' });
   }
 }
+async function updateRoomInfoById(req, res) {
+  try {
+    const roomId = req.params.id;
+    const updatedInfo = req.body; 
+
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
