@@ -7,21 +7,21 @@ import { setLoading } from '@/redux/loadersSlice'
 import { message } from 'antd';
 import Image from 'next/image';
 import { removeFollowing } from '@/redux/usersSlice';
-interface MyObject {
+interface User {
   _id: string;
   name: string;
   email: string;
   password: string;
-  followings: any[]; 
+  followings: {}[]; 
 }
 function page() {
   const { currentUser } = useSelector((state: any) => state.users);
-  const [followings , setFollowings] = useState<any>([])
+  const [followings , setFollowings] = useState<User[]>([])
   const dispatch = useDispatch()
   const getFollowingInfo = async()=>{
     try {
       dispatch(setLoading(true))
-      const userfollowings = currentUser?.followings?.map(async (user: any) => {
+      const userfollowings = currentUser?.followings?.map(async (user: User) => {
       
         const res = await fetch(`http://16.171.116.7:5000/api/users/getUserById?userId=${user}`, {
           headers: {
@@ -58,7 +58,7 @@ function page() {
 
   const uniqueIds = new Set<string>();
 
-const filteredArray: MyObject[] = followings.filter((obj:any) => {
+const filteredArray: User[] = followings.filter((obj:any) => {
   if (!uniqueIds.has(obj._id)) {
     uniqueIds.add(obj._id);
     return true;
