@@ -118,19 +118,34 @@ async function sendPasswordChangedEmail(userId) {
 
     if (!user) {
       throw new Error('User not found');
-    }const emailTemplate = `
-    <h1>Password Changed</h1>
-    <p>Hello ${user.name},</p>
-    <p>Your password has been successfully changed.</p>
-    <p>If you didn't request this change, please contact our support team.</p>
-    <p>Thank you for using our service.</p>
-  `;
-  const mailOptions = {
-    from: 'your_email@gmail.com',
-    to: user.email,
-    subject: 'Password Changed',
-    html: emailTemplate, // Use HTML for a rich email template
-  };
+    }
+
+    const emailTemplate = `
+      <h1>Password Changed</h1>
+      <p>Hello ${user.name},</p>
+      <p>Your password has been successfully changed.</p>
+      <p>If you didn't request this change, please contact our support team.</p>
+      <p>Thank you for using our service.</p>
+    `;
+
+    const mailOptions = {
+      from: 'your_email@gmail.com',
+      to: user.email,
+      subject: 'Password Changed',
+      html: emailTemplate, 
+    };
+
+
+    const info = await transporter.sendMail(mailOptions);
+
+    console.log('Email sent:', info.response);
+  } catch (error) {
+    console.error('Error sending email:', error);
+
+    throw error;
+  }
+}
+
 
 app.put('/api/users/:id/block', blockUserById);
 
