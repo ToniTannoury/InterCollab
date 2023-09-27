@@ -266,7 +266,7 @@ function switchToLightMode() {
       },
       {
         $group: {
-          _id: '$category', // Group by room category
+          _id: '$category', 
           ages: { $push: '$participants.age' }, 
         },
       },
@@ -282,7 +282,27 @@ function switchToLightMode() {
                 $let: {
                   vars: {
                     middle: { $floor: { $divide: [{ $size: '$ages' }, 2] } },
-                  },
+                  },            middle: { $floor: { $divide: [{ $size: '$ages' }, 2] } },
+                },
+                in: {
+                  $cond: [
+                    { $eq: [{ $mod: [{ $size: '$ages' }, 2] }, 0] },
+                    {
+                      $avg: [
+                        { $arrayElemAt: ['$ages', { $subtract: ['$middle', 1] }] },
+                        { $arrayElemAt: ['$ages', '$middle'] },
+                      ],
+                    },
+                    { $arrayElemAt: ['$ages', '$middle'] },
+                  ],
+                },
+              },
+            },
+          ],
+        },
+      },
+    },
+  ]);
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
