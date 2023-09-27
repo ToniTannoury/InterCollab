@@ -251,6 +251,9 @@ function switchToLightMode() {
       res.status(500).json({ error: 'Server error' });
     }
   }
+  async function getMedianAgeByCategory(req, res) {
+    try {
+      const medianAgesByCategory = await Room.aggregate([
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
