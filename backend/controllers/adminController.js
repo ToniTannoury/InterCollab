@@ -213,7 +213,11 @@ function switchToLightMode() {
   
     res.status(201).json({ message: 'Admin created successfully', admin: newAdmin });
   }
-  
+  async function getRoomsWithMostParticipantsAndCategories(req, res) {
+    try {
+
+      const rooms = await Room.aggregate([
+        {
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
