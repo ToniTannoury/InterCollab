@@ -363,6 +363,17 @@ async function updateRoomInfoById(req, res) {
     if (updatedInfo.title) {
       room.title = updatedInfo.title;
     }
+    if (updatedInfo.description) {
+      room.description = updatedInfo.description;
+    }
+
+    if (updatedInfo.category) {
+      room.category = updatedInfo.category;
+    }
+
+    if (updatedInfo.maxNumberOfParticipants) {
+      room.maxNumberOfParticipants = updatedInfo.maxNumberOfParticipants;
+    }
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
