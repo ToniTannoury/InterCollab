@@ -1,8 +1,11 @@
 "use client"
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { store } from '@/redux/store'
 import {Provider} from  "react-redux"
-function ReduxProvider({children}:any) {
+interface Props {
+  children:ReactNode
+}
+function ReduxProvider({children}:Props) {
   return (
     <Provider store={store}>
       {children}

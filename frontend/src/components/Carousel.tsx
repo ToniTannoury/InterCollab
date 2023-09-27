@@ -58,7 +58,7 @@ function Carousel({rooms , home}:Props) {
               <motion.div
                 className='item'
                 key={index}
-                onMouseEnter={() => handleMouseEnter(index)} // Add mouse enter event handler
+                onMouseEnter={() => handleMouseEnter(index)} 
               >
                 
                 <RoomCard room={room}/>
