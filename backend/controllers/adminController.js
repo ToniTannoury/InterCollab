@@ -78,6 +78,15 @@ const blockUserById = asyncHandler(async (req, res) => {
   }
 });
 
+const editUserProfile = asyncHandler(async (req, res) => {
+  const userId = req.params.id; 
+  const updatedProfile = req.body;
+  body
+
+  try {
+
+    const user = await User.findById(userId);
+    
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
