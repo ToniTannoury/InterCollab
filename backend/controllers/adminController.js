@@ -37,13 +37,22 @@ const getRoomsByAscendingParticipants = asyncHandler(async (req, res) => {
 
   
 });
-const userId = req.params.id;
-try {
-  const deletedUser = await User.findByIdAndRemove(userId);
+const deleteUserById = asyncHandler(async (req, res) => {
+  const userId = req.params.id;
 
-  if (!deletedUser) {
-    return res.status(404).json({ message: 'User not found' });
+  try {
+    const deletedUser = await User.findByIdAndRemove(userId);
+
+    if (!deletedUser) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.status(200).json({ message: 'User deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    res.status(500).json({ error: 'Server error' });
   }
+});
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
 app.get('/api/rooms/grouped-by-participants', getRoomsByAscendingParticipants);
