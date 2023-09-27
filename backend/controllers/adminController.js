@@ -399,7 +399,12 @@ async function kickUserFromRoom(req, res) {
     }
 
     room.currentParticipants.splice(userIndex, 1);
-
+    res.status(200).json({ message: 'User kicked from the room' });
+  } catch (error) {
+    console.error('Error kicking user from room:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+}
     await room.save();
 app.put('/api/users/:id/block', blockUserById);
 
