@@ -21,6 +21,7 @@ type Room = {
   user:{
     name:string;
     profile_picture:string;
+    rating:string;
   };
 }
 function RoomInfoModal() {
@@ -66,7 +67,7 @@ function RoomInfoModal() {
       router.push(`/test/${roomData?._id}`)
       return
     }
-    if(currentUser.coins<roomData?.priceToEnter){
+    if(currentUser.coins<roomData!?.priceToEnter){
       message.error("Not enough coins to  join")
       return
     }
@@ -74,7 +75,7 @@ function RoomInfoModal() {
     router.push(`/test/${roomData?._id}`)
     dispatch(setCurrentUser({
       ...currentUser,
-      coins:currentUser.coins-roomData?.priceToEnter
+      coins:currentUser.coins-roomData!?.priceToEnter
     }))
       const response = await fetch(`http://16.171.116.7:5000/api/users/coinTransfer`,{
       method:"POST",
@@ -96,7 +97,7 @@ function RoomInfoModal() {
   },[isRoomInfoModalOpen])
   const checkPin = async(e:any)=>{
     e.preventDefault()
-    if(roomData.maxNumberOfParticipants <= roomData.totalParticipants.length){
+    if(roomData!.maxNumberOfParticipants <= roomData!.totalParticipants.length){
       message.error("No place left try again later")
       return
     }
@@ -104,7 +105,7 @@ function RoomInfoModal() {
     roomData?.pinCode === code && router.push(`/test/${roomData?._id}`)
   }
   const joinNow = async ()=>{  
-    if(roomData.maxNumberOfParticipants <= roomData.totalParticipants.length){
+    if(roomData!.maxNumberOfParticipants <= roomData!.totalParticipants.length){
       message.error("No place left try again later")
       return
     }
