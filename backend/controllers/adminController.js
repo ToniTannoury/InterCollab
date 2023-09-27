@@ -54,10 +54,19 @@ const deleteUserById = asyncHandler(async (req, res) => {
   }
 });
 const blockUserById = asyncHandler(async (req, res) => {
-  const userId = req.params.id; // Extract user ID from request parameters
-  const blockStatus = req.body.blocked; // Extract the block status from the request body
+  const updatedUser = await User.findByIdAndUpdate(
+    userId,
+    { blocked: blockStatus },
+    { new: true }
+  );
 
-  try {
+  // Check if the user was found and updated
+  if (!updatedUser) {
+    return res.status(404).json({ message: 'User not found' });
+  }
+
+  // Respond with the updated user object (including the block status)
+  res.status(200).json(updatedUser);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
 app.get('/api/rooms/grouped-by-participants', getRoomsByAscendingParticipants);
