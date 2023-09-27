@@ -271,6 +271,14 @@ async function addCoinsAndNotifyUser(req, res) {
       user.coins += coinsToAdd;
   
       await user.save();
+      const transporter = nodemailer.createTransport({
+     
+        service: 'Gmail',
+        auth: {
+          user: 'your-email@gmail.com', 
+          pass: 'your-email-password', 
+        },
+      });
   
 app.put('/api/users/:id/block', blockUserById);
 
