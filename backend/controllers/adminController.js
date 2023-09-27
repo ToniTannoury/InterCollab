@@ -262,6 +262,27 @@ function switchToLightMode() {
             as: 'participants',
           },
         },
+        $unwind: '$participants',
+      },
+      {
+        $group: {
+          _id: '$category', // Group by room category
+          ages: { $push: '$participants.age' }, 
+        },
+      },
+      {
+        $project: {
+          _id: 0,
+          category: '$_id',
+          medianAge: {
+            $cond: [
+              { $eq: [{ $size: '$ages' }, 0] },
+              null,
+              {
+                $let: {
+                  vars: {
+                    middle: { $floor: { $divide: [{ $size: '$ages' }, 2] } },
+                  },
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
