@@ -70,29 +70,35 @@ const filteredArray: User[] = followings.filter((obj:any) => {
 
 
 
-const handleUnFollowClick = async (e:any) => {
-  const id = e.target.parentElement.parentElement.getAttribute("data-id")
-  try {
-    const url =  `http://16.171.116.7:5000/api/users/unfollow/${id}`
-     
+const handleUnFollowClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const target = e.target as HTMLElement; 
+  const id = target.parentElement?.parentElement?.getAttribute("data-id");
 
-    const response = await fetch(url, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        "Authorization": `Bearer ${Cookies.get('token')}`
+  if (id) {
+    try {
+      const url = `http://16.171.116.7:5000/api/users/unfollow/${id}`;
+
+      const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          "Authorization": `Bearer ${Cookies.get('token')}`
+        }
+      });
+
+      if (response.ok) {
+        dispatch(removeFollowing(id));
+      } else {
+        console.error('Error:', response.statusText);
       }
-    });
-
-    if (response.ok) {
-      dispatch(removeFollowing(id));
-    } else {
-      console.error('Error:', response.statusText);
+    } catch (error) {
+      console.error('Error:', error);
     }
-  } catch (error) {
-    console.error('Error:', error);
+  } else {
+    console.error('Unable to get the ID from the target element.');
   }
 };
+;
   return (
     filteredArray &&
     <div>
