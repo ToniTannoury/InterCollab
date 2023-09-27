@@ -33,7 +33,7 @@ type Room = {
   user:Participant
 }
 function Room() {
-  const [room, setRoom] = useState<Room>({});
+  const [room, setRoom] = useState<Room>();
   
   const {currentUser} = useSelector((state:any)=>state.users)
   const router = useRouter()
@@ -86,11 +86,11 @@ function Room() {
       setChat('')
     }
     useEffect(()=>{
-      if(room._id === undefined) return
-      setRoomId((prev:any)=>{
+      if(room?._id === undefined) return
+      setRoomId((prev:Room)=>{
        return room
       })
-     },[room._id])
+     },[room?._id])
      function filterDuplicateParticipants(participants: Participant[]): Participant[] {
       const uniqueParticipants: Record<string, boolean> = {};
       const result: Participant[] = [];
@@ -112,7 +112,7 @@ function Room() {
       console.log("emiting closeroom")
       console.log(roomId)
       console.log(me)
-      if(me?._id !== room.user._id)return
+      if(me?._id !== room?.user._id)return
       ws.emit('CloseRoom' , {roomId:roomId ,peerId: me._id})
       dispatch(removeOtherPeersAction())
       setParticipants([])
@@ -122,7 +122,7 @@ function Room() {
       
     }
   return (
-    me !== null && peers.length !== 0 &&  room.user && stream &&
+    me !== null && peers.length !== 0 &&  room?.user && stream &&
     
     <div className=' bg-ICblue h-full'>
       
@@ -147,13 +147,13 @@ function Room() {
             ) }
           </div>
       </section >
-          {me?._id === room.user._id && <div className=''>{mediaShareStatus ? <VideoPlayer screenSharringId={screenSharringId} stream={stream} />:<div className='not-sharing'>
+          {me?._id === room?.user._id && <div className=''>{mediaShareStatus ? <VideoPlayer screenSharringId={screenSharringId} stream={stream} />:<div className='not-sharing'>
                 <p>Waiting for the creator...</p>
               </div>}</div>}
-          {me?._id !== room.user._id && <div>
+          {me?._id !== room?.user._id && <div>
             {Object.values(peers as PeerState).map((peer, index) =>{ 
               return <>
-              {Object.keys(peers as PeerState)[index] === room.user._id && mediaShareStatus ? <VideoPlayer screenSharringId={screenSharringId} stream={peer.stream} />:
+              {Object.keys(peers as PeerState)[index] === room?.user._id && mediaShareStatus ? <VideoPlayer screenSharringId={screenSharringId} stream={peer.stream} />:
               <div className='not-sharing'>
                 <p>Waiting for the creator...</p>
               </div>}
@@ -164,7 +164,7 @@ function Room() {
           <section className='self-stretch users mr-10 flex flex-col justify-between'>
             <div>
             <div className='text-ICblue room-header min-w-full text-center text-3xl border-b-2 align-center' style={{width:"200px" , textAlign:'center'}}>
-            {room.title}
+            {room?.title}
           </div>
           <div className='flex flex-col scrollable '>
           {messages?.map((message:{userName:string , message:string})=>(
@@ -218,10 +218,10 @@ function Room() {
      
   <div className="fixed bottom-0 p-3 w-full flex justify-center border-t-2">
     <LeaveRoomButton onClick={leaveRoom}/>
-    {me?._id === room.user._id &&<ShareScreenButton onClick={shareScreen} />}
-    {me?._id === room.user._id &&<StopSharingButton onClick={emitStopSharing}/>}
-    {me?._id === room.user._id &&<CloseRoomButton onClick={emitCloseRoom}/>}
-    {me?._id === room.user._id && room.type === "private" && <div className='text-white flex flex-col justify-center items-center border-white border-1 p-1'><div>Room's PIN</div>{room.pinCode}</div>}
+    {me?._id === room?.user._id &&<ShareScreenButton onClick={shareScreen} />}
+    {me?._id === room?.user._id &&<StopSharingButton onClick={emitStopSharing}/>}
+    {me?._id === room?.user._id &&<CloseRoomButton onClick={emitCloseRoom}/>}
+    {me?._id === room?.user._id && room?.type === "private" && <div className='text-white flex flex-col justify-center items-center border-white border-1 p-1'><div>Room's PIN</div>{room?.pinCode}</div>}
   </div>
   
 </div>
