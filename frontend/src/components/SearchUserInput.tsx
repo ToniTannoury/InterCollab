@@ -7,6 +7,22 @@ import Cookie from 'js-cookie';
 import useDebounce from '../customHooks/useDebounce';
 import UserInfoBar from './UserInfoBar';
 import { setSearching } from '@/redux/searchingSlice'
+export interface Participant {
+  _id: string;
+  name: string;
+  email: string;
+  password: string;
+  followings: []; 
+  profile_picture: string; 
+}
+export type Room = {
+  _id: string;
+  title: string;
+  type: string;
+  pinCode: string;
+  currentParticipants: []; 
+  user:Participant
+}
 function SearchUserInput() {
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState('');
@@ -54,7 +70,7 @@ function SearchUserInput() {
       </div>
       <div className='relative'>
         {searchTerm && searchResults.message !=='No users found matching the search query' &&<div className='containing-users fixed w-1/3'>
-          {searchTerm && searchResults.message !=='No users found matching the search query' && searchResults.map((user:any , index:number) => (
+          {searchTerm && searchResults.message !=='No users found matching the search query' && searchResults.map((user:Participant , index:number) => (
           <UserInfoBar  key={index} user={user} search/>
           ))}
         </div>}
