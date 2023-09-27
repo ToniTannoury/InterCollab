@@ -10,8 +10,12 @@ type Room = {
   type: string;
   pinCode: string;
   currentParticipants: []; 
-  category:string
- 
+  category:string;
+  totalParticipants:[];
+  user:{
+    name:string;
+    profile_picture:string;
+  };
 }
 interface Props{
   room:Room
