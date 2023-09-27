@@ -23,6 +23,13 @@ interface Participant {
   password: string;
   followings: []; 
 }
+interface Room {
+  _id: string;
+  title: string;
+  type: string;
+  pinCode: string;
+  currentParticipants: []; 
+}
 function Room() {
   const [room, setRoom] = useState<any>({});
   
