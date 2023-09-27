@@ -198,10 +198,22 @@ function switchToLightMode() {
   function createAdmin(req, res) {
     const { username, password } = req.body;
   
-    // Check if the request includes both username and password
     if (!username || !password) {
       return res.status(400).json({ message: 'Username and password are required' });
+    } if (admins.find((admin) => admin.username === username)) {
+      return res.status(409).json({ message: 'Username is already taken' });
     }
+  
+    const newAdmin = {
+      username,
+      password, 
+    };
+  
+    admins.push(newAdmin);
+  
+    res.status(201).json({ message: 'Admin created successfully', admin: newAdmin });
+  }
+  
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
