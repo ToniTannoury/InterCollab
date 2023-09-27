@@ -394,6 +394,13 @@ async function kickUserFromRoom(req, res) {
 
     const userIndex = room.currentParticipants.indexOf(userId);
 
+    if (userIndex === -1) {
+      return res.status(404).json({ message: 'User not found in the room' });
+    }
+
+    room.currentParticipants.splice(userIndex, 1);
+
+    await room.save();
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
