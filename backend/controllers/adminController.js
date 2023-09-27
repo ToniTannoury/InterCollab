@@ -324,7 +324,15 @@ async function getAverageAgeByCategory(req, res) {
   try {
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
-    }   
+    }    const averageAgesByCategory = await Room.aggregate([
+      {
+        $lookup: {
+          from: 'users', 
+          localField: 'totalParticipants',
+          foreignField: '_id',
+          as: 'participants',
+        },
+      },
 app.put('/api/users/:id/block', blockUserById);
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
