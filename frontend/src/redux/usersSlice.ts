@@ -1,5 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+export interface Participant {
+  _id: string;
+  name: string;
+  email: string;
+  password: string;
+  followings: []; 
+  profile_picture: string; 
+}
 const usersSlice = createSlice({
   name:"users",
   initialState:{
@@ -18,7 +25,7 @@ const usersSlice = createSlice({
     },
     removeFollowing: (state, action) => {
       state.currentUser.followings = state.currentUser.followings.filter(
-        (user:any) =>  {
+        (user:Participant) =>  {
           return user !== action.payload
         }
       );
