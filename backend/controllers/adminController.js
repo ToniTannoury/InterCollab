@@ -53,6 +53,11 @@ const deleteUserById = asyncHandler(async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 });
+const blockUserById = asyncHandler(async (req, res) => {
+  const userId = req.params.id; // Extract user ID from request parameters
+  const blockStatus = req.body.blocked; // Extract the block status from the request body
+
+  try {
 
 app.get('/api/users/grouped-by-age', groupUsersByAge);
 app.get('/api/rooms/grouped-by-participants', getRoomsByAscendingParticipants);
