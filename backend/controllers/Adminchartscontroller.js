@@ -101,3 +101,9 @@ const getMostRatedCreators = async (req, res) => {
               participantAges[participantAges.length / 2]) /
             2
           : participantAges[Math.floor(participantAges.length / 2)];
+          return {
+            room: room.name, 
+            averageAge,
+            medianAge,
+          };
+        });
