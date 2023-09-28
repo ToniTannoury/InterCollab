@@ -108,3 +108,11 @@ const getMostRatedCreators = async (req, res) => {
           };
         });
         roomAges.sort((a, b) => b.averageAge - a.averageAge);
+        const topRooms = roomAges.slice(0, 10);
+
+        return topRooms;
+      } catch (error) {
+        console.error('Error calculating room ages:', error);
+        throw error; 
+      }
+    };
