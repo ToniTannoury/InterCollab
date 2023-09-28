@@ -94,3 +94,10 @@ const getMostRatedCreators = async (req, res) => {
             const averageAge = participantAges.length
               ? totalAge / participantAges.length
               : 0;
+              participantAges.sort((a, b) => a - b);
+      const medianAge =
+        participantAges.length % 2 === 0
+          ? (participantAges[participantAges.length / 2 - 1] +
+              participantAges[participantAges.length / 2]) /
+            2
+          : participantAges[Math.floor(participantAges.length / 2)];
