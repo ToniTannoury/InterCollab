@@ -14,7 +14,7 @@ import { useParams } from "next/navigation";
 type RoomProviderProps = {
   children: ReactNode; 
 };
-const WS = "http://localhost:5000";
+const WS = "http://16.171.116.7:5000";
 export const RoomContext = createContext<null | any>(null);
 const ws = socketIO(WS);
 export const RoomProvider: React.FunctionComponent<RoomProviderProps> = ({

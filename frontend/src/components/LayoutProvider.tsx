@@ -97,7 +97,7 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
     }
   }
   const processCheckout = async ()=>{
-    await fetch('http://16.171.116.7:5000/api/users/create-checkout-session'  , {
+    await fetch('http://localhost:5000/api/users/create-checkout-session'  , {
       method:"POST",
       headers:{
         "Content-Type":"application/json",

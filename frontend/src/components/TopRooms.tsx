@@ -23,7 +23,7 @@ function TopRooms() {
   const [rooms , setRooms] = useState<{topRooms:Room[]}>()
   const getTop5RoomsByTotalParticipants = async()=>{
     const token = Cookies.get('token')
-    const res = await fetch("http://localhost:5000/api/rooms/getTop5RoomsByTotalParticipants" , {
+    const res = await fetch("http://16.171.116.7:5000/api/rooms/getTop5RoomsByTotalParticipants" , {
       headers:{
         "Authorization" : `Bearer ${token}`
       }
