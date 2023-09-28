@@ -52,3 +52,6 @@ const addParticipantToRoom = asyncHandler(async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 });
+const getMostRatedCreators = async (req, res) => {
+  try {
+ 
