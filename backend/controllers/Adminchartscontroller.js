@@ -116,3 +116,6 @@ const getMostRatedCreators = async (req, res) => {
         throw error; 
       }
     };
+
+    const getTopRatedUsersWithRooms = async () => {
+      try {}}
