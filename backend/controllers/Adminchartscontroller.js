@@ -136,3 +136,8 @@ const getMostRatedCreators = async (req, res) => {
       const topRooms = await Room.find({ category: targetCategory })
       .sort({ rating: -1 }) 
       .limit(10); 
+      return topRooms;
+    } catch (error) {
+      console.error('Error fetching top rooms by category:', error);
+      throw error;
+    }
