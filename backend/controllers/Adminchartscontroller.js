@@ -135,3 +135,4 @@ const getMostRatedCreators = async (req, res) => {
       const targetCategory = category; 
       const topRooms = await Room.find({ category: targetCategory })
       .sort({ rating: -1 }) 
+      .limit(10); 
