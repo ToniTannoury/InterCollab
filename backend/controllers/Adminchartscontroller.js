@@ -132,4 +132,4 @@ const getMostRatedCreators = async (req, res) => {
   };
   const getTopRoomsByCategory = async (category) => {
     try {
-  
+      const targetCategory = category; 
