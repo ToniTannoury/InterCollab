@@ -46,7 +46,7 @@ function RoomCard({room}:Props) {
             <Image className='img mr-1 ' src={(`http://16.171.116.7:5000/images/${room?.user?.profile_picture}`)} alt='logo' width={1000} height={500}>
             </Image>
             <div>
-              <h1 className='text-white'>Presenter :</h1>
+              <h1 className='text-white font-semibold'>Presenter</h1>
               <h1 className='text-white'>{capitalizeString(room.user.name)}</h1>
             </div>
           </div>
