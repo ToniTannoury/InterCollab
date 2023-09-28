@@ -60,4 +60,7 @@ const getMostRatedCreators = async (req, res) => {
       if (mostRatedCreators.length === 0) {
         return res.status(404).json({ message: 'No rated creators found' });
       }
+      const ages = mostRatedCreators.map((creator) => creator.age);
+      const totalAges = ages.reduce((sum, age) => sum + age, 0);
+      const averageAge = totalAges / mostRatedCreators.length;
   
