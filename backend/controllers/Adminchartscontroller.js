@@ -26,3 +26,8 @@ const getMostRecentTopRooms = asyncHandler(async (req, res) => {
   res.status(500).json({ error: 'Server error' });
 }
 });
+
+const addParticipantToRoom = asyncHandler(async (req, res) => {
+  try {
+    const roomId = req.params.roomId; 
+    const userId = req.body.userId; 
