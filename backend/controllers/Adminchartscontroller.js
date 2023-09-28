@@ -57,3 +57,7 @@ const getMostRatedCreators = async (req, res) => {
     const mostRatedCreators = await User.find()
       .sort({ rating: -1 })
       .limit(10);
+      if (mostRatedCreators.length === 0) {
+        return res.status(404).json({ message: 'No rated creators found' });
+      }
+  
