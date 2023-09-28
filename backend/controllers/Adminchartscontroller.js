@@ -86,4 +86,8 @@ const getMostRatedCreators = async (req, res) => {
       const calculateRoomAges = async () => {
         try {
           const rooms = await Room.find().populate('currentParticipants');
+          const roomAges = rooms.map((room) => {
+            const participantAges = room.currentParticipants.map(
+              (participant) => participant.age
+            );
       
