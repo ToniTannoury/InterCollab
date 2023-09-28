@@ -90,4 +90,7 @@ const getMostRatedCreators = async (req, res) => {
             const participantAges = room.currentParticipants.map(
               (participant) => participant.age
             );
-      
+            const totalAge = participantAges.reduce((sum, age) => sum + age, 0);
+            const averageAge = participantAges.length
+              ? totalAge / participantAges.length
+              : 0;
