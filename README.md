@@ -142,3 +142,18 @@ _Below is an example of how you can install the project on your local device
    ```sh
    git clone https://github.com/jatannoury/FortunusVision.git
 
+
+##### To Run The Server
+1. Navigate to the Backend folder
+   ```sh
+   cd backend
+   ```
+      ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Start Backend
+   ```sh
+   npm run server
+   ```
