@@ -54,4 +54,6 @@ const addParticipantToRoom = asyncHandler(async (req, res) => {
 });
 const getMostRatedCreators = async (req, res) => {
   try {
- 
+    const mostRatedCreators = await User.find()
+      .sort({ rating: -1 })
+      .limit(10);
