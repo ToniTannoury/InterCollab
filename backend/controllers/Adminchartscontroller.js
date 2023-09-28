@@ -83,4 +83,7 @@ const getMostRatedCreators = async (req, res) => {
           res.status(500).json({ error: 'Server error' });
         }
       });
+      const calculateRoomAges = async () => {
+        try {
+          const rooms = await Room.find().populate('currentParticipants');
       
