@@ -107,3 +107,4 @@ const getMostRatedCreators = async (req, res) => {
             medianAge,
           };
         });
+        roomAges.sort((a, b) => b.averageAge - a.averageAge);
