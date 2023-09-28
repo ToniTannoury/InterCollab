@@ -31,3 +31,8 @@ const addParticipantToRoom = asyncHandler(async (req, res) => {
   try {
     const roomId = req.params.roomId; 
     const userId = req.body.userId; 
+    const room = await Room.findById(roomId);
+
+    if (!room) {
+      return res.status(404).json({ message: 'Room not found' });
+    }
