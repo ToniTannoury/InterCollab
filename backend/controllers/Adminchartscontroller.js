@@ -16,9 +16,13 @@ const getMostRecentTopRooms = asyncHandler(async (req, res) => {
 
     const mostRecentTopRooms = await Room.find({
       totalParticipants: maxParticipantCount,
-    })   .sort({ createdAt: -1 }) // Sort by createdAt in descending order for most recent
-    .limit(10); // You can adjust the limit as needed
-
+    })   .sort({ createdAt: -1 })
+    .limit(10); 
   if (mostRecentTopRooms.length === 0) {
     return res.status(404).json({ message: 'No top rooms found' });
-  }
+  }    res.status(200).json({ mostRecentTopRooms });
+} catch (error) {
+  console.error('Error fetching most recent top rooms:', error);
+  res.status(500).json({ error: 'Server error' });
+}
+});
