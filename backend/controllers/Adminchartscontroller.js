@@ -77,3 +77,10 @@ const getMostRatedCreators = async (req, res) => {
             averageAge,
             medianAge,
           };
+          res.status(200).json(response);
+        } catch (error) {
+          console.error('Error fetching most rated creators:', error);
+          res.status(500).json({ error: 'Server error' });
+        }
+      });
+      
