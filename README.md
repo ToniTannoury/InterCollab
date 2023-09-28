@@ -15,13 +15,13 @@
 
 ### User Stories
 - As a user I want to be able to share my live camera footage in a room I created
-- As a user I want to be able to share my LIVE audio footage in a room I created
+- As a user I want to be able to share my live audio footage in a room I created
 - As a user I want to be able to share my screen live in a room I created
-- As a user I want to be able to receive the coins a participant pays to enter a room i created 
-- As a user I want to be able to chat via text with the participants of a room i created
-- As a user I want to be able to monitor the users entering and leaving the rooms i created
-- As a user i want to be able to follow my favorite creator
-- As a user i want to be able to rate the creator of a certain room
+- As a user I want to be able to receive the coins a participant pays to enter a room I created 
+- As a user I want to be able to chat via text with the participants of a room I created
+- As a user I want to be able to monitor the users entering and leaving the rooms I created
+- As a user I want to be able to follow my favorite creator
+- As a user I want to be able to rate the creator of a certain room
 
 
 <br><br>
