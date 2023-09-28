@@ -42,4 +42,11 @@ const addParticipantToRoom = asyncHandler(async (req, res) => {
 
     if (room.currentParticipants.includes(userId)) {
       return res.status(400).json({ message: 'User is already a participant in the room' });
-    }
+    }   room.currentParticipants.push(userId);
+
+ 
+  } catch (error) {
+    console.error('Error adding participant to room:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
