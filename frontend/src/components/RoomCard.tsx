@@ -51,7 +51,7 @@ function RoomCard({room}:Props) {
             </div>
           </div>
           <div className='mr-3 text-white mt-6'>
-            Number of Participants : {room.totalParticipants.length}
+            Total Number of Participants: {room.totalParticipants.length}
           </div>
         </div>
         <div>
