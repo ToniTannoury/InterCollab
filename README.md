@@ -131,3 +131,13 @@ In order to run the project correctly, you need to install the following package
 - Node.js
 
   Install [Node.js](https://nodejs.org/en/)
+
+  
+### Installation
+
+_Below is an example of how you can install the project on your local device
+
+
+- Clone the repo
+   ```sh
+   git clone https://github.com/jatannoury/FortunusVision.git
