@@ -157,3 +157,17 @@ _Below is an example of how you can install the project on your local device
    ```sh
    npm run server
    ```
+##### To Run Client
+1. Navigate to the Frontend folder
+   ```sh
+   cd frontend
+   ```
+      ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Start Client
+   ```sh
+   npm run dev
+   ```
