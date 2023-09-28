@@ -113,3 +113,21 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 <br><br>
 
 <img id="features" src="https://https://github.com/ToniTannoury/InterCollab/assets/138028340/c59f2d5e-cce1-48ae-8db0-eac55be5018d"/>
+
+### Prerequisites
+
+In order to run the project correctly, you need to install the following packages
+
+- npm
+  ```sh
+  npm install npm@latest -g
+  ```
+
+- react-cli
+  ```sh
+  npm install -g next-cli next
+  ```
+
+- Node.js
+
+  Install [Node.js](https://nodejs.org/en/)
