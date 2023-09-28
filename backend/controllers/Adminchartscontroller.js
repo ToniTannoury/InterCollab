@@ -122,3 +122,11 @@ const getMostRatedCreators = async (req, res) => {
         user.totalRatings = user.rooms.reduce((total, room) => total + room.rating, 0);
       });
       users.sort((a, b) => b.totalRatings - a.totalRatings);
+      const topRatedUsers = users.slice(0, 10);
+
+      return topRatedUsers;
+    } catch (error) {
+      console.error('Error fetching top-rated users with rooms:', error);
+      throw error;
+    }
+  };
