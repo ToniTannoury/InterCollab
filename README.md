@@ -112,7 +112,7 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
 <br><br>
 
-<img id="features" src="https://https://github.com/ToniTannoury/InterCollab/assets/138028340/c59f2d5e-cce1-48ae-8db0-eac55be5018d"/>
+<img id="features" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/c59f2d5e-cce1-48ae-8db0-eac55be5018d"/>
 
 ### Prerequisites
 
@@ -141,3 +141,4 @@ _Below is an example of how you can install the project on your local device
 - Clone the repo
    ```sh
    git clone https://github.com/jatannoury/FortunusVision.git
+
