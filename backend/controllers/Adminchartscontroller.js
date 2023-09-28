@@ -118,4 +118,7 @@ const getMostRatedCreators = async (req, res) => {
     };
 
     const getTopRatedUsersWithRooms = async () => {
-      try {}}
+      try {users.forEach((user) => {
+        user.totalRatings = user.rooms.reduce((total, room) => total + room.rating, 0);
+      });
+  
