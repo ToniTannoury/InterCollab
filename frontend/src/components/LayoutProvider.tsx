@@ -156,7 +156,7 @@ function LayoutProvider({children}:{children:React.ReactNode}) {
               <div className='logo'>
                 {isSidebarExpanded && <div className='flex justify-center items-center '><Image className='image' src={require('/public/ICL.PNG')} alt='logo' width={70} height={50}></Image><span className='text-2xl text-white font-bold md'>InterCollab</span></div>}
                 {!isSidebarExpanded && <i className='ri-menu-2-line ml-3' onClick={()=>setIsSidebarExpanded(!isSidebarExpanded)}></i>}
-                {isSidebarExpanded && <i className='ri-close-line font-extrabold' onClick={()=>setIsSidebarExpanded(!isSidebarExpanded)}></i>}
+                {isSidebarExpanded && <i className='ri-arrow-left-line font-extrabold' onClick={()=>setIsSidebarExpanded(!isSidebarExpanded)}></i>}
                 
                 
               </div>
