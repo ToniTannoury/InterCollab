@@ -66,6 +66,7 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 <br><br>
 <img id="features" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/1efd2b02-cf75-41c4-ad40-a220d6c1ac4c"/>
 
+
 > Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
 
 #### Users Screens
@@ -111,3 +112,4 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
 <br><br>
 
+<img id="features" src="https://https://github.com/ToniTannoury/InterCollab/assets/138028340/c59f2d5e-cce1-48ae-8db0-eac55be5018d"/>
