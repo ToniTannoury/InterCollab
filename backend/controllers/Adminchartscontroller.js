@@ -63,4 +63,8 @@ const getMostRatedCreators = async (req, res) => {
       const ages = mostRatedCreators.map((creator) => creator.age);
       const totalAges = ages.reduce((sum, age) => sum + age, 0);
       const averageAge = totalAges / mostRatedCreators.length;
-  
+      ages.sort((a, b) => a - b);
+      const medianAge =
+        ages.length % 2 === 0
+          ? (ages[ages.length / 2 - 1] + ages[ages.length / 2]) / 2
+          : ages[Math.floor(ages.length / 2)];
