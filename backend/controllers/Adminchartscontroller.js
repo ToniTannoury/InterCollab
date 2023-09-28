@@ -36,3 +36,10 @@ const addParticipantToRoom = asyncHandler(async (req, res) => {
     if (!room) {
       return res.status(404).json({ message: 'Room not found' });
     }
+    if (room.currentParticipants.length >= room.maxNumberOfParticipants) {
+      return res.status(400).json({ message: 'Room is full' });
+    }
+
+    if (room.currentParticipants.includes(userId)) {
+      return res.status(400).json({ message: 'User is already a participant in the room' });
+    }
