@@ -184,6 +184,12 @@ const getMostRatedCreators = async (req, res) => {
                       mostParticipants = user;
                     }
                   });
+                  
+    if (!mostParticipants) {
+      return {
+        message: 'No rooms found',
+      };
+    }
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
