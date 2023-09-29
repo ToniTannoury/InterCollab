@@ -189,7 +189,17 @@ const getMostRatedCreators = async (req, res) => {
       return {
         message: 'No rooms found',
       };
-    }
+    }    return {
+      mostParticipants: {
+        name: mostParticipants.name,
+        age: mostParticipants.age,
+        totalParticipants: maxTotalParticipants,
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching creator with most participants:', error);
+    throw error;
+  }
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
