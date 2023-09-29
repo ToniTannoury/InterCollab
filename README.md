@@ -61,7 +61,7 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
 - Concerning the get coins functionality,InterCollab uses [Stripe](https://stripe.com/en-gb-us) with its webhook to successfully and securely process payments from users credit cards.
 
--Amazon Elastic Compute Cloud [Amazon EC2](https://aws.amazon.com/ec2/) is a web service provided by Amazon Web Services (AWS) that 
+-Amazon Elastic Compute Cloud [Amazon EC2](https://aws.amazon.com/ec2/) is a web service provided by Amazon Web Services (AWS) that offers resizable compute capacity in the cloud. It allows users to run virtual machines (known as instances) on-demand, making it a fundamental building block for cloud computing
 
 - [Ant Design](https://ant.design/) and [tailwindcss](https://tailwindcss.com/) where used for styling
 
