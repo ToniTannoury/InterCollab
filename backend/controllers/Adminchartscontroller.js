@@ -172,6 +172,9 @@ const getMostRatedCreators = async (req, res) => {
                     path: 'rooms',
                     select: 'totalParticipants',
                   });
+                  let mostParticipants = null;
+                  let maxTotalParticipants = 0;
+              
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
