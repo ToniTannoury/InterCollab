@@ -243,7 +243,16 @@ const getMostSearchedCreatorWithRooms = async () => {
       };
     }
     const creatorRooms = await Room.find({ creator: mostSearchedCreator._id });
-
+    if (creatorRooms.length === 0) {
+      return {
+        creator: {
+          name: mostSearchedCreator.name,
+          age: mostSearchedCreator.age,
+          searches: mostSearchedCreator.searches,
+        },
+        rooms: [],
+      };
+    }
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
