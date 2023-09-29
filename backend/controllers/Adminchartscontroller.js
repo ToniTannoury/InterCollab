@@ -252,7 +252,9 @@ const getMostSearchedCreatorWithRooms = async () => {
         },
         rooms: [],
       };
-    }
+    }'
+    const roomInfo = await Promise.all(
+      creatorRooms.map(async (room) => {'
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
