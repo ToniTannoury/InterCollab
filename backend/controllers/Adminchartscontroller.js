@@ -294,7 +294,12 @@ const getMostSearchedCreatorWithRooms = async () => {
         };
         rooms.forEach((room) => {
           const creatorAge = room.creator.age;
-    
+          const creatorAgeCategory = classifyAge(creatorAge);
+
+          
+          const participantAgeCategories = room.currentParticipants.map((participant) =>
+            classifyAge(participant.age)
+          );
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
