@@ -216,6 +216,14 @@ const getMostRatedCreators = async (req, res) => {
           continue;
         }
         const roomParticipants = room.participants || [];
+        for (const participantId of roomParticipants) {
+          const participant = await User.findById(participantId);
+  
+          if (participant && participant.rooms.includes(roomId)) {
+            usersConsistentlyEnteringRooms.push(participant);
+          }
+        }
+      }
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
