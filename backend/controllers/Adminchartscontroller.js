@@ -260,7 +260,18 @@ const getMostSearchedCreatorWithRooms = async () => {
       );
       const totalAge = participantAges.reduce((sum, age) => sum + age, 0);
       const averageAge =participantAges.length > 0 ? totalAge / participantAges.length : 0;
-
+      return {
+        creator: {
+          name: mostSearchedCreator.name,
+          age: mostSearchedCreator.age,
+          searches: mostSearchedCreator.searches,
+        },
+        rooms: roomInfo,
+      };
+    } catch (error) {
+      console.error('Error getting most searched creator with rooms:', error);
+      throw error;
+    }
 
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
