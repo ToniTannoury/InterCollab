@@ -224,6 +224,11 @@ const getMostRatedCreators = async (req, res) => {
           }
         }
       }
+      const uniqueUsers = Array.from(new Set(usersConsistentlyEnteringRooms));
+    return {
+      users: uniqueUsers,
+      creatorBio: creator.bio,
+    };
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
