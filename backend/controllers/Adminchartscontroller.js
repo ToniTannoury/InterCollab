@@ -287,6 +287,11 @@ const getMostSearchedCreatorWithRooms = async () => {
             return 'Child';
           }
         };
+        const categorizedRooms = {
+          Adult: [],
+          Teenager: [],
+          Child: [],
+        };
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
