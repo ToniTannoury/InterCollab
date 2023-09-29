@@ -151,6 +151,9 @@ const getMostRatedCreators = async (req, res) => {
                 $gte: new Date(entry._id.year, entry._id.month - 1, 1),
                 $lt: new Date(entry._id.year, entry._id.month, 1),
               },
+              rating: entry.maxRating,
+            }).populate('creator');
+    
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
