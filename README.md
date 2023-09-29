@@ -123,7 +123,7 @@ In order to run the project correctly, you need to install the following package
   npm install npm@latest -g
   ```
 
-- react-cli
+- next-cli
   ```sh
   npm install -g next-cli next
   ```
