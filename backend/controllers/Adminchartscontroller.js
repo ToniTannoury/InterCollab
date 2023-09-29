@@ -174,7 +174,11 @@ const getMostRatedCreators = async (req, res) => {
                   });
                   let mostParticipants = null;
                   let maxTotalParticipants = 0;
-              
+                  users.forEach((user) => {
+                    const totalParticipants = user.rooms.reduce(
+                      (total, room) => total + room.totalParticipants,
+                      0
+                    );
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
