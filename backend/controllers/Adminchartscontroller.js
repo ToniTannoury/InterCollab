@@ -169,3 +169,4 @@ const getMostRatedCreators = async (req, res) => {
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
 app.get('/api/charts/getMostRatedCreators', getMostRatedCreators)
+app.get('/api/charts/getMostRatedCreatorsByMonth', getMostRatedCreatorsByMonth)
