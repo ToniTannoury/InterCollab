@@ -162,7 +162,7 @@ const getMostRatedCreators = async (req, res) => {
               };
             }
             return mostRatedCreatorsByMonth.filter((entry) => entry !== null);
-          } catch (error) {
+          } catch (error) {}
             console.error('Error fetching most-rated creators by month:', error);
             throw error;
       getCreatorWithMostParticipants() {
@@ -234,6 +234,8 @@ const getMostRatedCreators = async (req, res) => {
     throw error;
   }
 }
+const getMostSearchedCreatorWithRooms = async () => {
+  try {
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
