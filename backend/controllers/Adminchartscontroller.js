@@ -165,6 +165,8 @@ const getMostRatedCreators = async (req, res) => {
           } catch (error) {
             console.error('Error fetching most-rated creators by month:', error);
             throw error;
+      getCreatorWithMostParticipants() {
+              try {
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
