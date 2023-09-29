@@ -207,7 +207,10 @@ const getMostRatedCreators = async (req, res) => {
         return {
           message: 'Creator not found',
         };
-      }
+      }const usersConsistentlyEnteringRooms = [];
+
+      for (const roomId of creator.rooms) {
+    
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
