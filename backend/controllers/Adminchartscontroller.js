@@ -255,6 +255,9 @@ const getMostSearchedCreatorWithRooms = async () => {
     }'
     const roomInfo = await Promise.all(
       creatorRooms.map(async (room) => {'
+      const participantAges = room.currentParticipants.map(
+        (participant) => participant.age
+      );
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
