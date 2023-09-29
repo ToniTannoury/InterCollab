@@ -167,6 +167,11 @@ const getMostRatedCreators = async (req, res) => {
             throw error;
       getCreatorWithMostParticipants() {
               try {
+     
+                  const users = await User.find().populate({
+                    path: 'rooms',
+                    select: 'totalParticipants',
+                  });
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
