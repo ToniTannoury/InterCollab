@@ -274,6 +274,8 @@ const getMostSearchedCreatorWithRooms = async () => {
     }
     const classifyRoomsByAgeCategory = async () => {
       try {
+        const rooms = await Room.find().populate('creator currentParticipants');
+
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
