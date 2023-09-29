@@ -258,6 +258,8 @@ const getMostSearchedCreatorWithRooms = async () => {
       const participantAges = room.currentParticipants.map(
         (participant) => participant.age
       );
+      const totalAge = participantAges.reduce((sum, age) => sum + age, 0);
+
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
