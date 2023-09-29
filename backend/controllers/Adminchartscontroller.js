@@ -272,7 +272,8 @@ const getMostSearchedCreatorWithRooms = async () => {
       console.error('Error getting most searched creator with rooms:', error);
       throw error;
     }
-
+    const classifyRoomsByAgeCategory = async () => {
+      try {
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
