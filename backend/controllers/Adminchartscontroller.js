@@ -236,6 +236,8 @@ const getMostRatedCreators = async (req, res) => {
 }
 const getMostSearchedCreatorWithRooms = async () => {
   try {
+    const mostSearchedCreator = await User.findOne().sort({ searches: -1 });
+
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
