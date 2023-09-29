@@ -141,8 +141,9 @@ const getMostRatedCreators = async (req, res) => {
       console.error('Error fetching top rooms by category:', error);
       throw error;
     }
-    async function getMostRatedCreatorsByMonth() {
+    async function getMostRatedCreatorsByMonth(req , res) {
       try {
+        const result = await Room.findById(req.roomId)
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
