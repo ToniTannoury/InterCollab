@@ -140,7 +140,7 @@ _Below is an example of how you can install the project on your local device
 
 - Clone the repo
    ```sh
-   git clone https://github.com/ToniTannoury.git
+   git clone https://github.com/ToniTannoury/InterCollab
 
 
 ##### To Run The Server
