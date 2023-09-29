@@ -153,7 +153,14 @@ const getMostRatedCreators = async (req, res) => {
               },
               rating: entry.maxRating,
             }).populate('creator');
-    
+            if (mostRatedRoom) {
+              return {
+                month: entry._id.month,
+                year: entry._id.year,
+                maxRating: entry.maxRating,
+                creator: mostRatedRoom.creator,
+              };
+            }
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
