@@ -200,6 +200,8 @@ const getMostRatedCreators = async (req, res) => {
     console.error('Error fetching creator with most participants:', error);
     throw error;
   }
+  async function getUsersConsistentlyEnteringRoomsByCreator(creatorId) {
+    try {
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
