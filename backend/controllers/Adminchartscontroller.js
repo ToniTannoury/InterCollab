@@ -300,6 +300,11 @@ const getMostSearchedCreatorWithRooms = async () => {
           const participantAgeCategories = room.currentParticipants.map((participant) =>
             classifyAge(participant.age)
           );
+          const roomAgeCategory = participantAgeCategories.includes('Adult')
+          ? 'Adult'
+          : participantAgeCategories.includes('Teenager')
+          ? 'Teenager'
+          : 'Child';
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
