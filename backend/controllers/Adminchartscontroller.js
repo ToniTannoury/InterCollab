@@ -143,7 +143,9 @@ const getMostRatedCreators = async (req, res) => {
     }
     async function getMostRatedCreatorsByMonth(req , res) {
       try {
-        const result = await Room.findById(req.roomId)
+        const result = await Room.find(req.rooms)
+        const mostRatedCreatorsByMonth = await Promise.all(
+          result.map(async (entry) => {
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
