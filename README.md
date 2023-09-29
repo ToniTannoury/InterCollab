@@ -140,7 +140,7 @@ _Below is an example of how you can install the project on your local device
 
 - Clone the repo
    ```sh
-   git clone https://github.com/jatannoury/FortunusVision.git
+   git clone https://github.com/ToniTannoury.git
 
 
 ##### To Run The Server
@@ -148,7 +148,7 @@ _Below is an example of how you can install the project on your local device
    ```sh
    cd backend
    ```
-      ```
+ 
 2. Install NPM packages
    ```sh
    npm install
@@ -162,7 +162,6 @@ _Below is an example of how you can install the project on your local device
    ```sh
    cd frontend
    ```
-      ```
 2. Install NPM packages
    ```sh
    npm install
