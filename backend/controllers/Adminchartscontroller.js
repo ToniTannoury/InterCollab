@@ -210,7 +210,11 @@ const getMostRatedCreators = async (req, res) => {
       }const usersConsistentlyEnteringRooms = [];
 
       for (const roomId of creator.rooms) {
-    
+        const room = await Room.findById(roomId);
+  
+        if (!room) {
+          continue;
+        }
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
