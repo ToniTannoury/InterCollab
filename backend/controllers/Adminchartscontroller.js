@@ -215,6 +215,7 @@ const getMostRatedCreators = async (req, res) => {
         if (!room) {
           continue;
         }
+        const roomParticipants = room.participants || [];
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
