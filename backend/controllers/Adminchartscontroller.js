@@ -242,6 +242,8 @@ const getMostSearchedCreatorWithRooms = async () => {
         message: 'No most searched creator found',
       };
     }
+    const creatorRooms = await Room.find({ creator: mostSearchedCreator._id });
+
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
