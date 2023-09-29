@@ -146,6 +146,11 @@ const getMostRatedCreators = async (req, res) => {
         const result = await Room.find(req.rooms)
         const mostRatedCreatorsByMonth = await Promise.all(
           result.map(async (entry) => {
+            const mostRatedRoom = await Room.findOne({
+              createdAt: {
+                $gte: new Date(entry._id.year, entry._id.month - 1, 1),
+                $lt: new Date(entry._id.year, entry._id.month, 1),
+              },
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
