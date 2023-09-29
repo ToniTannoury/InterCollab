@@ -305,6 +305,19 @@ const getMostSearchedCreatorWithRooms = async () => {
           : participantAgeCategories.includes('Teenager')
           ? 'Teenager'
           : 'Child';
+          categorizedRooms[roomAgeCategory].push({
+            roomName: room.name,
+            creatorName: room.creator.name,
+            creatorAge: creatorAge,
+          });
+        });
+    
+        return categorizedRooms;
+      } catch (error) {
+        console.error('Error classifying rooms by age category:', error);
+        throw error;
+      }
+    };
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
