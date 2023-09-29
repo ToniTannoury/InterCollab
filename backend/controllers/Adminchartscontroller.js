@@ -229,9 +229,15 @@ const getMostRatedCreators = async (req, res) => {
       users: uniqueUsers,
       creatorBio: creator.bio,
     };
+  } catch (error) {
+    console.error('Error getting users consistently entering rooms:', error);
+    throw error;
+  }
+}
     app.get('/api/chart/getTopRoomsByCategory', getTopRoomsByCategory)
 app.get('/api/charts/getTopRatedUsersWithRooms', getTopRatedUsersWithRooms)
 app.get('/api/charts/calculateRoomAges', calculateRoomAges)
 app.get('/api/charts/getMostRatedCreators', getMostRatedCreators)
 app.get('/api/charts/getMostRatedCreatorsByMonth', getMostRatedCreatorsByMonth)
 app.get('/api/charts/getCreatorWithMostParticipants', getCreatorWithMostParticipants)
+app.get('/api/charts/getUsersConsistentlyEnteringRoomsByCreator', getUsersConsistentlyEnteringRoomsByCreator)
