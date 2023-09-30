@@ -1,0 +1,663 @@
+{
+	"info": {
+		"_postman_id": "ba08f768-d5ca-4b08-9bc5-98db8d7bcf90",
+		"name": "InterCollab Apis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\":\"toni\",\r\n  \"age\":23,\r\n \"email\":\"tonitannoury111@gmail.com\",\r\n \"password\":\"12345678\",\r\n \"confirmPassword\":\"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://16.171.116.7:5000/api/users",
+					"protocol": "http",
+					"host": [
+						"16",
+						"171",
+						"116",
+						"7"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"email\":\"tonitannoury111@gmail.com\",\r\n \"password\":\"12345678\"\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://16.171.116.7:5000/api/users/login",
+					"protocol": "http",
+					"host": [
+						"16",
+						"171",
+						"116",
+						"7"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjVjNWIyMGQ3MWRlM2RiNWE5YjY3YiIsImlhdCI6MTY5NTkxNDQ2OSwiZXhwIjoxNjk4NTA2NDY5fQ.18GTSIjt7FsxckU94GuxMl35cL1Dr2DijND5UiWRXhg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://16.171.116.7:5000/api/users/searchUsers?query=a",
+					"protocol": "http",
+					"host": [
+						"16",
+						"171",
+						"116",
+						"7"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"searchUsers"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user by ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjVjNWIyMGQ3MWRlM2RiNWE5YjY3YiIsImlhdCI6MTY5NTkxNDQ2OSwiZXhwIjoxNjk4NTA2NDY5fQ.18GTSIjt7FsxckU94GuxMl35cL1Dr2DijND5UiWRXhg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://16.171.116.7:5000/api/users/getUserById?userId=64f5c5b20d71de3db5a9b67b",
+					"protocol": "http",
+					"host": [
+						"16",
+						"171",
+						"116",
+						"7"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"getUserById"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "64f5c5b20d71de3db5a9b67b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Follow creator",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjVjNWIyMGQ3MWRlM2RiNWE5YjY3YiIsImlhdCI6MTY5NTkxNDQ2OSwiZXhwIjoxNjk4NTA2NDY5fQ.18GTSIjt7FsxckU94GuxMl35cL1Dr2DijND5UiWRXhg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://16.171.116.7:5000/api/users/follow/64f610340d71de3db5a9b683",
+					"protocol": "http",
+					"host": [
+						"16",
+						"171",
+						"116",
+						"7"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"follow",
+						"64f610340d71de3db5a9b683"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unfollow user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjVjNWIyMGQ3MWRlM2RiNWE5YjY3YiIsImlhdCI6MTY5NTkxNDQ2OSwiZXhwIjoxNjk4NTA2NDY5fQ.18GTSIjt7FsxckU94GuxMl35cL1Dr2DijND5UiWRXhg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://16.171.116.7:5000/api/users/unfollow/64f610340d71de3db5a9b683",
+					"protocol": "http",
+					"host": [
+						"16",
+						"171",
+						"116",
+						"7"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"unfollow",
+						"64f610340d71de3db5a9b683"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change profile picture",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjVjNWIyMGQ3MWRlM2RiNWE5YjY3YiIsImlhdCI6MTY5NTkxNDQ2OSwiZXhwIjoxNjk4NTA2NDY5fQ.18GTSIjt7FsxckU94GuxMl35cL1Dr2DijND5UiWRXhg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://16.171.116.7:5000/api/users/changeProfilePicture",
+					"protocol": "http",
+					"host": [
+						"16",
+						"171",
+						"116",
+						"7"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"changeProfilePicture"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Coin Transfer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjVjNWIyMGQ3MWRlM2RiNWE5YjY3YiIsImlhdCI6MTY5NTkxNDQ2OSwiZXhwIjoxNjk4NTA2NDY5fQ.18GTSIjt7FsxckU94GuxMl35cL1Dr2DijND5UiWRXhg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"roomId\":\"650f069ad75a08c9e36c4c5f\",\r\n    \"amount\":10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://16.171.116.7:5000/api/users/coinTransfer",
+					"protocol": "http",
+					"host": [
+						"16",
+						"171",
+						"116",
+						"7"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"coinTransfer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjVjNWIyMGQ3MWRlM2RiNWE5YjY3YiIsImlhdCI6MTY5NTkxNDQ2OSwiZXhwIjoxNjk4NTA2NDY5fQ.18GTSIjt7FsxckU94GuxMl35cL1Dr2DijND5UiWRXhg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\":\"toni\",\r\n  \"age\":23,\r\n \"email\":\"tonitannoury111@gmail.com\",\r\n \"password\":\"12345678\",\r\n \"confirmPassword\":\"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://16.171.116.7:5000/api/users/updateUser",
+					"protocol": "http",
+					"host": [
+						"16",
+						"171",
+						"116",
+						"7"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"updateUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Rate Creator",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjVjNWIyMGQ3MWRlM2RiNWE5YjY3YiIsImlhdCI6MTY5NTkxNDQ2OSwiZXhwIjoxNjk4NTA2NDY5fQ.18GTSIjt7FsxckU94GuxMl35cL1Dr2DijND5UiWRXhg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creator_id\":\"650f069ad75a08c9e36c4c5f\" ,\r\n     \"rating\":5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://16.171.116.7:5000/api/users/rateCreator",
+					"protocol": "http",
+					"host": [
+						"16",
+						"171",
+						"116",
+						"7"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"rateCreator"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get top 5 rooms by total participants",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjVjNWIyMGQ3MWRlM2RiNWE5YjY3YiIsImlhdCI6MTY5NTkxNDQ2OSwiZXhwIjoxNjk4NTA2NDY5fQ.18GTSIjt7FsxckU94GuxMl35cL1Dr2DijND5UiWRXhg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://16.171.116.7:5000/api/rooms/getTop5RoomsByTotalParticipants",
+					"protocol": "http",
+					"host": [
+						"16",
+						"171",
+						"116",
+						"7"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"rooms",
+						"getTop5RoomsByTotalParticipants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search room by ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjVjNWIyMGQ3MWRlM2RiNWE5YjY3YiIsImlhdCI6MTY5NTkxNDQ2OSwiZXhwIjoxNjk4NTA2NDY5fQ.18GTSIjt7FsxckU94GuxMl35cL1Dr2DijND5UiWRXhg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://16.171.116.7:5000/api/rooms/searchRoomById?roomId=650f069ad75a08c9e36c4c5f",
+					"protocol": "http",
+					"host": [
+						"16",
+						"171",
+						"116",
+						"7"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"rooms",
+						"searchRoomById"
+					],
+					"query": [
+						{
+							"key": "roomId",
+							"value": "650f069ad75a08c9e36c4c5f"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search rooms by title",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjVjNWIyMGQ3MWRlM2RiNWE5YjY3YiIsImlhdCI6MTY5NTkxNDQ2OSwiZXhwIjoxNjk4NTA2NDY5fQ.18GTSIjt7FsxckU94GuxMl35cL1Dr2DijND5UiWRXhg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://16.171.116.7:5000/api/rooms/searchRoomById?title=lea",
+					"protocol": "http",
+					"host": [
+						"16",
+						"171",
+						"116",
+						"7"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"rooms",
+						"searchRoomById"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "lea"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search rooms by user name",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjVjNWIyMGQ3MWRlM2RiNWE5YjY3YiIsImlhdCI6MTY5NTkxNDQ2OSwiZXhwIjoxNjk4NTA2NDY5fQ.18GTSIjt7FsxckU94GuxMl35cL1Dr2DijND5UiWRXhg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://16.171.116.7:5000/api/rooms/searchRoomsByUserName?userName=toni",
+					"protocol": "http",
+					"host": [
+						"16",
+						"171",
+						"116",
+						"7"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"rooms",
+						"searchRoomsByUserName"
+					],
+					"query": [
+						{
+							"key": "userName",
+							"value": "toni"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create room",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjVjNWIyMGQ3MWRlM2RiNWE5YjY3YiIsImlhdCI6MTY5NTkxNDQ2OSwiZXhwIjoxNjk4NTA2NDY5fQ.18GTSIjt7FsxckU94GuxMl35cL1Dr2DijND5UiWRXhg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n    \"description\":\"Demo Room\" ,\r\n    \"title\":\"demo title\"  ,\r\n    \"type\":\"paid\" ,\r\n    \"category\":\"Coding\" ,\r\n    \"maxNumberOfParticipants\":100 ,\r\n    \"priceToEnter\":100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://16.171.116.7:5000/api/rooms",
+					"protocol": "http",
+					"host": [
+						"16",
+						"171",
+						"116",
+						"7"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"rooms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search rooms by category",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjVjNWIyMGQ3MWRlM2RiNWE5YjY3YiIsImlhdCI6MTY5NTkxNDQ2OSwiZXhwIjoxNjk4NTA2NDY5fQ.18GTSIjt7FsxckU94GuxMl35cL1Dr2DijND5UiWRXhg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://16.171.116.7:5000/api/rooms/searchRooms?category=cod",
+					"protocol": "http",
+					"host": [
+						"16",
+						"171",
+						"116",
+						"7"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"rooms",
+						"searchRooms"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "cod"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search rooms by type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjVjNWIyMGQ3MWRlM2RiNWE5YjY3YiIsImlhdCI6MTY5NTkxNDQ2OSwiZXhwIjoxNjk4NTA2NDY5fQ.18GTSIjt7FsxckU94GuxMl35cL1Dr2DijND5UiWRXhg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://16.171.116.7:5000/api/rooms/searchRoomsByType?type=paid",
+					"protocol": "http",
+					"host": [
+						"16",
+						"171",
+						"116",
+						"7"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"rooms",
+						"searchRoomsByType"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "paid"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

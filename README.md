@@ -172,3 +172,6 @@ _Below is an example of how you can install the project on your local device
    ```sh
    npm run dev
    ```
+
+You can use the provided Postman Collection to test the API endpoints:
+
