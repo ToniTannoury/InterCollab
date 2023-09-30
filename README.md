@@ -175,4 +175,4 @@ _Below is an example of how you can install the project on your local device
 
 You can use the provided Postman Collection to test the API endpoints:
 
-[Download Postman Collection](https://github.com/ToniTannoury/InterCollab/blob/main/InterCollab%20Apis.postman_collection.json)
+[Postman Collection](https://github.com/ToniTannoury/InterCollab/blob/main/InterCollab%20Apis.postman_collection.json)
