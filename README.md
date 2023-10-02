@@ -1,5 +1,5 @@
 
-<img src="https://github.com/ToniTannoury/InterCollab/assets/138028340/d5e1d0f0-96a3-4fdf-920b-7d8cc38cd5f9"/>
+<img src="https://github.com/ToniTannoury/InterCollab/assets/138028340/dd817d2a-8ec8-477a-859a-a8997f39975b"/>
 <br/>
 <br/>
 
@@ -11,7 +11,7 @@
 
 </div>
 
-<img  id="project-philosophy" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/aaca5e0f-5f57-434b-b2c9-14408c07eabc"/>
+<img  id="project-philosophy" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/1238030e-b814-4cd8-9148-42d36fd384be"/>
 <br><br>
 
 >Have you ever wanted to livestream your content to an unlimited audience and potentially monetize it? InterCollab was developed to make this process easy and accessible to everyone.
@@ -45,11 +45,9 @@
 
 <br><br>
 
-<img id="wireframes" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/c22855cf-1a1d-42b7-8d56-4908de439d26"/>
+<img id="wireframes" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/2208de2c-cbda-4a10-b197-3ea477cf7adb"/>
 
 > This design was planned before on Figma app.
-
-
 
 | Create Room | User Profile | Search Rooms |
 | ------ | ------ | ------ |
@@ -62,7 +60,7 @@
 
 <br><br>
 
-<img id="tech-stack" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/3ba6c82b-57f7-464d-9e81-7f2ddef8f173"/>
+<img id="tech-stack" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/1ced5c2b-158f-4b6c-824b-fa6b8cf20a59"/>
 
 Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
@@ -85,7 +83,7 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 - [Ant Design](https://ant.design/) and [tailwindcss](https://tailwindcss.com/) where used for styling
 
 <br><br>
-<img id="implementation" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/4847e954-4b49-43ad-b9b6-0471347ff489"/>
+<img id="implementation" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/70b4990d-405f-4169-994a-22f58235d1fb"/>
 
 
 > Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
@@ -133,7 +131,7 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
 <br><br>
 
-<img id="how-to-run" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/26f7e123-d8f8-4404-80f3-14cd6c956987"/>
+<img id="how-to-run" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/00fa716c-a94b-49ee-aec4-2df4fb6e48ac"/>
 
 ### Prerequisites
 
