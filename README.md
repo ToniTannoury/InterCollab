@@ -18,7 +18,8 @@
 
 >InterCollab is here to enhance content creation, providing you with the ability to host multiple live rooms tailored to your chosen categories. You can share your audio, video, engage in chat, and exchange ideas with participants from all around the world. InterCollab offers the flexibility to create public rooms open to anyone, private rooms requiring a unique PIN provided by the creator for access, and paid rooms that necessitate users to pay a specific amount of coins for entry.
 
-### Room Creator Stories
+<h3> Room Creator Stories </h3>
+
 - As a room creator I want to be able to create an interactive room and customize it 
 - As a room creator I want to be able to share my live camera footage 
 - As a room creator I want to be able to share my live audio footage 
@@ -29,7 +30,7 @@
 
 
 
-### Attendee Stories
+<h3> Attendee Stories </h3>
 
 - As an attendee I want to be able to follow my favorite creator
 - As an attendee I want to be able to search for rooms of my liking
@@ -88,7 +89,7 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
 > Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
 
-#### Users Screens
+<h3> Users Screens </h3>
 
 
 
@@ -121,11 +122,12 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 | ![Pay To Enter](https://github.com/ToniTannoury/InterCollab/assets/138028340/ab015dbb-bcb6-4ceb-8f86-6b91bca958ba) | ![Rating Creator on Room Leave](https://github.com/ToniTannoury/InterCollab/assets/138028340/2324b69a-124a-463a-b34b-d093e32aab2e) |
 <br><br>
 
-#### Creator Screen Inside Room Video
+<h3>Creator Screen Inside Room Video</h3> 
 
 [![Watch the video](https://github.com/ToniTannoury/InterCollab/assets/138028340/db62ec67-e4fe-4626-96c2-dbeb8dcbd400)](https://github.com/ToniTannoury/InterCollab/assets/138028340/e8fb3a41-187a-4c58-9f3a-1a54b94dbdd9)
 
-#### Participant Screen Inside Room Video
+<h3> Participant Screen Inside Room Video </h3>
+
 [![Watch the video](https://github.com/ToniTannoury/InterCollab/assets/138028340/db62ec67-e4fe-4626-96c2-dbeb8dcbd400)](https://github.com/ToniTannoury/InterCollab/assets/138028340/f29111a3-b2ae-494e-889f-2dafed026dc2
 )
 
@@ -133,7 +135,7 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
 <img id="how-to-run" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/00fa716c-a94b-49ee-aec4-2df4fb6e48ac"/>
 
-### Prerequisites
+<h3>Prerequisites</h3> 
 
 In order to run the project correctly, you need to install the following packages
 
@@ -152,7 +154,7 @@ In order to run the project correctly, you need to install the following package
   Install [Node.js](https://nodejs.org/en/)
 
   
-### Installation
+<h3> Installation </h3>  
 
 _Below is an example of how you can install the project on your local device
 
@@ -162,7 +164,7 @@ _Below is an example of how you can install the project on your local device
    git clone https://github.com/ToniTannoury/InterCollab
 
 
-##### To Run The Server
+<h3> To Run The Server </h3>
 1. Navigate to the Backend folder
    ```sh
    cd backend
@@ -176,7 +178,8 @@ _Below is an example of how you can install the project on your local device
    ```sh
    npm run server
    ```
-##### To Run Client
+
+<h3> To Run Client </h3>
 1. Navigate to the Frontend folder
    ```sh
    cd frontend
