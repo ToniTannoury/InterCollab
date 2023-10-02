@@ -1,5 +1,5 @@
 
-<img src="https://github.com/ToniTannoury/InterCollab/assets/138028340/d5e1d0f0-96a3-4fdf-920b-7d8cc38cd5f9"/>
+<img src="https://github.com/ToniTannoury/InterCollab/assets/138028340/dd817d2a-8ec8-477a-859a-a8997f39975b"/>
 <br/>
 <br/>
 
@@ -11,14 +11,15 @@
 
 </div>
 
-<img  id="project-philosophy" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/aaca5e0f-5f57-434b-b2c9-14408c07eabc"/>
+<img  id="project-philosophy" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/1238030e-b814-4cd8-9148-42d36fd384be"/>
 <br><br>
 
 >Have you ever wanted to livestream your content to an unlimited audience and potentially monetize it? InterCollab was developed to make this process easy and accessible to everyone.
 
 >InterCollab is here to enhance content creation, providing you with the ability to host multiple live rooms tailored to your chosen categories. You can share your audio, video, engage in chat, and exchange ideas with participants from all around the world. InterCollab offers the flexibility to create public rooms open to anyone, private rooms requiring a unique PIN provided by the creator for access, and paid rooms that necessitate users to pay a specific amount of coins for entry.
 
-### Room Creator Stories
+<h3> Room Creator Stories </h3>
+
 - As a room creator I want to be able to create an interactive room and customize it 
 - As a room creator I want to be able to share my live camera footage 
 - As a room creator I want to be able to share my live audio footage 
@@ -29,7 +30,7 @@
 
 
 
-### Attendee Stories
+<h3> Attendee Stories </h3>
 
 - As an attendee I want to be able to follow my favorite creator
 - As an attendee I want to be able to search for rooms of my liking
@@ -45,11 +46,9 @@
 
 <br><br>
 
-<img id="wireframes" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/c22855cf-1a1d-42b7-8d56-4908de439d26"/>
+<img id="wireframes" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/2208de2c-cbda-4a10-b197-3ea477cf7adb"/>
 
 > This design was planned before on Figma app.
-
-
 
 | Create Room | User Profile | Search Rooms |
 | ------ | ------ | ------ |
@@ -62,7 +61,7 @@
 
 <br><br>
 
-<img id="tech-stack" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/3ba6c82b-57f7-464d-9e81-7f2ddef8f173"/>
+<img id="tech-stack" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/1ced5c2b-158f-4b6c-824b-fa6b8cf20a59"/>
 
 Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
@@ -74,23 +73,23 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
 - InterCollab relies on cutting-edge [WebRTC](https://webrtc.org/) technologies, with a particular focus on [Peer JS](https://peerjs.com/), to enable seamless real-time communication among its users. WebRTC is a powerful set of protocols and APIs that facilitates peer-to-peer communication directly within web browsers, allowing for the transmission of video, audio, and screen sharing in real time.
 
-- For the application state management, [Redux Toolkit and Context Api](https://redux-toolkit.js.org/) have been integrated.The Context API is a part of React, and it provides a way to share state between components without having to pass props through multiple levels of the component tree. It's designed to solve the problem of "prop drilling". Redux Toolkit is an opinionated toolset for efficient Redux development created by the Redux team. It is the standard and recommended way to write Redux logic and manage state in your JavaScript applications.
+- For the application state management, [Redux Toolkit and Context Api](https://redux-toolkit.js.org/) have been integrated.The Context API is a part of React, and it provides a way to share state between components without having to pass props through multiple levels of the component tree. It's designed to solve the problem of "prop drilling,".Redux Toolkit is an opinionated toolset for efficient Redux development created by the Redux team. It is the standard and recommended way to write Redux logic and manage state in your JavaScript applications.
 
 - Concerning the chatting system applied and interactive entery and leave of rooms, [Socket.IO](https://socket.io/) have been used in order to be able to emit events to all room joiners.Socket.IO is a widely-used JavaScript library that enables real-time, bidirectional communication between the server and clients. It is built on top of the WebSocket protocol and provides a simple and powerful way to implement real-time features in web applications.
 
-- Concerning the get coins functionality, InterCollab uses [Stripe](https://stripe.com/en-gb-us) with its webhook to successfully and securely process payments from users credit cards.
+- Concerning the get coins functionality,InterCollab uses [Stripe](https://stripe.com/en-gb-us) with its webhook to successfully and securely process payments from users credit cards.
 
-- Amazon Elastic Compute Cloud [Amazon EC2](https://aws.amazon.com/ec2/) is a web service provided by Amazon Web Services (AWS) that offers resizable compute capacity in the cloud. It allows users to run virtual machines (known as instances) on-demand, making it a fundamental building block for cloud computing
+-Amazon Elastic Compute Cloud [Amazon EC2](https://aws.amazon.com/ec2/) is a web service provided by Amazon Web Services (AWS) that offers resizable compute capacity in the cloud. It allows users to run virtual machines (known as instances) on-demand, making it a fundamental building block for cloud computing
 
-- [Ant Design](https://ant.design/) and [tailwindcss](https://tailwindcss.com/) where used for styling. Ant Design is an enterprise-class UI design language and React UI library with a set of high-quality React components, one of best React UI library for enterprises. Tailwind CSS is a utility-first CSS framework for rapidly building modern websites without ever leaving your HTML. 
+- [Ant Design](https://ant.design/) and [tailwindcss](https://tailwindcss.com/) where used for styling
 
 <br><br>
-<img id="implementation" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/4847e954-4b49-43ad-b9b6-0471347ff489"/>
+<img id="implementation" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/70b4990d-405f-4169-994a-22f58235d1fb"/>
 
 
 > Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
 
-#### Users Screens
+<h3> Users Screens </h3>
 
 
 
@@ -123,19 +122,20 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 | ![Pay To Enter](https://github.com/ToniTannoury/InterCollab/assets/138028340/ab015dbb-bcb6-4ceb-8f86-6b91bca958ba) | ![Rating Creator on Room Leave](https://github.com/ToniTannoury/InterCollab/assets/138028340/2324b69a-124a-463a-b34b-d093e32aab2e) |
 <br><br>
 
-#### Creator Screen Inside Room Video
+<h3>Creator Screen Inside Room Video</h3> 
 
 [![Watch the video](https://github.com/ToniTannoury/InterCollab/assets/138028340/db62ec67-e4fe-4626-96c2-dbeb8dcbd400)](https://github.com/ToniTannoury/InterCollab/assets/138028340/e8fb3a41-187a-4c58-9f3a-1a54b94dbdd9)
 
-#### Participant Screen Inside Room Video
+<h3> Participant Screen Inside Room Video </h3>
+
 [![Watch the video](https://github.com/ToniTannoury/InterCollab/assets/138028340/db62ec67-e4fe-4626-96c2-dbeb8dcbd400)](https://github.com/ToniTannoury/InterCollab/assets/138028340/f29111a3-b2ae-494e-889f-2dafed026dc2
 )
 
 <br><br>
 
-<img id="how-to-run" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/26f7e123-d8f8-4404-80f3-14cd6c956987"/>
+<img id="how-to-run" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/00fa716c-a94b-49ee-aec4-2df4fb6e48ac"/>
 
-### Prerequisites
+<h3>Prerequisites</h3> 
 
 In order to run the project correctly, you need to install the following packages
 
@@ -154,17 +154,17 @@ In order to run the project correctly, you need to install the following package
   Install [Node.js](https://nodejs.org/en/)
 
   
-### Installation
+<h3> Installation </h3>  
 
 _Below is an example of how you can install the project on your local device
 
 
 - Clone the repo
    ```sh
- git clone https://github.com/ToniTannoury/InterCollab
+   git clone https://github.com/ToniTannoury/InterCollab
 
 
-##### To Run The Server
+<h3> To Run The Server </h3>
 1. Navigate to the Backend folder
    ```sh
    cd backend
@@ -178,7 +178,8 @@ _Below is an example of how you can install the project on your local device
    ```sh
    npm run server
    ```
-##### To Run Client
+
+<h3> To Run Client </h3>
 1. Navigate to the Frontend folder
    ```sh
    cd frontend
