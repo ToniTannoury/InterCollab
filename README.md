@@ -3,7 +3,7 @@
 
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.
 
-**[PROJECT PHILOSOPHY](https://github.com/ToniTannoury/InterCollab#project-philosophy) • [PROTOTYPES](https://github.com/ToniTannoury/InterCollab#wireframes) • [TECH STACK](https://github.com/ToniTannoury/InterCollab#tech-stack) • [IMPLEMENTATION](https://github.com/ToniTannoury/InterCollab#impplementation) • [HOW TO RUN?](https://github.com/ToniTannoury/InterCollab#how-to-run)**
+**[PROJECT PHILOSOPHY](https://github.com/ToniTannoury/InterCollab#project-philosophy) • [PROTOTYPES](https://github.com/ToniTannoury/InterCollab#wireframes) • [TECH STACK](https://github.com/ToniTannoury/InterCollab#tech-stack) • [IMPLEMENTATION](https://github.com/ToniTannoury/InterCollab#implementation) • [HOW TO RUN?](https://github.com/ToniTannoury/InterCollab#how-to-run)**
 </div>
  
 <br><br>
@@ -81,7 +81,7 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 - [Ant Design](https://ant.design/) and [tailwindcss](https://tailwindcss.com/) where used for styling
 
 <br><br>
-<img id="features" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/f5992d9d-baca-4f77-8a60-f9b982226ed0"/>
+<img id="implementation" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/f5992d9d-baca-4f77-8a60-f9b982226ed0"/>
 
 
 > Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
@@ -129,7 +129,7 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
 <br><br>
 
-<img id="features" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/b483dfa3-4dd1-4da8-ad6c-08fd3df09de4"/>
+<img id="how-to-run" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/9c77e23b-669e-4ae1-9540-3cdb48ff1a1a"/>
 
 ### Prerequisites
 
