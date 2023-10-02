@@ -1,14 +1,18 @@
 
-<img src="https://github.com/ToniTannoury/InterCollab/assets/138028340/49cdbacf-df85-46b3-b391-fe4d144fbfe5"/>
+<img src="https://github.com/ToniTannoury/InterCollab/assets/138028340/d5e1d0f0-96a3-4fdf-920b-7d8cc38cd5f9"/>
+<br/>
+<br/>
 
+<div align="center">
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.
-
-**[PROJECT PHILOSOPHY](https://github.com/ToniTannoury/InterCollab#project-philosophy) • [PROTOTYPES](https://github.com/ToniTannoury/InterCollab#wireframes) • [TECH STACK](https://github.com/ToniTannoury/InterCollab#tech-stack) • [IMPLEMENTATION](https://github.com/ToniTannoury/InterCollab#implementation) • [HOW TO RUN?](https://github.com/ToniTannoury/InterCollab#how-to-run)**
-</div>
- 
 <br><br>
 
-<img  id="project-philosophy" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/ad673fb5-db56-4354-b1a0-c991251dcf70"/>
+**[PROJECT PHILOSOPHY](https://github.com/ToniTannoury/InterCollab#project-philosophy) • [PROTOTYPES](https://github.com/ToniTannoury/InterCollab#wireframes) • [TECH STACK](https://github.com/ToniTannoury/InterCollab#tech-stack) • [IMPLEMENTATION](https://github.com/ToniTannoury/InterCollab#implementation) • [HOW TO RUN?](https://github.com/ToniTannoury/InterCollab#how-to-run)**
+
+</div>
+
+<img  id="project-philosophy" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/aaca5e0f-5f57-434b-b2c9-14408c07eabc"/>
+<br><br>
 
 >Have you ever wanted to livestream your content to an unlimited audience and potentially monetize it? InterCollab was developed to make this process easy and accessible to everyone.
 
@@ -41,7 +45,7 @@
 
 <br><br>
 
-<img id="wireframes" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/2086dd6b-0cbb-4bac-baea-8537e5e8802e"/>
+<img id="wireframes" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/c22855cf-1a1d-42b7-8d56-4908de439d26"/>
 
 > This design was planned before on Figma app.
 
@@ -58,7 +62,7 @@
 
 <br><br>
 
-<img id="tech-stack" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/76ff19b2-6ae1-46fb-9811-a0210dd62d1b"/>
+<img id="tech-stack" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/3ba6c82b-57f7-464d-9e81-7f2ddef8f173"/>
 
 Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
@@ -81,7 +85,7 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 - [Ant Design](https://ant.design/) and [tailwindcss](https://tailwindcss.com/) where used for styling
 
 <br><br>
-<img id="implementation" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/f5992d9d-baca-4f77-8a60-f9b982226ed0"/>
+<img id="implementation" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/4847e954-4b49-43ad-b9b6-0471347ff489"/>
 
 
 > Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
@@ -129,7 +133,7 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
 <br><br>
 
-<img id="how-to-run" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/9c77e23b-669e-4ae1-9540-3cdb48ff1a1a"/>
+<img id="how-to-run" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/26f7e123-d8f8-4404-80f3-14cd6c956987"/>
 
 ### Prerequisites
 
@@ -190,4 +194,4 @@ _Below is an example of how you can install the project on your local device
 
 You can use the provided Postman Collection to test the API endpoints:
 
-[Postman Collection](https://github.com/ToniTannoury/InterCollab/blob/main/InterCollab%20Apis.postman_collection.json)
+[Postman Collection](https://github.com/ToniTannoury/InterCollab/blob/main/InterCollab%20Apis.postman_collection.json) 
