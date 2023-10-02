@@ -3,7 +3,7 @@
 
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.
 
-**[PROJECT PHILOSOPHY](https://github.com/hassankhalil33/ucard#project-philosophy) • [PROTOTYPES](https://github.com/ToniTannoury/InterCollab#wireframes) • [TECH STACK](https://github.com/hassankhalil33/ucard#tech-stack) • [IMPLEMENTATION](https://github.com/hassankhalil33/ucard#impplementation) • [HOW TO RUN?](https://github.com/hassankhalil33/ucard#how-to-run)**
+**[PROJECT PHILOSOPHY](https://github.com/ToniTannoury/InterCollab#project-philosophy) • [PROTOTYPES](https://github.com/ToniTannoury/InterCollab#wireframes) • [TECH STACK](https://github.com/ToniTannoury/InterCollab#tech-stack) • [IMPLEMENTATION](https://github.com/ToniTannoury/InterCollab#impplementation) • [HOW TO RUN?](https://github.com/ToniTannoury/InterCollab#how-to-run)**
 </div>
  
 <br><br>
@@ -58,7 +58,7 @@
 
 <br><br>
 
-<img id="tech-stack" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/8d6f6279-3c15-41e7-889a-dfa209b5af7f"/>
+<img id="tech-stack" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/76ff19b2-6ae1-46fb-9811-a0210dd62d1b"/>
 
 Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
@@ -81,7 +81,7 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 - [Ant Design](https://ant.design/) and [tailwindcss](https://tailwindcss.com/) where used for styling
 
 <br><br>
-<img id="features" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/1efd2b02-cf75-41c4-ad40-a220d6c1ac4c"/>
+<img id="features" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/f5992d9d-baca-4f77-8a60-f9b982226ed0"/>
 
 
 > Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
