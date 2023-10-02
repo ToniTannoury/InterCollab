@@ -3,11 +3,12 @@
 
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.
 
+**[PROJECT PHILOSOPHY](https://github.com/hassankhalil33/ucard#project-philosophy) • [PROTOTYPES](https://github.com/ToniTannoury/InterCollab#wireframes) • [TECH STACK](https://github.com/hassankhalil33/ucard#tech-stack) • [IMPLEMENTATION](https://github.com/hassankhalil33/ucard#impplementation) • [HOW TO RUN?](https://github.com/hassankhalil33/ucard#how-to-run)**
 </div>
  
 <br><br>
 
-<img  id="project-philosophy" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/798af04e-9ac9-4628-b78e-79f4e2d7b924"/>
+<img  id="project-philosophy" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/ad673fb5-db56-4354-b1a0-c991251dcf70"/>
 
 >Have you ever wanted to livestream your content to an unlimited audience and potentially monetize it? InterCollab was developed to make this process easy and accessible to everyone.
 
