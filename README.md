@@ -1,5 +1,5 @@
 
-<img src="https://github.com/ToniTannoury/InterCollab/assets/138028340/4efc1bf1-0663-497b-a8d9-09bae6b5609b"/>
+<img src="https://github.com/ToniTannoury/InterCollab/assets/138028340/0bdf541b-081d-48e5-8659-41f63d2a8f8d"/>
 
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.
 
