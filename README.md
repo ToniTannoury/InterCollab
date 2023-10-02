@@ -13,15 +13,29 @@
 
 >InterCollab is here to enhance content creation, providing you with the ability to host multiple live rooms tailored to your chosen categories. You can share your audio, video, engage in chat, and exchange ideas with participants from all around the world. InterCollab offers the flexibility to create public rooms open to anyone, private rooms requiring a unique PIN provided by the creator for access, and paid rooms that necessitate users to pay a specific amount of coins for entry.
 
-### User Stories
-- As a user I want to be able to share my live camera footage in a room I created
-- As a user I want to be able to share my live audio footage in a room I created
-- As a user I want to be able to share my screen live in a room I created
-- As a user I want to be able to receive the coins a participant pays to enter a room I created 
-- As a user I want to be able to chat via text with the participants of a room I created
-- As a user I want to be able to monitor the users entering and leaving the rooms I created
-- As a user I want to be able to follow my favorite creator
-- As a user I want to be able to rate the creator of a certain room
+### Room Creator Stories
+- As a room creator I want to be able to create an interactive room and customize it 
+- As a room creator I want to be able to share my live camera footage 
+- As a room creator I want to be able to share my live audio footage 
+- As a room creator I want to be able to share my screen live 
+- As a room creator I want to be able to receive the coins a participant pays to enter 
+- As a room creator I want to be able to chat via text with the participants of a room I created
+- As a room creator I want to be able to monitor the users entering and leaving the rooms I created
+
+
+
+### Attendee Stories
+
+- As an attendee I want to be able to follow my favorite creator
+- As an attendee I want to be able to search for rooms of my liking
+- As an attendee I want to be able to recharge coins
+- As an attendee I want to be able to see the camera of the creator 
+- As an attendee I want to be able to see the screen share of the creator 
+- As an attendee I want to be able to hear the creator 
+- As an attendee I want to be able to rate the creator of a room after leaving it
+- As an attendee I want to be able to see the most popular rooms
+- As an attendee I want to be engage in the text chat of a room I joined
+- As an attendee I want to be able to participate to as much live rooms as I want
 
 
 <br><br>
