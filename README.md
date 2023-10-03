@@ -17,7 +17,7 @@
 - [Demo](#Demo)
 - [Performance](#Performance)
 - [How to Run](#how-to-run)
-  - [Prerequisites](#Prerequisites)
+  - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 
 <br><br>
@@ -154,8 +154,8 @@ You can utilize the provided Postman API test suite to  assess the performance a
 <br><br>
 <img id="how-to-run" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/00fa716c-a94b-49ee-aec4-2df4fb6e48ac"/>
 
-<div>
-  <h3 id="Prerequisites"> Prerequisites </h3>
+<div id="prerequisites">
+  <h3> Prerequisites </h3>
 </div>
 
 In order to run the project correctly, you need to install the following packages
