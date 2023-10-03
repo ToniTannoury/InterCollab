@@ -151,7 +151,7 @@ _Below is an example of how you can install the project on your local device
 
 - Clone the repo
    ```sh
-   git clone https://github.com/ToniTannoury/InterCollab
+  git clone https://github.com/ToniTannoury/InterCollab
 
 
 <h3> To Run The Server </h3>
