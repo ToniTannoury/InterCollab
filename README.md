@@ -37,19 +37,19 @@
   <h3> Room Creator Stories </h3>
 </div>
 
-- As a room creator I want to be able to share my live camera footage 
-- As a room creator I want to be able to share my live audio footage 
-- As a room creator I want to be able to share my screen live 
-- As a room creator I want to be able to receive the coins a participant pays to enter 
-- As a room creator I want to be able to chat via text with the participants of a room I created
+- As a room creator I want to be able to share my live camera footage.
+- As a room creator I want to be able to share my live audio footage. 
+- As a room creator I want to be able to share my screen live. 
+- As a room creator I want to be able to receive the coins a participant pays to enter. 
+- As a room creator I want to be able to chat via text with the participants of a room I created.
 
 
 <h3> Attendee Stories </h3>
 
-- As an attendee I want to be able to see the live stream (Audio, Video, Screen) of the creator 
-- As an attendee I want to be able to rate the creator of a room after leaving it
-- As an attendee I want to be engage in the text chat of a room I joined
-- As an attendee I want to be able to participate to as much live rooms as I want
+- As an attendee I want to be able to see the live stream (Audio, Video, Screen) of the creator. 
+- As an attendee I want to be able to rate the creator of a room after leaving it.
+- As an attendee I want to be engage in the text chat of a room I joined.
+- As an attendee I want to be able to participate to as much live rooms as I want.
 
 <img id="prototyping" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/2208de2c-cbda-4a10-b197-3ea477cf7adb"/>
 
@@ -84,15 +84,15 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
 - Concerning the get coins functionality, InterCollab uses [Stripe](https://stripe.com/en-gb-us) with its webhook to successfully and securely process payments from users credit cards.
 
-- Amazon Elastic Compute Cloud [Amazon EC2](https://aws.amazon.com/ec2/) is a web service provided by Amazon Web Services (AWS) that offers resizable compute capacity in the cloud. It allows users to run virtual machines (known as instances) on-demand, making it a fundamental building block for cloud computing
+- Amazon Elastic Compute Cloud [Amazon EC2](https://aws.amazon.com/ec2/) is a web service provided by Amazon Web Services (AWS) that offers resizable compute capacity in the cloud. It allows users to run virtual machines (known as instances) on-demand, making it a fundamental building block for cloud computing.
 
-- [Ant Design](https://ant.design/) and [tailwindcss](https://tailwindcss.com/) were used for styling. Ant Design is an enterprise-class UI design language and React UI library with a set of high-quality React components, one of best React UI library for enterprises. Tailwind CSS is a utility-first CSS framework for rapidly building modern websites without ever leaving your HTML
+- [Ant Design](https://ant.design/) and [tailwindcss](https://tailwindcss.com/) were used for styling. Ant Design is an enterprise-class UI design language and React UI library with a set of high-quality React components, one of best React UI library for enterprises. Tailwind CSS is a utility-first CSS framework for rapidly building modern websites without ever leaving your HTML.
 
 <br><br>
 <img id="Demo" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/9762273b-56dc-43c9-ab2e-e039cf8537ff"/>
 
 
-> Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the demo of the app is shown as below, these are screenshots from the real app
+> Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the demo of the app is shown as below, these are screenshots from the real app.
 
 <h3> Users Screens </h3>
 
@@ -157,7 +157,7 @@ You can utilize the provided Postman API test suite to  assess the performance a
   <h3> Prerequisites </h3>
 </div>
 
-In order to run the project correctly, you need to install the following packages
+In order to run the project correctly, you need to install the following packages.
 
 - npm
   ```sh
@@ -178,41 +178,41 @@ In order to run the project correctly, you need to install the following package
   </div>
 
 
-Below is an example of how you can install the project on your local device
+Below is an example of how you can install the project on your local device.
 
 
-- Clone the repo
+- Clone the repo.
    ```sh
   git clone https://github.com/ToniTannoury/InterCollab
 
 
 <h3> To Run The Server </h3>
 
-1. Navigate to the Backend folder
+1. Navigate to the Backend folder.
    ```sh
    cd backend
    ```
  
-2. Install NPM packages
+2. Install NPM packages.
    ```sh
    npm install
    ```
-3. Start Backend
+3. Start Backend.
    ```sh
    npm run server
    ```
 
 <h3> To Run Client </h3>
 
-1. Navigate to the Frontend folder
+1. Navigate to the Frontend folder.
    ```sh
    cd frontend
    ```
-2. Install NPM packages
+2. Install NPM packages.
    ```sh
    npm install
    ```
-3. Start Client
+3. Start Client.
    ```sh
    npm run dev
    ```
