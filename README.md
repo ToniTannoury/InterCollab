@@ -12,8 +12,8 @@
 
 - [Project Description](#project-philosophy)
 - [Features of the App](#stories)
-- [Tech Stack](#tech-stack)
 - [Prototyping](#prototyping)
+- [Tech Stack](#tech-stack)
 - [Demo](#Demo)
 - [Performance](#Performance)
 - [How to Run](#how-to-run)
@@ -23,8 +23,6 @@
 <br><br>
 
 <img  id="project-philosophy" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/1238030e-b814-4cd8-9148-42d36fd384be"/>
-
-
 
 >Have you ever wanted to livestream your content to an unlimited audience and potentially monetize it? InterCollab was developed to make this process easy and accessible to everyone.
 
@@ -51,6 +49,19 @@
 
 <br><br>
 
+<img id="prototyping" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/2208de2c-cbda-4a10-b197-3ea477cf7adb"/>
+
+> This design was planned before on Figma app.
+
+| Create Room | User Profile | Search Rooms |
+| ------ | ------ | ------ |
+| ![LandingScreen](https://github.com/ToniTannoury/InterCollab/assets/138028340/dad02324-256e-47d1-99a2-db0a4eb6fe64) | ![User Profile](https://github.com/ToniTannoury/InterCollab/assets/138028340/49985041-7408-4c8e-ba59-722b73b724b5) |  ![Search Rooms](https://github.com/ToniTannoury/InterCollab/assets/138028340/288ac111-1b98-4481-a5c3-eead07b40f73)
+
+| Room Info | Followings | Interactive Room |
+| ------ | ------ | ------ |
+|![Create Room](https://github.com/ToniTannoury/InterCollab/assets/138028340/4710f203-7443-451d-8b6c-9c6295f685c4) | ![Interactive Room](https://github.com/ToniTannoury/InterCollab/assets/138028340/dd758cc2-276a-4f68-bbc4-b206d29537a0) |  ![Search Rooms](https://github.com/ToniTannoury/InterCollab/assets/138028340/75a4bb58-9f4f-4271-9c3e-7138ba01d5be) 
+
+<br><br>
 <img id="tech-stack" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/1ced5c2b-158f-4b6c-824b-fa6b8cf20a59"/>
 
 Here's a brief high-level overview of the tech stack the InterCollab app uses:
@@ -72,22 +83,6 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 - Amazon Elastic Compute Cloud [Amazon EC2](https://aws.amazon.com/ec2/) is a web service provided by Amazon Web Services (AWS) that offers resizable compute capacity in the cloud. It allows users to run virtual machines (known as instances) on-demand, making it a fundamental building block for cloud computing
 
 - [Ant Design](https://ant.design/) and [tailwindcss](https://tailwindcss.com/) where used for styling. Ant Design is an enterprise-class UI design language and React UI library with a set of high-quality React components, one of best React UI library for enterprises. Tailwind CSS is a utility-first CSS framework for rapidly building modern websites without ever leaving your HTML
-
-<br><br>
-
-<img id="prototyping" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/2208de2c-cbda-4a10-b197-3ea477cf7adb"/>
-
-> This design was planned before on Figma app.
-
-| Create Room | User Profile | Search Rooms |
-| ------ | ------ | ------ |
-| ![LandingScreen](https://github.com/ToniTannoury/InterCollab/assets/138028340/dad02324-256e-47d1-99a2-db0a4eb6fe64) | ![User Profile](https://github.com/ToniTannoury/InterCollab/assets/138028340/49985041-7408-4c8e-ba59-722b73b724b5) |  ![Search Rooms](https://github.com/ToniTannoury/InterCollab/assets/138028340/288ac111-1b98-4481-a5c3-eead07b40f73)
-
-| Room Info | Followings | Interactive Room |
-| ------ | ------ | ------ |
-|![Create Room](https://github.com/ToniTannoury/InterCollab/assets/138028340/4710f203-7443-451d-8b6c-9c6295f685c4) | ![Interactive Room](https://github.com/ToniTannoury/InterCollab/assets/138028340/dd758cc2-276a-4f68-bbc4-b206d29537a0) |  ![Search Rooms](https://github.com/ToniTannoury/InterCollab/assets/138028340/75a4bb58-9f4f-4271-9c3e-7138ba01d5be) 
-
-<br><br>
 
 <br><br>
 <img id="Demo" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/9762273b-56dc-43c9-ab2e-e039cf8537ff"/>
