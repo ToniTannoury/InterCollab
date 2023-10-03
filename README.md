@@ -6,8 +6,8 @@
 <div align="center">
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.
 <br><br>
-  
-<img  id="project-philosophy" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/e912766c-7a7b-47af-b588-c4f9a8501b8a"/>
+</div>
+<img  id="table-of-content" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/e912766c-7a7b-47af-b588-c4f9a8501b8a"/>
 
 <br><br>
 
@@ -21,7 +21,7 @@
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 
-</div>
+
 
 <img  id="project-philosophy" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/1238030e-b814-4cd8-9148-42d36fd384be"/>
 <br><br>
