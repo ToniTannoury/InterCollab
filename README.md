@@ -7,7 +7,7 @@
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.
 <br><br>
   
-<img  id="table-of-content" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/3f740c37-0780-4724-a6ad-eaadb050ef67"/>
+
 
 <br><br>
 
