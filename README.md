@@ -6,6 +6,10 @@
 <div align="center">
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.
 <br><br>
+  
+<img  id="table-of-content" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/3f740c37-0780-4724-a6ad-eaadb050ef67"/>
+
+<br><br>
 
 **[PROJECT PHILOSOPHY](https://github.com/ToniTannoury/InterCollab#project-philosophy) • [PROTOTYPES](https://github.com/ToniTannoury/InterCollab#wireframes) • [TECH STACK](https://github.com/ToniTannoury/InterCollab#tech-stack) • [DEMO](https://github.com/ToniTannoury/InterCollab#implementation) • [PERFORMANCE](https://github.com/ToniTannoury/InterCollab#performance)* • [HOW TO RUN?](https://github.com/ToniTannoury/InterCollab#how-to-run)*
 
