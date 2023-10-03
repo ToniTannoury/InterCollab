@@ -7,11 +7,19 @@
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.
 <br><br>
   
-
+<img  id="project-philosophy" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/e912766c-7a7b-47af-b588-c4f9a8501b8a"/>
 
 <br><br>
 
-**[PROJECT PHILOSOPHY](https://github.com/ToniTannoury/InterCollab#project-philosophy) • [PROTOTYPES](https://github.com/ToniTannoury/InterCollab#wireframes) • [TECH STACK](https://github.com/ToniTannoury/InterCollab#tech-stack) • [DEMO](https://github.com/ToniTannoury/InterCollab#implementation) • [PERFORMANCE](https://github.com/ToniTannoury/InterCollab#performance)* • [HOW TO RUN?](https://github.com/ToniTannoury/InterCollab#how-to-run)*
+- [Project Description](#project-philosophy)
+- [Features of the App](#features-of-the-app)
+- [Tech Stack](#tech-stack)
+- [Prototyping](#prototyping)
+- [Demo](#Demo)
+- [Performance](#Performance)
+- [How to Run](#how-to-run)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
 
 </div>
 
@@ -22,7 +30,7 @@
 
 >InterCollab is here to enhance content creation, providing you with the ability to host multiple live rooms tailored to your chosen categories. You can share your audio, video, live screen share and engage in a text chat with participants from all around the world. InterCollab offers the flexibility to create public rooms open to anyone, private rooms requiring a unique PIN provided by the creator for access, and paid rooms that necessitate users to pay a specific amount of coins for entry.
 
-<h3> Room Creator Stories </h3>
+<h3 id="features-of-the-app" > Room Creator Stories </h3>
 
 - As a room creator I want to be able to share my live camera footage 
 - As a room creator I want to be able to share my live audio footage 
@@ -37,19 +45,6 @@
 - As an attendee I want to be able to rate the creator of a room after leaving it
 - As an attendee I want to be engage in the text chat of a room I joined
 - As an attendee I want to be able to participate to as much live rooms as I want
-
-<br><br>
-<img id="wireframes" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/2208de2c-cbda-4a10-b197-3ea477cf7adb"/>
-
-> This design was planned before on Figma app.
-
-| Create Room | User Profile | Search Rooms |
-| ------ | ------ | ------ |
-| ![LandingScreen](https://github.com/ToniTannoury/InterCollab/assets/138028340/dad02324-256e-47d1-99a2-db0a4eb6fe64) | ![User Profile](https://github.com/ToniTannoury/InterCollab/assets/138028340/49985041-7408-4c8e-ba59-722b73b724b5) |  ![Search Rooms](https://github.com/ToniTannoury/InterCollab/assets/138028340/288ac111-1b98-4481-a5c3-eead07b40f73)
-
-| Room Info | Followings | Interactive Room |
-| ------ | ------ | ------ |
-|![Create Room](https://github.com/ToniTannoury/InterCollab/assets/138028340/4710f203-7443-451d-8b6c-9c6295f685c4) | ![Interactive Room](https://github.com/ToniTannoury/InterCollab/assets/138028340/dd758cc2-276a-4f68-bbc4-b206d29537a0) |  ![Search Rooms](https://github.com/ToniTannoury/InterCollab/assets/138028340/75a4bb58-9f4f-4271-9c3e-7138ba01d5be) 
 
 
 <br><br>
@@ -77,7 +72,23 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 - [Ant Design](https://ant.design/) and [tailwindcss](https://tailwindcss.com/) where used for styling. Ant Design is an enterprise-class UI design language and React UI library with a set of high-quality React components, one of best React UI library for enterprises. Tailwind CSS is a utility-first CSS framework for rapidly building modern websites without ever leaving your HTML
 
 <br><br>
-<img id="implementation" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/9762273b-56dc-43c9-ab2e-e039cf8537ff"/>
+
+<img id="prototyping" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/2208de2c-cbda-4a10-b197-3ea477cf7adb"/>
+
+> This design was planned before on Figma app.
+
+| Create Room | User Profile | Search Rooms |
+| ------ | ------ | ------ |
+| ![LandingScreen](https://github.com/ToniTannoury/InterCollab/assets/138028340/dad02324-256e-47d1-99a2-db0a4eb6fe64) | ![User Profile](https://github.com/ToniTannoury/InterCollab/assets/138028340/49985041-7408-4c8e-ba59-722b73b724b5) |  ![Search Rooms](https://github.com/ToniTannoury/InterCollab/assets/138028340/288ac111-1b98-4481-a5c3-eead07b40f73)
+
+| Room Info | Followings | Interactive Room |
+| ------ | ------ | ------ |
+|![Create Room](https://github.com/ToniTannoury/InterCollab/assets/138028340/4710f203-7443-451d-8b6c-9c6295f685c4) | ![Interactive Room](https://github.com/ToniTannoury/InterCollab/assets/138028340/dd758cc2-276a-4f68-bbc4-b206d29537a0) |  ![Search Rooms](https://github.com/ToniTannoury/InterCollab/assets/138028340/75a4bb58-9f4f-4271-9c3e-7138ba01d5be) 
+
+<br><br>
+
+<br><br>
+<img id="Demo" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/9762273b-56dc-43c9-ab2e-e039cf8537ff"/>
 
 
 > Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the demo of the app is shown as below, these are screenshots from the real app
@@ -126,7 +137,7 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
 <br><br>
 
-<img id="performance" src="https://github.com/hassankhalil33/ucard/assets/138028340/9807d3e9-be85-4d6c-be45-935b16ac2f51"/>
+<img id="Performance" src="https://github.com/hassankhalil33/ucard/assets/138028340/9807d3e9-be85-4d6c-be45-935b16ac2f51"/>
 <br><br>
 You can use the provided Postman Collection to have a look at the documented API endpoints hosted on an aws EC2 instance:
 
@@ -141,7 +152,7 @@ You can utilize the provided Postman API test suite to  assess the performance a
 <br><br>
 <img id="how-to-run" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/00fa716c-a94b-49ee-aec4-2df4fb6e48ac"/>
 
-<h3>Prerequisites</h3> 
+<h3 id="prerequisites">Prerequisites</h3> 
 
 In order to run the project correctly, you need to install the following packages
 
@@ -170,7 +181,7 @@ Below is an example of how you can install the project on your local device
   git clone https://github.com/ToniTannoury/InterCollab
 
 
-<h3> To Run The Server </h3>
+<h3 id="installation"> To Run The Server </h3>
 
 1. Navigate to the Backend folder
    ```sh
