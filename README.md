@@ -20,29 +20,19 @@
 
 <h3> Room Creator Stories </h3>
 
-- As a room creator I want to be able to create an interactive room and customize it 
 - As a room creator I want to be able to share my live camera footage 
 - As a room creator I want to be able to share my live audio footage 
 - As a room creator I want to be able to share my screen live 
 - As a room creator I want to be able to receive the coins a participant pays to enter 
 - As a room creator I want to be able to chat via text with the participants of a room I created
-- As a room creator I want to be able to monitor the users entering and leaving the rooms I created
-
 
 
 <h3> Attendee Stories </h3>
 
-- As an attendee I want to be able to follow my favorite creator
-- As an attendee I want to be able to search for rooms of my liking
-- As an attendee I want to be able to recharge coins
-- As an attendee I want to be able to see the camera of the creator 
-- As an attendee I want to be able to see the screen share of the creator 
-- As an attendee I want to be able to hear the creator 
+- As an attendee I want to be able to see the live stream (Audio, Video, Screen) of the creator 
 - As an attendee I want to be able to rate the creator of a room after leaving it
-- As an attendee I want to be able to see the most popular rooms
 - As an attendee I want to be engage in the text chat of a room I joined
 - As an attendee I want to be able to participate to as much live rooms as I want
-
 
 <br><br>
 
@@ -73,15 +63,15 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
 - InterCollab relies on cutting-edge [WebRTC](https://webrtc.org/) technologies, with a particular focus on [Peer JS](https://peerjs.com/), to enable seamless real-time communication among its users. WebRTC is a powerful set of protocols and APIs that facilitates peer-to-peer communication directly within web browsers, allowing for the transmission of video, audio, and screen sharing in real time.
 
-- For the application state management, [Redux Toolkit and Context Api](https://redux-toolkit.js.org/) have been integrated.The Context API is a part of React, and it provides a way to share state between components without having to pass props through multiple levels of the component tree. It's designed to solve the problem of "prop drilling,".Redux Toolkit is an opinionated toolset for efficient Redux development created by the Redux team. It is the standard and recommended way to write Redux logic and manage state in your JavaScript applications.
+- For the application state management, [Redux Toolkit and Context Api](https://redux-toolkit.js.org/) have been integrated.The Context API is a part of React, and it provides a way to share state between components without having to pass props through multiple levels of the component tree. It's designed to solve the problem of "prop drilling". Redux Toolkit is an opinionated toolset for efficient Redux development created by the Redux team. It is the standard and recommended way to write Redux logic and manage state in your JavaScript applications.
 
 - Concerning the chatting system applied and interactive entery and leave of rooms, [Socket.IO](https://socket.io/) have been used in order to be able to emit events to all room joiners.Socket.IO is a widely-used JavaScript library that enables real-time, bidirectional communication between the server and clients. It is built on top of the WebSocket protocol and provides a simple and powerful way to implement real-time features in web applications.
 
-- Concerning the get coins functionality,InterCollab uses [Stripe](https://stripe.com/en-gb-us) with its webhook to successfully and securely process payments from users credit cards.
+- Concerning the get coins functionality, InterCollab uses [Stripe](https://stripe.com/en-gb-us) with its webhook to successfully and securely process payments from users credit cards.
 
--Amazon Elastic Compute Cloud [Amazon EC2](https://aws.amazon.com/ec2/) is a web service provided by Amazon Web Services (AWS) that offers resizable compute capacity in the cloud. It allows users to run virtual machines (known as instances) on-demand, making it a fundamental building block for cloud computing
+- Amazon Elastic Compute Cloud [Amazon EC2](https://aws.amazon.com/ec2/) is a web service provided by Amazon Web Services (AWS) that offers resizable compute capacity in the cloud. It allows users to run virtual machines (known as instances) on-demand, making it a fundamental building block for cloud computing
 
-- [Ant Design](https://ant.design/) and [tailwindcss](https://tailwindcss.com/) where used for styling
+- [Ant Design](https://ant.design/) and [tailwindcss](https://tailwindcss.com/) where used for styling.Ant Design is an enterprise-class UI design language and React UI library with a set of high-quality React components, one of best React UI library for enterprises. Tailwind CSS is a utility-first CSS framework for rapidly building modern websites without ever leaving your HTML
 
 <br><br>
 <img id="implementation" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/70b4990d-405f-4169-994a-22f58235d1fb"/>
@@ -161,7 +151,7 @@ _Below is an example of how you can install the project on your local device
 
 - Clone the repo
    ```sh
-   git clone https://github.com/ToniTannoury/InterCollab
+  git clone https://github.com/ToniTannoury/InterCollab
 
 
 <h3> To Run The Server </h3>
