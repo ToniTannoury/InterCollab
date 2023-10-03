@@ -126,7 +126,7 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 <br><br>
 You can use the provided Postman Collection to have a look at the documented API endpoints:
 
-<br><br>
+<br>
 
 [Postman Collection](https://github.com/ToniTannoury/InterCollab/blob/main/InterCollab%20Apis.postman_collection.json) 
 
