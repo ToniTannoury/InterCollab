@@ -172,8 +172,10 @@ In order to run the project correctly, you need to install the following package
 
   Install [Node.js](https://nodejs.org/en/)
 
-  
-<h3> Installation </h3>  
+  <div id="installation">
+    <h3> Installation </h3>  
+  </div>
+
 
 Below is an example of how you can install the project on your local device
 
@@ -183,7 +185,7 @@ Below is an example of how you can install the project on your local device
   git clone https://github.com/ToniTannoury/InterCollab
 
 
-<h3 id="installation"> To Run The Server </h3>
+<h3> To Run The Server </h3>
 
 1. Navigate to the Backend folder
    ```sh
