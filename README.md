@@ -64,7 +64,7 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
 - For the application state management, [Redux Toolkit and Context Api](https://redux-toolkit.js.org/) have been integrated. The Context API is a part of React, and it provides a way to share state between components without having to pass props through multiple levels of the component tree. It's designed to solve the problem of "prop drilling". Redux Toolkit is an opinionated toolset for efficient Redux development created by the Redux team. It is the standard and recommended way to write Redux logic and manage state in your JavaScript applications.
 
-- Concerning the chatting system applied and interactive entry and leave of rooms, [Socket.IO](https://socket.io/) have been used in order to be able to emit events to all room joiners.Socket.IO is a widely-used JavaScript library that enables real-time, bidirectional communication between the server and clients. It is built on top of the WebSocket protocol and provides a simple and powerful way to implement real-time features in web applications.
+- Concerning the chatting system applied and interactive entry and leave of rooms, [Socket.IO](https://socket.io/) has been used in order to be able to emit events to all room joiners. Socket.IO is a widely-used JavaScript library that enables real-time, bidirectional communication between the server and clients. It is built on top of the WebSocket protocol and provides a simple and powerful way to implement real-time features in web applications.
 
 - Concerning the get coins functionality, InterCollab uses [Stripe](https://stripe.com/en-gb-us) with its webhook to successfully and securely process payments from users credit cards.
 
