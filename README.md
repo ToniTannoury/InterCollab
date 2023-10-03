@@ -7,7 +7,7 @@
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.
 <br><br>
 
-**[PROJECT PHILOSOPHY](https://github.com/ToniTannoury/InterCollab#project-philosophy) • [PROTOTYPES](https://github.com/ToniTannoury/InterCollab#wireframes) • [TECH STACK](https://github.com/ToniTannoury/InterCollab#tech-stack) • [IMPLEMENTATION](https://github.com/ToniTannoury/InterCollab#implementation) • [PERFORMANCE](https://github.com/ToniTannoury/InterCollab#performance)* • [HOW TO RUN?](https://github.com/ToniTannoury/InterCollab#how-to-run)*
+**[PROJECT PHILOSOPHY](https://github.com/ToniTannoury/InterCollab#project-philosophy) • [PROTOTYPES](https://github.com/ToniTannoury/InterCollab#wireframes) • [TECH STACK](https://github.com/ToniTannoury/InterCollab#tech-stack) • [DEMO](https://github.com/ToniTannoury/InterCollab#implementation) • [PERFORMANCE](https://github.com/ToniTannoury/InterCollab#performance)* • [HOW TO RUN?](https://github.com/ToniTannoury/InterCollab#how-to-run)*
 
 </div>
 
@@ -73,10 +73,10 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 - [Ant Design](https://ant.design/) and [tailwindcss](https://tailwindcss.com/) where used for styling. Ant Design is an enterprise-class UI design language and React UI library with a set of high-quality React components, one of best React UI library for enterprises. Tailwind CSS is a utility-first CSS framework for rapidly building modern websites without ever leaving your HTML
 
 <br><br>
-<img id="implementation" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/70b4990d-405f-4169-994a-22f58235d1fb"/>
+<img id="implementation" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/9762273b-56dc-43c9-ab2e-e039cf8537ff"/>
 
 
-> Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
+> Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the demo of the app is shown as below, these are screenshots from the real app
 
 <h3> Users Screens </h3>
 
