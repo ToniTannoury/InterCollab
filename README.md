@@ -71,7 +71,7 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
 - Amazon Elastic Compute Cloud [Amazon EC2](https://aws.amazon.com/ec2/) is a web service provided by Amazon Web Services (AWS) that offers resizable compute capacity in the cloud. It allows users to run virtual machines (known as instances) on-demand, making it a fundamental building block for cloud computing
 
-- [Ant Design](https://ant.design/) and [tailwindcss](https://tailwindcss.com/) where used for styling.Ant Design is an enterprise-class UI design language and React UI library with a set of high-quality React components, one of best React UI library for enterprises. Tailwind CSS is a utility-first CSS framework for rapidly building modern websites without ever leaving your HTML
+- [Ant Design](https://ant.design/) and [tailwindcss](https://tailwindcss.com/) where used for styling. Ant Design is an enterprise-class UI design language and React UI library with a set of high-quality React components, one of best React UI library for enterprises. Tailwind CSS is a utility-first CSS framework for rapidly building modern websites without ever leaving your HTML
 
 <br><br>
 <img id="implementation" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/70b4990d-405f-4169-994a-22f58235d1fb"/>
