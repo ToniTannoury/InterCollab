@@ -7,7 +7,7 @@
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.
 <br><br>
 
-**[PROJECT PHILOSOPHY](https://github.com/ToniTannoury/InterCollab#project-philosophy) • [PROTOTYPES](https://github.com/ToniTannoury/InterCollab#wireframes) • [TECH STACK](https://github.com/ToniTannoury/InterCollab#tech-stack) • [IMPLEMENTATION](https://github.com/ToniTannoury/InterCollab#implementation) • [HOW TO RUN?](https://github.com/ToniTannoury/InterCollab#how-to-run)**
+**[PROJECT PHILOSOPHY](https://github.com/ToniTannoury/InterCollab#project-philosophy) • [PROTOTYPES](https://github.com/ToniTannoury/InterCollab#wireframes) • [TECH STACK](https://github.com/ToniTannoury/InterCollab#tech-stack) • [IMPLEMENTATION](https://github.com/ToniTannoury/InterCollab#implementation)• [Performance](https://github.com/ToniTannoury/InterCollab#performance)* • [HOW TO RUN?](https://github.com/ToniTannoury/InterCollab#how-to-run)**
 
 </div>
 
@@ -123,6 +123,13 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
 <br><br>
 
+<img id="performance" src="https://github.com/hassankhalil33/ucard/assets/138028340/9807d3e9-be85-4d6c-be45-935b16ac2f51"/>
+
+You can use the provided Postman Collection to test the API endpoints:
+
+[Postman Collection](https://github.com/ToniTannoury/InterCollab/blob/main/InterCollab%20Apis.postman_collection.json) 
+
+<br><br>
 <img id="how-to-run" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/00fa716c-a94b-49ee-aec4-2df4fb6e48ac"/>
 
 <h3>Prerequisites</h3> 
@@ -146,7 +153,7 @@ In order to run the project correctly, you need to install the following package
   
 <h3> Installation </h3>  
 
-_Below is an example of how you can install the project on your local device
+Below is an example of how you can install the project on your local device
 
 
 - Clone the repo
@@ -183,6 +190,4 @@ _Below is an example of how you can install the project on your local device
    npm run dev
    ```
 
-You can use the provided Postman Collection to test the API endpoints:
 
-[Postman Collection](https://github.com/ToniTannoury/InterCollab/blob/main/InterCollab%20Apis.postman_collection.json) 
