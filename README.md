@@ -30,7 +30,7 @@
 
 >InterCollab is here to enhance content creation, providing you with the ability to host multiple live rooms tailored to your chosen categories. You can share your audio, video, live screen share and engage in a text chat with participants from all around the world. InterCollab offers the flexibility to create public rooms open to anyone, private rooms requiring a unique PIN provided by the creator for access, and paid rooms that necessitate users to pay a specific amount of coins for entry.
 
-<h3 id="features-of-the-app" > Room Creator Stories </h3>
+<h3 id="features-of-the-app"> Room Creator Stories </h3>
 
 - As a room creator I want to be able to share my live camera footage 
 - As a room creator I want to be able to share my live audio footage 
