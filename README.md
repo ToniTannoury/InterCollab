@@ -129,7 +129,7 @@ You can use the provided Postman Collection to have a look at the documented API
 
 [Postman Collection](https://github.com/ToniTannoury/InterCollab/blob/main/InterCollab%20Apis.postman_collection.json) 
 
-You can utilize the provided Postman API test suite to  assess the performance and functionality of the API endpoints through an iteration of 50 tests.:
+You can utilize the provided Postman API test suite to  assess the performance and functionality of the API endpoints through an iteration of 50 tests:
 
 [Postman Apis test run](https://github.com/ToniTannoury/InterCollab/blob/main/InterCollab%20Apis.postman_test_run.json) 
 <br><br>
