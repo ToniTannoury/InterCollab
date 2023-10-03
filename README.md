@@ -46,10 +46,9 @@
 - As an attendee I want to be engage in the text chat of a room I joined
 - As an attendee I want to be able to participate to as much live rooms as I want
 
-
-<br><br>
-
 <img id="prototyping" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/2208de2c-cbda-4a10-b197-3ea477cf7adb"/>
+
+<br>
 
 > This design was planned before on Figma app.
 
