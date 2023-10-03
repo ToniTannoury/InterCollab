@@ -7,7 +7,7 @@
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.
 <br><br>
 
-**[PROJECT PHILOSOPHY](https://github.com/ToniTannoury/InterCollab#project-philosophy) • [PROTOTYPES](https://github.com/ToniTannoury/InterCollab#wireframes) • [TECH STACK](https://github.com/ToniTannoury/InterCollab#tech-stack) • [IMPLEMENTATION](https://github.com/ToniTannoury/InterCollab#implementation)• [PERFORMANCE](https://github.com/ToniTannoury/InterCollab#performance)* • [HOW TO RUN?](https://github.com/ToniTannoury/InterCollab#how-to-run)*
+**[PROJECT PHILOSOPHY](https://github.com/ToniTannoury/InterCollab#project-philosophy) • [PROTOTYPES](https://github.com/ToniTannoury/InterCollab#wireframes) • [TECH STACK](https://github.com/ToniTannoury/InterCollab#tech-stack) • [IMPLEMENTATION](https://github.com/ToniTannoury/InterCollab#implementation) • [PERFORMANCE](https://github.com/ToniTannoury/InterCollab#performance)* • [HOW TO RUN?](https://github.com/ToniTannoury/InterCollab#how-to-run)*
 
 </div>
 
