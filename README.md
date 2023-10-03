@@ -11,7 +11,7 @@
 <img  id="table-of-content" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/e912766c-7a7b-47af-b588-c4f9a8501b8a"/>
 
 - [Project Description](#project-philosophy)
-- [Features of the App](#features-of-the-app)
+- [Features of the App](#stories)
 - [Tech Stack](#tech-stack)
 - [Prototyping](#prototyping)
 - [Demo](#Demo)
@@ -30,7 +30,7 @@
 
 >InterCollab is here to enhance content creation, providing you with the ability to host multiple live rooms tailored to your chosen categories. You can share your audio, video, live screen share and engage in a text chat with participants from all around the world. InterCollab offers the flexibility to create public rooms open to anyone, private rooms requiring a unique PIN provided by the creator for access, and paid rooms that necessitate users to pay a specific amount of coins for entry.
 
-<h3 id="features-of-the-app"> Room Creator Stories </h3>
+<h3 id="stories"> Room Creator Stories </h3>
 
 - As a room creator I want to be able to share my live camera footage 
 - As a room creator I want to be able to share my live audio footage 
