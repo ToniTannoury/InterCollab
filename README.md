@@ -84,31 +84,31 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 
 | Rooms of the month | Create Room |
 | ------ | ------ |
-| ![Rooms of the month](https://github.com/ToniTannoury/InterCollab/assets/138028340/618ff162-880e-4383-a664-34f88ff2188d) | ![Create Room](https://github.com/ToniTannoury/InterCollab/assets/138028340/d925830a-f3e6-47e8-96e8-17b9d79a7578) |
+| ![Rooms of the month](https://github.com/ToniTannoury/InterCollab/assets/138028340/f0bf2dd0-3a1e-41ae-8c77-1d8e1055ad94) | ![Create Room](https://github.com/ToniTannoury/InterCollab/assets/138028340/c68b5bb1-f1e9-4ae8-aa41-a3417114515a) |
 
 <br><br>
 
 | All Rooms | Search Rooms 
 | ------ | ------ | 
-| ![All Rooms](https://github.com/ToniTannoury/InterCollab/assets/138028340/8734a0b1-f0ef-4120-9d0a-548d76c74bf0) | ![Search Rooms ](https://github.com/ToniTannoury/InterCollab/assets/138028340/5ee7dec5-fbb9-4d11-a853-7b3d8427f434) | 
+| ![All Rooms](https://github.com/ToniTannoury/InterCollab/assets/138028340/f7c7e550-1445-41c0-bc81-551c9528515c) | ![Search Rooms ](https://github.com/ToniTannoury/InterCollab/assets/138028340/a3c46da0-e993-4513-802a-202972039bb9) | 
 
 <br><br>
 
 | Edit Profile | Follow Unfollow | 
 | ------ | ------ 
-| ![Edit Profile](https://github.com/ToniTannoury/InterCollab/assets/138028340/de4fe203-05b8-4f32-89a7-294def1620a8) | ![Follow Unfollow](https://github.com/ToniTannoury/InterCollab/assets/138028340/9475f120-bcb2-4b4d-8962-1161629dd8e3)|
+| ![Edit Profile](https://github.com/ToniTannoury/InterCollab/assets/138028340/b5022ae4-b9a6-4eb9-85bb-45f2109700a6) | ![Follow Unfollow](https://github.com/ToniTannoury/InterCollab/assets/138028340/52cfff82-5626-4f33-89dd-1f953038d4f9)|
 
 <br><br>
 
 | Join Rooms | Get Coins
 | ------ | ------
-| ![Join Rooms](https://github.com/ToniTannoury/InterCollab/assets/138028340/60d2e8a5-2d33-4c7a-a4bb-78cbf73a7c1a) | ![Get Coins](https://github.com/ToniTannoury/InterCollab/assets/138028340/6fd05336-e18b-4f95-8bca-2289cc1a54ab) | 
+| ![Join Rooms](https://github.com/ToniTannoury/InterCollab/assets/138028340/fc8b9802-026c-4f49-bb79-d3c8030e489d) | ![Get Coins](https://github.com/ToniTannoury/InterCollab/assets/138028340/75374de0-13d2-4419-aaf4-6c5947ec563b) | 
 
 <br><br>
 
 | Pay To Enter | Rating Creator on Room Leave | 
 | ------ | ------ | 
-| ![Pay To Enter](https://github.com/ToniTannoury/InterCollab/assets/138028340/ab015dbb-bcb6-4ceb-8f86-6b91bca958ba) | ![Rating Creator on Room Leave](https://github.com/ToniTannoury/InterCollab/assets/138028340/2324b69a-124a-463a-b34b-d093e32aab2e) |
+| ![Pay To Enter](https://github.com/ToniTannoury/InterCollab/assets/138028340/3492ce42-0db9-4f44-8f5c-33c40bb5d1d0) | ![Rating Creator on Room Leave](https://github.com/ToniTannoury/InterCollab/assets/138028340/3eed7c74-f0fa-405f-befd-9345390c4828) |
 <br><br>
 
 <h3>Creator Screen Inside Room Video</h3> 
