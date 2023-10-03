@@ -7,9 +7,8 @@
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.
 <br><br>
 </div>
-<img  id="table-of-content" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/e912766c-7a7b-47af-b588-c4f9a8501b8a"/>
 
-<br><br>
+<img  id="table-of-content" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/e912766c-7a7b-47af-b588-c4f9a8501b8a"/>
 
 - [Project Description](#project-philosophy)
 - [Features of the App](#features-of-the-app)
@@ -24,6 +23,7 @@
 
 
 <img  id="project-philosophy" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/1238030e-b814-4cd8-9148-42d36fd384be"/>
+
 <br><br>
 
 >Have you ever wanted to livestream your content to an unlimited audience and potentially monetize it? InterCollab was developed to make this process easy and accessible to everyone.
