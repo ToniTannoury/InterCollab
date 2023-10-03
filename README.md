@@ -124,11 +124,14 @@ Here's a brief high-level overview of the tech stack the InterCollab app uses:
 <br><br>
 
 <img id="performance" src="https://github.com/hassankhalil33/ucard/assets/138028340/9807d3e9-be85-4d6c-be45-935b16ac2f51"/>
-
-You can use the provided Postman Collection to test the API endpoints:
+<br><br>
+You can use the provided Postman Collection to have a look at the documented API endpoints:
 
 [Postman Collection](https://github.com/ToniTannoury/InterCollab/blob/main/InterCollab%20Apis.postman_collection.json) 
 
+You can utilize the provided Postman API test suite to  assess the performance and functionality of the API endpoints through an iteration of 50 tests.:
+
+[Postman Apis test run](https://github.com/ToniTannoury/InterCollab/blob/main/InterCollab%20Apis.postman_test_run.json) 
 <br><br>
 <img id="how-to-run" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/00fa716c-a94b-49ee-aec4-2df4fb6e48ac"/>
 
