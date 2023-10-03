@@ -7,7 +7,7 @@
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.
 <br><br>
 
-**[PROJECT PHILOSOPHY](https://github.com/ToniTannoury/InterCollab#project-philosophy) • [PROTOTYPES](https://github.com/ToniTannoury/InterCollab#wireframes) • [TECH STACK](https://github.com/ToniTannoury/InterCollab#tech-stack) • [IMPLEMENTATION](https://github.com/ToniTannoury/InterCollab#implementation)• [PERFORMANCE](https://github.com/ToniTannoury/InterCollab#performance)* • [HOW TO RUN?](https://github.com/ToniTannoury/InterCollab#how-to-run)*
+**[PROJECT PHILOSOPHY](https://github.com/ToniTannoury/InterCollab#project-philosophy) • [PROTOTYPES](https://github.com/ToniTannoury/InterCollab#wireframes) • [TECH STACK](https://github.com/ToniTannoury/InterCollab#tech-stack) • [IMPLEMENTATION](https://github.com/ToniTannoury/InterCollab#implementation)• [Performance](https://github.com/ToniTannoury/InterCollab#performance)* • [HOW TO RUN?](https://github.com/ToniTannoury/InterCollab#how-to-run)**
 
 </div>
 
@@ -35,7 +35,6 @@
 - As an attendee I want to be able to participate to as much live rooms as I want
 
 <br><br>
-
 <img id="wireframes" src="https://github.com/ToniTannoury/InterCollab/assets/138028340/2208de2c-cbda-4a10-b197-3ea477cf7adb"/>
 
 > This design was planned before on Figma app.
@@ -129,7 +128,7 @@ You can use the provided Postman Collection to have a look at the documented API
 
 [Postman Collection](https://github.com/ToniTannoury/InterCollab/blob/main/InterCollab%20Apis.postman_collection.json) 
 
-You can utilize the provided Postman API test suite to  assess the performance and functionality of the API endpoints through an iteration of 50 tests:
+You can utilize the provided Postman API test suite to  assess the performance and functionality of the API endpoints through an iteration of 50 tests.:
 
 [Postman Apis test run](https://github.com/ToniTannoury/InterCollab/blob/main/InterCollab%20Apis.postman_test_run.json) 
 <br><br>
@@ -165,6 +164,7 @@ Below is an example of how you can install the project on your local device
 
 
 <h3> To Run The Server </h3>
+
 1. Navigate to the Backend folder
    ```sh
    cd backend
@@ -180,6 +180,7 @@ Below is an example of how you can install the project on your local device
    ```
 
 <h3> To Run Client </h3>
+
 1. Navigate to the Frontend folder
    ```sh
    cd frontend
